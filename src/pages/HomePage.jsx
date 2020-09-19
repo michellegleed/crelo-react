@@ -1,11 +1,12 @@
 import React from 'react';
+import ProjectCard from '../components/ProjectCard/ProjectCard';
 import { allProjects } from '../data';
 
 function HomePage () {
     return (
-        <div>
+        <div id="project-list">
             {allProjects.map((projectData, index) => {
-                return <div key={index}>{projectData.title}</div>
+                return <ProjectCard key={index} projectData={projectData} />
             })}
         </div>
     );
