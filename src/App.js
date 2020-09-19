@@ -6,7 +6,7 @@ import './App.css';
 
 import Nav from './components/Nav/Nav';
 import ProjectPage from './pages/ProjectPage';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/ActivityFeed';
 
 
 

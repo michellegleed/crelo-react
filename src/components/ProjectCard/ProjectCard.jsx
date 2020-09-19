@@ -12,7 +12,8 @@ function ProjectCard(props) {
         <div className="project-card">
             <Link to="/project">
                 <img src={projectData.image} />
-                <h3>{projectData.title}</h3>
+                <h3>{projectData.title} {projectData.venue != "" ? `@ ${projectData.venue}` : null}</h3>
+                <p>{projectData.description}</p>
             </Link>
         </div>
     );

@@ -1,24 +1,35 @@
-import React from 'react';
-import { oneProject } from '../data';
+import React from "react";
 
-function ProjectPage () {
-    return (
-        <div>
-            <h2>{oneProject.title}</h2>
-            <h3>Created at: {oneProject.date_created}</h3>
-    <h3>Status: {oneProject.is_open ? "open" : "closed"}</h3>
-    <h3>Pledges:</h3>
-    <ul>
+import ProgressBar from "../components/ProgressBar/ProgressBar.jsx";
+import PledgeCard from "../components/PledgeCard/PledgeCard";
+import { oneProject } from "../data";
+import { dateFormatter } from "../utils/dateFormatter.js";
+
+function ProjectPage() {
+  const dateObj = dateFormatter(oneProject.date_created);
+
+  return (
+    <div>
+      <img src={oneProject.image} id="project-header-image"></img>
+      <h2>{oneProject.title}</h2>
+      <h3>
+        Created on: {dateObj.date} at {dateObj.time}
+      </h3>
+      <h4>${oneProject.current_amount_pledged} pledged</h4>
+      <ProgressBar
+        percentage={oneProject.current_percentage_pledged}
+        current={oneProject.current_amount_pledged}
+        goal={oneProject.goal_amount}
+      />
+      <p>{oneProject.description}</p>
+      <h3>Pledges:</h3>
+      <ul>
         {oneProject.pledges.map((pledge, index) => {
-            return (
-                <li>
-                    ${pledge.amount} from user #{pledge.user}
-                </li>
-            )
+          return <PledgeCard key={index} pledge={pledge} />;
         })}
-    </ul>
-        </div>
-    )
+      </ul>
+    </div>
+  );
 }
 
 export default ProjectPage;
