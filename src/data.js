@@ -1,0 +1,122 @@
+export const allProjects = [
+    {
+        "id": 1,
+        "title": "Doggy Driving Lessons",
+        "venue": "Salter Point Vet",
+        "description": "Is your dog a menace on the road? We are raising money to provide free driving classes to all dogs living in the City of South Perth. Term One will cover accelerating, braking and reverse-parallel parking. Treats will be provided, cars will not - each dog must have permission to learn in their owner's car. Let's make our neighborhood streets the safest in the metro area!.",
+        "pledgetype": 1,
+        "goal_amount": 1500,
+        "image": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "is_open": true,
+        "date_created": "2020-09-14T10:09:43.460155Z",
+        "user": 3,
+        "due_date": "2020-10-07T14:28:23.382748Z",
+        "category": 1,
+        "location_id": 1,
+        "last_milestone": 25,
+        "last_chance_triggered": false,
+        "current_amount_pledged": 450,
+        "current_percentage_pledged": 30.0,
+        "check_for_milestone": null,
+        "check_close_to_due_date": null
+    },
+    {
+        "id": 2,
+        "title": "Project 2",
+        "venue": "Salter Point Vet",
+        "description": "Some description.",
+        "pledgetype": 1,
+        "goal_amount": 200,
+        "image": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "is_open": true,
+        "date_created": "2020-09-14T10:09:43.460155Z",
+        "user": 3,
+        "due_date": "2020-10-07T14:28:23.382748Z",
+        "category": 1,
+        "location_id": 1,
+        "last_milestone": 25,
+        "last_chance_triggered": false,
+        "current_amount_pledged": 450,
+        "current_percentage_pledged": 30.0,
+        "check_for_milestone": null,
+        "check_close_to_due_date": null
+    },
+    {
+        "id": 2,
+        "title": "Project 3",
+        "venue": "Salter Point Vet",
+        "description": "Some description.",
+        "pledgetype": 1,
+        "goal_amount": 2000,
+        "image": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "is_open": true,
+        "date_created": "2020-09-14T10:09:43.460155Z",
+        "user": 3,
+        "due_date": "2020-10-07T14:28:23.382748Z",
+        "category": 1,
+        "location_id": 1,
+        "last_milestone": 25,
+        "last_chance_triggered": false,
+        "current_amount_pledged": 450,
+        "current_percentage_pledged": 30.0,
+        "check_for_milestone": null,
+        "check_close_to_due_date": null
+    }
+];
+
+export const oneProject = {
+    "id": 1,
+    "title": "Doggy Driving Lessons",
+    "venue": "Salter Point Vet",
+    "description": "Is your dog a menace on the road? We are raising money to provide free driving classes to all dogs living in the City of South Perth. Term One will cover accelerating, braking and reverse-parallel parking. Treats will be provided, cars will not - each dog must have permission to learn in their owner's car. Let's make our neighborhood streets the safest in the metro area!.",
+    "pledgetype": 1,
+    "goal_amount": 1500,
+    "image": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+    "is_open": true,
+    "date_created": "2020-09-14T10:09:43.460155Z",
+    "user": 3,
+    "due_date": "2020-10-07T14:28:23.382748Z",
+    "category": 1,
+    "location_id": 1,
+    "last_milestone": 25,
+    "last_chance_triggered": false,
+    "current_amount_pledged": 450,
+    "current_percentage_pledged": 30.0,
+    "check_for_milestone": null,
+    "check_close_to_due_date": null,
+    "updates": [],
+    "project_activity": [
+        {
+            "id": 1,
+            "action": "project-created",
+            "datetime": "2020-09-14T10:09:43.484706Z",
+            "user_id": 3,
+            "location_id": 1,
+            "project_id": 1
+        },
+        {
+            "id": 2,
+            "action": "milestone-25",
+            "datetime": "2020-09-14T22:57:10.370045Z",
+            "user_id": 3,
+            "location_id": 1,
+            "project_id": 1
+        }
+    ],
+    "pledges": [
+        {
+            "id": 1,
+            "amount": 450,
+            "comment": "YES yes yes! i LOVE driving",
+            "anonymous": false,
+            "user": 4,
+            "project_id": 1,
+            "date_created": "2020-09-14T22:56:38.444581Z",
+            "type_id": 1
+        }
+    ],
+    "view_count": 6,
+    "pledge_count": 1,
+    "conversion_rate": 16.7,
+    "average_pledge": 450.0
+}
