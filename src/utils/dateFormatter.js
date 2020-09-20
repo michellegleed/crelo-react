@@ -1,6 +1,8 @@
+
+
 export function dateObjectFormatter(isoDate) {
   var d = new Date(isoDate);
-  var date = d.toDateString();
+  var date = d.toLocaleDateString("en-GB", {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
   var ampm = d.getHours() >= 12 ? " PM" : " AM";
   var time =
     ("0" + (d.getHours() % 12)).slice(-2) +
@@ -10,7 +12,7 @@ export function dateObjectFormatter(isoDate) {
 
   return {
     date: date,
-    time: time,
+    time: time
   };
 }
 

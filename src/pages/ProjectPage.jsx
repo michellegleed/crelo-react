@@ -1,46 +1,65 @@
 import React from "react";
 
 import ProgressBar from "../components/ProgressBar/ProgressBar.jsx";
+import ProjectDetailCard from "../components/ProjectDetailCard/ProjectDetailCard";
 import PledgeCard from "../components/PledgeCard/PledgeCard";
+
 import { oneProject } from "../data";
 
-import { dateObjectFormatter, dateStringFormatter, timeLeftFormatter } from "../utils/dateFormatter.js";
+import { dateObjectFormatter, timeLeftFormatter } from "../utils/dateFormatter.js";
+// import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
 
 function ProjectPage() {
 
-  const dateObj = dateObjectFormatter(oneProject.date_created);
-  const timeLeftObj = timeLeftFormatter(oneProject.due_date);
+    const dateObj = dateObjectFormatter(oneProject.date_created);
+    const timeLeftObj = timeLeftFormatter(oneProject.due_date);
 
-  return (
-    <div>
-      <img src={oneProject.image} id="project-header-image"></img>
-          <h2>{oneProject.title}</h2>
-          
-      <h6>Location: {oneProject.venue == "" ? `City of ${oneProject.location}` : `${oneProject.venue}`}</h6>
-      
-      <h6>Time Remaining: {timeLeftObj.days} days, {timeLeftObj.hours} hrs</h6>
+    return (
+        <div>
 
-      <h3>
-        Created on: {dateObj.date} at {dateObj.time}
-      </h3>
+          <h1>{oneProject.title}</h1>
 
-      {/* <h3>Created on: {dateStringFormatter(oneProject.date_created)}</h3> */}
+          <div id="creator-details">
+              <p>Created by</p>
+              <img src="" />
+              <h3>{oneProject.user}</h3>
+          </div>
 
-      <h4>${oneProject.current_amount_pledged} pledged</h4>
-      <ProgressBar
-        percentage={oneProject.current_percentage_pledged}
-        current={oneProject.current_amount_pledged}
-        goal={oneProject.goal_amount}
-      />
-      <p>{oneProject.description}</p>
-      <h3>Pledges:</h3>
-      <ul>
-        {oneProject.pledges.map((pledge, index) => {
-          return <PledgeCard key={index} pledge={pledge} />;
+          <div className="sticky-sidebar">
+              <div id="time-location">
+                  <h6>Location: {oneProject.venue == "" ? `City of ${oneProject.location}` : `${oneProject.venue}`}</h6>
+
+                  <h6>Time Remaining: {timeLeftObj.days} days, {timeLeftObj.hours} hrs</h6>
+            </div>
+            <div id="targets">
+                <h4>Target: ${oneProject.goal_amount}</h4>
+                <h4>${oneProject.current_amount_pledged} pledged</h4>
+                <ProgressBar
+                  percentage={oneProject.current_percentage_pledged}
+                  current={oneProject.current_amount_pledged}
+                  goal={oneProject.goal_amount}
+                />
+            </div>
+          </div>
+
+        <ProjectDetailCard image={oneProject.image} date={dateObj.date} content={oneProject.description} />
+        
+        {oneProject.updates.map((update, index) => {
+          const date = dateObjectFormatter(update.date_posted);
+          return <ProjectDetailCard image={update.image} date={date.date} content={update.content} key={index} />
         })}
-      </ul>
-    </div>
-  );
+
+          <div id="pledges">
+              <h3>Pledges:</h3>
+              <div>
+                {oneProject.pledges.map((pledge, index) => {
+                  return <PledgeCard key={index} pledge={pledge} />;
+                })}
+              </div>
+          </div>
+
+        </div>
+    );
 }
 
 export default ProjectPage;

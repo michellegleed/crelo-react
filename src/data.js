@@ -74,17 +74,23 @@ export const oneProject = {
     "image": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
     "is_open": true,
     "date_created": "2020-09-14T00:09:43.460155Z",
-    "user": 3,
+    "user": "michelle",
     "due_date": "2020-10-08T12:28:23.382748Z",
     "category": 1,
     "location": "South Perth",
     "last_milestone": 25,
     "last_chance_triggered": false,
-    "current_amount_pledged": 450,
-    "current_percentage_pledged": 110.1,
+    "current_amount_pledged": 950,
+    "current_percentage_pledged": 57.4,
     "check_for_milestone": null,
     "check_close_to_due_date": null,
-    "updates": [],
+    "updates": [
+        {
+        "id": 1,
+        "date_posted": "2020-08-26T10:23:34.701803Z",
+        "content": "Hey everyone! Here's an update on our project."
+    }
+    ],
     "project_activity": [
         {
             "id": 1,
@@ -113,10 +119,32 @@ export const oneProject = {
             "project_id": 1,
             "date_created": "2020-09-14T22:56:38.444581Z",
             "type_id": 1
+        },
+        {
+            "id": 5,
+            "amount": 500,
+            "comment": "Genius!",
+            "anonymous": true,
+            "user": "billy",
+            "project_id": 1,
+            "date_created": "2020-08-29T10:52:43.369387Z",
+            "type_id": 1
         }
     ],
     "view_count": 6,
-    "pledge_count": 1,
+    "pledge_count": 2,
     "conversion_rate": 16.7,
     "average_pledge": 450.0
+}
+
+export const loggedInUser = {
+    "id": 1,
+    "is_admin": true,
+    "username": "michelle",
+    "email": "mich@email.com",
+    "location_id": 1,
+    "password": "test4321",
+    "favourite_categories": [
+        1
+    ]
 }

@@ -5,8 +5,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Nav from './components/Nav/Nav';
+
 import ProjectPage from './pages/ProjectPage';
 import HomePage from './pages/ActivityFeed';
+import AboutPage from './pages/AboutPage';
+import UserAccountPage from './pages/UserAccountPage';
+import UserProjectsPage from './pages/UserProjectsPage';
 
 
 
@@ -19,7 +23,16 @@ function App () {
           <Switch>
             <Route path="/project">
               <ProjectPage />
-            </Route>
+          </Route>
+           <Route path="/about">
+              <AboutPage />
+          </Route>
+           <Route path="/user-projects">
+              <UserProjectsPage />
+          </Route>
+           <Route path="/account">
+              <UserAccountPage />
+          </Route>
             <Route path="/">
               <HomePage />
             </Route>
