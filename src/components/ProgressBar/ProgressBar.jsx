@@ -5,19 +5,25 @@ import "./ProgressBar.css";
 const ProgressBar = (props) => {
   const { percentage, current, goal } = props;
 
-  // const [percentage, setPercentage] = useState(0);
+  const [pc, setPercentage] = useState(0);
 
-  // const animationDelay = () => {
-  //     setPercentage(percentage);
-  // }
+  const animationDelay = () => {
+      setPercentage(percentage + 10.0);
+  }
 
-  // const useEffect = () => {
-  //     setInterval(animationDelay, 5000);
-  //     return clearInterval(animationDelay);
-  // }
+  useEffect(() => {
+      const adInterval = setInterval(animationDelay, 0);
+      return () => {
+          clearInterval(adInterval);
+          console.log("removed animation delay interval");
+      }
+  }, [])
 
   const fillerStyles = {
-    height: `${percentage}%`,
+    width: `${pc <= 100 ? pc : 100}%`,
+    backgroundColor: `${
+      pc >= 100  ? "rgb(5, 209, 15)" : pc > 60 ? "rgb(255, 196, 0)" : "red"
+    }`,
   };
 
   return (

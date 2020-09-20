@@ -3,18 +3,29 @@ import React from "react";
 import ProgressBar from "../components/ProgressBar/ProgressBar.jsx";
 import PledgeCard from "../components/PledgeCard/PledgeCard";
 import { oneProject } from "../data";
-import { dateFormatter } from "../utils/dateFormatter.js";
+
+import { dateObjectFormatter, dateStringFormatter, timeLeftFormatter } from "../utils/dateFormatter.js";
 
 function ProjectPage() {
-  const dateObj = dateFormatter(oneProject.date_created);
+
+  const dateObj = dateObjectFormatter(oneProject.date_created);
+  const timeLeftObj = timeLeftFormatter(oneProject.due_date);
 
   return (
     <div>
       <img src={oneProject.image} id="project-header-image"></img>
-      <h2>{oneProject.title}</h2>
+          <h2>{oneProject.title}</h2>
+          
+      <h6>Location: {oneProject.venue == "" ? `City of ${oneProject.location}` : `${oneProject.venue}`}</h6>
+      
+      <h6>Time Remaining: {timeLeftObj.days} days, {timeLeftObj.hours} hrs</h6>
+
       <h3>
         Created on: {dateObj.date} at {dateObj.time}
       </h3>
+
+      {/* <h3>Created on: {dateStringFormatter(oneProject.date_created)}</h3> */}
+
       <h4>${oneProject.current_amount_pledged} pledged</h4>
       <ProgressBar
         percentage={oneProject.current_percentage_pledged}
