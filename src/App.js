@@ -8,7 +8,8 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 
 import ProjectPage from './pages/ProjectPage';
-import HomePage from './pages/ActivityFeed';
+import ActivityFeed from './pages/ActivityFeed/ActivityFeed';
+import ProjectList from './pages/ProjectList';
 import AboutPage from './pages/AboutPage';
 import UserAccountPage from './pages/UserAccountPage';
 import UserProjectsPage from './pages/UserProjectsPage';
@@ -25,6 +26,12 @@ function App() {
           <Route path="/project">
             <ProjectPage />
           </Route>
+          <Route path="/education">
+            <ProjectList />
+          </Route>
+          <Route path="/favourites">
+            <ProjectList />
+          </Route>
           <Route path="/about">
             <AboutPage />
           </Route>
@@ -35,7 +42,7 @@ function App() {
             <UserAccountPage />
           </Route>
           <Route path="/">
-            <HomePage />
+            <ActivityFeed />
           </Route>
         </Switch>
         <Footer />

@@ -1,9 +1,9 @@
-#project-list {
+/* #project-list {
     display: grid;
     grid-template-columns: 30% 30% 30%;
     column-gap: 10px;
     row-gap: 10px;
-}
+} */
 
 #project-header-image {
     width: 100%;
@@ -25,3 +25,36 @@ div.sticky-sidebar {
 div.project-content {
     width: calc(100vw - 350px);
 }
+
+/* div#project-list {
+  margin: 24px;
+  width: calc(100vw - 144px);
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-auto-rows: 200px;
+  grid-gap: 24px;
+  justify-items: flex-end;
+}
+
+.project-card {
+    grid-column: auto /span 2;
+    grid-row: auto / span 3;
+}
+
+.project-card:nth-child(7n),
+.project-card:nth-child(7n + 4),
+.project-card:nth-child(7n + 5) {
+    grid-column: auto /span 3;
+    grid-row: auto /span 2;
+}
+
+/* The first row is different cos of the welcome message! */
+/*.project-card:nth-child(1) {
+    grid-column: 2 /span 2;
+    grid-row: auto / span 3;
+}
+
+.project-card:nth-child(2) {
+    grid-column: auto /span 2;
+    grid-row: auto / span 3;
+} */
