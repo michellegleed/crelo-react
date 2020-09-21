@@ -144,7 +144,43 @@ export const loggedInUser = {
     "email": "mich@email.com",
     "location_id": 1,
     "password": "test4321",
+    "image": "https://images.unsplash.com/photo-1538127426967-75a6c73f6d20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
+    "bio": "First time I've signed up to a fake crowdfunding site! Pretty exciting. I'm mostly interested in pledging to the cute animal projects.",
     "favourite_categories": [
         1
+    ],
+    "pledges": [
+        {
+            "id": 1,
+            "amount": 450,
+            "comment": "YES yes yes! i LOVE driving",
+            "anonymous": false,
+            "user": "evie",
+            "project_id": 1,
+            "date_created": "2020-09-14T22:56:38.444581Z",
+            "type_id": 1
+        },
+        {
+            "id": 5,
+            "amount": 500,
+            "comment": "Genius!",
+            "anonymous": true,
+            "user": "evie",
+            "project_id": 1,
+            "date_created": "2020-08-29T10:52:43.369387Z",
+            "type_id": 1
+        }
+    ],
+    "badges": [
+        {
+            "title": "First Pledge",
+            "icon": "fas fa-trophy",
+            "date": "2020-08-29T10:52:43.369387Z"
+        },      
+        {
+            "title": "Pledged $100 to local projects",
+            "icon": "fas fa-coins",
+            "date": "2020-08-29T10:52:43.369387Z"
+        }
     ]
 }

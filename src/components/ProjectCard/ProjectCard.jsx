@@ -6,14 +6,14 @@ import './ProjectCard.css';
 function ProjectCard(props) {
 
     // destructuring the props
-    const { projectData } = props;
+    const { project } = props;
 
     return (
         <div className="project-card">
             <Link to="/project">
-                <img src={projectData.image} />
-                <h3>{projectData.title} {projectData.venue != "" ? `@ ${projectData.venue}` : null}</h3>
-                <p>{projectData.description}</p>
+                <img src={project.image} />
+                <h3>{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
+                <p>{project.description}</p>
             </Link>
         </div>
     );

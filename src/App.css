@@ -10,3 +10,18 @@
     height: 300px;
     object-fit: cover;
 }
+
+.coloured-text {
+    color: rgb(6, 180, 6)
+}
+
+div.sticky-sidebar {
+    /* border: solid black 5px; */
+    width: 300px;
+    position: fixed;
+    right: 0;
+}
+
+div.project-content {
+    width: calc(100vw - 350px);
+}

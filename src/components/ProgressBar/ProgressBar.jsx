@@ -33,7 +33,6 @@ const ProgressBar = (props) => {
           <span className="label">{`${percentage}%`}</span>
         </div>
       </div>
-      <p>Goal ${goal}</p>
     </div>
   );
 };

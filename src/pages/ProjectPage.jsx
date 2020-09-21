@@ -54,12 +54,14 @@ function ProjectPage() {
         </div>
       </div>
 
+      <div className="project-content">
       <ProjectDetailCard image={oneProject.image} date={dateObj.date} content={oneProject.description} />
 
       {oneProject.updates.map((update, index) => {
         const date = dateObjectFormatter(update.date_posted);
         return <ProjectDetailCard image={update.image} date={date.date} content={update.content} key={index} />
       })}
+      </div>
 
       <div id="pledges">
         <h3>Pledges:</h3>

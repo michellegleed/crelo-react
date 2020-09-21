@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import { dateObjectFormatter } from '../../utils/dateFormatter.js'
+import { dateObjectFormatter } from '../../utils/dateFormatter.js';
 
 import './PledgeCard.css';
 
@@ -17,6 +17,7 @@ function PledgeCard(props) {
             <Link to="/user">
                 <img src="" />
                 <div className="pledge-text">
+                    {/* checking if $ or hrs... */}
                     <h5>{pledge.type_id == 1 ? `$${pledge.amount}` : pledge.type_id == 2 ? `${pledge.amount} hrs` : null
                     }</h5>
                     <p>{pledge.comment}</p>
@@ -25,7 +26,7 @@ function PledgeCard(props) {
             </div>
             </Link>
 
-            {/* checking if $ or hrs... */}
+           
 
 
         </div>

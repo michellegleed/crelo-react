@@ -11,6 +11,7 @@ function Nav () {
             <Link to="/about">About</Link>
             <Link to="/user-projects">My Projects</Link>
             <Link to="/account">Account</Link>
+            <Link to="/logout">Log Out</Link>
         </nav>
     )
 }

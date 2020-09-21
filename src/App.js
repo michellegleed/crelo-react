@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 
 import ProjectPage from './pages/ProjectPage';
 import HomePage from './pages/ActivityFeed';
@@ -14,31 +15,32 @@ import UserProjectsPage from './pages/UserProjectsPage';
 
 
 
-function App () {
+function App() {
   return (
-      <Router>
-        <div>
-          <Nav />
+    <Router>
+      <div>
+        <Nav />
 
-          <Switch>
-            <Route path="/project">
-              <ProjectPage />
+        <Switch>
+          <Route path="/project">
+            <ProjectPage />
           </Route>
-           <Route path="/about">
-              <AboutPage />
+          <Route path="/about">
+            <AboutPage />
           </Route>
-           <Route path="/user-projects">
-              <UserProjectsPage />
+          <Route path="/user-projects">
+            <UserProjectsPage />
           </Route>
-           <Route path="/account">
-              <UserAccountPage />
+          <Route path="/account">
+            <UserAccountPage />
           </Route>
-            <Route path="/">
-              <HomePage />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
