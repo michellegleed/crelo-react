@@ -13,15 +13,19 @@ function LastChangeCard(props) {
     const dateObj = timeLeftFormatter(project.due_date);
 
     return (
-        <div className="last-chance-card">
+        <div className="last-chance-card activity-card">
             <Link to="/project">
-                <img src={project.image} />
-                <h3>{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
-                <p>
+                <div className="card-image">
+                    <img src={project.image} />
+                    <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
+                </div>
+                <div className="card-text">
+                <p className="red">
                     <i class="fas fa-exclamation-circle"></i>
                     {dateObj.days > 0 ? `Closing in ${dateObj.days} days` : `Closing in ${dateObj.hours} hours`}
                 </p>
-                <p>{project.description}</p>
+                    <p>{project.description.slice(0, 145)}...</p>
+                </div>
             </Link>
         </div>
     );

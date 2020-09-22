@@ -9,14 +9,34 @@ function ProjectCard(props) {
     const { project } = props;
 
     return (
-        <div className="project-card">
+        <div className="project-card activity-card">
             <Link to="/project">
-                <img src={project.image} />
-                <h3>{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
-                <p>{project.description}</p>
+                <div className="card-image">
+                    <img src={project.image} />
+                    <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
+                    {/* <p className="card-text">{project.description}</p> */}
+                </div>
+                <div className="card-text">
+                    <p>{project.description.slice(0, 145)}...</p>
+                </div>
             </Link>
         </div>
     );
+    // return (
+    //     <div className="project-card activity-card">
+    //         <Link to="/project">
+    //             <div className="card-image">
+    //                 <img src={project.image} />
+    //                 <div className="card-title">
+    //                     <h3>{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
+    //                 </div>
+    //             </div>
+    //             <div className="card-text">
+    //                 <p>{project.description}</p>
+    //             </div>
+    //         </Link>
+    //     </div>
+    // );
 }
 
 export default ProjectCard;

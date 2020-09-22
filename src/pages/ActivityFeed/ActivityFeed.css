@@ -1,46 +1,64 @@
-/* div#activity-content {
-  margin: 24px;
-  width: calc(100vw - 144px);
-  display: grid;
-  grid-template-columns: repeat(5, 20%);
-  grid-auto-rows: 200px;
-  grid-gap: 24px;
-}
-
-.project-card {
-    grid-column: auto /span 2;
-    grid-row: auto / span 3;
-}
-
-.project-card:nth-child(11n),
-.project-card:nth-child(11n + 5),
-.project-card:nth-child(11n + 6),
-.project-card:nth-child(11n + 8),
-.project-card:nth-child(11n + 9)
- {
-    grid-column: auto /span 3;
-    grid-row: auto /span 2;
-}
-
-.project-card:nth-child(1) {
-    grid-column: auto /span 1;
-    grid-row: auto / span 3;
-} */
-
-/* div#activity-content {
-  margin: 24px;
-  width: calc(100vw - 144px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(240px, 580px));
-  grid-gap: 24px;
-  grid-auto-flow: dense;
-} */
-
 div#activity-content {
-  margin: 24px;
-  width: calc(100vw - 144px);
+  margin: 36px;
+  width: calc(100vw - 72px);
   display: flex;
-  grid-gap: 24px;
   flex-wrap: wrap;
+  grid-gap: 48px;
 }
+
+.activity-card {
+  width: 380px;
+  height: 420px; 
+}
+
+.activity-card a {
+  width: 100%;
+  height: 100%;
+}
+
+.activity-card .card-image {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  height: 60%;
+  width: 100%;
+  align-items: flex-end;
+
+  /* box-shadow: 4px 4px 10px gray; */
+}
+
+.activity-card img {
+  grid-area: 1/1/2/2;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.activity-card h3.card-title {
+  grid-area: 1/1/2/2;
+  background-color: rgba(0,0,0,0.3);
+  color: white;
+  padding: 12px 2px;
+  margin: 0;
+  font-size: 22px;
+}
+
+.card-text {
+    color: #817e7e;
+    font-weight: 300;
+}
+
+/* .activity-card .card-text {
+    grid-area: 1/1/2/2;
+    align-self: center;
+    display: none;
+}
+
+.activity-card:hover .card-text {
+    display: flex;
+    background-color: rgba(0,0,0,0.6);
+    height: 100%;
+    width: 100%;    
+    color: white;
+} */
+

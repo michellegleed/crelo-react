@@ -11,7 +11,7 @@ function MilestoneCard(props) {
     const { item } = props;
 
     return (
-        <div className="milestone-card">
+        <div className="milestone-card activity-card">
             <Link to="/project">
                 <h3>Milestone Reached!</h3>
                 <Badge title={`${item.info}% of Target`} icon="fas fa-trophy" date={item.date}></Badge>

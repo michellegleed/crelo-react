@@ -25,7 +25,7 @@ function HomePage() {
             </nav>
     
             <div id="activity-content">
-                <div id="welcome-message">
+                <div id="welcome-message" className="activity-card">
                     <h1>Hey username</h1>
                     <h3>Welcome back! Thanks for supporting the creation of awesome projects in your local neighbourhood.</h3>
                     <h3><i class="fas fa-donate"></i>My Total Pledges:</h3>

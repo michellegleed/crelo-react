@@ -9,12 +9,16 @@ function ProgressUpdateCard(props) {
     const { project, info } = props;
 
     return (
-        <div className="progress-update-card">
+        <div className="progress-update-card activity-card">
             <Link to="/project">
-                <img src={project.image} />
-                <h3>{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
-                <h6>{project.user} added a progress update:</h6>
-                <p>{info}</p>
+                <div className="card-image">
+                    <img src={project.image} />
+                    <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
+                </div>
+                <div className="card-text">
+                    <h6>{project.user} added a progress update:</h6>
+                    <p>{info.slice(0, 145)}...</p>
+                </div>
             </Link>
         </div>
     );
