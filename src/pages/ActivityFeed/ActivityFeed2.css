@@ -23,7 +23,7 @@ div#activity-content {
   height: 100%;
 }
 
-.activity-card .card-image {
+.activity-card .card-container {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 100%;
@@ -60,9 +60,9 @@ div#activity-content {
     display: flex;
 }
 
-.activity-card:nth-child(8n) .card-image,
-.activity-card:nth-child(8n + 5) .card-image,
-.activity-card:nth-child(8n + 6) .card-image{
+.activity-card:nth-child(8n) .card-container,
+.activity-card:nth-child(8n + 5) .card-container,
+.activity-card:nth-child(8n + 6) .card-container{
     height: 100%;
     width: 40%;
 }

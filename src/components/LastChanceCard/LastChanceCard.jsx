@@ -15,17 +15,17 @@ function LastChangeCard(props) {
     return (
         <div className="last-chance-card activity-card">
             <Link to="/project">
-                <div className="card-image">
+                <div className="card-container">
                     <img src={project.image} />
-                    <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
-                </div>
-                <div className="card-text">
-                <p className="red">
-                    <i class="fas fa-exclamation-circle"></i>
-                    {dateObj.days > 0 ? `Closing in ${dateObj.days} days` : `Closing in ${dateObj.hours} hours`}
-                </p>
+                    <p className="red">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {dateObj.days > 0 ? `Closing in ${dateObj.days} days` : `Closing in ${dateObj.hours} hours`}
+                    </p>
+                    <div className="card-text">
+                        <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
                     <p>{project.description.slice(0, 145)}...</p>
-                </div>
+                    </div>
+                    </div>
             </Link>
         </div>
     );

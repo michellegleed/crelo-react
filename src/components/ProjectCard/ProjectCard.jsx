@@ -11,21 +11,23 @@ function ProjectCard(props) {
     return (
         <div className="project-card activity-card">
             <Link to="/project">
-                <div className="card-image">
+                <div className="card-container">
                     <img src={project.image} />
+                    <div className="card-text">
                     <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
-                    {/* <p className="card-text">{project.description}</p> */}
+                        <p>{project.description}</p>
+                        </div>
                 </div>
-                <div className="card-text">
+                {/* <div className="card-text">
                     <p>{project.description.slice(0, 145)}...</p>
-                </div>
+                </div> */}
             </Link>
         </div>
     );
     // return (
     //     <div className="project-card activity-card">
     //         <Link to="/project">
-    //             <div className="card-image">
+    //             <div className="card-container">
     //                 <img src={project.image} />
     //                 <div className="card-title">
     //                     <h3>{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>

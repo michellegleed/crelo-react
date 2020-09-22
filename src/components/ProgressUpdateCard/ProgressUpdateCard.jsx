@@ -11,7 +11,7 @@ function ProgressUpdateCard(props) {
     return (
         <div className="progress-update-card activity-card">
             <Link to="/project">
-                <div className="card-image">
+                <div className="card-container">
                     <img src={project.image} />
                     <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
                 </div>
