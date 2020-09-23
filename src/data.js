@@ -46,7 +46,8 @@ export const oneProject = {
         {
             "id": 1,
             "date_posted": "2020-08-26T10:23:34.701803Z",
-            "content": "Hey everyone! Here's an update on our project."
+            "content": "Hey everyone! Here's an update on our project.",
+            "image": "https://images.unsplash.com/photo-1593297858385-1fa0a686f544?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80"
         }
     ],
     "project_activity": [
@@ -186,6 +187,7 @@ export const activityFeed = {
             "user_id": 3,
             "location_id": 1,
             "project_id": 1,
+            "image": "https://images.unsplash.com/photo-1593297858385-1fa0a686f544?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80",
             "project": {
                 "id": 1,
                 "title": "Doggy Driving Lessons",
@@ -470,6 +472,7 @@ export const activityFeed = {
             "user_id": 3,
             "location_id": 1,
             "project_id": 1,
+            "image": "https://images.unsplash.com/photo-1593297858385-1fa0a686f544?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80",
             "project": {
                 "id": 1,
                 "title": "Doggy Driving Lessons",

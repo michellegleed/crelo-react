@@ -1,0 +1,20 @@
+/* .milestone-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.circle-img-div {
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: solid 5px rgba(0,0,0,0.5);
+    object-fit: contain;
+    object-position: center;
+    align-self: center;
+}
+
+div.circle-img-div img.circle-img {
+    height: 180px;
+    width: 180px;
+} */

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import './MilestoneCard.css';
 
 import Badge from '../Badge/Badge';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 function MilestoneCard(props) {
 
@@ -13,12 +14,55 @@ function MilestoneCard(props) {
     return (
         <div className="milestone-card activity-card">
             <Link to="/project">
-                <h3>Milestone Reached!</h3>
-                <Badge title={`${item.info}% of Target`} icon="fas fa-trophy" date={item.date}></Badge>
-                <h4>{item.project.title}</h4>
+                {/* <div className="card-container milestone-container"> */}
+                    <div className="card-container">
+                        <img src={item.project.image} />
+                        <p className="red">
+                            <i class="fas fa-trophy"></i>
+                        Milestone
+                    </p>
+                        <div className="card-text">
+                            <h3 className="card-title">{item.project.title} {item.project.venue != "" ? `@ ${item.project.venue}` : null}</h3>
+                        <h6>Goal 25% complete</h6>
+                        <p>{`WooHoo! People in your community have pledged $${item.project.current_amount_pledged} towards this project.`}</p>
+                        <ProgressBar
+                            percentage={item.project.current_percentage_pledged}
+                            current={item.project.current_amount_pledged}
+                            goal={item.project.goal_amount}
+                        />
+                        <p>{item.project.description.slice(0, 300)}...</p>
+                        </div>
+                    </div>
+                    {/* <h3>Milestone Reached!</h3>
+                    {/*<Badge title={`${item.info}% of Target`} icon="fas fa-trophy" date={item.date}></Badge> */}
+                    {/* <div className="circle-img-div">
+                        <img className="circle-img" src={item.project.image}></img>
+                    </div>
+                    <h4 className="badge-title">{`${item.info}% of Target`}</h4> */}
+                    {/* <p className="badge-date">{dateObj.date}</p> 
+
+                    <h4>{item.project.title}</h4> */}
             </Link>
         </div>
     );
+
+    // return (
+    //     <div className="milestone-card activity-card">
+    //         <Link to="/project">
+    //             <div className="card-container milestone-container">
+    //             <h3>Milestone Reached!</h3>
+    //             {/*<Badge title={`${item.info}% of Target`} icon="fas fa-trophy" date={item.date}></Badge> */}
+    //             <div className="circle-img-div">
+    //                 <img className="circle-img" src={item.project.image}></img>
+    //             </div>
+    //             <h4 className="badge-title">{`${item.info}% of Target`}</h4>
+    //             {/* <p className="badge-date">{dateObj.date}</p> */}
+
+    //                 <h4>{item.project.title}</h4>
+    //             </div>
+    //         </Link>
+    //     </div>
+    // );
 }
 
 export default MilestoneCard;

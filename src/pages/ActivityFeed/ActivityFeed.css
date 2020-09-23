@@ -35,11 +35,17 @@ div#activity-content {
   object-fit: cover;
 }
 
+.activity-card p.red {
+  background-color: rgba(0,0,0,0.3);
+  opacity: 100;
+  transition: all .5s;
+}
+
 .card-text {
     /* position: relative;
     top: -59px; */
     height: 100%;
-    transform: translateY(-59px); 
+    transform: translateY(-118px); 
     transition: all .5s;
     background-color: rgba(0,0,0,0.3);
     color: white;
@@ -56,15 +62,13 @@ div#activity-content {
     font-weight: 300;
 }
 
-.activity-card .card-text {
-    /* grid-area: 1/1/2/2; */
-    align-self: center;
-    /* display: none; */
+.activity-card:hover .card-text {
+    transform: translateY(-478px); 
+    background-color: rgba(0,0,0,0.7);
 }
 
-.activity-card:hover .card-text {
-    transform: translateY(-420px); 
-    background-color: rgba(0,0,0,0.7);
+.activity-card:hover p.red {
+    opacity: 0;
 }
 
 /* .activity-card:hover .card-text {

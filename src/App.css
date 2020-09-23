@@ -19,6 +19,10 @@ a {
     text-decoration: none;
 }
 
+i {
+    margin-right: 8px;
+}
+
 #project-header-image {
     width: 100%;
     height: 300px;
@@ -34,6 +38,7 @@ div.sticky-sidebar {
     width: 300px;
     position: fixed;
     right: 0;
+    top: 180px;
 }
 
 div.project-content {

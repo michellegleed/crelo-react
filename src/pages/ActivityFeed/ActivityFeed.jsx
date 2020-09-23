@@ -34,10 +34,10 @@ function HomePage() {
                     <h4>Pledged $150 in total to local projects</h4>
                 </div>
                 {activityFeed.activity.map((item, index) => {
-                    switch (item.action) { 
+                    switch (item.action) {
                         case "project-created": return <ProjectCard key={index} project={item.project} />
                         case "milestone": return <MilestoneCard key={index} item={item} />
-                        case "progress-update": return <ProgressUpdateCard key={index} project={item.project} info={item.info}/>
+                        case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info}/>
                         case "last-chance": return <LastChanceCard key={index} project={item.project} />
                     }
                     
