@@ -17,7 +17,7 @@ function LastChangeCard(props) {
             <Link to="/project">
                 <div className="card-container">
                     <img src={project.image} />
-                    <p className="red">
+                    <p className="card-type">
                         <i class="fas fa-exclamation-circle"></i>
                         Last Chance
                     </p>

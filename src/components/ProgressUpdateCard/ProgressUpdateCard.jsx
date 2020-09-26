@@ -13,7 +13,7 @@ function ProgressUpdateCard(props) {
             <Link to="/project">
                 <div className="card-container">
                     <img src={image == "" || !image ? project.image : image} />
-                    <p className="red">
+                    <p className="card-type">
                         <i class="fas fa-chart-line"></i>
                         Progress Update
                     </p>

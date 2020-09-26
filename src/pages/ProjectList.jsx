@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 import ProjectCard from '../components/ProjectCard/ProjectCard';
 
-import { allProjects } from '../data';
+// import { allProjects } from '../data';
 
 function HomePage() {
+
+    const [projectList, setProjectList] = useState([]);
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}projects/`)
+            .then((results) => {
+                return results.json()
+            })
+            .then((data) => {
+                setProjectList(data);
+            });
+    }, []);
+
     return (
         <div id="homepage-container">
             <nav id="category-menu">
@@ -21,7 +34,7 @@ function HomePage() {
 
             {/* <ProjectList projects={allProjects} /> */}          
             <div id="project-list">
-                {allProjects.map((project, index) => {
+                {projectList.map((project, index) => {
                     return <ProjectCard key={index} project={project} category="2" />
                 })}
                

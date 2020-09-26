@@ -14,10 +14,9 @@ function MilestoneCard(props) {
     return (
         <div className="milestone-card activity-card">
             <Link to="/project">
-                {/* <div className="card-container milestone-container"> */}
                     <div className="card-container">
                         <img src={item.project.image} />
-                        <p className="red">
+                        <p className="card-type">
                             <i class="fas fa-trophy"></i>
                         Milestone
                     </p>
@@ -33,36 +32,9 @@ function MilestoneCard(props) {
                         <p>{item.project.description.slice(0, 300)}...</p>
                         </div>
                     </div>
-                    {/* <h3>Milestone Reached!</h3>
-                    {/*<Badge title={`${item.info}% of Target`} icon="fas fa-trophy" date={item.date}></Badge> */}
-                    {/* <div className="circle-img-div">
-                        <img className="circle-img" src={item.project.image}></img>
-                    </div>
-                    <h4 className="badge-title">{`${item.info}% of Target`}</h4> */}
-                    {/* <p className="badge-date">{dateObj.date}</p> 
-
-                    <h4>{item.project.title}</h4> */}
             </Link>
         </div>
     );
-
-    // return (
-    //     <div className="milestone-card activity-card">
-    //         <Link to="/project">
-    //             <div className="card-container milestone-container">
-    //             <h3>Milestone Reached!</h3>
-    //             {/*<Badge title={`${item.info}% of Target`} icon="fas fa-trophy" date={item.date}></Badge> */}
-    //             <div className="circle-img-div">
-    //                 <img className="circle-img" src={item.project.image}></img>
-    //             </div>
-    //             <h4 className="badge-title">{`${item.info}% of Target`}</h4>
-    //             {/* <p className="badge-date">{dateObj.date}</p> */}
-
-    //                 <h4>{item.project.title}</h4>
-    //             </div>
-    //         </Link>
-    //     </div>
-    // );
 }
 
 export default MilestoneCard;

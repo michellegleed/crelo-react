@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ import LastChanceCard from '../../components/LastChanceCard/LastChanceCard';
 import { activityFeed } from '../../data';
 
 function HomePage() {
+
     return (
         <div id="homepage-container">
             <nav id="category-menu">
@@ -40,16 +41,9 @@ function HomePage() {
                         case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info}/>
                         case "last-chance": return <LastChanceCard key={index} project={item.project} />
                     }
-                    
                 })}
                
             </div>
-
-
-
-            
-
-
         </div>
     );
 }

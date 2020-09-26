@@ -17,33 +17,33 @@ div#activity-content {
 }
 
 .activity-card .card-container {
-  /* display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 100%; */
   height: 100%;
   width: 100%;
-  /* align-items: flex-end; */
-
   overflow: hidden;
-  box-shadow: 4px 4px 10px gray;
+  box-shadow: 4px 4px 8px gray;
 }
 
 .activity-card img {
-  /* grid-area: 1/1/2/2; */
   width: 380px;
   height: 420px;
   object-fit: cover;
 }
 
-.activity-card p.red {
-  background-color: rgba(0,0,0,0.3);
-  opacity: 100;
-  transition: all .5s;
+.activity-card p.card-type {
+    margin: 12px;
+    padding: 6px 12px;
+    width: max-content;
+    transform: translateY(-420px);
+    color: white;
+    background-color:rgba(0,0,0,0.3);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center; 
+    opacity: 100;
+    transition: all .2s;
 }
 
 .card-text {
-    /* position: relative;
-    top: -59px; */
     height: 100%;
     transform: translateY(-118px); 
     transition: all .5s;
@@ -52,7 +52,6 @@ div#activity-content {
 }
 
 .card-text h3.card-title {
-  /* grid-area: 1/1/2/2; */
   padding: 12px 2px;
   margin: 0;
   font-size: 22px;
@@ -67,17 +66,6 @@ div#activity-content {
     background-color: rgba(0,0,0,0.7);
 }
 
-.activity-card:hover p.red {
+.activity-card:hover p.card-type {
     opacity: 0;
 }
-
-/* .activity-card:hover .card-text {
-    display: flex;
-    background-color: rgba(0,0,0,0.6);
-    height: 100%;
-    width: 100%;    
-    color: white;
-    grid-area: 1/1/2/2;
-} */
-
-

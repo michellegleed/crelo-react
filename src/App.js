@@ -13,6 +13,7 @@ import ProjectList from './pages/ProjectList';
 import AboutPage from './pages/AboutPage';
 import UserAccountPage from './pages/UserAccountPage';
 import UserProjectsPage from './pages/UserProjectsPage';
+import LoginPage from './pages/LoginPage';
 
 
 
@@ -23,7 +24,11 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route path="/project">
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          {/* using react-params for the project ID */}
+          <Route path="/project/:id">
             <ProjectPage />
           </Route>
           <Route path="/education">
