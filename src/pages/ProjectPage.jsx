@@ -8,6 +8,8 @@ import PledgeCard from "../components/PledgeCard/PledgeCard";
 // import { oneProject } from "../data";
 
 import { dateObjectFormatter, timeLeftFormatter } from "../utils/dateFormatter.js";
+import ProjectAnalytics from "../components/ProjectAnalytics/ProjectAnalytics.jsx";
+import PledgeForm from "../components/PledgeForm/PledgeForm.jsx";
 // import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
 
 function ProjectPage() {
@@ -20,7 +22,13 @@ function ProjectPage() {
   const [timeLeftObj, setTimeLeftObj] = useState({});
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`)
+    const token = window.localStorage.getItem("token");
+    fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `token ${token}`
+      },
+    })
       .then(results => {
         return results.json();
       })
@@ -62,16 +70,10 @@ function ProjectPage() {
           <h6>Time Remaining: {timeLeftObj.days} days, {timeLeftObj.hours} hrs</h6>
         </div>
 
-        <div id="pledge-form">
-          <h3>Make A Pledge...</h3>
-          <form>
-            <input placeholder="Enter amount" id="pledge-value"></input>
-            <textarea placeholder="Add a comment" id="pledge-comment"></textarea>
-            <label for="anonymous">Keep this anonymous</label>
-            <input type="checkbox" id="anonymous"></input>
-            <button>Submit</button>
-          </form>
-        </div>
+        {
+          projectData.view_count != null ? <ProjectAnalytics project={projectData} /> : <PledgeForm project={projectData}/>
+        }
+
       </div>
 
       <div className="project-content">
