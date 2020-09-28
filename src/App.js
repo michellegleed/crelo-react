@@ -14,6 +14,7 @@ import AboutPage from './pages/AboutPage';
 import UserAccountPage from './pages/UserAccountPage';
 import UserProjectsPage from './pages/UserProjectsPage';
 import LoginPage from './pages/LoginPage';
+import NewProjectPage from './pages/NewProjectPage';
 
 
 
@@ -30,6 +31,9 @@ function App() {
           {/* using react-params for the project ID */}
           <Route path="/project/:id">
             <ProjectPage />
+          </Route>
+          <Route path="/new-project">
+            <NewProjectPage />
           </Route>
           <Route path="/education">
             <ProjectList />

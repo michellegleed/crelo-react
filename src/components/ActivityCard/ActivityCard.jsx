@@ -10,7 +10,7 @@ function MilestoneCard(props) {
     // destructuring the props
     const { item } = props;
 
-    getCardType = () => { 
+    const getCardType = () => { 
         switch (item.action) { 
             case 'milestone': return (<p className="card-type">
                 <i class="fas fa-trophy"></i>
@@ -31,7 +31,7 @@ function MilestoneCard(props) {
         }
     }
 
-    get CardContent = () => { 
+    const getCardContent = () => { 
         switch (item.action) {
             case 'milestone': return (<ReactFragment><h6>Goal 25% complete</h6>
                         <p>{`WooHoo! People in your community have pledged $${item.project.current_amount_pledged} towards this project.`}</p>
