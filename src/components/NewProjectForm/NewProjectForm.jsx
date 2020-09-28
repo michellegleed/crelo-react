@@ -5,8 +5,6 @@ function NewProjectForm() {
 
     const token = window.localStorage.getItem("token");
 
-    const [projectID, setProjectID] = useState(0)
-
     const [credentials, setCredentials] = useState({
         title: "",
         venue: "",
@@ -52,7 +50,6 @@ function NewProjectForm() {
 
         postData().then(response => {
             console.log(response);
-            setProjectID(response.id);
             // redirect to project page on successful post
             history.push(`project/${response.id}`);
         });

@@ -10,9 +10,27 @@ import ProgressUpdateCard from '../../components/ProgressUpdateCard/ProgressUpda
 import LastChanceCard from '../../components/LastChanceCard/LastChanceCard';
 
 
-import { activityFeed } from '../../data';
+// import { activityFeed } from '../../data';
 
 function HomePage() {
+
+    const [activityFeed, setActivityFeed] = useState([]);
+
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        fetch(`${process.env.REACT_APP_API_URL}locations/1/`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `token ${token}`
+            },
+        })
+            .then((results) => {
+                return results.json()
+            })
+            .then((data) => {
+                setActivityFeed(data.activity);
+            });
+    }, []);
 
     return (
         <div id="homepage-container">
@@ -34,7 +52,7 @@ function HomePage() {
                     <h3><i class="fas fa-certificate"></i>Next Badge:</h3>
                     <h4>Pledged $150 in total to local projects</h4>
                 </div>
-                {activityFeed.activity.map((item, index) => {
+                {activityFeed.map((item, index) => {
                     switch (item.action) {
                         case "project-created": return <ProjectCard key={index} project={item.project} />
                         case "milestone": return <MilestoneCard key={index} item={item} />
