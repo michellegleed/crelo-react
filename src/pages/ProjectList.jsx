@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
-import ProjectCard from '../components/ProjectCard/ProjectCard';
+import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
 
 // import { allProjects } from '../data';
 

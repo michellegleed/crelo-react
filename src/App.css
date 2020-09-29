@@ -33,16 +33,12 @@ i {
     color: rgb(6, 180, 6)
 }
 
-div.sticky-sidebar {
-    /* border: solid black 5px; */
-    width: 300px;
-    position: fixed;
-    right: 0;
-    top: 180px;
-}
-
 div.project-content {
     width: calc(100vw - 350px);
+}
+
+h2#project-closed-warning {
+    color: red;
 }
 
 /* div#project-list {

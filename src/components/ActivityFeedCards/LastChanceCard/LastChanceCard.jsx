@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './LastChanceCard.css';
 
-import { timeLeftFormatter } from '../../utils/dateFormatter';
+import { timeLeftFormatter } from '../../../utils/dateFormatter';
 
 function LastChangeCard(props) {
 

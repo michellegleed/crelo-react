@@ -11,10 +11,11 @@ import ProjectPage from './pages/ProjectPage';
 import ActivityFeed from './pages/ActivityFeed/ActivityFeed';
 import ProjectList from './pages/ProjectList';
 import AboutPage from './pages/AboutPage';
-import UserAccountPage from './pages/UserAccountPage';
+import UserAccountPage from './pages/UserAccountPage2';
 import UserProjectsPage from './pages/UserProjectsPage';
 import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
+import BrowseCategoriesPage from './pages/BrowseCategoriesPage';
 
 
 
@@ -35,12 +36,12 @@ function App() {
           <Route path="/new-project">
             <NewProjectPage />
           </Route>
-          <Route path="/education">
-            <ProjectList />
+          <Route path="/categories">
+            <BrowseCategoriesPage />
           </Route>
-          <Route path="/favourites">
+          {/* <Route path="/favourites">
             <ProjectList />
-          </Route>
+          </Route> */}
           <Route path="/about">
             <AboutPage />
           </Route>

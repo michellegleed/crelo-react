@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './ActivityFeed.css';
 
-import ProjectCard from '../../components/ProjectCard/ProjectCard';
-import MilestoneCard from '../../components/MilestoneCard/MilestoneCard';
-import ProgressUpdateCard from '../../components/ProgressUpdateCard/ProgressUpdateCard';
-import LastChanceCard from '../../components/LastChanceCard/LastChanceCard';
+import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
+import MilestoneCard from '../../components/ActivityFeedCards/MilestoneCard/MilestoneCard';
+import ProgressUpdateCard from '../../components/ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
+import LastChanceCard from '../../components/ActivityFeedCards/LastChanceCard/LastChanceCard';
 
 
 // import { activityFeed } from '../../data';
@@ -15,33 +16,36 @@ import LastChanceCard from '../../components/LastChanceCard/LastChanceCard';
 function HomePage() {
 
     const [activityFeed, setActivityFeed] = useState([]);
+    const [error, setError] = useState();
+
+    const history = useHistory();
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
-        fetch(`${process.env.REACT_APP_API_URL}locations/1/`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `token ${token}`
-            },
-        })
-            .then((results) => {
-                return results.json()
+        if (token) {
+            fetch(`${process.env.REACT_APP_API_URL}locations/1/`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `token ${token}`
+                },
             })
-            .then((data) => {
-                setActivityFeed(data.activity);
-            });
+                .then((results) => {
+                    if (results.status == 200) {
+                        return results.json()
+                    }
+                })
+                .then((data) => {
+                    setActivityFeed(data.activity);
+                })
+        }
+        else { 
+            history.push("login/");
+        }
+        
     }, []);
 
     return (
         <div id="homepage-container">
-            <nav id="category-menu">
-                <Link to="/education">Education</Link>
-                <Link to="/arts">Arts + Entertainment</Link>
-                <Link to="/landscape">Local Landscape</Link>
-                <Link to="/kids">Kids</Link>
-                <Link to="/health">Health</Link>
-                <Link to="/favourites">My Followed Categories</Link>
-            </nav>
     
             <div id="activity-content">
                 <div id="welcome-message" className="activity-card">
@@ -52,14 +56,16 @@ function HomePage() {
                     <h3><i class="fas fa-certificate"></i>Next Badge:</h3>
                     <h4>Pledged $150 in total to local projects</h4>
                 </div>
+
                 {activityFeed.map((item, index) => {
                     switch (item.action) {
                         case "project-created": return <ProjectCard key={index} project={item.project} />
                         case "milestone": return <MilestoneCard key={index} item={item} />
                         case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info}/>
-                        case "last-chance": return <LastChanceCard key={index} project={item.project} />
+                        case "last-chance": return item.project.is_open ? <LastChanceCard key={index} project={item.project} /> : null 
                     }
-                })}
+                    })
+                }
                
             </div>
         </div>

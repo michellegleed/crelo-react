@@ -26,15 +26,30 @@ function UserAccountPage() {
             });
     }, []);
 
+
+    const [page, updatePage] = useState("badges");
+
+    const getCurrentPage = (pageState) => {
+        switch (pageState) {
+            // case "badges": return <BadgeList badgeList={user.badges} />;
+            case "pledges": let pledgeList = userData.pledges.map((pledge, index) => {
+                return <PledgeCard pledge={pledge} key={index} />});
+                return pledgeList;
+            case "profile":
+                return <UserProfile user={userData.user} />;
+            default:
+                return;
+        }
+    }
+
     return (
         <div>
+            <button onClick={() => updatePage("badges")}>Badges</button>
+            <button onClick={() => updatePage("pledges")}>Pledges</button>
+            <button onClick={() => updatePage("profile")}>Profile</button>
+
             <div className="account-content">
-                <UserProfile user={userData.user} />
-                {
-                    userData.pledges.map((pledge, index) => { 
-                        return <PledgeCard pledge={pledge} key={index} />
-                    })
-                }
+                {getCurrentPage(page)}
             </div>
         </div>
     );

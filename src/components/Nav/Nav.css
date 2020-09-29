@@ -1,7 +1,15 @@
-nav {
+div#nav-container {
+    display: flex;
     width: 100vw;
     height: 50px;
-    display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+div#nav-account-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    background-color: white;
 }

@@ -10,6 +10,8 @@ import PledgeCard from "../components/PledgeCard/PledgeCard";
 import { dateObjectFormatter, timeLeftFormatter } from "../utils/dateFormatter.js";
 import ProjectAnalytics from "../components/ProjectAnalytics/ProjectAnalytics.jsx";
 import PledgeForm from "../components/PledgeForm/PledgeForm.jsx";
+import DeleteProjectForm from "../components/DeleteProjectForm/DeleteProjectForm.jsx";
+import StickySidebar from "../components/ProjectStickySidebar/StickySidebar.jsx";
 // import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
 
 function ProjectPage() {
@@ -20,6 +22,7 @@ function ProjectPage() {
 
   const [dateObj, setDateObj] = useState({});
   const [timeLeftObj, setTimeLeftObj] = useState({});
+  const [dueDateObj, setDueDateObj] = useState({});
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
@@ -41,10 +44,12 @@ function ProjectPage() {
   useEffect(() => {
     setDateObj(dateObjectFormatter(projectData.date_created));
     setTimeLeftObj(timeLeftFormatter(projectData.due_date));
+    setDueDateObj(dateObjectFormatter(projectData.due_date));
   }, [projectData]);
 
   return (
     <div>
+
       <h1>{projectData.title}</h1>
 
       <div id="creator-details">
@@ -53,28 +58,15 @@ function ProjectPage() {
         <h3>{projectData.user}</h3>
       </div>
 
-      <div className="sticky-sidebar">
-        <div id="targets">
-          <h4>Target: ${projectData.goal_amount}</h4>
-          <h4>${projectData.current_amount_pledged} pledged</h4>
-          <ProgressBar
-            percentage={projectData.current_percentage_pledged}
-            current={projectData.current_amount_pledged}
-            goal={projectData.goal_amount}
-          />
-        </div>
+      {
+        projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
+      }
 
-        <div id="time-location">
-          <h6>Location: {projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}`}</h6>
+      {
+        projectData.view_count != null ? <DeleteProjectForm projectID={projectData.id}/> : null
+      }
 
-          <h6>Time Remaining: {timeLeftObj.days} days, {timeLeftObj.hours} hrs</h6>
-        </div>
-
-        {
-          projectData.view_count != null ? <ProjectAnalytics project={projectData} /> : <PledgeForm project={projectData}/>
-        }
-
-      </div>
+      <StickySidebar projectData={projectData} timeLeftObj={timeLeftObj} dueDateObj={dueDateObj} />
 
       <div className="project-content">
       <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />

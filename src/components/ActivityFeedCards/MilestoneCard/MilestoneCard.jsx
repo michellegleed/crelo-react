@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 import './MilestoneCard.css';
 
-import Badge from '../Badge/Badge';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import Badge from '../../Badge/Badge';
+import ProgressBar from '../../ProgressBar/ProgressBar';
 
 function MilestoneCard(props) {
 

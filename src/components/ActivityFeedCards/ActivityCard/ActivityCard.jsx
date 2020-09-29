@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './ActivityCard.css';
 
-import ProgressBar from '../ProgressBar/ProgressBar';
+import ProgressBar from '../../ProgressBar/ProgressBar';
 
 function MilestoneCard(props) {
 
