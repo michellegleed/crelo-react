@@ -35,12 +35,6 @@ function BrowseCategoriesPage() {
 
     }, [selectedCategory]);
 
-    const updateSelectedCategory = (category) => {
-        console.log("updating selected category to", category);
-        setSelectedCategory(category);
-        console.log("selected category state: ", selectedCategory);
-    }
-
     return (
         <div>
             <nav id="category-menu">
@@ -59,7 +53,7 @@ function BrowseCategoriesPage() {
                         return <ProjectCard project={project} key={index} />
                     })
                     :
-                    <h2>** Loading New Projects... **</h2>
+                    <h2>** Loading new projects... **</h2>
                 }
             </div>
         </div>

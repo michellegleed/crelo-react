@@ -16,6 +16,7 @@ import UserProjectsPage from './pages/UserProjectsPage';
 import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
 import BrowseCategoriesPage from './pages/BrowseCategoriesPage';
+import SignUpPage from './pages/SignUpPage';
 
 
 
@@ -28,6 +29,9 @@ function App() {
         <Switch>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/signup">
+            <SignUpPage />
           </Route>
           {/* using react-params for the project ID */}
           <Route path="/project/:id">
