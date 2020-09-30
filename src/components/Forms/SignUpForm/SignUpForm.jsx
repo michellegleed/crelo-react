@@ -3,25 +3,41 @@ import { useHistory } from 'react-router-dom';
 
 function SignUpForm() {
 
-    const [credentials, setCredentials] = useState({
+    const history = useHistory();
+
+    const [userDetails, setUserDetails] = useState({
         email: "",
         username: "",
         password: "",
         confirmPassword: "",
-        location: 0
+        location_id: 1
     });
-
-    const history = useHistory();
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setCredentials((prevCredentials) => ({
+        setUserDetails((prevCredentials) => ({
             ...prevCredentials,
             [id]: value,
         }));
+        console.log(id, value);
     }
 
-    const postData = async () => {
+    const postUserData = async () => {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}users/`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userDetails),
+        });
+        return response.json();
+    }
+
+    const loginNewUser = async () => { 
+        const credentials = {
+            username: userDetails.username,
+            password: userDetails.password
+        }
         const response = await fetch(`${process.env.REACT_APP_API_URL}api-token-auth/`, {
             method: "post",
             headers: {
@@ -34,13 +50,18 @@ function SignUpForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (credentials.email && credentials.username && credentials.password && credentials.confirmPassword && credentials.location) {
-            postData().then(response => {
-                console.log(response);
-                window.localStorage.setItem("token", response.token);
-                // redirect to home page on successful login
-                history.push("/");
-            });
+        console.log("userDetails = ", userDetails);
+        if (userDetails.email && userDetails.username && userDetails.password && userDetails.confirmPassword && userDetails.location_id) {
+            if (userDetails.password === userDetails.confirmPassword) {
+                postUserData().then(response => {
+                    console.log("response =", response);
+                    loginNewUser().then(response => {
+                        window.localStorage.setItem("token", response.token);
+                        // redirect to home page on successful login
+                        history.push("/");
+                    });
+                });
+            }
         }
     }
 
