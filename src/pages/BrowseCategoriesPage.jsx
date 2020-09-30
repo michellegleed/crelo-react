@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
 
-function BrowseCategoriesPage() { 
+import "./ActivityFeed/ActivityFeed.css";
 
-    const [projectList, setProjectList] = useState([]);
+function BrowseCategoriesPage() {
+
+    const [projectList, setProjectList] = useState();
     const [selectedCategory, setSelectedCategory] = useState("favourites");
 
     const history = useHistory();
@@ -33,7 +35,7 @@ function BrowseCategoriesPage() {
 
     }, [selectedCategory]);
 
-    const updateSelectedCategory = (category) => { 
+    const updateSelectedCategory = (category) => {
         console.log("updating selected category to", category);
         setSelectedCategory(category);
         console.log("selected category state: ", selectedCategory);
@@ -41,20 +43,25 @@ function BrowseCategoriesPage() {
 
     return (
         <div>
-        <nav id="category-menu">
-            <button onClick={() => setSelectedCategory(1)}>Education</button>
+            <nav id="category-menu">
+                <button onClick={() => setSelectedCategory(1)}>Education</button>
                 <button onClick={() => setSelectedCategory(2)}>Arts + Entertainment</button>
                 <button onClick={() => setSelectedCategory(3)}>Local Landscape</button>
                 <button onClick={() => setSelectedCategory(4)}>Health</button>
                 <button onClick={() => setSelectedCategory(5)}>Kids</button>
                 <button onClick={() => setSelectedCategory("favourites")}>My Followed Categories</button>
-        </nav>
+            </nav>
 
-        {
-        projectList.map((project, index) => { 
-            return <ProjectCard project={project} key={index} /> 
-        })
-        }
+            <div id="activity-content">
+                {
+                    projectList ?
+                    projectList.map((project, index) => {
+                        return <ProjectCard project={project} key={index} />
+                    })
+                    :
+                    <h2>** Loading New Projects... **</h2>
+                }
+            </div>
         </div>
     )
 }

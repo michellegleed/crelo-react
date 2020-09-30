@@ -9,13 +9,14 @@ import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectC
 import MilestoneCard from '../../components/ActivityFeedCards/MilestoneCard/MilestoneCard';
 import ProgressUpdateCard from '../../components/ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
 import LastChanceCard from '../../components/ActivityFeedCards/LastChanceCard/LastChanceCard';
+// import { act } from 'react-dom/test-utils';
 
 
 // import { activityFeed } from '../../data';
 
 function HomePage() {
 
-    const [activityFeed, setActivityFeed] = useState([]);
+    const [activityFeed, setActivityFeed] = useState();
     const [error, setError] = useState();
 
     const history = useHistory();
@@ -46,7 +47,7 @@ function HomePage() {
 
     return (
         <div id="homepage-container">
-    
+             
             <div id="activity-content">
                 <div id="welcome-message" className="activity-card">
                     <h1>Hey username</h1>
@@ -57,7 +58,9 @@ function HomePage() {
                     <h4>Pledged $150 in total to local projects</h4>
                 </div>
 
-                {activityFeed.map((item, index) => {
+                {
+                    activityFeed ?
+                    activityFeed.map((item, index) => {
                     switch (item.action) {
                         case "project-created": return <ProjectCard key={index} project={item.project} />
                         case "milestone": return <MilestoneCard key={index} item={item} />
@@ -65,8 +68,9 @@ function HomePage() {
                         case "last-chance": return item.project.is_open ? <LastChanceCard key={index} project={item.project} /> : null 
                     }
                     })
+                    :
+                    <h2>** Loading New Activity... **</h2>
                 }
-               
             </div>
         </div>
     );

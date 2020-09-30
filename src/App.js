@@ -11,7 +11,7 @@ import ProjectPage from './pages/ProjectPage';
 import ActivityFeed from './pages/ActivityFeed/ActivityFeed';
 import ProjectList from './pages/ProjectList';
 import AboutPage from './pages/AboutPage';
-import UserAccountPage from './pages/UserAccountPage2';
+import UserAccountPage from './pages/UserAccountPage';
 import UserProjectsPage from './pages/UserProjectsPage';
 import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
