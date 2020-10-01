@@ -1,34 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import './NewProjectForm.css'
+
+import { capitalizeFirstLetter } from './../../../utils/capitaliseFirstLetter';
 
 function NewProjectForm() {
 
     const token = window.localStorage.getItem("token");
 
-    const [credentials, setCredentials] = useState({
+    const [projectDetails, setProjectDetails] = useState({
         title: "",
         venue: "",
         description: "",
         pledgetype: 1,
         goal_amount: 0,
         image: "",
-        category: 0
+        category: 1,
+        pledgetype: 1
     });
 
     const history = useHistory();
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setCredentials((prevCredentials) => ({
-            ...prevCredentials,
+        setProjectDetails((prevProjectDetails) => ({
+            ...prevProjectDetails,
             [id]: value,
         }));
     }
 
     const handleDateChange = (e) => { 
         const { id, value } = e.target;
-        setCredentials((prevCredentials) => ({
-            ...prevCredentials,
+        setProjectDetails((prevProjectDetails) => ({
+            ...prevProjectDetails,
             [id]: `${value}T00:00:00Z`,
         }));
     }
@@ -40,7 +45,7 @@ function NewProjectForm() {
                 "Content-Type": "application/json",
                 "Authorization": `token ${token}`
             },
-            body: JSON.stringify(credentials),
+            body: JSON.stringify(projectDetails),
         });
         return response.json();
     }
@@ -55,8 +60,54 @@ function NewProjectForm() {
         });
     }
 
+    /// Get Categories for Select Part of Form
+    const [categoryList, setCategoryList] = useState();
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}project-categories/`)
+            .then((results) => {
+                return results.json()
+            })
+            .then((data) => {
+                setCategoryList(data);
+                data.map(category => {
+                    console.log(category.id, category.name)
+                })
+            });
+    }, []);
+
+    /// Get Pledge Type options for Select Part of Form
+    const [pledgetypeList, setPledgetypeList] = useState();
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}pledges/types/`)
+            .then((results) => {
+                return results.json()
+            })
+            .then((data) => {
+                setPledgetypeList(data);
+                data.map(pledgetype => {
+                    console.log(pledgetype.id, pledgetype.name)
+                })
+            });
+    }, []);
+
+
     return (
         <form>
+            <div>
+                <label htmlFor="category">Category:</label>
+                {categoryList ?
+                    <select id="category" name="category" onChange={handleChange}>
+                        {
+                            categoryList.map(category => {
+                            return <option value={category.id}>{category.name}</option>
+                        })}
+                    </select>
+                    :
+                    null
+                }
+            </div>
             <div>
                 <label htmlFor="title">Project Title:</label>
                 <input
@@ -83,12 +134,29 @@ function NewProjectForm() {
                     onChange={handleChange} />
             </div>
             <div>
+                <label htmlFor="pledgetype">What will users be pledging?</label>
+                {pledgetypeList ?
+                    <select id="pledgetype" name="pledgetype" onChange={handleChange}>
+                        {
+                            pledgetypeList.map(pledgetype => {
+                                return <option value={pledgetype.id}>{capitalizeFirstLetter(pledgetype.type)}</option>
+                            })}
+                    </select>
+                    :
+                    null
+                }
+            </div>
+            <div>
+                <span id="funding-target">
                 <label htmlFor="goal_amount">Funding Target:</label>
+                {projectDetails.pledgetype == 1 ? <p>$</p> : null}
                 <input
                     type="text"
                     id="goal_amount"
                     placeholder="Funding Target"
                     onChange={handleChange} />
+                    {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
+                </span>
             </div>
             <div>
                 <label htmlFor="image">Image:</label>
@@ -105,14 +173,6 @@ function NewProjectForm() {
                     id="due_date"
                     placeholder="DD/MM/YYYY"
                     onChange={handleDateChange} />
-            </div>
-            <div>
-                <label htmlFor="category">Select Project Category:</label>
-                <input
-                    type="text"
-                    id="category"
-                    placeholder="Enter the project category"
-                    onChange={handleChange} />
             </div>
 
             <button type="submit" onClick={handleSubmit}>

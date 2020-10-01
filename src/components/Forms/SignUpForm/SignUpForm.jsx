@@ -100,7 +100,7 @@ function SignUpForm() {
             <div>
                 <label htmlFor="location">Location:</label>
                 {locationList ?
-                    <select id="location" name="location" onChange={handleChange}>
+                    <select id="location_id" name="location" onChange={handleChange}>
                         {locationList.map(location => {
                             return <option value={location.id}>{location.name}</option>
                         })}

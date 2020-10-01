@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
+import LoadingContext from '../utils/loadingContext';
 
 import "./ActivityFeed/ActivityFeed.css";
 
+import Spinner from './../utils/spinner.jsx';
+
 function BrowseCategoriesPage() {
+
+    const { showLoading, hideLoading } = useContext(LoadingContext);
 
     const [projectList, setProjectList] = useState();
     const [selectedCategory, setSelectedCategory] = useState("favourites");
@@ -14,6 +19,7 @@ function BrowseCategoriesPage() {
     useEffect(() => {
         const token = window.localStorage.getItem("token");
         if (token) {
+            showLoading();
             fetch(`${process.env.REACT_APP_API_URL}locations/1/categories/${selectedCategory}`, {
                 headers: {
                     "Content-Type": "application/json",
@@ -27,6 +33,7 @@ function BrowseCategoriesPage() {
                 })
                 .then((data) => {
                     setProjectList(data);
+                    hideLoading();
                 })
         }
         else {
@@ -35,26 +42,35 @@ function BrowseCategoriesPage() {
 
     }, [selectedCategory]);
 
+    const changeCategory = (id) => { 
+        setProjectList();
+        setSelectedCategory(id);
+    }
+
     return (
         <div>
             <nav id="category-menu">
-                <button onClick={() => setSelectedCategory(1)}>Education</button>
-                <button onClick={() => setSelectedCategory(2)}>Arts + Entertainment</button>
-                <button onClick={() => setSelectedCategory(3)}>Local Landscape</button>
-                <button onClick={() => setSelectedCategory(4)}>Health</button>
-                <button onClick={() => setSelectedCategory(5)}>Kids</button>
-                <button onClick={() => setSelectedCategory("favourites")}>My Followed Categories</button>
+                <button onClick={() => changeCategory(1)}>Education</button>
+                <button onClick={() => changeCategory(2)}>Arts + Entertainment</button>
+                <button onClick={() => changeCategory(3)}>Local Landscape</button>
+                <button onClick={() => changeCategory(4)}>Health</button>
+                <button onClick={() => changeCategory(5)}>Kids</button>
+                <button onClick={() => changeCategory("favourites")}>My Followed Categories</button>
             </nav>
 
             <div id="activity-content">
+                {/* <Spinner /> */}
                 {
                     projectList ?
-                    projectList.map((project, index) => {
-                        return <ProjectCard project={project} key={index} />
-                    })
-                    :
-                    <h2>** Loading new projects... **</h2>
-                }
+                        projectList.length > 0 ?
+                            projectList.map((project, index) => {
+                                return <ProjectCard project={project} key={index} />
+                            })
+                            :
+                            <h2>No Open Projects Found</h2>
+                        :
+                        <Spinner />
+                    }
             </div>
         </div>
     )

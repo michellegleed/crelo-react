@@ -1,11 +1,31 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState, useContext, Fragment } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 import './Nav.css';
 
 function Nav() {
 
-    /// Show/Hide Drop-Down Account Menu
+/// Update Nav Based on Logged In/Out
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    // location variable will update whenever the react app's url changes
+    const location = useLocation();
+
+    // runs @ first render and whenever location changes
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        token != null ? setLoggedIn(true) : setLoggedIn(false);
+    }, [location]);
+
+
+/// Logout
+    const handleLogout = () => {
+        window.localStorage.clear();
+        //clear user details from context!!!
+    };
+
+
+/// Show/Hide Drop-Down Account Menu
     const [showAccountMenu, setShowAccountMenu] = useState(false);
 
     const toggleAccountMenu = () => {
@@ -14,33 +34,19 @@ function Nav() {
 
     const displayStyle = {
         display: showAccountMenu ? "flex" : "none"
-    }
+    }   
 
-    /// Update Nav Based on Logged In/Out
-    const [loggedIn, setLoggedIn] = useState(false);
 
-    // location variable will update whenever the react app's url changes
-    const location = useLocation();
-
-    // runs @ first render and whenever location changes.
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        token != null ? setLoggedIn(true) : setLoggedIn(false);
-    }, [location]);
-
-    const handleLogout = () => {
-        window.localStorage.clear();
-    };
 
     return (
         <nav>
             <div id="nav-container">
                 {loggedIn ?
-                    <React.Fragment>
+                    <Fragment>
                     <Link to="/">Home</Link>
                     <Link to="/categories">Browse Categories</Link>
                     <div id="nav-account-div">
-                        <button id="nav-account-btn" onClick={toggleAccountMenu}>My Account</button>
+                            <button id="nav-account-btn" onClick={toggleAccountMenu}>My Account</button>
                         <div id="nav-account-menu" style={displayStyle}>
                             <Link to="/account">My Profile</Link>
                             <Link to="/new-project">New Project</Link>
@@ -48,13 +54,13 @@ function Nav() {
                             <Link to="/login" onClick={handleLogout}>Log Out</Link>
                         </div>
                         </div>
-                    </React.Fragment>
+                    </Fragment>
                     :
-                    <React.Fragment>
+                    <Fragment>
                         <Link to="/about">About</Link>
                         <Link to="/login">Log In</Link>
                         <Link to="/signup">Sign Up</Link>
-                    </React.Fragment>
+                    </Fragment>
                 }
             </div>
         </nav>

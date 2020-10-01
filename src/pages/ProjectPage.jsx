@@ -16,7 +16,7 @@ import StickySidebar from "../components/ProjectStickySidebar/StickySidebar.jsx"
 
 function ProjectPage() {
 
-  const [projectData, setProjectData] = useState({ updates: [], pledges: [] });
+  const [projectData, setProjectData] = useState({ user: {},updates: [], pledges: [] });
 
   const { id } = useParams();
 
@@ -55,7 +55,7 @@ function ProjectPage() {
       <div id="creator-details">
         <p>Created by</p>
         <img src="" />
-        <h3>{projectData.user}</h3>
+        <h3>{projectData.user.username}</h3>
       </div>
 
       {

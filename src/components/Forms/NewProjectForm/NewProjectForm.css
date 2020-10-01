@@ -1,0 +1,7 @@
+span#funding-target {
+    display: flex;
+}
+
+span#funding-target p {
+    margin: 0 4px;
+}
