@@ -5,6 +5,8 @@ function SignUpForm() {
 
     const history = useHistory();
 
+    const [error, setError] = useState();
+
     const [userDetails, setUserDetails] = useState({
         email: "",
         username: "",
@@ -36,11 +38,14 @@ function SignUpForm() {
                 throw Error(text)
             }).catch(
                 (error) => {
-                    alert(error.message)
+                    console.log("errorText = ", error)
+                    setError(error.message.detail);
+                    // alert(error.message)
                 }
             )
         }
     }
+
 
     const loginNewUser = async () => {
         const credentials = {
@@ -71,6 +76,7 @@ function SignUpForm() {
                 //     history.push("/");
                 // })
             }).catch((error) => {
+                // setError(error.message);
                 alert(error.message)
             })
 
@@ -93,6 +99,12 @@ function SignUpForm() {
 
     return (
         <form>
+            <div>
+                {error ?
+                    <p>Error Message: {error}</p>
+                    : null
+                }
+            </div>
             <div>
                 <label htmlFor="email">Email:</label>
                 <input
