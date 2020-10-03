@@ -10,14 +10,14 @@ function NewProjectForm() {
     const token = window.localStorage.getItem("token");
 
     const [projectDetails, setProjectDetails] = useState({
-        title: "",
-        venue: "",
-        description: "",
-        pledgetype: 1,
-        goal_amount: 0,
-        image: "",
-        category: 1,
-        pledgetype: 1
+        // title: "",
+        // venue: "",
+        // description: "",
+        // pledgetype: 1,
+        // goal_amount: 0,
+        // image: "",
+        // category: 1,
+        // pledgetype: 1
     });
 
     const history = useHistory();
@@ -30,7 +30,7 @@ function NewProjectForm() {
         }));
     }
 
-    const handleDateChange = (e) => { 
+    const handleDateChange = (e) => {
         const { id, value } = e.target;
         setProjectDetails((prevProjectDetails) => ({
             ...prevProjectDetails,
@@ -101,8 +101,8 @@ function NewProjectForm() {
                     <select id="category" name="category" onChange={handleChange}>
                         {
                             categoryList.map(category => {
-                            return <option value={category.id}>{category.name}</option>
-                        })}
+                                return <option value={category.id}>{category.name}</option>
+                            })}
                     </select>
                     :
                     null
@@ -148,13 +148,13 @@ function NewProjectForm() {
             </div>
             <div>
                 <span id="funding-target">
-                <label htmlFor="goal_amount">Funding Target:</label>
-                {projectDetails.pledgetype == 1 ? <p>$</p> : null}
-                <input
-                    type="text"
-                    id="goal_amount"
-                    placeholder="Funding Target"
-                    onChange={handleChange} />
+                    <label htmlFor="goal_amount">Funding Target:</label>
+                    {projectDetails.pledgetype == 1 ? <p>$</p> : null}
+                    <input
+                        type="text"
+                        id="goal_amount"
+                        placeholder="Funding Target"
+                        onChange={handleChange} />
                     {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
                 </span>
             </div>
