@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -9,12 +9,16 @@ import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectC
 import MilestoneCard from '../../components/ActivityFeedCards/MilestoneCard/MilestoneCard';
 import ProgressUpdateCard from '../../components/ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
 import LastChanceCard from '../../components/ActivityFeedCards/LastChanceCard/LastChanceCard';
+
+import { UserDetailsContext } from '../../utils/context';
 // import { act } from 'react-dom/test-utils';
 
 
 // import { activityFeed } from '../../data';
 
 function HomePage() {
+
+    const { userDetails } = useContext(UserDetailsContext);
 
     const [activityFeed, setActivityFeed] = useState();
     const [error, setError] = useState();
@@ -50,7 +54,7 @@ function HomePage() {
              
             <div id="activity-content">
                 <div id="welcome-message" className="activity-card">
-                    <h1>Hey username</h1>
+                    <h1>Hey {userDetails.username ? userDetails.username : null}</h1>
                     <h3>Welcome back! Thanks for supporting the creation of awesome projects in your local neighbourhood.</h3>
                     <h3><i class="fas fa-donate"></i>My Total Pledges:</h3>
                     <h4>$120 across five projects</h4>

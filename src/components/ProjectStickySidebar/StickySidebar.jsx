@@ -23,7 +23,7 @@ function StickySidebar (props) {
                 </div>
 
                 <div id="time-location">
-                <h6>Location: {projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}`}</h6>
+                <h6>Location: {projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
                 {
                     projectData.is_open ? <h6>Time Remaining: {timeLeftObj.days} days, {timeLeftObj.hours} hrs</h6> : <h6>Closed to funding on {dueDateObj.date}</h6>
                 }

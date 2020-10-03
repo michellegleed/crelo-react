@@ -19,7 +19,6 @@ function SignUpForm() {
             ...prevCredentials,
             [id]: value,
         }));
-        console.log(id, value);
     }
 
     const postUserData = async () => {
@@ -29,11 +28,21 @@ function SignUpForm() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(userDetails),
-        });
-        return response.json();
+        })
+        if (response.ok) {
+            return response.json();
+        } else {
+            response.text().then(text => {
+                throw Error(text)
+            }).catch(
+                (error) => {
+                    alert(error.message)
+                }
+            )
+        }
     }
 
-    const loginNewUser = async () => { 
+    const loginNewUser = async () => {
         const credentials = {
             username: userDetails.username,
             password: userDetails.password
@@ -50,18 +59,22 @@ function SignUpForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("userDetails = ", userDetails);
         if (userDetails.email && userDetails.username && userDetails.password && userDetails.confirmPassword && userDetails.location_id) {
-            if (userDetails.password === userDetails.confirmPassword) {
-                postUserData().then(response => {
-                    console.log("response =", response);
-                    loginNewUser().then(response => {
-                        window.localStorage.setItem("token", response.token);
-                        // redirect to home page on successful login
-                        history.push("/");
-                    });
-                });
-            }
+            // if (userDetails.password === userDetails.confirmPassword) {
+            postUserData().then(response => {
+                // loginNewUser().then(response => {
+                if (response) {
+                    window.localStorage.setItem("token", response.token);
+                }
+
+                //     // redirect to home page on successful login
+                //     history.push("/");
+                // })
+            }).catch((error) => {
+                alert(error.message)
+            })
+
+            // }
         }
     }
 
@@ -126,7 +139,7 @@ function SignUpForm() {
                     onChange={handleChange} />
             </div>
             <button type="submit" onClick={handleSubmit}>
-                Login
+                Sign Up
             </button>
         </form>
     )

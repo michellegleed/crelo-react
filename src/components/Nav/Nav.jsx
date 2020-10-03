@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext, Fragment } from 'react';
 import { Link, useLocation } from "react-router-dom";
+// import { loggedInUser } from '../../data';
+import { UserDetailsContext } from '../../utils/context';
 
 import './Nav.css';
 
@@ -11,17 +13,43 @@ function Nav() {
     // location variable will update whenever the react app's url changes
     const location = useLocation();
 
-    // runs @ first render and whenever location changes
+    // runs @ first render and whenever url location changes
     useEffect(() => {
         const token = window.localStorage.getItem("token");
         token != null ? setLoggedIn(true) : setLoggedIn(false);
     }, [location]);
 
+/// Check context for userDetails and if none, fetch userDetails and save to the context
+    const { userDetails, actions } = useContext(UserDetailsContext);
+
+    useEffect(() => {
+        if (loggedIn) {
+            if (!userDetails.username) {
+                console.log("logged in but no user details saved! fetching user details now.");
+                const token = window.localStorage.getItem("token");
+                if (token) {
+                    fetch(`${process.env.REACT_APP_API_URL}account/`, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `token ${token}`
+                        },
+                    })
+                        .then((results) => {
+                            return results.json()
+                        })
+                        .then((data) => {
+                            actions.updateDetails(data.user);
+                        });
+                }
+            }
+        }
+    }, [loggedIn])
+
 
 /// Logout
     const handleLogout = () => {
         window.localStorage.clear();
-        //clear user details from context!!!
+        actions.clearDetails();
     };
 
 
@@ -35,7 +63,6 @@ function Nav() {
     const displayStyle = {
         display: showAccountMenu ? "flex" : "none"
     }   
-
 
 
     return (

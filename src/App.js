@@ -19,6 +19,7 @@ import BrowseCategoriesPage from './pages/BrowseCategoriesPage';
 import SignUpPage from './pages/SignUpPage';
 
 import LoadingProvider from './utils/LoadingProvider.jsx';
+import { UserContextProvider } from './utils/context';
 
 
 
@@ -30,6 +31,7 @@ function App() {
 
     <Router>
       <div>
+        <UserContextProvider>
         <Nav />
         <LoadingProvider>
         <Switch>
@@ -66,10 +68,12 @@ function App() {
             </Route>
         </Switch>
            </LoadingProvider>
-        <Footer />
+          <Footer />
+        </UserContextProvider>
       </div>
+        
     </Router>
-
+    
   )
 }
 
