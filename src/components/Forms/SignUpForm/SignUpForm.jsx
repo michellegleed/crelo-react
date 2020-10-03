@@ -46,41 +46,18 @@ function SignUpForm() {
         }
     }
 
-
-    const loginNewUser = async () => {
-        const credentials = {
-            username: userDetails.username,
-            password: userDetails.password
-        }
-        const response = await fetch(`${process.env.REACT_APP_API_URL}api-token-auth/`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-        });
-        return response.json();
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userDetails.email && userDetails.username && userDetails.password && userDetails.confirmPassword && userDetails.location_id) {
             // if (userDetails.password === userDetails.confirmPassword) {
             postUserData().then(response => {
-                // loginNewUser().then(response => {
                 if (response) {
-                    window.localStorage.setItem("token", response.token);
+                    history.push("/login");
                 }
-
-                //     // redirect to home page on successful login
-                //     history.push("/");
-                // })
             }).catch((error) => {
                 // setError(error.message);
                 alert(error.message)
             })
-
-            // }
         }
     }
 

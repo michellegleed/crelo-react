@@ -7,7 +7,7 @@ import './Nav.css';
 
 function Nav() {
 
-/// Update Nav Based on Logged In/Out
+    /// Update Nav Based on Logged In/Out
     const [loggedIn, setLoggedIn] = useState(false);
 
     // location variable will update whenever the react app's url changes
@@ -19,7 +19,7 @@ function Nav() {
         token != null ? setLoggedIn(true) : setLoggedIn(false);
     }, [location]);
 
-/// Check context for userDetails and if none, fetch userDetails and save to the context
+    /// Check context for userDetails and if none, fetch userDetails and save to the context
     const { userDetails, actions } = useContext(UserDetailsContext);
 
     useEffect(() => {
@@ -27,6 +27,7 @@ function Nav() {
             if (!userDetails.username) {
                 console.log("logged in but no user details saved! fetching user details now.");
                 const token = window.localStorage.getItem("token");
+                console.log(token);
                 if (token) {
                     fetch(`${process.env.REACT_APP_API_URL}account/`, {
                         headers: {
@@ -46,14 +47,14 @@ function Nav() {
     }, [loggedIn])
 
 
-/// Logout
+    /// Logout
     const handleLogout = () => {
         window.localStorage.clear();
         actions.clearDetails();
     };
 
 
-/// Show/Hide Drop-Down Account Menu
+    /// Show/Hide Drop-Down Account Menu
     const [showAccountMenu, setShowAccountMenu] = useState(false);
 
     const toggleAccountMenu = () => {
@@ -62,7 +63,7 @@ function Nav() {
 
     const displayStyle = {
         display: showAccountMenu ? "flex" : "none"
-    }   
+    }
 
 
     return (
@@ -70,16 +71,16 @@ function Nav() {
             <div id="nav-container">
                 {loggedIn ?
                     <Fragment>
-                    <Link to="/">Home</Link>
-                    <Link to="/categories">Browse Categories</Link>
-                    <div id="nav-account-div">
+                        <Link to="/">Home</Link>
+                        <Link to="/categories">Browse Categories</Link>
+                        <div id="nav-account-div">
                             <button id="nav-account-btn" onClick={toggleAccountMenu}>My Account</button>
-                        <div id="nav-account-menu" style={displayStyle}>
-                            <Link to="/account">My Profile</Link>
-                            <Link to="/new-project">New Project</Link>
-                            <Link to="/user-projects">My Projects</Link>
-                            <Link to="/login" onClick={handleLogout}>Log Out</Link>
-                        </div>
+                            <div id="nav-account-menu" style={displayStyle}>
+                                <Link to="/account">My Profile</Link>
+                                <Link to="/new-project">New Project</Link>
+                                <Link to="/user-projects">My Projects</Link>
+                                <Link to="/login" onClick={handleLogout}>Log Out</Link>
+                            </div>
                         </div>
                     </Fragment>
                     :
