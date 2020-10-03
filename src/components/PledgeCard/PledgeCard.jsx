@@ -10,7 +10,7 @@ function PledgeCard(props) {
     // destructuring the props
     const { pledge } = props;
 
-    const dateObj = dateObjectFormatter(pledge.date_created);
+    const dateObj = dateObjectFormatter(pledge.date);
 
     return (
         <div className="pledge-card">
@@ -23,10 +23,10 @@ function PledgeCard(props) {
                     <p>{pledge.comment}</p>
                     <p><span className="username-bold">{pledge.user.username}</span>{dateObj.day} {dateObj.date}</p>
                     <p></p>
-            </div>
+                </div>
             </Link>
 
-           
+
 
 
         </div>

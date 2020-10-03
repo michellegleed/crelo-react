@@ -39,7 +39,7 @@ function Nav() {
                             return results.json()
                         })
                         .then((data) => {
-                            actions.updateDetails(data.user);
+                            actions.updateDetails(data);
                         });
                 }
             }
@@ -59,6 +59,7 @@ function Nav() {
 
     const toggleAccountMenu = () => {
         setShowAccountMenu(!showAccountMenu);
+        console.log("user details from context = ", userDetails.user, userDetails.location, userDetails.pledges);
     }
 
     const displayStyle = {

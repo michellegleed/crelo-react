@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './NewProjectForm.css'
+import './EditProjectForm.css'
 
 import { capitalizeFirstLetter } from './../../../utils/capitaliseFirstLetter';
+import ProgressUpdateCard from '../../ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
 
-function NewProjectForm() {
+function EditProjectForm(props) {
 
     const token = window.localStorage.getItem("token");
 
-    const [projectDetails, setProjectDetails] = useState({
-        venue: "",
-        pledgetype: 1,
-        category: 1
-    });
+    const { project } = props;
+
+    console.log("props.project = ", project);
+
+    const [projectDetails, setProjectDetails] = useState(project);
 
     const history = useHistory();
 
@@ -26,10 +27,7 @@ function NewProjectForm() {
     }
 
     const handleDateChange = (e) => {
-        console.log("date from new project form: ", e.target.id, e.target.value)
-        console.log(`${e.target.value}T00:00:00Z`);
         const { id, value } = e.target;
-        console.log(`${value}T00:00:00Z`);
         setProjectDetails((prevProjectDetails) => ({
             ...prevProjectDetails,
             [id]: `${value}T00:00:00Z`,
@@ -37,8 +35,8 @@ function NewProjectForm() {
     }
 
     const postData = async () => {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}projects/`, {
-            method: "post",
+        const response = await fetch(`${process.env.REACT_APP_API_URL}projects/${projectDetails.id}/`, {
+            method: "put",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `token ${token}`
@@ -50,7 +48,7 @@ function NewProjectForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(projectDetails);
+
         postData().then(response => {
             console.log(response);
             // redirect to project page on successful post
@@ -111,7 +109,7 @@ function NewProjectForm() {
                 <input
                     type="text"
                     id="title"
-                    placeholder="Project title"
+                    placeholder={projectDetails.title}
                     onChange={handleChange}
                 />
             </div>
@@ -120,7 +118,7 @@ function NewProjectForm() {
                 <input
                     type="text"
                     id="venue"
-                    placeholder="Venue"
+                    placeholder={projectDetails.venue}
                     onChange={handleChange} />
             </div>
             <div>
@@ -128,7 +126,7 @@ function NewProjectForm() {
                 <input
                     type="text"
                     id="description"
-                    placeholder="Project description"
+                    placeholder={projectDetails.description}
                     onChange={handleChange} />
             </div>
             <div>
@@ -151,7 +149,7 @@ function NewProjectForm() {
                     <input
                         type="text"
                         id="goal_amount"
-                        placeholder="Funding Target"
+                        placeholder={projectDetails.goal_amount}
                         onChange={handleChange} />
                     {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
                 </span>
@@ -161,7 +159,7 @@ function NewProjectForm() {
                 <input
                     type="text"
                     id="image"
-                    placeholder="Enter the url for the project image"
+                    placeholder={projectDetails.image}
                     onChange={handleChange} />
             </div>
             <div>
@@ -180,4 +178,4 @@ function NewProjectForm() {
     )
 }
 
-export default NewProjectForm;
+export default EditProjectForm;

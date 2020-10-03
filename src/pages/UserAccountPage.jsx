@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import BadgeList from '../components/BadgeList/BadgeList';
 import PledgeCard from '../components/PledgeCard/PledgeCard';
-import UserProfileForm from '../components/UserProfile/UserProfileForm';
+import UserProfileForm from '../components/Forms/UserProfileForm/UserProfileForm';
 
 function UserAccountPage() {
 

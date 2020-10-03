@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 
 export const UserDetailsContext = React.createContext();
 
-export const UserContextProvider = (props) => { 
+export const UserContextProvider = (props) => {
     const [userDetails, setUserDetails] = useState({});
 
-    const updateUserDetails = (userObject) => { 
+    const updateUserDetails = (userObject) => {
         setUserDetails(userObject);
+        console.log("user details from context = ", userDetails);
     }
 
-    const clearUserDetails = () => { 
+    const clearUserDetails = () => {
         setUserDetails({});
     }
 
@@ -21,7 +22,7 @@ export const UserContextProvider = (props) => {
                 clearDetails: clearUserDetails
             }
         }}>
-            { props.children}
+            {props.children}
         </UserDetailsContext.Provider>
     );
 }

@@ -41,6 +41,8 @@ function PledgeForm(props) {
             console.log(response);
             // redirect to project page on successful post
             // history.push(`project/${response.id}`);
+            const form = document.querySelector('form');
+            form.reset();
             alert("Pledge successful");
         });
     }

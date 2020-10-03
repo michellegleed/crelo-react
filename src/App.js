@@ -17,6 +17,7 @@ import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
 import BrowseCategoriesPage from './pages/BrowseCategoriesPage';
 import SignUpPage from './pages/SignUpPage';
+import UpdateProjectPage from './pages/UpdateProjectPage';
 
 import LoadingProvider from './utils/LoadingProvider.jsx';
 import { UserContextProvider } from './utils/context';
@@ -32,48 +33,51 @@ function App() {
     <Router>
       <div>
         <UserContextProvider>
-        <Nav />
-        <LoadingProvider>
-        <Switch>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <Route path="/signup">
-              <SignUpPage />
-            </Route>
-            {/* using react-params for the project ID */}
-            <Route path="/project/:id">
-              <ProjectPage />
-            </Route>
-            <Route path="/new-project">
-              <NewProjectPage />
-            </Route>
-            <Route path="/categories">
-              <BrowseCategoriesPage />
-            </Route>
-            {/* <Route path="/favourites">
+          <Nav />
+          <LoadingProvider>
+            <Switch>
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+              <Route path="/signup">
+                <SignUpPage />
+              </Route>
+              {/* using react-params for the project ID */}
+              <Route path="/project/:id/update">
+                <UpdateProjectPage />
+              </Route>
+              <Route path="/project/:id">
+                <ProjectPage />
+              </Route>
+              <Route path="/new-project">
+                <NewProjectPage />
+              </Route>
+              <Route path="/categories">
+                <BrowseCategoriesPage />
+              </Route>
+              {/* <Route path="/favourites">
             <ProjectList />
           </Route> */}
-            <Route path="/about">
-              <AboutPage />
-            </Route>
-            <Route path="/user-projects">
-              <UserProjectsPage />
-            </Route>
-            <Route path="/account">
-              <UserAccountPage />
-            </Route>
-            <Route path="/">
-              <ActivityFeed />
-            </Route>
-        </Switch>
-           </LoadingProvider>
+              <Route path="/about">
+                <AboutPage />
+              </Route>
+              <Route path="/user-projects">
+                <UserProjectsPage />
+              </Route>
+              <Route path="/account">
+                <UserAccountPage />
+              </Route>
+              <Route path="/">
+                <ActivityFeed />
+              </Route>
+            </Switch>
+          </LoadingProvider>
           <Footer />
         </UserContextProvider>
       </div>
-        
+
     </Router>
-    
+
   )
 }
 

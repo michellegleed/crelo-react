@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from "react-router-dom";
 
 import ProgressBar from "../components/ProgressBar/ProgressBar.jsx";
 import ProjectDetailCard from "../components/ProjectDetailCard/ProjectDetailCard";
@@ -7,16 +7,18 @@ import PledgeCard from "../components/PledgeCard/PledgeCard";
 
 // import { oneProject } from "../data";
 
+
+
 import { dateObjectFormatter, timeLeftFormatter } from "../utils/dateFormatter.js";
 import ProjectAnalytics from "../components/ProjectAnalytics/ProjectAnalytics.jsx";
-import PledgeForm from "../components/PledgeForm/PledgeForm.jsx";
+import PledgeForm from "../components/Forms/PledgeForm/PledgeForm.jsx";
 import DeleteProjectForm from "../components/DeleteProjectForm/DeleteProjectForm.jsx";
 import StickySidebar from "../components/ProjectStickySidebar/StickySidebar.jsx";
 // import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
 
 function ProjectPage() {
 
-  const [projectData, setProjectData] = useState({ user: {},updates: [], pledges: [] });
+  const [projectData, setProjectData] = useState({ user: {}, updates: [], pledges: [] });
 
   const { id } = useParams();
 
@@ -63,17 +65,24 @@ function ProjectPage() {
       }
 
       {
-        projectData.view_count != null ? <DeleteProjectForm projectID={projectData.id}/> : null
+        projectData.view_count != null ? <DeleteProjectForm projectID={projectData.id} /> : null
+      }
+
+      {
+        projectData.view_count != null ?
+          <Link to={`/project/${id}/update`}>Update Project</Link>
+          :
+          null
       }
 
       <StickySidebar projectData={projectData} timeLeftObj={timeLeftObj} dueDateObj={dueDateObj} />
 
       <div className="project-content">
-      <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />
-      
+        <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />
+
         {
           projectData.updates.map((update, index) => {
-          return <ProjectDetailCard image={update.image} date={update.date_posted} content={update.content} key={index} />
+            return <ProjectDetailCard image={update.image} date={update.date_posted} content={update.content} key={index} />
           })
         }
       </div>
