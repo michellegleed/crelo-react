@@ -42,7 +42,7 @@ function SignUpForm() {
                 (error) => {
                     console.log("errorText = ", error)
                     const errorObj = JSON.parse(error.message)
-                    setErrorMessage(errorObj.detail);
+                    setErrorMessage(errorObj);
                 }
             )
         }

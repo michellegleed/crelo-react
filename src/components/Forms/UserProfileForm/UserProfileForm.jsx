@@ -8,10 +8,11 @@ function UserProfileForm(props) {
     // destructuring the props
     const { userDetails, actions } = useContext(UserDetailsContext);
 
-    console.log("user details from context = ", userDetails);
+    // console.log("user details from context = ", user);
 
-    const [profileDetails, setProfileDetails] = useState({
-    });
+    const { user } = props;
+
+    const [profileDetails, setProfileDetails] = useState(user);
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -61,7 +62,7 @@ function UserProfileForm(props) {
     }, []);
 
     const checkIfCurrentlySelected = (location) => {
-        if (location.id == userDetails.location.id) {
+        if (location.id == user.location_id) {
             return <option value={location.id} selected>{location.name}</option>
         }
         return <option value={location.id}>{location.name}</option>
@@ -71,7 +72,7 @@ function UserProfileForm(props) {
         <div className="user-profile">
             <form>
                 <div>
-                    <img src={userDetails.user.image} className="profile-image-large" />
+                    <img src={user.image} className="profile-image-large" />
                     <label htmlFor="image">Change Profile Image</label>
                     <input
                         type="url"
@@ -81,12 +82,12 @@ function UserProfileForm(props) {
                     />
                 </div>
                 <div>
-                    <h2>{userDetails.user.username}</h2>
+                    <h2>{user.username}</h2>
                     <label htmlFor="username">Change Username</label>
                     <input
                         type="url"
                         id="username"
-                        placeholder={userDetails.user.username}
+                        placeholder={user.username}
                         onChange={handleChange}
                     />
                 </div>
@@ -105,12 +106,12 @@ function UserProfileForm(props) {
                 </div>
                 <div>
                     <h2>Bio:</h2>
-                    <p>{userDetails.user.bio}</p>
+                    <p>{user.bio}</p>
                     <label htmlFor="bio">Update Bio</label>
-                    <input
+                    <textarea
                         type="text"
                         id="bio"
-                        placeholder={userDetails.user.bio}
+                        value={profileDetails.bio}
                         onChange={handleChange}
                     />
                 </div>

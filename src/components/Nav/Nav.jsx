@@ -24,7 +24,7 @@ function Nav() {
 
     useEffect(() => {
         if (loggedIn) {
-            if (!userDetails.username) {
+            if (!userDetails.user) {
                 console.log("logged in but no user details saved! fetching user details now.");
                 const token = window.localStorage.getItem("token");
                 console.log(token);
@@ -55,15 +55,20 @@ function Nav() {
 
 
     /// Show/Hide Drop-Down Account Menu
-    const [showAccountMenu, setShowAccountMenu] = useState(false);
+    const [displayAccountMenu, setDisplayAccountMenu] = useState(false);
 
-    const toggleAccountMenu = () => {
-        setShowAccountMenu(!showAccountMenu);
-        console.log("user details from context = ", userDetails.user, userDetails.location, userDetails.pledges);
+    const showAccountMenu = () => {
+        setDisplayAccountMenu(true);
+        document.addEventListener('click', hideAccountMenu);
+    }
+
+    const hideAccountMenu = () => {
+        setDisplayAccountMenu(false);
+        document.removeEventListener('click', hideAccountMenu);
     }
 
     const displayStyle = {
-        display: showAccountMenu ? "flex" : "none"
+        display: displayAccountMenu ? "flex" : "none"
     }
 
 
@@ -75,7 +80,7 @@ function Nav() {
                         <Link to="/">Home</Link>
                         <Link to="/categories">Browse Categories</Link>
                         <div id="nav-account-div">
-                            <button id="nav-account-btn" onClick={toggleAccountMenu}>My Account</button>
+                            <button id="nav-account-btn" onClick={showAccountMenu}>My Account</button>
                             <div id="nav-account-menu" style={displayStyle}>
                                 <Link to="/account">My Profile</Link>
                                 <Link to="/new-project">New Project</Link>

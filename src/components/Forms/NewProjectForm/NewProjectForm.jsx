@@ -9,8 +9,9 @@ function NewProjectForm() {
 
     const token = window.localStorage.getItem("token");
 
+    const [errorMessage, setErrorMessage] = useState();
+
     const [projectDetails, setProjectDetails] = useState({
-        venue: "",
         pledgetype: 1,
         category: 1
     });
@@ -44,17 +45,33 @@ function NewProjectForm() {
                 "Authorization": `token ${token}`
             },
             body: JSON.stringify(projectDetails),
-        });
-        return response.json();
+        })
+        if (response.ok) {
+            return response.json();
+        } else {
+            response.text().then(text => {
+                throw Error(text)
+            }).catch(
+                (error) => {
+                    console.log("errorText = ", error)
+                    const errorObj = JSON.parse(error.message)
+                    console.log("error obj = ", errorObj)
+                    setErrorMessage(errorObj);
+                }
+            )
+        }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(projectDetails);
         postData().then(response => {
-            console.log(response);
-            // redirect to project page on successful post
-            history.push(`project/${response.id}`);
+            if (response) {
+                // redirect to project page on successful post
+                history.push(`project/${response.id}`);
+            }
+        }).catch((error) => {
+            // do nothing. I think i just need this here in case?
         });
     }
 
@@ -93,6 +110,12 @@ function NewProjectForm() {
 
     return (
         <form>
+            <div>
+                {errorMessage ?
+                    <p className="error-message">All fields are required</p>
+                    : null
+                }
+            </div>
             <div>
                 <label htmlFor="category">Category:</label>
                 {categoryList ?
