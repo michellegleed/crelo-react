@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext, Fragment } from 'react';
 import { Link, useLocation } from "react-router-dom";
 // import { loggedInUser } from '../../data';
 import { UserDetailsContext } from '../../utils/context';
+import MobileNav from './MobileNav/MobileNav';
+import DesktopNav from './DesktopNav/DesktopNav';
 
 import './Nav.css';
 
@@ -73,13 +75,66 @@ function Nav() {
 
 
     return (
-        <nav>
-            <div id="nav-container">
+        <Fragment>
+            <MobileNav loggedIn={loggedIn} handleLogout={handleLogout} />
+            <DesktopNav loggedIn={loggedIn} handleLogout={handleLogout} />
+
+            {/* <div className="nav-menu" id="mobile-nav">
+                    <div className="nav-logo">
+                        <i class="far fa-lightbulb"></i>
+                    </div>
+                    {loggedIn ?
+                        <div className="nav-menu">
+                            <div className="nav-item">
+                                <Link to="/">Home</Link>
+                            </div>
+                            <div className="nav-item">
+                                <Link to="/categories">Browse Categories</Link>
+                            </div>
+
+                            <div className="nav-item mobile-only-nav-item" id="nav-line-break">
+                            </div>
+
+                            <div className="nav-item mobile-only-nav-item">
+                                <Link to="/account">My Profile</Link>
+                            </div>
+                            <div className="nav-item mobile-only-nav-item">
+                                <Link to="/new-project">New Project</Link>
+                            </div>
+                            <div className="nav-item mobile-only-nav-item">
+                                <Link to="/user-projects">My Projects</Link>
+                            </div>
+                            <div className="nav-item mobile-only-nav-item">
+                                <Link to="/login" onClick={handleLogout}>Log Out</Link>
+                            </div>
+                        </div>
+                        :
+                        <div className="nav-menu">
+                            <Link to="/about">About</Link>
+                            <Link to="/login">Log In</Link>
+                            <Link to="/signup">Sign Up</Link>
+                        </div>
+
+                    }
+
+                </div > */}
+
+            {/* Desktop account menu */}
+            {/* <div className="nav-menu" id="desktop-nav">
+                <div className="nav-logo">
+                    <i class="far fa-lightbulb"></i>
+                </div>
                 {loggedIn ?
-                    <Fragment>
-                        <Link to="/">Home</Link>
-                        <Link to="/categories">Browse Categories</Link>
-                        <div id="nav-account-div">
+                    <div className="nav-menu">
+                        <div className="nav-item">
+                            <Link to="/">Home</Link>
+                        </div>
+                        <div className="nav-item">
+                            <Link to="/categories">Browse Categories</Link>
+                        </div>
+
+
+                        <div className="nav-item" id="desktop-nav-account-div">
                             <button id="nav-account-btn" onClick={showAccountMenu}>My Account</button>
                             <div id="nav-account-menu" style={displayStyle}>
                                 <Link to="/account">My Profile</Link>
@@ -88,16 +143,16 @@ function Nav() {
                                 <Link to="/login" onClick={handleLogout}>Log Out</Link>
                             </div>
                         </div>
-                    </Fragment>
+                    </div>
                     :
-                    <Fragment>
+                    <div className="nav-menu">
                         <Link to="/about">About</Link>
                         <Link to="/login">Log In</Link>
                         <Link to="/signup">Sign Up</Link>
-                    </Fragment>
+                    </div>
                 }
-            </div>
-        </nav>
+            </div > */}
+        </Fragment>
     )
 }
 

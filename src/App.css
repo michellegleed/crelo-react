@@ -5,40 +5,57 @@
     row-gap: 10px;
 } */
 
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Ubuntu:wght@300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Ubuntu:wght@300;500&display=swap");
 
-h1, h2, h3 {
-    font-family: 'Shadows Into Light', cursive;
+body {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Shadows Into Light", cursive;
 }
 
 p {
-    font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 i {
-    margin-right: 8px;
+  margin-right: 8px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+div#main-container {
+  min-height: calc(100vh - 100px);
+  width: 100vw;
 }
 
 #project-header-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 
 .coloured-text {
-    color: rgb(6, 180, 6)
+  color: rgb(6, 180, 6);
 }
 
 div.project-content {
-    width: calc(100vw - 350px);
+  width: calc(100vw - 350px);
 }
 
 h2#project-closed-warning {
-    color: red;
+  color: red;
 }
 
 /* div#project-list {

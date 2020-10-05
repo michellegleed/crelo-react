@@ -1,10 +1,5 @@
-div#nav-container {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+nav#desktop-nav {
+  display: none;
 }
 
 div.nav-logo,
@@ -21,10 +16,6 @@ div.nav-menu {
   align-items: center;
 }
 
-div.nav-menu#desktop-nav {
-  display: none;
-}
-
 .nav-item {
   padding: 12px;
   margin: 12px;
@@ -38,10 +29,6 @@ div#nav-line-break {
   background-color: rgb(14, 187, 14);
 }
 
-div#desktop-nav-account-div {
-  display: none;
-}
-
 div#nav-account-menu {
   display: flex;
   flex-direction: column;
@@ -51,6 +38,15 @@ div#nav-account-menu {
 }
 
 @media screen and (min-width: 590px) {
+  nav#desktop-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+
   div#nav-container {
     flex-direction: row;
     height: 50px;

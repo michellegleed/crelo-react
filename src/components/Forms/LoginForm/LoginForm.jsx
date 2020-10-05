@@ -35,9 +35,8 @@ function LoginForm() {
                 throw Error(text)
             }).catch(
                 (error) => {
-                    // console.log("errorText = ", error)
                     const errorObj = JSON.parse(error.message);
-                    console.log(errorObj.non_field_errors[0]);
+                    // console.log(errorObj);
                     setErrorMessage(errorObj.non_field_errors[0]);
                 }
             )
@@ -53,10 +52,6 @@ function LoginForm() {
                 // redirect to home page on successful login
                 history.push("/");
             })
-                .catch((error) => {
-                    // setError(error.message);
-                    // alert(errorMessage)
-                })
         }
     }
 
