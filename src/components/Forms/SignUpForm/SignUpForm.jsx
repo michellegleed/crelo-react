@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import './SignUpForm.css';
+
 function SignUpForm() {
 
     const history = useHistory();
 
-    const [error, setError] = useState();
+    const [errorMessage, setErrorMessage] = useState();
 
     const [userDetails, setUserDetails] = useState({
         email: "",
@@ -39,8 +41,8 @@ function SignUpForm() {
             }).catch(
                 (error) => {
                     console.log("errorText = ", error)
-                    setError(error.message.detail);
-                    // alert(error.message)
+                    const errorObj = JSON.parse(error.message)
+                    setErrorMessage(errorObj.detail);
                 }
             )
         }
@@ -49,15 +51,16 @@ function SignUpForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userDetails.email && userDetails.username && userDetails.password && userDetails.confirmPassword && userDetails.location_id) {
-            // if (userDetails.password === userDetails.confirmPassword) {
-            postUserData().then(response => {
-                if (response) {
-                    history.push("/login");
-                }
-            }).catch((error) => {
-                // setError(error.message);
-                alert(error.message)
-            })
+            if (userDetails.password === userDetails.confirmPassword) {
+                postUserData().then(response => {
+                    if (response) {
+                        history.push("/login");
+                    }
+                }).catch((error) => {
+                    // do nothing. I think i just need this here in case?
+                })
+            }
+            setErrorMessage("Passwords do not match!");
         }
     }
 
@@ -77,8 +80,8 @@ function SignUpForm() {
     return (
         <form>
             <div>
-                {error ?
-                    <p>Error Message: {error}</p>
+                {errorMessage ?
+                    <p className="error-message">{errorMessage}</p>
                     : null
                 }
             </div>

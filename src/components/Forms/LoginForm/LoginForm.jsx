@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function LoginForm() { 
+function LoginForm() {
+
+    const [errorMessage, setErrorMessage] = useState();
 
     const [credentials, setCredentials] = useState({
         username: "",
@@ -10,7 +12,7 @@ function LoginForm() {
 
     const history = useHistory();
 
-    const handleChange = (e) => { 
+    const handleChange = (e) => {
         const { id, value } = e.target;
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
@@ -18,31 +20,55 @@ function LoginForm() {
         }));
     }
 
-    const postData = async () => { 
+    const postData = async () => {
         const response = await fetch(`${process.env.REACT_APP_API_URL}api-token-auth/`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(credentials),
-        });
-        return response.json();
+        })
+        if (response.ok) {
+            return response.json();
+        } else {
+            response.text().then(text => {
+                throw Error(text)
+            }).catch(
+                (error) => {
+                    // console.log("errorText = ", error)
+                    const errorObj = JSON.parse(error.message);
+                    console.log(errorObj.non_field_errors[0]);
+                    setErrorMessage(errorObj.non_field_errors[0]);
+                }
+            )
+        }
     }
 
-    const handleSubmit = (e) => { 
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if (credentials.username && credentials.password) { 
+        if (credentials.username && credentials.password) {
             postData().then(response => {
                 console.log(response);
                 window.localStorage.setItem("token", response.token);
                 // redirect to home page on successful login
                 history.push("/");
-            });
+            })
+                .catch((error) => {
+                    // setError(error.message);
+                    // alert(errorMessage)
+                })
         }
     }
 
     return (
+
         <form>
+            <div>
+                {errorMessage ?
+                    <p className="error-message">{errorMessage}</p>
+                    : null
+                }
+            </div>
             <div>
                 <label htmlFor="username">Username:</label>
                 <input
@@ -58,7 +84,7 @@ function LoginForm() {
                     type="password"
                     id="password"
                     placeholder="Password"
-                    onChange={handleChange}/>
+                    onChange={handleChange} />
             </div>
             <button type="submit" onClick={handleSubmit}>
                 Login
