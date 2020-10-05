@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import EditProjectForm from '../components/Forms/EditProjectForm/EditProjectForm';
+import ProgressUpdateForm from '../components/Forms/ProgressUpdateForm/ProgressUpdateForm';
 
 
 
@@ -40,7 +41,12 @@ function UpdateProjectPage() {
 
     return (
         projectData ?
-            <EditProjectForm project={projectData} />
+            <div id="update-project-container">
+                <EditProjectForm project={projectData} />
+                <ProgressUpdateForm projectID={projectData.id} />
+            </div>
+
+
             :
             <p>Loading project update form</p>
         // <h1>This is the update project page</h1>

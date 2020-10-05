@@ -5,8 +5,18 @@ export const UserDetailsContext = React.createContext();
 export const UserContextProvider = (props) => {
     const [userDetails, setUserDetails] = useState({});
 
-    const updateUserDetails = (userObject) => {
+    const updateAllDetails = (userObject) => {
         setUserDetails(userObject);
+        console.log("user details from context = ", userDetails);
+    }
+
+    const updateUserDetails = (userObject) => {
+        setUserDetails((prevState) => {
+            return {
+                ...prevState,
+                user: userObject
+            }
+        });
         console.log("user details from context = ", userDetails);
     }
 
@@ -18,7 +28,8 @@ export const UserContextProvider = (props) => {
         <UserDetailsContext.Provider value={{
             userDetails: userDetails,
             actions: {
-                updateDetails: updateUserDetails,
+                updateAllDetails: updateAllDetails,
+                updateUserDetails: updateUserDetails,
                 clearDetails: clearUserDetails
             }
         }}>

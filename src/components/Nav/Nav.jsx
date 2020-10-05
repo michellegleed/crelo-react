@@ -39,7 +39,7 @@ function Nav() {
                             return results.json()
                         })
                         .then((data) => {
-                            actions.updateDetails(data);
+                            actions.updateAllDetails(data);
                         });
                 }
             }

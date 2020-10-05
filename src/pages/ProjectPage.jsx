@@ -49,6 +49,22 @@ function ProjectPage() {
     setDueDateObj(dateObjectFormatter(projectData.due_date));
   }, [projectData]);
 
+  const closeProject = async () => {
+    const dateNow = new Date();
+    const dateIso = dateNow.toISOString();
+
+    const token = window.localStorage.getItem("token");
+    const response = await fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `token ${token}`
+      },
+      body: JSON.stringify({ due_date: dateIso }),
+    });
+    return response.json();
+  }
+
   return (
     <div>
 
@@ -65,7 +81,7 @@ function ProjectPage() {
       }
 
       {
-        projectData.view_count != null ? <DeleteProjectForm projectID={projectData.id} /> : null
+        projectData.view_count != null ? <button onClick={closeProject}>Close This Project</button> : null
       }
 
       {

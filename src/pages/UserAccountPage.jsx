@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import BadgeList from '../components/BadgeList/BadgeList';
 import PledgeCard from '../components/PledgeCard/PledgeCard';
 import UserProfileForm from '../components/Forms/UserProfileForm/UserProfileForm';
+import { UserDetailsContext } from '../utils/context';
 
 function UserAccountPage() {
+
+    const { actions } = useContext(UserDetailsContext);
 
     const [userData, setUserData] = useState({ user: {}, pledges: [], badges: [], projects: [] });
 
@@ -22,11 +25,13 @@ function UserAccountPage() {
             .then((data) => {
                 console.log(data);
                 setUserData(data);
+                actions.updateAllDetails(data);
+
                 console.log("username: ", userData.user.username);
             });
     }, []);
 
-    const updateUserDetails = (userDetails) => {
+    const updateAccountDetails = (userDetails) => {
         setUserData(prevData => {
             return {
                 ...prevData,
@@ -38,7 +43,7 @@ function UserAccountPage() {
     return (
         <div>
             <div className="account-content">
-                <UserProfileForm user={userData.user} updateUserDetails={updateUserDetails} />
+                <UserProfileForm user={userData.user} updateAccountDetails={updateAccountDetails} />
                 {
                     userData.pledges.map((pledge, index) => {
                         return <PledgeCard pledge={pledge} key={index} />
