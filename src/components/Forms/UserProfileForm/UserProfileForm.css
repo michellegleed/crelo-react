@@ -1,4 +1,28 @@
 img.profile-image-large {
+  height: 300px;
+  width: 100vw;
+}
+
+div.user-profile form {
+  display: flex;
+  flex-direction: column;
+  /* background-color: lightgray; */
+}
+
+div.user-profile form button#close-button {
+  margin: 24px 0 4px 0;
+  align-self: flex-end;
+  border: none;
+  font-size: 20px;
+}
+
+div.user-profile form button {
+  align-self: center;
+}
+
+@media screen and (min-width: 820px) {
+  img.profile-image-large {
     height: 300px;
     width: 300px;
+  }
 }

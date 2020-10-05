@@ -10,7 +10,7 @@ function UserProfileForm(props) {
 
     // console.log("user details from context = ", user);
 
-    const { user } = props;
+    const { user, hideForm } = props;
 
     const [profileDetails, setProfileDetails] = useState(user);
 
@@ -71,9 +71,11 @@ function UserProfileForm(props) {
     return (
         <div className="user-profile">
             <form>
+                <button id="close-button" onClick={hideForm}>
+                    <i class="fas fa-times"></i>
+                </button>
                 <div>
-                    <img src={user.image} className="profile-image-large" />
-                    <label htmlFor="image">Change Profile Image</label>
+                    <label htmlFor="image">Profile Image: </label>
                     <input
                         type="url"
                         id="image"
@@ -82,8 +84,8 @@ function UserProfileForm(props) {
                     />
                 </div>
                 <div>
-                    <h2>{user.username}</h2>
-                    <label htmlFor="username">Change Username</label>
+
+                    <label htmlFor="username">Username: </label>
                     <input
                         type="url"
                         id="username"
@@ -92,8 +94,8 @@ function UserProfileForm(props) {
                     />
                 </div>
                 <div>
-                    <h2>Location:</h2>
-                    <label htmlFor="location">Location:</label>
+
+                    <label htmlFor="location">Location: City of </label>
                     {locationList ?
                         <select id="location_id" name="location" onChange={handleChange}>
                             {locationList.map(location => {
@@ -105,8 +107,6 @@ function UserProfileForm(props) {
                     }
                 </div>
                 <div>
-                    <h2>Bio:</h2>
-                    <p>{user.bio}</p>
                     <label htmlFor="bio">Update Bio</label>
                     <textarea
                         type="text"

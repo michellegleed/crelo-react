@@ -5,33 +5,23 @@ import './MobileNav.css';
 
 function MobileNav(props) {
 
-
-    /// Show/Hide Drop-Down Account Menu
+    /// Show/Hide Mobile Nav
     const [displayMenu, setDisplayMenu] = useState(false);
-
-    const showMenu = () => {
-        setDisplayMenu(true);
-        document.addEventListener('click', hideMenu);
-    }
-
-    const hideMenu = () => {
-        setDisplayMenu(false);
-        document.removeEventListener('click', hideMenu);
-    }
 
     const displayStyle = {
         display: displayMenu ? "flex" : "none",
         // transform: displayMenu ? "none" : "translate(100%, 0)"
     }
 
-    const closeNav = () => {
-        setDisplayMenu(false);
-    }
-
     const showNav = () => {
         setDisplayMenu(true);
+        document.addEventListener('click', closeNav);
     }
 
+    const closeNav = () => {
+        setDisplayMenu(false);
+        document.removeEventListener('click', closeNav);
+    }
 
     return (
         <nav id="mobile-nav">
@@ -40,7 +30,7 @@ function MobileNav(props) {
             </div>
             <button id="show-mobile-nav" onClick={showNav}><i class="fas fa-bars"></i></button>
             <div id="mobile-nav-container" style={displayStyle}>
-                <button id="close-mobile-nav" onClick={closeNav}>X</button>
+                <button id="close-mobile-nav" onClick={closeNav}><i class="fas fa-times"></i></button>
                 <div className="nav-menu">
                     <div className="nav-logo">
                         <i class="far fa-lightbulb"></i>

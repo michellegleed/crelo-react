@@ -1,11 +1,11 @@
 div.pledge-card {
   display: flex;
-  margin: 48px 0;
+  margin: 24px 0;
 }
 
 img.pledge-user-image {
-  height: 150px;
-  width: 150px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   margin: 0 24px;
 }
@@ -13,4 +13,18 @@ img.pledge-user-image {
 .username-bold {
   font-weight: bold;
   margin: 0 12px 0 0;
+}
+
+@media screen and (min-width: 820px) {
+  div.pledge-card {
+    /* display: flex; */
+    margin: 48px 0;
+  }
+
+  img.pledge-user-image {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: 0 24px;
+  }
 }
