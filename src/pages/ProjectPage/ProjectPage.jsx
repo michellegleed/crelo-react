@@ -132,7 +132,7 @@ function ProjectPage() {
               <ProjectAnalytics project={projectData} />
               :
               projectData.is_open ?
-                <Link to="" id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
+                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
                 :
                 null
           }

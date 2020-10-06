@@ -50,22 +50,22 @@ function PledgeForm(props) {
     return (
         <div id="pledge-form">
             <h3>Make A Pledge...</h3>
-            <form>
-                <div>
+            <form id="pledge-form">
+                <div className="form-item">
                     <label htmlFor="amount">Amount:</label>
                     <input
                         type="text"
                         id="amount"
                         onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item">
                     <label htmlFor="comment">Comment:</label>
                     <input
                         type="textfield"
                         id="comment"
                         onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item">
                     <label htmlFor="anonymous">Anonymous:</label>
                     <input
                         type="checkbox"

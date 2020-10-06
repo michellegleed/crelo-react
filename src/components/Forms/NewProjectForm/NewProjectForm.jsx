@@ -109,14 +109,15 @@ function NewProjectForm() {
 
 
     return (
-        <form>
-            <div>
+        <form id="new-project-form">
+            <h1>Create A Project</h1>
+            <div className="error-message">
                 {errorMessage ?
                     <p className="error-message">All fields are required</p>
                     : null
                 }
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="category">Category:</label>
                 {categoryList ?
                     <select id="category" name="category" onChange={handleChange}>
@@ -129,7 +130,7 @@ function NewProjectForm() {
                     null
                 }
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="title">Project Title:</label>
                 <input
                     type="text"
@@ -138,7 +139,7 @@ function NewProjectForm() {
                     onChange={handleChange}
                 />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="venue">Venue:</label>
                 <input
                     type="text"
@@ -146,7 +147,7 @@ function NewProjectForm() {
                     placeholder="Venue"
                     onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="description">Project description:</label>
                 <input
                     type="text"
@@ -154,7 +155,7 @@ function NewProjectForm() {
                     placeholder="Project description"
                     onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="pledgetype">What will users be pledging?</label>
                 {pledgetypeList ?
                     <select id="pledgetype" name="pledgetype" onChange={handleChange}>
@@ -167,7 +168,7 @@ function NewProjectForm() {
                     null
                 }
             </div>
-            <div>
+            <div className="form-item">
                 <span id="funding-target">
                     <label htmlFor="goal_amount">Funding Target:</label>
                     {projectDetails.pledgetype == 1 ? <p>$</p> : null}
@@ -179,7 +180,7 @@ function NewProjectForm() {
                     {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
                 </span>
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="image">Image:</label>
                 <input
                     type="text"
@@ -187,7 +188,7 @@ function NewProjectForm() {
                     placeholder="Enter the url for the project image"
                     onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="due_date">Funding End Date:</label>
                 <input
                     type="date"

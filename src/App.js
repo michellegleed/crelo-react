@@ -18,6 +18,7 @@ import NewProjectPage from './pages/NewProjectPage';
 import BrowseCategoriesPage from './pages/BrowseCategoriesPage';
 import SignUpPage from './pages/SignUpPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
+import PledgePage from './pages/PledgePage';
 
 import LoadingProvider from './utils/LoadingProvider.jsx';
 import { UserContextProvider } from './utils/context';
@@ -25,8 +26,6 @@ import { UserContextProvider } from './utils/context';
 
 
 function App() {
-
-
 
   return (
 
@@ -45,6 +44,9 @@ function App() {
                 </Route>
                 {/* using react-params for the project ID */}
                 <Route path="/project/:id/update">
+                  <UpdateProjectPage />
+                </Route>
+                <Route path="/project/:id/pledge">
                   <UpdateProjectPage />
                 </Route>
                 <Route path="/project/:id">
