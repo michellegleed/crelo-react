@@ -27,5 +27,18 @@ span#funding-target p {
   margin: 0 0 0 4px;
 }
 
-@media screen and (min-width: 520px) {
+@media screen and (min-width: 720px) {
+  div#pledge-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
+  }
+
+  form#pledge-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

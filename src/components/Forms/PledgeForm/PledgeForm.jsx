@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
+import './PledgeForm.css';
 
 function PledgeForm(props) {
 
-    const { project } = props;
+    const { projectID, pledgetype } = props;
+
+    const history = useHistory();
 
     const [pledgeDetails, setPledgeDetails] = useState({
         comment: "",
@@ -10,12 +15,9 @@ function PledgeForm(props) {
         anonymous: false
     });
 
-    console.log("project data is ", project)
-
     const postData = async () => {
-        console.log("project id is ", project.id);
         const token = window.localStorage.getItem('token');
-        const response = await fetch(`${process.env.REACT_APP_API_URL}projects/${project.id}/pledges/`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}projects/${projectID}/pledges/`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
@@ -43,7 +45,7 @@ function PledgeForm(props) {
             // history.push(`project/${response.id}`);
             const form = document.querySelector('form');
             form.reset();
-            alert("Pledge successful");
+            history.push(`/project/${projectID}`)
         });
     }
 
@@ -52,11 +54,16 @@ function PledgeForm(props) {
             <h3>Make A Pledge...</h3>
             <form id="pledge-form">
                 <div className="form-item">
-                    <label htmlFor="amount">Amount:</label>
-                    <input
-                        type="text"
-                        id="amount"
-                        onChange={handleChange} />
+                    <span id="funding-target">
+                        <label htmlFor="amount">Amount:</label>
+                        {pledgetype == 1 ? <p>$</p> : null}
+                        <input
+                            type="text"
+                            id="goal_amount"
+                            placeholder="Funding Target"
+                            onChange={handleChange} />
+                        {pledgetype == 2 ? <p>hrs</p> : null}
+                    </span>
                 </div>
                 <div className="form-item">
                     <label htmlFor="comment">Comment:</label>

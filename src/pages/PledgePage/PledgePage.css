@@ -1,0 +1,16 @@
+img#pledge-page-header-img {
+  width: 100%;
+  height: 300px;
+}
+
+@media screen and (min-width: 720px) {
+  div#pledge-page-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  div#pledge-project-info-container,
+  div#pledge-form {
+    width: 48vw;
+  }
+}

@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
+import './PledgePage.css';
+
 import ProjectDetailCard from "../../components/ProjectDetailCard/ProjectDetailCard";
+
+import ProjectCard from "../../components/ActivityFeedCards/ProjectCard/ProjectCard";
 
 import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.jsx";
 
+import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
+
+import ProgressBar from '../../components/ProgressBar/ProgressBar.jsx';
+
 function PledgePage() {
+
+    const [dateObj, setDateObj] = useState({});
+    const [timeLeftObj, setTimeLeftObj] = useState({});
+    const [dueDateObj, setDueDateObj] = useState({});
 
     const [projectData, setProjectData] = useState({ user: {}, updates: [], pledges: [] });
 
@@ -38,31 +50,17 @@ function PledgePage() {
     return (
         <div id="pledge-page-container">
 
+            {/* <img src={projectData.image} id="pledge-page-header-img" />
+            <h1>{projectData.title}</h1> */}
+            {/* <ProjectCard image={projectData.image} date={projectData.date_created} content="" /> */}
 
-            <PledgeForm />
-
-            <div className="project-content">
-                <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />
-                <ProgressBar
-                    percentage={projectData.current_percentage_pledged}
-                    current={projectData.current_amount_pledged}
-                    goal={projectData.goal_amount}
-                />
-                <h4>Target: ${projectData.goal_amount}</h4>
-                <h4>Pledged: ${projectData.current_amount_pledged}</h4>
-                <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
-                {projectData ?
-                    <div id="creator-details">
-                        <img className="sml-user-image" src={projectData.user.image} />
-                        <div>
-                            <p>Created by</p>
-                            <h3>{projectData.user.username}</h3>
-                        </div>
-                    </div>
-                    :
-                    null
-                }
+            <div id="pledge-project-info-container">
+                <img src={projectData.image} id="pledge-page-header-img" />
+                <h1 className="card-title">{projectData.title} {projectData.venue != "" ? `@ ${projectData.venue}` : null}</h1>
             </div>
+
+            <PledgeForm projectID={projectData.id} pledgetype={projectData.pledgetype} />
+
         </div>
     );
 }
