@@ -107,21 +107,24 @@ function ProjectPage() {
 
       <div id="sidebar">
         <div className="sidebar-item">
-          <h4>Target: ${projectData.goal_amount}</h4>
-          <h4>${projectData.current_amount_pledged} pledged</h4>
+
+          <div className="sidebar-item">
+            <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
+            {
+              projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
+            }
+          </div>
+
           <ProgressBar
             percentage={projectData.current_percentage_pledged}
             current={projectData.current_amount_pledged}
             goal={projectData.goal_amount}
           />
+          <h4>Target: ${projectData.goal_amount}</h4>
+          <h4>Pledged: ${projectData.current_amount_pledged}</h4>
         </div>
 
-        <div className="sidebar-item">
-          <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
-          {
-            projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
-          }
-        </div>
+
 
         <div className="sidebar-item">
           {
@@ -149,7 +152,7 @@ function ProjectPage() {
         </div>
 
         <div id="pledges">
-          <h3>Pledges:</h3>
+          <h2>Pledges:</h2>
           <div>
             {projectData.pledges.map((pledge, index) => {
               return <PledgeCard key={index} pledge={pledge} />;
