@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import ProgressBar from "../ProgressBar/ProgressBar.jsx";
 import ProjectAnalytics from "../ProjectAnalytics/ProjectAnalytics.jsx";
@@ -23,16 +24,27 @@ function StickySidebar(props) {
             </div>
 
             <div id="time-location">
-                <h6>Location: {projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
+                <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
                 {
-                    projectData.is_open ? <h6>Time Remaining: {timeLeftObj.days} days, {timeLeftObj.hours} hrs</h6> : <h6>Closed to funding on {dueDateObj.date}</h6>
+                    projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
                 }
-
             </div>
 
             {
-                projectData.view_count != null ? <ProjectAnalytics project={projectData} /> : projectData.is_open ? <PledgeForm project={projectData} /> : null
+                projectData.view_count != null ?
+                    <ProjectAnalytics project={projectData} />
+                    :
+                    projectData.is_open ?
+                        <Link to="">Make A Pledge</Link>
+                        :
+                        null
+
             }
+
+
+            {/* {
+                projectData.view_count != null ? <ProjectAnalytics project={projectData} /> : projectData.is_open ? <PledgeForm project={projectData} /> : null
+            } */}
 
         </div>
     );

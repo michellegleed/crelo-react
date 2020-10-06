@@ -1,9 +1,12 @@
 div#project-page-container {
-  margin: 24px;
+  margin: 48px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 div#project-header {
   height: 120px;
+  width: calc(100vw - 96px);
   margin: 48px 0;
   display: flex;
   justify-content: space-between;
@@ -36,4 +39,33 @@ div#creator-details div {
 div#creator-details div p,
 div#creator-details div h3 {
   margin: 0;
+}
+
+div#sidebar {
+  width: 300px;
+  order: 2;
+}
+
+div.sidebar-item {
+  text-align: right;
+}
+
+div.sidebar-item div.progress-bar-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.sidebar-item div.progress-bar {
+  margin: 24px 0;
+  width: 170px;
+}
+
+a#sticky-pledge-button {
+  position: fixed;
+  right: 48px;
+  bottom: 48px;
+}
+
+div#project-page-content {
+  width: calc(100vw - 400px);
 }

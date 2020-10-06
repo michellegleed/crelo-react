@@ -103,27 +103,63 @@ function ProjectPage() {
           null
       }
 
-      <StickySidebar projectData={projectData} timeLeftObj={timeLeftObj} dueDateObj={dueDateObj} />
+      {/* <StickySidebar projectData={projectData} timeLeftObj={timeLeftObj} dueDateObj={dueDateObj} /> */}
 
-      <div className="project-content">
-        <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />
+      <div id="sidebar">
+        <div className="sidebar-item">
+          <h4>Target: ${projectData.goal_amount}</h4>
+          <h4>${projectData.current_amount_pledged} pledged</h4>
+          <ProgressBar
+            percentage={projectData.current_percentage_pledged}
+            current={projectData.current_amount_pledged}
+            goal={projectData.goal_amount}
+          />
+        </div>
 
-        {
-          projectData.updates.map((update, index) => {
-            return <ProjectDetailCard image={update.image} date={update.date_posted} content={update.content} key={index} />
-          })
-        }
+        <div className="sidebar-item">
+          <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
+          {
+            projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
+          }
+        </div>
+
+        <div className="sidebar-item">
+          {
+            projectData.view_count != null ?
+              <ProjectAnalytics project={projectData} />
+              :
+              projectData.is_open ?
+                <Link to="" id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
+                :
+                null
+          }
+        </div>
+
       </div>
 
-      <div id="pledges">
-        <h3>Pledges:</h3>
-        <div>
-          {projectData.pledges.map((pledge, index) => {
-            return <PledgeCard key={index} pledge={pledge} />;
-          })}
+      <div id="project-page-content">
+        <div className="project-content">
+          <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />
+
+          {
+            projectData.updates.map((update, index) => {
+              return <ProjectDetailCard image={update.image} date={update.date_posted} content={update.content} key={index} />
+            })
+          }
+        </div>
+
+        <div id="pledges">
+          <h3>Pledges:</h3>
+          <div>
+            {projectData.pledges.map((pledge, index) => {
+              return <PledgeCard key={index} pledge={pledge} />;
+            })}
+          </div>
         </div>
       </div>
     </div>
+
+
   );
 }
 

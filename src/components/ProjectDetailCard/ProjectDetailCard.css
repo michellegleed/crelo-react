@@ -1,11 +1,12 @@
 .project-detail-card {
-    width: 100%;
-    /* border: 1px solid black; */
-    /* box-shadow: 0px 0px 5px gray; */
+  width: 100%;
+  /* border: 1px solid black; */
+  /* box-shadow: 0px 0px 5px gray; */
 }
 
 .project-detail-card img {
-    width: 45%;
-    height: 300px;
-    object-fit: cover;
+  width: 90%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
 }
