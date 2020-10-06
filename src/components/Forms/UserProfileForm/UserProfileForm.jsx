@@ -71,9 +71,13 @@ function UserProfileForm(props) {
     return (
         <div className="user-profile">
             <form>
-                <button id="close-button" onClick={hideForm}>
-                    <i class="fas fa-times"></i>
-                </button>
+                <div id="form-header">
+                    <h2>Edit Profile:</h2>
+                    <button id="close-button" onClick={hideForm}>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
                 <div>
                     <label htmlFor="image">Profile Image: </label>
                     <input

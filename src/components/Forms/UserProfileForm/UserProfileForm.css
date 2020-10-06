@@ -1,16 +1,27 @@
 div.user-profile form {
-  width: 400px;
+  width: 100%;
   background-color: #343434;
   color: white;
   margin: 24px 0 64px 0;
-  padding: 0 24px;
+  padding: 0 12px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+div#edit-profile-form {
+  margin: 0;
+}
+
+div.user-profile {
+  display: flex;
+  justify-content: center;
 }
 
 div.user-profile form div {
-  width: 100%;
+  width: 90%;
+  margin: 6px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -20,6 +31,7 @@ div.user-profile form div#location-select-div {
   justify-content: flex-start;
   align-items: flex-start;
   width: 270px;
+  margin: 0;
 }
 
 div.user-profile form div#location-select-div p {
@@ -48,7 +60,7 @@ div.user-profile form label {
 }
 
 div.user-profile form button#close-button {
-  margin: 24px 0 4px 0;
+  margin: 24px 0 24px 0;
   align-self: flex-end;
   border: none;
   font-size: 20px;
@@ -59,12 +71,27 @@ div.user-profile form button {
   color: white;
 }
 
-/* Inline #27 | http://localhost:3000/account */
+@media screen and (min-width: 520px) {
+  div.user-profile form {
+    width: 80vw;
+    max-width: 800px;
+    margin: 24px 0 64px 0;
+    padding: 0 24px;
+  }
 
-/* #edit-profile-form {
-  background-color: #343434;
-  color: white;
-} */
+  div.user-profile form div input,
+  div.user-profile form div textarea,
+  div.user-profile form div#location-select-div {
+    /* width: 270px; */
+    width: calc(80vw * 0.9 - 130px);
+    max-width: calc(800px * 0.9 -130px);
+  }
 
-/* #close-button {
-} */
+  div.user-profile form div textarea {
+    height: 180px;
+  }
+
+  div.user-profile form label {
+    width: 130px;
+  }
+}
