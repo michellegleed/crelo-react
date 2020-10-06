@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import './ProgressUpdateCard.css';
-
 function ProgressUpdateCard(props) {
 
     // destructuring the props
@@ -19,8 +17,8 @@ function ProgressUpdateCard(props) {
                     </p>
                     <div className="card-text">
                         <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
-                        <h3 className="milestone-icon"><i class="far fa-edit"></i></h3>
-                        <h4>{project.user}'s update:</h4>
+                        <h3 className="activity-card-icon"><i class="far fa-edit"></i></h3>
+                        <h4 className="activity-card-subtitle">{project.user}'s update:</h4>
                         <p>{info.slice(0, 400)}...</p>
                         <h6>Wednesday 12th September 2020</h6>
                     </div>
