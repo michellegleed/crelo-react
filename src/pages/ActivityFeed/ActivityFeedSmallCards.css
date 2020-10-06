@@ -1,0 +1,21 @@
+@media screen and (min-width: 720px) {
+  div#activity-content {
+    grid-gap: 120px;
+  }
+
+  .activity-card {
+    width: 285px;
+    height: 320px;
+    margin: unset;
+  }
+
+  .activity-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .activity-card p.card-type {
+    transform: translateY(-320px);
+  }
+}

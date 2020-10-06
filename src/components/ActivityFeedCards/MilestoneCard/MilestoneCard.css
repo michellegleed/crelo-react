@@ -1,0 +1,19 @@
+.milestone-icon {
+  text-align: center;
+}
+
+h3.milestone-icon {
+  font-size: 72px;
+  margin: 12px;
+}
+
+h4.milestone-icon {
+  margin: 0;
+  text-align: left;
+}
+
+div.milestone-card h6 {
+  text-align: right;
+  margin-top: 48px;
+  color: rgba(255, 255, 255, 0.5);
+}

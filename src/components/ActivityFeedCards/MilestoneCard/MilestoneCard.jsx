@@ -14,24 +14,25 @@ function MilestoneCard(props) {
     return (
         <div className="milestone-card activity-card">
             <Link to="/project">
-                    <div className="card-container">
-                        <img src={item.project.image} />
-                        <p className="card-type">
-                            <i class="fas fa-trophy"></i>
+                <div className="card-container">
+                    <img src={item.project.image} />
+                    <p className="card-type">
+                        <i class="fas fa-trophy"></i>
                         Milestone
                     </p>
-                        <div className="card-text">
-                            <h3 className="card-title">{item.project.title} {item.project.venue != "" ? `@ ${item.project.venue}` : null}</h3>
-                        <h6>Goal 25% complete</h6>
-                        <p>{`WooHoo! People in your community have pledged $${item.project.current_amount_pledged} towards this project.`}</p>
+                    <div className="card-text">
+                        <h3 className="card-title">{item.project.title} {item.project.venue != "" ? `@ ${item.project.venue}` : null}</h3>
+                        <h3 className="milestone-icon"><i class="fas fa-chart-line"></i></h3>
                         <ProgressBar
                             percentage={item.project.current_percentage_pledged}
                             current={item.project.current_amount_pledged}
                             goal={item.project.goal_amount}
                         />
-                        <p>{item.project.description.slice(0, 300)}...</p>
-                        </div>
+                        <h4 className="milestone-icon">{item.info}% Milestone</h4>
+                        <p>{`WooHoo! People in your community have pledged $${item.project.current_amount_pledged} towards this project.`}</p>
+                        <h6>Wednesday 12th September 2020</h6>
                     </div>
+                </div>
             </Link>
         </div>
     );

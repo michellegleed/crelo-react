@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './ActivityFeed.css';
+// import './ActivityFeedSmallCards.css';
 
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import MilestoneCard from '../../components/ActivityFeedCards/MilestoneCard/MilestoneCard';
@@ -21,6 +22,7 @@ function HomePage() {
     const { userDetails } = useContext(UserDetailsContext);
 
     const [activityFeed, setActivityFeed] = useState();
+    const [totalPledgeAmts, setTotalPledgeAmts] = useState();
     const [error, setError] = useState();
 
     const history = useHistory();
@@ -51,11 +53,36 @@ function HomePage() {
     }, []);
 
     const getTotalPledgeAmt = () => {
-        let total = 0;
+        let totalMoney = 0;
+        let totalHours = 0;
         for (let i = 0; i < userDetails.pledges.length; i++) {
-            total += parseInt(userDetails.pledges[i].amount);
+            if (userDetails.pledges[i].type_id == 1) {
+                totalMoney += parseInt(userDetails.pledges[i].amount);
+            } else if (userDetails.pledges[i].type_id == 2) {
+                totalHours += parseInt(userDetails.pledges[i].amount);
+            }
         }
-        return total;
+
+        console.log("total money = ", totalMoney);
+        console.log("total Hours = ", totalHours);
+
+        return (< div id="total-pledges">
+            <h3><i class="fas fa-donate"></i>My Total Pledges:</h3>
+            {
+                // totalMoney > 0 ?
+                <h5>{`$${totalMoney} across ${userDetails.pledges.length} projects`}</h5>
+                // <h5>{`$${totalMoney}`}</h5>
+                // :
+                // null
+            }
+            {
+                // totalHours > 0 ?
+                // <h5>{`${totalHours} hrs`}</h5>
+                // :
+                // null
+            }
+            {/* <h5>{`${userDetails.pledges.length} projects`}</h5> */}
+        </div>);
     }
 
 
@@ -66,10 +93,12 @@ function HomePage() {
                 <div id="welcome-message" className="activity-card">
                     <h1>Hey {userDetails.user ? userDetails.user.username : null}</h1>
                     <h3>Welcome back! Thanks for supporting the creation of awesome projects in your local neighbourhood.</h3>
-                    <h3><i class="fas fa-donate"></i>My Total Pledges:</h3>
-                    <h4>${userDetails.pledges ? getTotalPledgeAmt() : null} across five projects</h4>
-                    <h3><i class="fas fa-certificate"></i>Next Badge:</h3>
-                    <h4>Pledged $150 in total to local projects</h4>
+                    {
+                        userDetails.pledges ?
+                            getTotalPledgeAmt()
+                            :
+                            null
+                    }
                 </div>
 
                 {
@@ -85,8 +114,8 @@ function HomePage() {
                         :
                         <h2>** Loading New Activity... **</h2>
                 }
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 
