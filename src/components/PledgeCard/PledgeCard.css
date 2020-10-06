@@ -104,25 +104,3 @@ p.pledge-username {
     font-size: 12px;
   }
 }
-
-/* @media screen and (min-width: 820px) {
-  img.pledge-user-image {
-    height: 150px;
-    width: 150px;
-  }
-
-  .pledge-info,
-  .pledge-value,
-  .pledge-comment {
-    margin: 0 0 0 150px;
-  }
-
-  .pledge-value {
-    justify-self: flex-start;
-    margin: 0 0 0 150px;
-  }
-
-  .pledge-comment {
-    text-align: left;
-  }
-} */

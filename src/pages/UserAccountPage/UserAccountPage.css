@@ -3,6 +3,10 @@ div#user-details {
   flex-direction: column;
 }
 
+h1#page-title {
+  margin: 24px;
+}
+
 div.account-page-section {
   margin: 0 24px;
 }
@@ -30,14 +34,20 @@ div#user-details h6 {
 }
 
 @media screen and (min-width: 720px) {
+  div.account-content {
+    display: flex;
+  }
+
+  img.profile-image-large {
+    object-fit: cover;
+    width: 45vw;
+    max-width: 500px;
+    height: auto;
+    max-height: 50vh;
+  }
+
   #user-pledges {
     background-color: white;
     color: #343434;
   }
 }
-
-/* div#user-details button {
-  align-self: center;
-  margin: 24px 0;
-  font-size: 12px;
-} */

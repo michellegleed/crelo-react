@@ -50,6 +50,7 @@ function UserAccountPage() {
 
     return (
         <div>
+            <h1 id="page-title">My Profile:</h1>
             <div className="account-content">
                 <img src={userData.user.image} className="profile-image-large" />
                 <div className="account-page-section" id="user-details">
@@ -58,20 +59,20 @@ function UserAccountPage() {
                     <p id="user-bio">{userData.user.bio}</p>
                     <button onClick={() => setShowForm(true)}>Edit Profile</button>
                 </div>
-                {showForm ?
-                    <div className="account-page-section" id="edit-profile-form">
-                        <UserProfileForm user={userData.user} location={userData.location} updateAccountDetails={updateAccountDetails} hideForm={hideForm} />
-                    </div>
-                    :
-                    null}
-
-                <div className="account-page-section" id="user-pledges">
-                    <h1>Pledges:</h1>
-                    {userData.pledges.map((pledge, index) => {
-                        return <PledgeCard pledge={pledge} key={index} />
-                    })
-                    }
+            </div>
+            {showForm ?
+                <div className="account-page-section" id="edit-profile-form">
+                    <UserProfileForm user={userData.user} location={userData.location} updateAccountDetails={updateAccountDetails} hideForm={hideForm} />
                 </div>
+                :
+                null}
+
+            <div className="account-page-section" id="user-pledges">
+                <h1>Pledges:</h1>
+                {userData.pledges.map((pledge, index) => {
+                    return <PledgeCard pledge={pledge} key={index} />
+                })
+                }
             </div>
         </div>
     );
