@@ -7,12 +7,26 @@ div.account-page-section {
   margin: 0 24px;
 }
 
+img.profile-image-large {
+  object-fit: cover;
+  width: 100vw;
+  height: auto;
+  max-height: 350px;
+}
+
 div.account-page-section h1 {
   margin: 24px 0 8px 0;
 }
 
 div#user-details h6 {
   margin: 4px 0 8px 0;
+}
+
+#user-pledges {
+  background-color: #7b7b7b;
+  margin: 0;
+  padding: 24px;
+  color: white;
 }
 
 /* div#user-details button {

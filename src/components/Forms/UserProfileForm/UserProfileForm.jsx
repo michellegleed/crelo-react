@@ -95,19 +95,21 @@ function UserProfileForm(props) {
                 </div>
                 <div>
 
-                    <label htmlFor="location">Location: City of </label>
+                    <label htmlFor="location">Location:</label>
                     {locationList ?
-                        <select id="location_id" name="location" onChange={handleChange}>
-                            {locationList.map(location => {
-                                return checkIfCurrentlySelected(location);
-                            })}
-                        </select>
+                        <div id="location-select-div">
+                            <p>City of</p><select id="location_id" name="location" onChange={handleChange}>
+                                {locationList.map(location => {
+                                    return checkIfCurrentlySelected(location);
+                                })}
+                            </select>
+                        </div>
                         :
                         null
                     }
                 </div>
                 <div>
-                    <label htmlFor="bio">Update Bio</label>
+                    <label htmlFor="bio">Update Bio:</label>
                     <textarea
                         type="text"
                         id="bio"

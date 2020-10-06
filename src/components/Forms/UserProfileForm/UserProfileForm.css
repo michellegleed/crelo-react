@@ -1,12 +1,50 @@
-img.profile-image-large {
-  height: 300px;
-  width: 100vw;
-}
-
 div.user-profile form {
+  width: 400px;
+  background-color: #343434;
+  color: white;
+  margin: 24px 0 64px 0;
+  padding: 0 24px;
+
   display: flex;
   flex-direction: column;
-  /* background-color: lightgray; */
+}
+
+div.user-profile form div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.user-profile form div#location-select-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 270px;
+}
+
+div.user-profile form div#location-select-div p {
+  margin: 4px 12px 0 0;
+  font-weight: 300;
+}
+
+div.user-profile form div#location-select-div select {
+  width: 120px;
+  height: 30px;
+}
+
+div.user-profile form div input,
+div.user-profile form div textarea {
+  width: 270px;
+}
+
+div.user-profile form div textarea {
+  height: 120px;
+}
+
+div.user-profile form label {
+  width: 130px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
 }
 
 div.user-profile form button#close-button {
@@ -18,11 +56,15 @@ div.user-profile form button#close-button {
 
 div.user-profile form button {
   align-self: center;
+  color: white;
 }
 
-@media screen and (min-width: 820px) {
-  img.profile-image-large {
-    height: 300px;
-    width: 300px;
-  }
-}
+/* Inline #27 | http://localhost:3000/account */
+
+/* #edit-profile-form {
+  background-color: #343434;
+  color: white;
+} */
+
+/* #close-button {
+} */
