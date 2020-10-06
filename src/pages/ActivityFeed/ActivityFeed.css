@@ -58,12 +58,21 @@ div#total-pledges {
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
   padding: 0 24px 48px 24px;
+  position: relative;
 }
 
 .card-text h3.card-title {
   padding: 12px 2px;
   margin: 0;
   font-size: 22px;
+}
+
+.card-text h6 {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  bottom: 0;
+  right: 24px;
 }
 
 .card-text p {

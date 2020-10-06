@@ -19,8 +19,10 @@ function ProgressUpdateCard(props) {
                     </p>
                     <div className="card-text">
                         <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
-                        <h6>{project.user} added a progress update:</h6>
+                        <h3 className="milestone-icon"><i class="far fa-edit"></i></h3>
+                        <h4>{project.user}'s update:</h4>
                         <p>{info.slice(0, 400)}...</p>
+                        <h6>Wednesday 12th September 2020</h6>
                     </div>
                 </div>
             </Link>
