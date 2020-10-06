@@ -29,6 +29,13 @@ div#user-details h6 {
   color: white;
 }
 
+@media screen and (min-width: 720px) {
+  #user-pledges {
+    background-color: white;
+    color: #343434;
+  }
+}
+
 /* div#user-details button {
   align-self: center;
   margin: 24px 0;

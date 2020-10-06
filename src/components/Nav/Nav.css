@@ -50,7 +50,7 @@ div#nav-account-menu {
   background-color: white;
 }
 
-@media screen and (min-width: 590px) {
+@media screen and (min-width: 720px) {
   div#nav-container {
     flex-direction: row;
     height: 50px;
