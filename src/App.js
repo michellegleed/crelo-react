@@ -7,7 +7,7 @@ import './App.css';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 
-import ProjectPage from './pages/ProjectPage';
+import ProjectPage from './pages/ProjectPage/ProjectPage';
 import ActivityFeed from './pages/ActivityFeed/ActivityFeed';
 import ProjectList from './pages/ProjectList';
 import AboutPage from './pages/AboutPage';

@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import ProgressBar from "../components/ProgressBar/ProgressBar.jsx";
-import ProjectDetailCard from "../components/ProjectDetailCard/ProjectDetailCard";
-import PledgeCard from "../components/PledgeCard/PledgeCard";
+import './ProjectPage.css';
+
+import ProgressBar from "../../components/ProgressBar/ProgressBar.jsx";
+import ProjectDetailCard from "../../components/ProjectDetailCard/ProjectDetailCard";
+import PledgeCard from "../../components/PledgeCard/PledgeCard";
 
 // import { oneProject } from "../data";
 
 
 
-import { dateObjectFormatter, timeLeftFormatter } from "../utils/dateFormatter.js";
-import ProjectAnalytics from "../components/ProjectAnalytics/ProjectAnalytics.jsx";
-import PledgeForm from "../components/Forms/PledgeForm/PledgeForm.jsx";
-import DeleteProjectForm from "../components/DeleteProjectForm/DeleteProjectForm.jsx";
-import StickySidebar from "../components/ProjectStickySidebar/StickySidebar.jsx";
+import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
+import ProjectAnalytics from "../../components/ProjectAnalytics/ProjectAnalytics.jsx";
+import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.jsx";
+import DeleteProjectForm from "../../components/DeleteProjectForm/DeleteProjectForm.jsx";
+import StickySidebar from "../../components/ProjectStickySidebar/StickySidebar.jsx";
 // import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
 
 function ProjectPage() {
@@ -66,15 +68,25 @@ function ProjectPage() {
   }
 
   return (
-    <div>
+    <div id="project-page-container">
 
-      <h1>{projectData.title}</h1>
+      <div id="project-header">
+        <h1>{projectData.title}</h1>
 
-      <div id="creator-details">
-        <p>Created by</p>
-        <img src="" />
-        <h3>{projectData.user.username}</h3>
+        {projectData ?
+          <div id="creator-details">
+            <img className="sml-user-image" src={projectData.user.image} />
+            <div>
+              <p>Created by</p>
+              <h3>{projectData.user.username}</h3>
+            </div>
+          </div>
+          :
+          null
+        }
       </div>
+
+
 
       {
         projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
