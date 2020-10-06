@@ -9,8 +9,7 @@ function MobileNav(props) {
     const [displayMenu, setDisplayMenu] = useState(false);
 
     const displayStyle = {
-        display: displayMenu ? "flex" : "none",
-        // transform: displayMenu ? "none" : "translate(100%, 0)"
+        transform: displayMenu ? "translate(0, 0)" : "translate(100%, 0)"
     }
 
     const showNav = () => {

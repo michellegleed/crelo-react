@@ -15,7 +15,7 @@ import UserAccountPage from './pages/UserAccountPage/UserAccountPage';
 import UserProjectsPage from './pages/UserProjectsPage';
 import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
-import BrowseCategoriesPage from './pages/BrowseCategoriesPage';
+import BrowseCategoriesPage from './pages/BrowseCategories/BrowseCategoriesPage';
 import SignUpPage from './pages/SignUpPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
 import PledgePage from './pages/PledgePage/PledgePage';

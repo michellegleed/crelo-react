@@ -9,7 +9,7 @@ nav#mobile-nav {
 }
 
 div#mobile-nav-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
   height: 100vh;
@@ -20,6 +20,10 @@ div#mobile-nav-container {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
 div.nav-logo,
@@ -28,11 +32,22 @@ div.nav-menu {
   flex-direction: row;
 }
 
+button#show-mobile-nav {
+  position: absolute;
+  color: rgb(4, 180, 4);
+}
+
 button#close-mobile-nav {
   position: fixed;
-  top: 24px;
-  left: 24px;
   color: white;
+}
+
+button#show-mobile-nav,
+button#close-mobile-nav {
+  top: 0px;
+  right: 24px;
+  border: none;
+  font-size: 24px;
 }
 
 div.nav-menu {

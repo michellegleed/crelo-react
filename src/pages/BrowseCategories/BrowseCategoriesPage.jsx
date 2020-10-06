@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
-import LoadingContext from '../utils/loadingContext';
+import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
+import LoadingContext from '../../utils/loadingContext';
 
-import "./ActivityFeed/ActivityFeed.css";
+import "./BrowseCategories.css";
 
-import Spinner from './../utils/spinner.jsx';
-import { UserDetailsContext } from '../utils/context';
+import Spinner from '../../utils/spinner.jsx';
+import { UserDetailsContext } from '../../utils/context';
 
 function BrowseCategoriesPage() {
 
@@ -84,14 +84,14 @@ function BrowseCategoriesPage() {
 
     return (
         <div>
-            <nav id="category-menu">
+            <div id="category-menu">
                 <button onClick={() => changeCategory(1)}>Education</button>
                 <button onClick={() => changeCategory(2)}>Arts + Entertainment</button>
                 <button onClick={() => changeCategory(3)}>Local Landscape</button>
                 <button onClick={() => changeCategory(4)}>Health</button>
                 <button onClick={() => changeCategory(5)}>Kids</button>
                 <button onClick={() => changeCategory("favourites")}>My Followed Categories</button>
-            </nav>
+            </div>
 
             <div id="activity-content">
                 {/* 
