@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function ProjectCard(props) {
 
     // destructuring the props
-    const { project } = props;
+    const { project, isActivityFeed } = props;
 
     const getCategoryIcon = (categoryID) => {
         switch (categoryID) {
@@ -21,19 +21,27 @@ function ProjectCard(props) {
             <Link to={`/project/${project.id}/`}>
                 <div className="card-container">
                     <img src={project.image} />
-                    <p className="card-type">
-                        <i class="fas fa-lightbulb"></i>
+                    {
+                        isActivityFeed ?
+                            <p className="card-type">
+                                <i class="fas fa-lightbulb"></i>
                         New
                     </p>
+                            :
+                            <p className="card-type" style={{ opacity: 0 }}>
+                                <i class="fas fa-lightbulb"></i>
+
+                            </p>
+                    }
                     <div className="card-text">
                         <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
                         <h3 className="activity-card-icon">{getCategoryIcon(project.category.id)}</h3>
-                        <p>{project.description}</p>
+                        <p>{project.description.slice(0, 300)}...</p>
                         <h6>{project.category.name}</h6>
                     </div>
                 </div>
             </Link>
-        </div>
+        </div >
     );
 }
 

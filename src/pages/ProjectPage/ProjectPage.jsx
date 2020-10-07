@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import './ProjectPage.css';
 
@@ -24,8 +24,6 @@ function ProjectPage() {
   const [projectClosed, setProjectClosed] = useState()
 
   const { id } = useParams();
-
-  const history = useHistory();
 
   const [dateObj, setDateObj] = useState({});
   const [timeLeftObj, setTimeLeftObj] = useState({});
@@ -134,7 +132,7 @@ function ProjectPage() {
               <ProjectAnalytics project={projectData} />
               :
               projectData.is_open ?
-                <Link to={`/ project / ${id} / pledge`} id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
+                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
                 :
                 null
           }
@@ -157,7 +155,7 @@ function ProjectPage() {
           <div>
             {
               projectData.pledges.map((pledge, index) => {
-                return <PledgeCard key={index} pledge={pledge} />;
+                return <PledgeCard key={index} pledge={pledge} isProfilePage={false} />;
               })
             }
           </div>

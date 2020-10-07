@@ -156,7 +156,7 @@ function BrowseCategoriesPage() {
                         projectList.length > 0 ?
                             <div id="activity-content">
                                 {projectList.map((project, index) => {
-                                    return <ProjectCard project={project} key={index} />
+                                    return <ProjectCard project={project} key={index} isActivityFeed={false} />
                                 })}
                             </div>
                             :
