@@ -5,8 +5,14 @@
 }
 
 .project-detail-card img {
-  width: 90%;
+  width: 100%;
   height: auto;
   max-height: 400px;
   object-fit: cover;
+}
+
+@media screen and (min-width: 720px) {
+  .project-detail-card img {
+    width: 90%;
+  }
 }

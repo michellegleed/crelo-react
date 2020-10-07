@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { useHistory } from 'react-router-dom';
 import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
+import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
 import "./ActivityFeed/ActivityFeed.css";
 
@@ -43,13 +44,20 @@ function UserProjectsPage() {
         <div >
             {
                 projectList ?
-                projectList.map((project, index) => { 
-                    return <ProjectCard project={project} key={index} />
-                })
-                    : <div>
-                        <h2>No Projects.</h2>
-                        <h4><Link to="/new-project">Click here </Link>to create a project</h4>
-                    </div>
+                    projectList.length > 0 ?
+                        <div id="activity-content">
+                            {projectList.map((project, index) => {
+                                return <ProjectCard project={project} key={index} />
+                            })}
+                        </div>
+                        :
+                        <div>
+                            <ErrorMessage message="You haven't created any projects" type="warning" />
+                            {/* <h3><Link to="/new-project">Click here </Link>to create a project</h3> */}
+                            <Link to="/new-project"><button>Create A Project</button></Link>
+                        </div>
+                    :
+                    null
             }
         </div>
     );

@@ -42,8 +42,8 @@ function UpdateProjectPage() {
     return (
         projectData ?
             <div id="update-project-container">
-                <EditProjectForm project={projectData} />
                 <ProgressUpdateForm projectID={projectData.id} />
+                <EditProjectForm project={projectData} />
             </div>
 
 

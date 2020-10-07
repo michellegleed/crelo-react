@@ -63,7 +63,8 @@ a#sticky-pledge-button {
 }
 
 div#project-page-content {
-  width: 100vw;
+  /* width: 100vw; */
+  width: 100%;
 }
 
 div #pledges {

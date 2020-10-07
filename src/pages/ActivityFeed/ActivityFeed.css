@@ -93,8 +93,8 @@ h4.activity-card-subtitle {
 
 @media screen and (min-width: 720px) {
   div#activity-content {
-    margin: 36px;
-    width: calc(100vw - 72px);
+    margin: 36px 0;
+    width: 100%;
   }
 
   .activity-card {
