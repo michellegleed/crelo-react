@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 import './ProjectPage.css';
 
@@ -21,7 +21,11 @@ function ProjectPage() {
 
   const [projectData, setProjectData] = useState({ user: {}, updates: [], pledges: [] });
 
+  const [projectClosed, setProjectClosed] = useState()
+
   const { id } = useParams();
+
+  const history = useHistory();
 
   const [dateObj, setDateObj] = useState({});
   const [timeLeftObj, setTimeLeftObj] = useState({});
@@ -42,7 +46,7 @@ function ProjectPage() {
         setProjectData(data);
         console.log(data);
       })
-  }, [id]);
+  }, [id, projectClosed]);
 
   useEffect(() => {
     setDateObj(dateObjectFormatter(projectData.date_created));
@@ -62,8 +66,14 @@ function ProjectPage() {
         "Authorization": `token ${token}`
       },
       body: JSON.stringify({ due_date: dateIso }),
-    });
-    return response.json();
+    })
+    if (response.ok) {
+      setProjectClosed(true);
+      return response.json();
+      // return response.json();
+      // response.json()
+      // .then(response => history.push(`projects / ${ id } /))
+    }
   }
 
   return (
@@ -91,7 +101,7 @@ function ProjectPage() {
         }
         {
           projectData.view_count != null ?
-            <Link to={`/project/${id}/update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
+            <Link to={`/ project / ${id} / update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
             :
             null
         }
@@ -124,7 +134,7 @@ function ProjectPage() {
               <ProjectAnalytics project={projectData} />
               :
               projectData.is_open ?
-                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
+                <Link to={`/ project / ${id} / pledge`} id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
                 :
                 null
           }

@@ -51,14 +51,7 @@ function NewProjectForm() {
         } else {
             response.text().then(text => {
                 throw Error(text)
-            }).catch(
-                (error) => {
-                    console.log("errorText = ", error)
-                    const errorObj = JSON.parse(error.message)
-                    console.log("error obj = ", errorObj)
-                    setErrorMessage(errorObj);
-                }
-            )
+            })
         }
     }
 
