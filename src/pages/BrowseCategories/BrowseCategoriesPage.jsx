@@ -144,7 +144,9 @@ function BrowseCategoriesPage() {
                                 })}
                             </div>
                             :
-                            <h2>No Open Projects Found</h2>
+                            <div id="activity-content">
+                                <h2>No Open Projects Found</h2>
+                            </div>
                         :
                         <Spinner />
                 }

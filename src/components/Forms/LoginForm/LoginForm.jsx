@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 function LoginForm() {
 
@@ -52,18 +53,23 @@ function LoginForm() {
                 // redirect to home page on successful login
                 history.push("/");
             })
+                .catch(
+                    (error) => {
+                        // const errorObj = JSON.parse(error.message);
+                        // console.log(errorObj);
+                        // setErrorMessage(errorObj.non_field_errors[0]);
+                    }
+                )
         }
     }
 
     return (
 
         <form>
-            <div>
-                {errorMessage ?
-                    <p className="error-message">{errorMessage}</p>
-                    : null
-                }
-            </div>
+            {errorMessage ?
+                <ErrorMessage message={errorMessage} type="error" />
+                : null
+            }
             <div>
                 <label htmlFor="username">Username:</label>
                 <input

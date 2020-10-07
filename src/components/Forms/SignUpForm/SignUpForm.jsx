@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 import './SignUpForm.css';
 
@@ -42,7 +43,7 @@ function SignUpForm() {
                 (error) => {
                     console.log("errorText = ", error)
                     const errorObj = JSON.parse(error.message)
-                    setErrorMessage(errorObj);
+                    setErrorMessage(errorObj.detail);
                 }
             )
         }
@@ -79,12 +80,10 @@ function SignUpForm() {
 
     return (
         <form>
-            <div>
-                {errorMessage ?
-                    <p className="error-message">{errorMessage}</p>
-                    : null
-                }
-            </div>
+            {errorMessage ?
+                <ErrorMessage message={errorMessage} type="error" />
+                : null
+            }
             <div>
                 <label htmlFor="email">Email:</label>
                 <input

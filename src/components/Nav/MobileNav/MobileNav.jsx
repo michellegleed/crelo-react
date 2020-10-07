@@ -35,7 +35,6 @@ function MobileNav(props) {
                         <i class="far fa-lightbulb"></i>
                     </div>
                     {props.loggedIn ?
-                        /* Mobile account menu */
                         <div className="nav-menu">
                             <div className="nav-item mobile-only-nav-item">
                                 <Link to="/">Home</Link>
@@ -62,9 +61,14 @@ function MobileNav(props) {
                         </div>
                         :
                         <div className="nav-menu">
-                            <Link to="/about">About</Link>
-                            <Link to="/login">Log In</Link>
-                            <Link to="/signup">Sign Up</Link>
+                            <div className="nav-item mobile-only-nav-item">
+                                <Link to="/about">About</Link>
+                            </div>
+                            <div className="nav-item mobile-only-nav-item">
+                                <Link to="/login">Log In</Link>
+                            </div>
+                            <div className="nav-item mobile-only-nav-item">                            <Link to="/signup">Sign Up</Link>
+                            </div>
                         </div>
                     }
                 </div >
