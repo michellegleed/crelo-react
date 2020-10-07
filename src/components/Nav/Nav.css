@@ -1,4 +1,4 @@
-div#nav-container {
+/* div#nav-container {
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -38,6 +38,10 @@ div#nav-line-break {
   background-color: rgb(14, 187, 14);
 }
 
+nav#desktop-nav {
+  display: none;
+}
+
 div#desktop-nav-account-div {
   display: none;
 }
@@ -51,14 +55,23 @@ div#nav-account-menu {
 }
 
 @media screen and (min-width: 720px) {
+  nav#mobile-nav {
+    display: none;
+  }
+
   div#nav-container {
     flex-direction: row;
     height: 50px;
     justify-content: space-between;
   }
 
-  div.nav-menu#mobile-nav {
-    display: none;
+  nav#desktop-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
   }
 
   div.nav-logo,
@@ -69,7 +82,7 @@ div#nav-account-menu {
 
   div.nav-menu {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: calc(66vw - 96px);
     justify-content: space-evenly;
   }
@@ -79,4 +92,4 @@ div#nav-account-menu {
 }
 
 @media screen and (min-width: 920px) {
-}
+} */

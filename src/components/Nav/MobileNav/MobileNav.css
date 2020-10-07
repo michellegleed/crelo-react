@@ -32,6 +32,10 @@ div.nav-menu {
   flex-direction: row;
 }
 
+div.nav-item {
+  font-family: "Shadows Into Light", cursive;
+}
+
 button#show-mobile-nav {
   position: absolute;
   color: rgb(4, 180, 4);
@@ -84,7 +88,7 @@ div.mobile-only-nav-item a {
   color: white;
 }
 
-@media screen and (min-width: 590px) {
+@media screen and (min-width: 720px) {
   nav#mobile-nav {
     display: none;
   }

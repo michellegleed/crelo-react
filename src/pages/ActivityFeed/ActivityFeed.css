@@ -17,6 +17,11 @@ div#activity-content {
   margin-bottom: -24px;
 }
 
+#welcome-message h5,
+#welcome-message i {
+  color: rgb(4, 180, 4);
+}
+
 div#total-pledges {
   margin-top: 36px;
 }
@@ -41,6 +46,9 @@ div#total-pledges {
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+
   display: flex;
   justify-content: center;
 }
@@ -73,12 +81,14 @@ h4.activity-card-subtitle {
   text-align: right;
   color: rgba(255, 255, 255, 0.75);
   position: absolute;
-  /* bottom: 0; */
+  bottom: 12px;
   right: 24px;
+  margin: 0;
 }
 
 .card-text p {
   font-weight: 300;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 720px) {
@@ -102,6 +112,18 @@ h4.activity-card-subtitle {
     box-shadow: 4px 4px 8px gray;
   }
 
+  #welcome-message {
+    margin: 0;
+  }
+
+  #welcome-message h1 {
+    font-size: 36px;
+  }
+
+  #welcome-message h3 {
+    font-size: 24px;
+  }
+
   .activity-card img {
     width: 380px;
     height: 420px;
@@ -121,6 +143,14 @@ h4.activity-card-subtitle {
 
   .card-text h3.card-title {
     margin: 0;
+  }
+
+  .card-text h6 {
+    bottom: 64px;
+  }
+
+  .card-text p {
+    font-size: 18px;
   }
 
   h3.activity-card-icon {
