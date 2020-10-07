@@ -86,9 +86,26 @@ function ProjectPage() {
         }
       </div>
 
+      <div id="project-buttons">
+        {
+          projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
+        }
+
+        {
+          projectData.view_count != null ? <button onClick={closeProject}>Close This Project</button> : null
+        }
+
+        {
+          projectData.view_count != null ?
+            <Link to={`/project/${id}/update`}>Update Project</Link>
+            :
+            null
+        }
+      </div>
 
 
-      {
+
+      {/* {
         projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
       }
 
@@ -101,7 +118,7 @@ function ProjectPage() {
           <Link to={`/project/${id}/update`}>Update Project</Link>
           :
           null
-      }
+      } */}
 
       {/* <StickySidebar projectData={projectData} timeLeftObj={timeLeftObj} dueDateObj={dueDateObj} /> */}
 

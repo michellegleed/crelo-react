@@ -7,6 +7,7 @@ import "./BrowseCategories.css";
 
 import Spinner from '../../utils/spinner.jsx';
 import { UserDetailsContext } from '../../utils/context';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 function BrowseCategoriesPage() {
 
@@ -131,7 +132,7 @@ function BrowseCategoriesPage() {
                             : userDetails.user.favourite_categories.length > 0 ?
                                 < h6 > Followed Categories: {userDetails.user.favourite_categories.map(category => category.name)}</h6>
                                 :
-                                <h6>You're not following any categories</h6>
+                                <ErrorMessage message="You're not following any categories" type="warning" />
                         : null
                 }
 

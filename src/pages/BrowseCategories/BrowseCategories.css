@@ -1,5 +1,5 @@
 div#category-menu {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

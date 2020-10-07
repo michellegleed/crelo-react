@@ -93,3 +93,10 @@ h2#project-closed-warning {
     grid-column: auto /span 2;
     grid-row: auto / span 3;
 } */
+
+@media screen and (min-width: 720px) {
+  div#main-container {
+    margin: 36px 48px;
+    width: calc(100vw - 96px);
+  }
+}

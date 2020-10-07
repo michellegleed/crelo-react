@@ -4,8 +4,7 @@ div#project-page-container {
 }
 
 div#project-header {
-  width: calc(100vw - 48px);
-  margin: 24px 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,6 +39,10 @@ div#creator-details div h3 {
   margin: 0;
 }
 
+#project-buttons {
+  width: 100%;
+}
+
 div.sidebar-item {
   text-align: left;
 }
@@ -59,6 +62,10 @@ a#sticky-pledge-button {
   bottom: 48px;
 }
 
+div#project-page-content {
+  width: 100vw;
+}
+
 div #pledges {
   /* margin: 120px 0 24px 0; */
   margin: 120px -24px 24px -24px;
@@ -75,18 +82,9 @@ div #pledges {
   border-color: green;
 } */
 
-div#project-page-content {
-  width: 100vw;
-}
-
-div #pledges {
-  margin: 120px 0 24px 0;
-  font-size: 48px;
-}
-
 @media screen and (min-width: 720px) {
   div#project-page-container {
-    margin: 48px;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
   }
@@ -153,6 +151,11 @@ div #pledges {
     bottom: 48px;
   }
 
+  a#sticky-pledge-button:hover button {
+    background-color: rgb(4, 180, 4);
+    color: white;
+  }
+
   /* a#sticky-pledge-button button {
   background-color: #70ba05;
   padding: 4px 8px;
@@ -168,5 +171,7 @@ div #pledges {
   div #pledges {
     margin: 120px 0 24px 0;
     font-size: 48px;
+    background-color: white;
+    color: #232323;
   }
 }
