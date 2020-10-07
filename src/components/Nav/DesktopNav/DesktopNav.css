@@ -43,10 +43,15 @@ div#nav-account-menu {
   nav#desktop-nav {
     display: flex;
     flex-direction: row;
-    width: 100vw;
-    height: 50px;
+    width: calc(100vw - 48px);
+    height: 80px;
     justify-content: center;
     align-items: center;
+    margin: 0 24px;
+  }
+
+  div#nav-container {
+    width: 100%;
   }
 
   /* div#nav-container {
@@ -61,6 +66,10 @@ div#nav-account-menu {
 
   div#desktop-nav-account-div {
     display: flex;
+  }
+
+  div.nav-menu {
+    width: 100%;
   }
 
   div.nav-logo,
@@ -97,6 +106,16 @@ div#nav-account-menu {
 
   div#nav-account-menu {
     display: none;
+    margin: 8px -8px;
+    padding: 8px;
+    background: linear-gradient(
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.7)
+    );
+  }
+
+  div#nav-account-menu a {
+    margin: 8px 0;
   }
 
   #desktop-nav-account-div:hover div#nav-account-menu {

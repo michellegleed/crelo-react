@@ -1,5 +1,5 @@
 nav#mobile-nav {
-  height: 50px;
+  height: 80px;
   width: 100vw;
   overflow-x: hidden;
 
@@ -24,6 +24,10 @@ div#mobile-nav-container {
   transform-origin: 0% 0%;
   transform: translate(100%, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+div.nav-menu {
+  width: 100%;
 }
 
 div.nav-logo,

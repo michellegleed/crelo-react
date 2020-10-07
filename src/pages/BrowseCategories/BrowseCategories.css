@@ -1,5 +1,15 @@
 div#category-menu {
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+div#category-menu button {
+  margin: 4px 8px;
+}
+
+div#category-menu button.selected {
+  background-color: rgb(4, 180, 4);
+  color: white;
 }
