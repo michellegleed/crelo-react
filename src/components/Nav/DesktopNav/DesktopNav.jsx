@@ -8,21 +8,30 @@ import './DesktopNav.css';
 function DesktopNav(props) {
 
     /// Show/Hide Drop-Down Account Menu
-    const [displayAccountMenu, setDisplayAccountMenu] = useState(false);
+    // const [displayAccountMenu, setDisplayAccountMenu] = useState(false);
 
-    const showAccountMenu = () => {
-        setDisplayAccountMenu(true);
-        document.addEventListener('click', hideAccountMenu);
-    }
+    // const showAccountMenu = () => {
+    //     setDisplayAccountMenu(true);
+    //     document.addEventListener('click', hideAccountMenu);
+    // }
 
-    const hideAccountMenu = () => {
-        setDisplayAccountMenu(false);
-        document.removeEventListener('click', hideAccountMenu);
-    }
+    // const hideAccountMenu = () => {
+    //     setDisplayAccountMenu(false);
+    //     document.removeEventListener('click', hideAccountMenu);
+    // }
 
-    const displayStyle = {
-        display: displayAccountMenu ? "flex" : "none"
-    }
+    // const toggleAccountMenu = () => {
+    //     setDisplayAccountMenu(!displayAccountMenu);
+    //     if (displayAccountMenu === true) {
+    //         document.addEventListener('click', hideAccountMenu);
+    //     } else {
+    //         document.removeEventListener('click', hideAccountMenu);
+    //     }
+    // }
+
+    // const displayStyle = {
+    //     display: displayAccountMenu ? "flex" : "none"
+    // }
 
 
     return (
@@ -43,8 +52,9 @@ function DesktopNav(props) {
 
 
                             <div className="nav-item" id="desktop-nav-account-div">
-                                <button id="nav-account-btn" onClick={showAccountMenu}>My Account</button>
-                                <div id="nav-account-menu" style={displayStyle}>
+                                <a href="#" id="nav-account-btn">My Account</a>
+                                {/* <div id="nav-account-menu" style={displayStyle}> */}
+                                <div id="nav-account-menu" >
                                     <Link to="/account">My Profile</Link>
                                     <Link to="/new-project">New Project</Link>
                                     <Link to="/user-projects">My Projects</Link>

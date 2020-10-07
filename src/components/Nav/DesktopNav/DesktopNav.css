@@ -67,14 +67,40 @@ div#nav-account-menu {
   div.nav-menu {
     margin: 4px 24px;
     flex-direction: row;
-    color: #232323;
     min-width: 30vw;
+  }
+
+  div.nav-logo i {
+    color: #232323;
   }
 
   div.nav-menu {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  /* div.nav-item button {
+    border: none;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 18px;
+  } */
+
+  div.nav-item a {
+    color: #232323;
+    font-size: 18px;
+  }
+
+  div.nav-item a:hover {
+    color: rgb(4, 180, 4);
+  }
+
+  div#nav-account-menu {
+    display: none;
+  }
+
+  #desktop-nav-account-div:hover div#nav-account-menu {
+    display: flex;
   }
 }
 
