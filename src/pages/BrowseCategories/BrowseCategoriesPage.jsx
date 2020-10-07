@@ -135,7 +135,7 @@ function BrowseCategoriesPage() {
 
             <div id="project-list">
                 {
-                    userDetails.user.favourite_categories ?
+                    userDetails.user ?
                         selectedCategory !== "favourites" ?
                             checkIsFavourite() ?
                                 <button onClick={() => updateFavourites("remove", selectedCategory)}>Remove from My Followed Categories</button>

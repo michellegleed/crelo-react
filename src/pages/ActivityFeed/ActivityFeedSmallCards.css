@@ -1,12 +1,13 @@
 @media screen and (min-width: 720px) {
   div#activity-content {
-    grid-gap: 120px;
+    /* grid-gap: 120px; */
   }
 
   .activity-card {
     width: 285px;
     height: 320px;
-    margin: unset;
+    /* margin: unset; */
+    margin: 60px;
   }
 
   .activity-card img {

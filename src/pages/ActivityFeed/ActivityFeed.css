@@ -2,7 +2,7 @@ div#activity-content {
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  grid-gap: 84px;
+  /* gap: 84px; */
   justify-content: center;
 }
 
@@ -93,14 +93,18 @@ h4.activity-card-subtitle {
 
 @media screen and (min-width: 720px) {
   div#activity-content {
-    margin: 36px 0;
-    width: 100%;
+    /* margin: 36px 0;
+    width: 100%; */
+    margin: 36px -48px;
+    width: 100vw;
   }
 
+  #welcome-message,
   .activity-card {
     width: 380px;
     height: 420px;
-    margin: unset;
+    /* margin: unset; */
+    margin: 48px;
   }
 
   .activity-card a {
@@ -112,9 +116,9 @@ h4.activity-card-subtitle {
     box-shadow: 4px 4px 8px gray;
   }
 
-  #welcome-message {
+  /* #welcome-message {
     margin: 0;
-  }
+  } */
 
   #welcome-message h1 {
     font-size: 36px;
