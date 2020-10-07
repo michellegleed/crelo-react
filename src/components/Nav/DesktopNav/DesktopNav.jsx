@@ -8,7 +8,7 @@ import './DesktopNav.css';
 function DesktopNav(props) {
 
     /// Show/Hide Drop-Down Account Menu
-    const [displayAccountMenu, setDisplayAccountMenu] = useState(false);
+    // const [displayAccountMenu, setDisplayAccountMenu] = useState(false);
 
     // const showAccountMenu = () => {
     //     setDisplayAccountMenu(true);
@@ -44,7 +44,7 @@ function DesktopNav(props) {
                     {props.loggedIn ?
                         <div className="nav-menu">
                             <div className="nav-item">
-                                <Link to="/">Home</Link>
+                                <Link to="/">News Feed</Link>
                             </div>
                             <div className="nav-item">
                                 <Link to="/categories">Browse Categories</Link>
@@ -64,9 +64,9 @@ function DesktopNav(props) {
                         </div>
                         :
                         <div className="nav-menu">
-                            <div className="nav-item">
+                            {/* <div className="nav-item">
                                 <Link to="/about">About</Link>
-                            </div>
+                            </div> */}
                             <div className="nav-item">
                                 <Link to="/login">Log In</Link>
                             </div>

@@ -104,4 +104,14 @@ h2#project-closed-warning {
     background-color: rgb(4, 180, 4);
     color: white;
   }
+
+  div.landing-page-main-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  div.landing-page-main-container > div {
+    width: 45vw;
+  }
 }

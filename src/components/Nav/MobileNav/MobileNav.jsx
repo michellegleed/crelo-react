@@ -38,7 +38,7 @@ function MobileNav(props) {
                     {props.loggedIn ?
                         <div className="nav-menu">
                             <div className="nav-item mobile-only-nav-item">
-                                <Link to="/">Home</Link>
+                                <Link to="/">News Feed</Link>
                             </div>
                             <div className="nav-item mobile-only-nav-item">
                                 <Link to="/categories">Browse Categories</Link>
@@ -62,9 +62,9 @@ function MobileNav(props) {
                         </div>
                         :
                         <div className="nav-menu">
-                            <div className="nav-item mobile-only-nav-item">
+                            {/* <div className="nav-item mobile-only-nav-item">
                                 <Link to="/about">About</Link>
-                            </div>
+                            </div> */}
                             <div className="nav-item mobile-only-nav-item">
                                 <Link to="/login">Log In</Link>
                             </div>
