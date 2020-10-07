@@ -43,6 +43,10 @@ div#creator-details div h3 {
   width: 100%;
 }
 
+button#close-project-btn:hover {
+  background-color: black;
+}
+
 div.sidebar-item {
   text-align: left;
 }
@@ -138,6 +142,7 @@ div #pledges {
 
   div.sidebar-item div.progress-bar-container {
     display: flex;
+    width: 100%;
     justify-content: flex-end;
   }
 
@@ -169,7 +174,7 @@ div #pledges {
     width: calc(100vw - 400px);
   }
 
-  div #pledges {
+  div#pledges {
     margin: 120px 0 24px 0;
     font-size: 48px;
     background-color: white;

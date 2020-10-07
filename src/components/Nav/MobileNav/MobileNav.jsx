@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 import './MobileNav.css';
@@ -21,6 +21,7 @@ function MobileNav(props) {
         setDisplayMenu(false);
         document.removeEventListener('click', closeNav);
     }
+
 
     return (
         <nav id="mobile-nav">

@@ -11,7 +11,7 @@ function PledgeForm(props) {
 
     const [pledgeDetails, setPledgeDetails] = useState({
         comment: "",
-        amount: 1,
+        amount: 0,
         anonymous: false
     });
 
@@ -59,7 +59,7 @@ function PledgeForm(props) {
                         {pledgetype == 1 ? <p>$</p> : null}
                         <input
                             type="text"
-                            id="goal_amount"
+                            id="amount"
                             placeholder="Funding Target"
                             onChange={handleChange} />
                         {pledgetype == 2 ? <p>hrs</p> : null}

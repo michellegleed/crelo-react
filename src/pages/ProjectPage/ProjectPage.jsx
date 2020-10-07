@@ -15,7 +15,6 @@ import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatte
 import ProjectAnalytics from "../../components/ProjectAnalytics/ProjectAnalytics.jsx";
 import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.jsx";
 import DeleteProjectForm from "../../components/DeleteProjectForm/DeleteProjectForm.jsx";
-import StickySidebar from "../../components/ProjectStickySidebar/StickySidebar.jsx";
 // import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
 
 function ProjectPage() {
@@ -90,41 +89,19 @@ function ProjectPage() {
         {
           projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
         }
-
-        {
-          projectData.view_count != null ? <button onClick={closeProject}>Close This Project</button> : null
-        }
-
         {
           projectData.view_count != null ?
-            <Link to={`/project/${id}/update`}>Update Project</Link>
+            <Link to={`/project/${id}/update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
             :
             null
         }
+        {
+          projectData.view_count != null ? <button id="close-project-btn" onClick={closeProject}><i class="far fa-times-circle"></i>Close This Project</button> : null
+        }
       </div>
-
-
-
-      {/* {
-        projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
-      }
-
-      {
-        projectData.view_count != null ? <button onClick={closeProject}>Close This Project</button> : null
-      }
-
-      {
-        projectData.view_count != null ?
-          <Link to={`/project/${id}/update`}>Update Project</Link>
-          :
-          null
-      } */}
-
-      {/* <StickySidebar projectData={projectData} timeLeftObj={timeLeftObj} dueDateObj={dueDateObj} /> */}
 
       <div id="sidebar">
         <div className="sidebar-item">
-
           <div className="sidebar-item">
             <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
             {
@@ -141,8 +118,6 @@ function ProjectPage() {
           <h4>Pledged: ${projectData.current_amount_pledged}</h4>
         </div>
 
-
-
         <div className="sidebar-item">
           {
             projectData.view_count != null ?
@@ -154,7 +129,6 @@ function ProjectPage() {
                 null
           }
         </div>
-
       </div>
 
       <div id="project-page-content">
@@ -171,15 +145,15 @@ function ProjectPage() {
         <div id="pledges">
           <h2>Pledges:</h2>
           <div>
-            {projectData.pledges.map((pledge, index) => {
-              return <PledgeCard key={index} pledge={pledge} />;
-            })}
+            {
+              projectData.pledges.map((pledge, index) => {
+                return <PledgeCard key={index} pledge={pledge} />;
+              })
+            }
           </div>
         </div>
       </div>
     </div>
-
-
   );
 }
 
