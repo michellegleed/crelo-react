@@ -3,13 +3,13 @@ import { useHistory, Link } from 'react-router-dom';
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import LoadingContext from '../../utils/loadingContext';
 
-import "./BrowseCategories.css";
+import "./BrowseLocations.css";
 
 import Spinner from '../../utils/spinner.jsx';
 import { UserDetailsContext } from '../../utils/context';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
-function BrowseCategoriesPage() {
+function BrowseLocationsPage() {
 
     const { showLoading, hideLoading } = useContext(LoadingContext);
     const { userDetails, actions } = useContext(UserDetailsContext);
@@ -89,39 +89,25 @@ function BrowseCategoriesPage() {
         }
     }
 
-    /// Get Categories List
-    const [categoryList, setCategoryList] = useState();
+    /// Get LocationList
+    const [locationList, setLocationList] = useState();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}project-categories/`)
+        fetch(`${process.env.REACT_APP_API_URL}locations/`)
             .then((results) => {
                 return results.json()
             })
             .then((data) => {
-                setCategoryList(data);
-                data.map(category => {
-                    console.log(category.id, category.name)
-                })
+                setLocationList(data);
             });
     }, []);
 
-    const getCategoryNameFromID = (id) => {
-        if (categoryList) {
-            for (let i = 0; i < categoryList.length; i++) {
-                if (categoryList[i].id === id) {
-                    return <h6>{categoryList[i].name}</h6>
-                }
-            }
-        }
-        return null;
-
-    }
 
     return (
         <div>
-            <div id="category-menu">
-                {categoryList ?
-                    categoryList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeCategory(item.id)}>{item.name}</button>)
+            <div id="location-menu">
+                {locationList ?
+                    locationList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeCategory(item.id)}>{item.name}</button>)
                     :
                     null
                 }
@@ -142,10 +128,7 @@ function BrowseCategoriesPage() {
                                 :
                                 <button onClick={() => updateFavourites("add", selectedCategory)}>Add to My Followed Categories</button>
                             : userDetails.user.favourite_categories.length > 0 ?
-                                <div>
-                                    <h3>Followed Categories:</h3>
-                                    {userDetails.user.favourite_categories.map(categoryId => getCategoryNameFromID(categoryId))}
-                                </div>
+                                < h6 > Followed Categories: {userDetails.user.favourite_categories.map(category => category.name)}</h6>
                                 :
                                 <ErrorMessage message="You're not following any categories" type="warning" />
                         : null
@@ -171,4 +154,4 @@ function BrowseCategoriesPage() {
     )
 }
 
-export default BrowseCategoriesPage;
+export default BrowseLocationsPage;

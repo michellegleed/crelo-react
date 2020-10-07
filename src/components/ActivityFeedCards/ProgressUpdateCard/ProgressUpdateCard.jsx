@@ -8,7 +8,7 @@ function ProgressUpdateCard(props) {
 
     return (
         <div className="progress-update-card activity-card">
-            <Link to="/project">
+            <Link to={`/project/${project.id}/`}>
                 <div className="card-container">
                     <img src={image == "" || !image ? project.image : image} />
                     <p className="card-type">

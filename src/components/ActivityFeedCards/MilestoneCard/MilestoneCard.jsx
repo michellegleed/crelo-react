@@ -10,7 +10,7 @@ function MilestoneCard(props) {
 
     return (
         <div className="milestone-card activity-card">
-            <Link to="/project">
+            <Link to={`/project/${item.project.id}/`}>
                 <div className="card-container">
                     <img src={item.project.image} />
                     <p className="card-type">

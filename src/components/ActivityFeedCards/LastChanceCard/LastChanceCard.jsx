@@ -12,7 +12,7 @@ function LastChangeCard(props) {
 
     return (
         <div className="last-chance-card activity-card">
-            <Link to="/project">
+            <Link to={`/project/${project.id}/`}>
                 <div className="card-container">
                     <img src={project.image} />
                     <p className="card-type">
