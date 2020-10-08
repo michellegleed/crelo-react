@@ -1,0 +1,44 @@
+form#pledge-form {
+  width: 100%;
+  /* background-color: #343434; */
+  color: #232323;
+  margin: 24px 0 64px 0;
+  padding: 0 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#pledge-form div.form-item {
+  margin: 12px 0;
+}
+
+#pledge-form div.form-item select,
+#pledge-form div.form-item input {
+  margin-left: 4px;
+}
+
+span#funding-target {
+  display: flex;
+}
+
+span#funding-target p {
+  margin: 0 0 0 4px;
+}
+
+@media screen and (min-width: 720px) {
+  div#pledge-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
+  }
+
+  form#pledge-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

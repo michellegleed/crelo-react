@@ -1,71 +1,178 @@
 div#activity-content {
-  margin: 36px;
-  width: calc(100vw - 72px);
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  grid-gap: 48px;
+  /* gap: 84px; */
+  justify-content: center;
 }
 
 .activity-card {
-  width: 380px;
-  height: 420px; 
+  width: 100vw;
+  margin-bottom: -40px;
 }
 
-.activity-card a {
-  width: 100%;
-  height: 100%;
+#welcome-message {
+  height: max-content;
+  margin: 24px;
+}
+
+/* #welcome-message h5, */
+#welcome-message i {
+  color: rgb(4, 180, 4);
+}
+
+div#total-pledges {
+  margin-top: 36px;
 }
 
 .activity-card .card-container {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  box-shadow: 4px 4px 8px gray;
 }
 
 .activity-card img {
-  width: 380px;
+  width: 100%;
   height: 420px;
   object-fit: cover;
 }
 
 .activity-card p.card-type {
-    margin: 12px;
-    padding: 6px 12px;
-    width: max-content;
-    transform: translateY(-420px);
-    color: white;
-    background-color:rgba(0,0,0,0.3);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center; 
-    opacity: 100;
-    transition: all .2s;
+  margin: 12px;
+  padding: 6px 12px;
+  width: max-content;
+  transform: translateY(-420px);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
 }
 
 .card-text {
-    height: 100%;
-    transform: translateY(-118px); 
-    transition: all .5s;
-    background-color: rgba(0,0,0,0.3);
-    color: white;
+  transform: translateY(-118px);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 0 24px 48px 24px;
+  position: relative;
 }
 
 .card-text h3.card-title {
   padding: 12px 2px;
-  margin: 0;
+  margin: 0 0 24px 0;
   font-size: 22px;
 }
 
+h3.activity-card-icon {
+  display: none;
+}
+
+h4.activity-card-subtitle {
+  margin: 12px 0;
+  text-align: left;
+  font-size: 12px;
+}
+
+.card-text h6 {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  bottom: 12px;
+  right: 24px;
+  margin: 0;
+}
+
 .card-text p {
-    font-weight: 300;
+  font-weight: 300;
+  font-size: 16px;
 }
 
-.activity-card:hover .card-text {
-    transform: translateY(-478px); 
-    background-color: rgba(0,0,0,0.7);
-}
+@media screen and (min-width: 720px) {
+  div#activity-content {
+    /* margin: 36px 0;
+    width: 100%; */
+    margin: 36px -48px;
+    width: 100vw;
+  }
 
-.activity-card:hover p.card-type {
+  #welcome-message,
+  .activity-card {
+    width: 380px;
+    height: 420px;
+    /* margin: unset; */
+    margin: 48px;
+  }
+
+  .activity-card a {
+    width: 100%;
+    height: 100%;
+  }
+
+  .activity-card .card-container {
+    box-shadow: 4px 4px 8px gray;
+  }
+
+  /* #welcome-message {
+    margin: 0;
+  } */
+
+  #welcome-message h1 {
+    font-size: 36px;
+  }
+
+  #welcome-message h3 {
+    font-size: 24px;
+  }
+
+  .activity-card img {
+    width: 380px;
+    height: 420px;
+  }
+
+  .activity-card p.card-type {
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 100;
+    transition: all 0.2s;
+  }
+
+  .card-text {
+    height: 100%;
+    transition: all 0.5s;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .card-text h3.card-title {
+    margin: 0;
+  }
+
+  .card-text h6 {
+    bottom: 64px;
+  }
+
+  .card-text p {
+    font-size: 18px;
+  }
+
+  h3.activity-card-icon {
+    display: block;
+    font-size: 72px;
+    margin: 12px;
+    text-align: center;
+  }
+
+  h4.activity-card-subtitle {
+    margin: 0;
+  }
+
+  .activity-card:hover .card-text {
+    transform: translateY(-478px);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .activity-card:hover p.card-type {
     opacity: 0;
+  }
 }

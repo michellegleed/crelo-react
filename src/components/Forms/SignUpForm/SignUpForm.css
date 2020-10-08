@@ -1,0 +1,46 @@
+.sign-up-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  order: -1;
+}
+
+.sign-up-form form {
+  width: 100%;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #0ec50e;
+  padding: 24px;
+  color: white;
+  border: solid 1px;
+  margin: 0 -12px;
+  min-height: 250px;
+}
+
+/* .sign-up-form form div.form-item select,
+.sign-up-form form div.form-item input {
+  margin-left: 4px;
+} */
+
+.sign-up-form form button {
+  align-self: center;
+  color: white;
+}
+
+p.error-message {
+  color: white;
+}
+
+@media screen and (min-width: 720px) {
+  .sign-up-form {
+    order: 2;
+  }
+  .sign-up-form form {
+    width: 350px;
+    border-radius: 20px;
+    margin: 0;
+  }
+}

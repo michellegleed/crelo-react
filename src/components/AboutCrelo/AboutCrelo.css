@@ -1,0 +1,14 @@
+div#about-crelo {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  justify-content: space-evenly;
+}
+
+div#about-crelo h2 {
+  margin-bottom: 8px;
+}
+
+div#about-crelo section p {
+  font-size: 18px;
+}

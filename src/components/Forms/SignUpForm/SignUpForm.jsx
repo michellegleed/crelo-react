@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
+
+import './SignUpForm.css';
 
 function SignUpForm() {
 
     const history = useHistory();
+
+    const [errorMessage, setErrorMessage] = useState();
 
     const [userDetails, setUserDetails] = useState({
         email: "",
@@ -36,45 +41,27 @@ function SignUpForm() {
                 throw Error(text)
             }).catch(
                 (error) => {
-                    alert(error.message)
+                    console.log("errorText = ", error)
+                    const errorObj = JSON.parse(error.message)
+                    setErrorMessage(errorObj.detail);
                 }
             )
         }
     }
 
-    const loginNewUser = async () => {
-        const credentials = {
-            username: userDetails.username,
-            password: userDetails.password
-        }
-        const response = await fetch(`${process.env.REACT_APP_API_URL}api-token-auth/`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-        });
-        return response.json();
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userDetails.email && userDetails.username && userDetails.password && userDetails.confirmPassword && userDetails.location_id) {
-            // if (userDetails.password === userDetails.confirmPassword) {
-            postUserData().then(response => {
-                // loginNewUser().then(response => {
-                if (response) {
-                    window.localStorage.setItem("token", response.token);
-                }
-
-                //     // redirect to home page on successful login
-                //     history.push("/");
-                // })
-            }).catch((error) => {
-                alert(error.message)
-            })
-
-            // }
+            if (userDetails.password === userDetails.confirmPassword) {
+                postUserData().then(response => {
+                    if (response.ok) {
+                        history.push("/login");
+                    }
+                }).catch((error) => {
+                    // do nothing. I think i just need this here in case?
+                })
+            }
+            setErrorMessage("Passwords do not match!");
         }
     }
 
@@ -92,56 +79,63 @@ function SignUpForm() {
     }, []);
 
     return (
-        <form>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter username"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="location">Location:</label>
-                {locationList ?
-                    <select id="location_id" name="location" onChange={handleChange}>
-                        {locationList.map(location => {
-                            return <option value={location.id}>{location.name}</option>
-                        })}
-                    </select>
-                    :
-                    null
-                }
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="confirmPassword">Confirm Password:</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Enter Password Again"
-                    onChange={handleChange} />
-            </div>
-            <button type="submit" onClick={handleSubmit}>
-                Sign Up
+        <React.Fragment>
+            {errorMessage ?
+                <ErrorMessage message={errorMessage} type="error" />
+                : null
+            }
+            <form>
+
+                <div className="form-item">
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email"
+                        onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="location">Location (City of):</label>
+                    {locationList ?
+                        <select id="location_id" name="location" onChange={handleChange}>
+                            {locationList.map(location => {
+                                return <option value={location.id}>{location.name}</option>
+                            })}
+                        </select>
+                        :
+                        null
+                    }
+                </div>
+                <div className="form-item">
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Enter Password Again"
+                        onChange={handleChange} />
+                </div>
+                <button type="submit" onClick={handleSubmit}>
+                    Sign Up
             </button>
-        </form>
+            </form>
+        </React.Fragment>
     )
 }
 

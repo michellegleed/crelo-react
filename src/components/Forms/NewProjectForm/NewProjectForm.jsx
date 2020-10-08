@@ -9,15 +9,12 @@ function NewProjectForm() {
 
     const token = window.localStorage.getItem("token");
 
+    const [errorMessage, setErrorMessage] = useState();
+
     const [projectDetails, setProjectDetails] = useState({
-        title: "",
-        venue: "",
-        description: "",
         pledgetype: 1,
-        goal_amount: 0,
-        image: "",
         category: 1,
-        pledgetype: 1
+        description: ""
     });
 
     const history = useHistory();
@@ -30,8 +27,11 @@ function NewProjectForm() {
         }));
     }
 
-    const handleDateChange = (e) => { 
+    const handleDateChange = (e) => {
+        console.log("date from new project form: ", e.target.id, e.target.value)
+        console.log(`${e.target.value}T00:00:00Z`);
         const { id, value } = e.target;
+        console.log(`${value}T00:00:00Z`);
         setProjectDetails((prevProjectDetails) => ({
             ...prevProjectDetails,
             [id]: `${value}T00:00:00Z`,
@@ -46,17 +46,26 @@ function NewProjectForm() {
                 "Authorization": `token ${token}`
             },
             body: JSON.stringify(projectDetails),
-        });
-        return response.json();
+        })
+        if (response.ok) {
+            return response.json();
+        } else {
+            response.text().then(text => {
+                throw Error(text)
+            })
+        }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        console.log(projectDetails);
         postData().then(response => {
-            console.log(response);
-            // redirect to project page on successful post
-            history.push(`project/${response.id}`);
+            if (response) {
+                // redirect to project page on successful post
+                history.push(`project/${response.id}`);
+            }
+        }).catch((error) => {
+            // do nothing. I think i just need this here in case?
         });
     }
 
@@ -94,21 +103,28 @@ function NewProjectForm() {
 
 
     return (
-        <form>
-            <div>
+        <form id="new-project-form">
+            <h1>Create A Project</h1>
+            <div className="error-message">
+                {errorMessage ?
+                    <p className="error-message">All fields are required</p>
+                    : null
+                }
+            </div>
+            <div className="form-item">
                 <label htmlFor="category">Category:</label>
                 {categoryList ?
                     <select id="category" name="category" onChange={handleChange}>
                         {
                             categoryList.map(category => {
-                            return <option value={category.id}>{category.name}</option>
-                        })}
+                                return <option value={category.id}>{category.name}</option>
+                            })}
                     </select>
                     :
                     null
                 }
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="title">Project Title:</label>
                 <input
                     type="text"
@@ -117,7 +133,7 @@ function NewProjectForm() {
                     onChange={handleChange}
                 />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="venue">Venue:</label>
                 <input
                     type="text"
@@ -125,15 +141,15 @@ function NewProjectForm() {
                     placeholder="Venue"
                     onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="description">Project description:</label>
-                <input
+                <textarea
                     type="text"
                     id="description"
-                    placeholder="Project description"
+                    value={projectDetails.description}
                     onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="pledgetype">What will users be pledging?</label>
                 {pledgetypeList ?
                     <select id="pledgetype" name="pledgetype" onChange={handleChange}>
@@ -146,19 +162,19 @@ function NewProjectForm() {
                     null
                 }
             </div>
-            <div>
+            <div className="form-item">
                 <span id="funding-target">
-                <label htmlFor="goal_amount">Funding Target:</label>
-                {projectDetails.pledgetype == 1 ? <p>$</p> : null}
-                <input
-                    type="text"
-                    id="goal_amount"
-                    placeholder="Funding Target"
-                    onChange={handleChange} />
+                    <label htmlFor="goal_amount">Funding Target:</label>
+                    {projectDetails.pledgetype == 1 ? <p>$</p> : null}
+                    <input
+                        type="text"
+                        id="goal_amount"
+                        placeholder="Funding Target"
+                        onChange={handleChange} />
                     {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
                 </span>
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="image">Image:</label>
                 <input
                     type="text"
@@ -166,7 +182,7 @@ function NewProjectForm() {
                     placeholder="Enter the url for the project image"
                     onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-item">
                 <label htmlFor="due_date">Funding End Date:</label>
                 <input
                     type="date"

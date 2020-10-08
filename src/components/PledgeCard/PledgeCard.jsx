@@ -8,27 +8,53 @@ import './PledgeCard.css';
 function PledgeCard(props) {
 
     // destructuring the props
-    const { pledge } = props;
+    const { pledge, isProfilePage } = props;
 
-    const dateObj = dateObjectFormatter(pledge.date_created);
+    const dateObj = dateObjectFormatter(pledge.date);
 
     return (
         <div className="pledge-card">
-            <Link to="/user">
-                <img src="" />
-                <div className="pledge-text">
-                    {/* checking if $ or hrs... */}
-                    <h5>{pledge.type_id == 1 ? `$${pledge.amount}` : pledge.type_id == 2 ? `${pledge.amount} hrs` : null
-                    }</h5>
-                    <p>{pledge.comment}</p>
-                    <p><span className="username-bold">{pledge.user.username}</span>{dateObj.day} {dateObj.date}</p>
-                    <p></p>
-            </div>
-            </Link>
+            {
+                isProfilePage ?
+                    <React.Fragment>
+                        <Link to={`/project/${pledge.project.id}`} className="pledge-user-img-wrapper">
+                            <img src={pledge.project.image} className="pledge-user-image" />
+                        </Link>
 
-           
+                        {/* /* <div className="pledge-text"> */
+            /* checking if $ or hrs... */}
+                        < h5 className="pledge-value">{pledge.type_id == 1 ? `$${pledge.amount}` : pledge.type_id == 2 ? `${pledge.amount} hrs` : null
+                        }</h5>
+                        <p className="pledge-comment">{pledge.comment}</p>
+                        {/* <p ><span className="username-bold">{pledge.user.username}</span>{dateObj.day} {dateObj.date}</p> */}
+                        <div className="pledge-info">
+                            <p className="pledge-username">{pledge.project.title}</p>
+                            <p className="pledge-date">{dateObj.day} {dateObj.date}</p>
+                        </div>
+                    </React.Fragment>
+                    :
+                    <React.Fragment>
+                        <Link to="/user" className="pledge-user-img-wrapper">
+                            {
+                                pledge.user.image && !pledge.anonymous ?
+                                    <img src={pledge.user.image} className="pledge-user-image" />
+                                    :
+                                    <h1><i class="fas fa-user"></i></h1>
+                            }
+                        </Link>
 
-
+                        {/* <div className="pledge-text"> */}
+                        {/* checking if $ or hrs... */}
+                        <h5 className="pledge-value">{pledge.type_id == 1 ? `$${pledge.amount}` : pledge.type_id == 2 ? `${pledge.amount} hrs` : null
+                        }</h5>
+                        <p className="pledge-comment">{pledge.comment}</p>
+                        {/* <p ><span className="username-bold">{pledge.user.username}</span>{dateObj.day} {dateObj.date}</p> */}
+                        <div className="pledge-info">
+                            <p className="pledge-username">{pledge.anonymous ? "Anonymous" : pledge.user.username}</p>
+                            <p className="pledge-date">{dateObj.day} {dateObj.date}</p>
+                        </div>
+                    </React.Fragment>
+            }
         </div>
     );
 }

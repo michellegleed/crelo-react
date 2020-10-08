@@ -1,7 +1,39 @@
+form#new-project-form {
+  width: 100%;
+  /* background-color: #343434; */
+  color: #232323;
+  margin: 24px 0 64px 0;
+  padding: 0 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* #new-project-form div.form-item { */
+div.form-item {
+  margin: 12px 0;
+  display: flex;
+}
+
+/* #new-project-form div.form-item select,
+#new-project-form div.form-item input { */
+div.form-item select,
+div.form-item input,
+div.form-item textarea {
+  margin-left: 8px;
+}
+
 span#funding-target {
-    display: flex;
+  display: flex;
 }
 
 span#funding-target p {
-    margin: 0 4px;
+  margin: 0 0 0 4px;
+}
+
+@media screen and (min-width: 520px) {
+  form#new-project-form button {
+    align-self: flex-start;
+  }
 }

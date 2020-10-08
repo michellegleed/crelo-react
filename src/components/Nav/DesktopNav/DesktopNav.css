@@ -1,0 +1,140 @@
+nav#desktop-nav {
+  display: none;
+}
+
+/* div.nav-logo, */
+/* div.nav-menu {
+  margin: 24px 24px;
+  flex-direction: row;
+}
+*/
+
+/* div.nav-menu {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+} */
+
+/*
+.nav-item {
+  padding: 12px;
+  margin: 12px;
+}
+
+div#nav-line-break {
+  height: 1px;
+  width: 66vw;
+  padding: 0;
+  margin: 36px;
+  background-color: rgb(14, 187, 14);
+}
+
+div#nav-account-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  background-color: white;
+} */
+
+@media screen and (min-width: 720px) {
+  nav#desktop-nav {
+    display: flex;
+    flex-direction: row;
+    width: calc(100vw - 48px);
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  div#nav-container {
+    width: 100%;
+  }
+
+  /* div#nav-container {
+    flex-direction: row;
+    height: 50px;
+    justify-content: space-between;
+  } */
+
+  /* div.nav-menu#mobile-nav {
+  display: flex;
+} */
+
+  div#desktop-nav-account-div {
+    display: flex;
+  }
+
+  div.nav-menu {
+    width: 100%;
+  }
+
+  div.nav-logo,
+  div.nav-menu-items {
+    margin: 4px 24px;
+    flex-direction: row;
+    width: 30vw;
+  }
+
+  div.nav-menu-items.logged-out {
+    width: 20vw;
+  }
+
+  div.nav-menu-items {
+    width: 60vw;
+  }
+
+  div.nav-logo i {
+    color: #232323;
+  }
+
+  div.nav-menu,
+  div.nav-menu-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  /* div.nav-item button {
+    border: none;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 18px;
+  } */
+
+  div.nav-item a {
+    color: #232323;
+    font-size: 18px;
+  }
+
+  div.nav-item a:hover {
+    color: rgb(4, 180, 4);
+  }
+
+  div#nav-account-menu {
+    display: none;
+    margin: 8px -8px;
+    padding: 8px;
+    background: linear-gradient(
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.7)
+    );
+  }
+
+  div#nav-account-menu a {
+    margin: 8px 0;
+  }
+
+  #desktop-nav-account-div:hover div#nav-account-menu {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 820px) {
+}
+
+@media screen and (min-width: 920px) {
+}

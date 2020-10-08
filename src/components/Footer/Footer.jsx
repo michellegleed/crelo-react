@@ -2,10 +2,10 @@ import React from 'react';
 
 import './Footer.css';
 
-const Footer = () => { 
+const Footer = () => {
     return (
         <footer>
-            <p>Made by Michelle <i class="far fa-copyright"></i> 2020</p>
+            <p>Made by Michelle <i class="far fa-copyright"></i>2020</p>
         </footer>);
 }
 
