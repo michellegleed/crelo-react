@@ -34,41 +34,41 @@ function App() {
         <UserContextProvider>
           <Nav />
           <div id="main-container">
-            <LoadingProvider>
-              <Switch>
-                <Route path="/login">
-                  <LoginPage />
-                </Route>
-                <Route path="/signup">
-                  <SignUpPage />
-                </Route>
-                {/* using react-params for the project ID */}
-                <Route path="/project/:id/update">
-                  <UpdateProjectPage />
-                </Route>
-                <Route path="/project/:id/pledge">
-                  <PledgePage />
-                </Route>
-                <Route path="/project/:id">
-                  <ProjectPage />
-                </Route>
-                <Route path="/new-project">
-                  <NewProjectPage />
-                </Route>
-                <Route path="/categories">
-                  <BrowseCategoriesPage />
-                </Route>
-                <Route path="/user-projects">
-                  <UserProjectsPage />
-                </Route>
-                <Route path="/account">
-                  <UserAccountPage />
-                </Route>
-                <Route path="/">
-                  <ActivityFeed />
-                </Route>
-              </Switch>
-            </LoadingProvider>
+            {/* <LoadingProvider> */}
+            <Switch>
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+              <Route path="/signup">
+                <SignUpPage />
+              </Route>
+              {/* using react-params for the project ID */}
+              <Route path="/project/:id/update">
+                <UpdateProjectPage />
+              </Route>
+              <Route path="/project/:id/pledge">
+                <PledgePage />
+              </Route>
+              <Route path="/project/:id">
+                <ProjectPage />
+              </Route>
+              <Route path="/new-project">
+                <NewProjectPage />
+              </Route>
+              <Route path="/categories">
+                <BrowseCategoriesPage />
+              </Route>
+              <Route path="/user-projects">
+                <UserProjectsPage />
+              </Route>
+              <Route path="/account">
+                <UserAccountPage />
+              </Route>
+              <Route path="/">
+                <ActivityFeed />
+              </Route>
+            </Switch>
+            {/* </LoadingProvider> */}
           </div>
           <Footer />
         </UserContextProvider>
