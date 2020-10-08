@@ -97,12 +97,12 @@ function ProjectPage() {
         {
           projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
         }
-        {
+        {/* {
           projectData.view_count != null ?
             <Link to={`/project/${id}/update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
             :
             null
-        }
+        } */}
         {
           projectData.view_count != null ? <button id="close-project-btn" onClick={closeProject}><i class="far fa-times-circle"></i>Close This Project</button> : null
         }
