@@ -54,7 +54,7 @@ function SignUpForm() {
         if (userDetails.email && userDetails.username && userDetails.password && userDetails.confirmPassword && userDetails.location_id) {
             if (userDetails.password === userDetails.confirmPassword) {
                 postUserData().then(response => {
-                    if (response) {
+                    if (response.ok) {
                         history.push("/login");
                     }
                 }).catch((error) => {
@@ -79,60 +79,63 @@ function SignUpForm() {
     }, []);
 
     return (
-        <form>
+        <React.Fragment>
             {errorMessage ?
                 <ErrorMessage message={errorMessage} type="error" />
                 : null
             }
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter username"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="location">Location:</label>
-                {locationList ?
-                    <select id="location_id" name="location" onChange={handleChange}>
-                        {locationList.map(location => {
-                            return <option value={location.id}>{location.name}</option>
-                        })}
-                    </select>
-                    :
-                    null
-                }
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="confirmPassword">Confirm Password:</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Enter Password Again"
-                    onChange={handleChange} />
-            </div>
-            <button type="submit" onClick={handleSubmit}>
-                Sign Up
+            <form>
+
+                <div className="form-item">
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email"
+                        onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="location">Location (City of):</label>
+                    {locationList ?
+                        <select id="location_id" name="location" onChange={handleChange}>
+                            {locationList.map(location => {
+                                return <option value={location.id}>{location.name}</option>
+                            })}
+                        </select>
+                        :
+                        null
+                    }
+                </div>
+                <div className="form-item">
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Enter Password Again"
+                        onChange={handleChange} />
+                </div>
+                <button type="submit" onClick={handleSubmit}>
+                    Sign Up
             </button>
-        </form>
+            </form>
+        </React.Fragment>
     )
 }
 

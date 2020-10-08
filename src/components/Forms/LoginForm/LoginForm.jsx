@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
+import '../SignUpForm/SignUpForm.css';
+
 function LoginForm() {
 
     const [errorMessage, setErrorMessage] = useState();
@@ -64,33 +66,34 @@ function LoginForm() {
     }
 
     return (
-
-        <form>
+        <React.Fragment>
             {errorMessage ?
                 <ErrorMessage message={errorMessage} type="error" />
                 : null
             }
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter username"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    onChange={handleChange} />
-            </div>
-            <button type="submit" onClick={handleSubmit}>
-                Login
+            <form>
+                <div className="form-item">
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        onChange={handleChange} />
+                </div>
+                <button type="submit" onClick={handleSubmit}>
+                    Login
             </button>
-        </form>
+            </form>
+        </React.Fragment>
     )
 }
 

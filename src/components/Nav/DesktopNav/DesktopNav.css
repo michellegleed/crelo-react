@@ -73,17 +73,26 @@ div#nav-account-menu {
   }
 
   div.nav-logo,
-  div.nav-menu {
+  div.nav-menu-items {
     margin: 4px 24px;
     flex-direction: row;
-    min-width: 30vw;
+    width: 30vw;
+  }
+
+  div.nav-menu-items.logged-out {
+    width: 20vw;
+  }
+
+  div.nav-menu-items {
+    width: 60vw;
   }
 
   div.nav-logo i {
     color: #232323;
   }
 
-  div.nav-menu {
+  div.nav-menu,
+  div.nav-menu-items {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -38,6 +38,10 @@ button {
   font-size: 12px;
 }
 
+div.landing-page-main-container {
+  margin: 0 12px;
+}
+
 div#main-container {
   min-height: calc(100vh - 100px);
   width: 100vw;
@@ -57,7 +61,8 @@ div#main-container {
   width: calc(100vw - 350px);
 } */
 
-h2#project-closed-warning {
+h2#project-closed-warning,
+p.error-message {
   color: red;
 }
 
@@ -105,13 +110,17 @@ h2#project-closed-warning {
     color: white;
   }
 
-  div.landing-page-main-container {
+  div.landing-content {
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
 
-  div.landing-page-main-container > div {
+  div.landing-page-main-container h1 {
+    width: 100%;
+  }
+
+  div.landing-content > div {
     width: 45vw;
   }
 }

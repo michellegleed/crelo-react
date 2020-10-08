@@ -10,13 +10,18 @@ form#new-project-form {
   align-items: flex-start;
 }
 
-#new-project-form div.form-item {
+/* #new-project-form div.form-item { */
+div.form-item {
   margin: 12px 0;
+  display: flex;
 }
 
-#new-project-form div.form-item select,
-#new-project-form div.form-item input {
-  margin-left: 4px;
+/* #new-project-form div.form-item select,
+#new-project-form div.form-item input { */
+div.form-item select,
+div.form-item input,
+div.form-item textarea {
+  margin-left: 8px;
 }
 
 span#funding-target {
@@ -28,4 +33,7 @@ span#funding-target p {
 }
 
 @media screen and (min-width: 520px) {
+  form#new-project-form button {
+    align-self: flex-start;
+  }
 }

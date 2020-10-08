@@ -42,7 +42,7 @@ function DesktopNav(props) {
                         <i class="far fa-lightbulb"></i>
                     </div>
                     {props.loggedIn ?
-                        <div className="nav-menu">
+                        <div className="nav-menu-items">
                             <div className="nav-item">
                                 <Link to="/">News Feed</Link>
                             </div>
@@ -63,7 +63,7 @@ function DesktopNav(props) {
                             </div>
                         </div>
                         :
-                        <div className="nav-menu">
+                        <div className="nav-menu-items logged-out">
                             {/* <div className="nav-item">
                                 <Link to="/about">About</Link>
                             </div> */}

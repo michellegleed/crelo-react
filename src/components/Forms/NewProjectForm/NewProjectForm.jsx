@@ -13,7 +13,8 @@ function NewProjectForm() {
 
     const [projectDetails, setProjectDetails] = useState({
         pledgetype: 1,
-        category: 1
+        category: 1,
+        description: ""
     });
 
     const history = useHistory();
@@ -142,10 +143,10 @@ function NewProjectForm() {
             </div>
             <div className="form-item">
                 <label htmlFor="description">Project description:</label>
-                <input
+                <textarea
                     type="text"
                     id="description"
-                    placeholder="Project description"
+                    value={projectDetails.description}
                     onChange={handleChange} />
             </div>
             <div className="form-item">

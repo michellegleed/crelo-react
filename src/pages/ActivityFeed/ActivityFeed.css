@@ -8,13 +8,12 @@ div#activity-content {
 
 .activity-card {
   width: 100vw;
-  margin-bottom: -100px;
+  margin-bottom: -40px;
 }
 
 #welcome-message {
   height: max-content;
   margin: 24px;
-  margin-bottom: -24px;
 }
 
 /* #welcome-message h5, */
