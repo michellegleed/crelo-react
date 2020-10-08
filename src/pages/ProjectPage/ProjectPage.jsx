@@ -99,7 +99,7 @@ function ProjectPage() {
         }
         {
           projectData.view_count != null ?
-            <Link to={`/ project / ${id} / update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
+            <Link to={`/project/${id}/update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
             :
             null
         }

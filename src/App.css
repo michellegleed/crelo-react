@@ -66,6 +66,19 @@ p.error-message {
   color: red;
 }
 
+div#container-404 {
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1#title-404 {
+  font-size: 150px;
+}
+
 /* div#project-list {
   margin: 24px;
   width: calc(100vw - 144px);

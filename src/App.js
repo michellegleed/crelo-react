@@ -19,6 +19,7 @@ import BrowseCategoriesPage from './pages/BrowseCategories/BrowseCategoriesPage'
 import SignUpPage from './pages/SignUpPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
 import PledgePage from './pages/PledgePage/PledgePage';
+import Unauthorized404 from './pages/404Page';
 
 import LoadingProvider from './utils/LoadingProvider.jsx';
 import { UserContextProvider } from './utils/context';
@@ -41,6 +42,9 @@ function App() {
               </Route>
               <Route path="/signup">
                 <SignUpPage />
+              </Route>
+              <Route path="/unauthorized">
+                <Unauthorized404 />
               </Route>
               {/* using react-params for the project ID */}
               <Route path="/project/:id/update">

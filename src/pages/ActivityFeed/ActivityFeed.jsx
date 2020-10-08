@@ -47,7 +47,7 @@ function HomePage() {
                 })
         }
         else {
-            history.push("login/");
+            history.push("signup/");
         }
 
     }, []);

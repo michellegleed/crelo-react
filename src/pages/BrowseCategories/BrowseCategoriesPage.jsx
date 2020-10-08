@@ -22,7 +22,7 @@ function BrowseCategoriesPage() {
     useEffect(() => {
         const token = window.localStorage.getItem("token");
         if (token) {
-            showLoading();
+            // showLoading();
             fetch(`${process.env.REACT_APP_API_URL}locations/1/categories/${selectedCategory}`, {
                 headers: {
                     "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function BrowseCategoriesPage() {
                 })
                 .then((data) => {
                     setProjectList(data);
-                    hideLoading();
+                    // hideLoading();
                 })
         }
         else {
@@ -164,7 +164,8 @@ function BrowseCategoriesPage() {
                                 <h2>No Open Projects Found</h2>
                             </div>
                         :
-                        <Spinner />
+                        // <Spinner />
+                        null
                 }
             </div>
         </div>
