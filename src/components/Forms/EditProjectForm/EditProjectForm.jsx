@@ -42,17 +42,26 @@ function EditProjectForm(props) {
                 "Authorization": `token ${token}`
             },
             body: JSON.stringify(projectDetails),
-        });
-        return response.json();
+        })
+        if (response.ok) {
+            return response.json();
+        } else {
+            response.text().then(text => {
+                throw Error(text)
+            })
+        }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         postData().then(response => {
-            console.log(response);
-            // redirect to project page on successful post
-            history.push(`project/${response.id}`);
+            if (response) {
+                // redirect to project page on successful post
+                history.push(`project/${response.id}`);
+            }
+        }).catch((error) => {
+            // do nothing. I think i just need this here in case?
         });
     }
 
@@ -96,7 +105,7 @@ function EditProjectForm(props) {
                 <div>
                     <label htmlFor="category">Category:</label>
                     {categoryList ?
-                        <select id="category" name="category" onChange={handleChange}>
+                        <select id="category_id" name="category" onChange={handleChange}>
                             {
                                 categoryList.map(category => {
                                     return <option value={category.id}>{category.name}</option>

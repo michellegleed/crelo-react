@@ -18,7 +18,7 @@ function MilestoneCard(props) {
                         Milestone
                     </p>
                     <div className="card-text">
-                        <h3 className="card-title">{item.project.title} {item.project.venue != "" ? `@ ${item.project.venue}` : null}</h3>
+                        <h3 className="card-title">{item.project.title}</h3>
                         <h3 className="activity-card-icon"><i class="fas fa-chart-line"></i></h3>
                         <ProgressBar
                             percentage={item.project.current_percentage_pledged}

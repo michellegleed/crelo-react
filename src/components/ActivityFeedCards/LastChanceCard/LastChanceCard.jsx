@@ -20,7 +20,7 @@ function LastChangeCard(props) {
                         Last Chance
                     </p>
                     <div className="card-text">
-                        <h3 className="card-title">{project.title} {project.venue != "" ? `@ ${project.venue}` : null}</h3>
+                        <h3 className="card-title">{project.title}</h3>
                         <h3 className="activity-card-icon"><i class="fas fa-exclamation-circle"></i></h3>
                         <h4 className="activity-card-subtitle">
                             {/* <i class="fas fa-exclamation-circle"></i> */}

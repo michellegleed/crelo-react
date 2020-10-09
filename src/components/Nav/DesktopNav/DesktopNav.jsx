@@ -49,6 +49,9 @@ function DesktopNav(props) {
                             <div className="nav-item">
                                 <Link to="/categories">Browse Categories</Link>
                             </div>
+                            <div className="nav-item">
+                                <Link to="/new-project">New Project</Link>
+                            </div>
 
 
                             <div className="nav-item" id="desktop-nav-account-div">
@@ -56,7 +59,6 @@ function DesktopNav(props) {
                                 {/* <div id="nav-account-menu" style={displayStyle}> */}
                                 <div id="nav-account-menu" >
                                     <Link to="/account">My Profile</Link>
-                                    <Link to="/new-project">New Project</Link>
                                     <Link to="/user-projects">My Projects</Link>
                                     <Link to="/login" onClick={props.handleLogout}>Log Out</Link>
                                 </div>

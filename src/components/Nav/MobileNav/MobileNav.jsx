@@ -43,15 +43,15 @@ function MobileNav(props) {
                             <div className="nav-item mobile-only-nav-item">
                                 <Link to="/categories">Browse Categories</Link>
                             </div>
+                            <div className="nav-item mobile-only-nav-item">
+                                <Link to="/new-project">New Project</Link>
+                            </div>
 
                             <div className="nav-item mobile-only-nav-item" id="nav-line-break">
                             </div>
 
                             <div className="nav-item mobile-only-nav-item">
                                 <Link to="/account">My Profile</Link>
-                            </div>
-                            <div className="nav-item mobile-only-nav-item">
-                                <Link to="/new-project">New Project</Link>
                             </div>
                             <div className="nav-item mobile-only-nav-item">
                                 <Link to="/user-projects">My Projects</Link>
