@@ -7,28 +7,28 @@ div#project-header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 #project-header h1 {
   font-size: 48px;
-  order: 2;
+  /* order: 2; */
 }
 
 div#creator-details {
-  margin: 36px 0;
+  margin: 0;
   display: flex;
   align-content: center;
 }
 
 img.sml-user-image {
-  height: 75px;
-  width: 75px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
 }
 
 div#creator-details div {
-  margin: 0 12px;
+  margin: 0 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,6 +37,30 @@ div#creator-details div {
 div#creator-details div p,
 div#creator-details div h3 {
   margin: 0;
+}
+
+div#creator-details div p {
+  font-size: 10px;
+}
+
+div#creator-details div h3 {
+  font-size: 14px;
+}
+
+img#mobile-project-header-image {
+  margin: 0 -24px;
+  width: 100vw;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+/* select first image from project detail cards and hide the image */
+div.project-detail-card:nth-child(1) > img:nth-child(1) {
+  display: none;
+}
+
+#project-targets-div {
+  font-family: "Grandstander", sans-serif;
 }
 
 #project-buttons {
@@ -49,6 +73,11 @@ button#close-project-btn:hover {
 
 div.sidebar-item {
   text-align: left;
+}
+
+div.sidebar-item div#time-location-info {
+  display: flex;
+  justify-content: space-between;
 }
 
 div.sidebar-item div.progress-bar-container {
@@ -87,6 +116,13 @@ div #pledges {
   border-color: green;
 } */
 
+@media screen and (min-width: 520px) {
+  img.sml-user-image {
+    height: 50px;
+    width: 50px;
+  }
+}
+
 @media screen and (min-width: 720px) {
   div#project-page-container {
     margin: 0;
@@ -97,38 +133,42 @@ div #pledges {
   div#project-header {
     height: 120px;
     width: calc(100vw - 96px);
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
   }
 
   #project-header h1 {
     font-size: 64px;
-    order: 0;
+    /* order: 0; */
   }
 
   div#creator-details {
     margin: 36px 0;
-    display: flex;
-    align-content: center;
+    /* display: flex;
+    align-content: center; */
   }
 
   img.sml-user-image {
     height: 75px;
     width: 75px;
-    border-radius: 50%;
   }
 
   div#creator-details div {
     margin: 0 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   div#creator-details div p,
   div#creator-details div h3 {
     margin: 0;
+  }
+
+  img#mobile-project-header-image {
+    display: none;
+  }
+
+  div.project-detail-card:nth-child(1) > img:nth-child(1) {
+    display: block;
   }
 
   div#sidebar {
@@ -138,6 +178,10 @@ div #pledges {
 
   div.sidebar-item {
     text-align: right;
+  }
+
+  div.sidebar-item div#time-location-info {
+    display: block;
   }
 
   div.sidebar-item div.progress-bar-container {

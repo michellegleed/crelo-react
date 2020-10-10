@@ -36,6 +36,10 @@ div.nav-menu {
   flex-direction: row;
 }
 
+div.nav-logo i#menu-logo-closed {
+  color: #232323;
+}
+
 div.nav-item {
   font-family: "Shadows Into Light", cursive;
 }
@@ -53,7 +57,7 @@ button#close-mobile-nav {
 button#show-mobile-nav,
 button#close-mobile-nav {
   top: 0px;
-  right: 24px;
+  right: 0px;
   border: none;
   font-size: 24px;
 }

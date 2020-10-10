@@ -26,7 +26,7 @@ function MobileNav(props) {
     return (
         <nav id="mobile-nav">
             <div className="nav-logo">
-                <i class="far fa-lightbulb"></i>Crelo
+                <i id="menu-logo-closed" class="far fa-lightbulb"></i>
             </div>
             <button id="show-mobile-nav" onClick={showNav}><i class="fas fa-bars"></i></button>
             <div id="mobile-nav-container" style={displayStyle}>

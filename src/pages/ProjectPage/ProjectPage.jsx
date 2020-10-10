@@ -78,8 +78,6 @@ function ProjectPage() {
     <div id="project-page-container">
 
       <div id="project-header">
-        <h1>{projectData.title}</h1>
-
         {projectData ?
           <div id="creator-details">
             <img className="sml-user-image" src={projectData.user.image} />
@@ -91,6 +89,7 @@ function ProjectPage() {
           :
           null
         }
+        <h1>{projectData.title}</h1>
       </div>
 
       <div id="project-buttons">
@@ -108,9 +107,13 @@ function ProjectPage() {
         }
       </div>
 
+      <div>
+        <img src={projectData.image} id="mobile-project-header-image" />
+      </div>
+
       <div id="sidebar">
         <div className="sidebar-item">
-          <div className="sidebar-item">
+          <div id="time-location-info">
             <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
             {
               projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
@@ -122,8 +125,10 @@ function ProjectPage() {
             current={projectData.current_amount_pledged}
             goal={projectData.goal_amount}
           />
-          <h4>Target: ${projectData.goal_amount}</h4>
-          <h4>Pledged: ${projectData.current_amount_pledged}</h4>
+          <div id="project-targets-div">
+            <h4 className="coloured-text">Target: ${projectData.goal_amount}</h4>
+            <h4>Pledged: ${projectData.current_amount_pledged}</h4>
+          </div>
         </div>
 
         <div className="sidebar-item">

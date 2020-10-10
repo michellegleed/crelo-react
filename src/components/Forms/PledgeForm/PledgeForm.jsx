@@ -60,7 +60,6 @@ function PledgeForm(props) {
                         <input
                             type="text"
                             id="amount"
-                            placeholder="Funding Target"
                             onChange={handleChange} />
                         {pledgetype == 2 ? <p>hrs</p> : null}
                     </span>
