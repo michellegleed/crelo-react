@@ -1,3 +1,17 @@
 div#analytics p {
   font-size: 14px;
 }
+
+div#analytics h2 i {
+  font-size: 24px;
+}
+/* 
+@media screen and (min-width: 720px) {
+  div#analytics p {
+    font-size: 14px;
+  }
+
+  div#analytics h2 i {
+    font-size: 24px;
+  }
+} */

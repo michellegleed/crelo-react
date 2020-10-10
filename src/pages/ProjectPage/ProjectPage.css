@@ -90,41 +90,39 @@ div.sidebar-item div.progress-bar {
 }
 
 a#sticky-pledge-button {
+  display: none;
   position: fixed;
-  right: 48px;
-  bottom: 48px;
+  right: 24px;
+  bottom: 24px;
 }
 
-a#sticky-pledge-button button {
+a.pledge-button button {
   display: flex;
   justify-content: center;
   margin: 0;
 }
 
-a#sticky-pledge-button p {
+a.pledge-button p {
   padding: 0;
   margin: 0;
   font-size: 12px;
   font-weight: 500;
 }
 
-a#sticky-pledge-button.small-btn button {
+a#sticky-pledge-button button {
   border-radius: 50%;
   padding: 12px;
   background-color: rgb(6, 180, 6);
   color: white;
   width: auto;
-  transition: all 1s ease-out;
-}
-a#sticky-pledge-button.small-btn p {
-  width: 0;
-  height: 0;
-  opacity: 0;
 }
 
-a#sticky-pledge-button.small-btn i {
+a#sticky-pledge-button p {
+  display: none;
+}
+
+a#sticky-pledge-button i {
   margin: 0;
-  transition: all 0.5s ease-out;
 }
 
 div#project-page-content {
@@ -137,7 +135,7 @@ div #pledges {
   margin: 120px -24px 24px -24px;
   background-color: #7b7b7b;
   color: white;
-  padding: 0 24px;
+  padding: 24px;
 }
 
 /* a#sticky-pledge-button button {
@@ -210,6 +208,9 @@ div #pledges {
 
   div.sidebar-item {
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   div.sidebar-item div#time-location-info {
@@ -245,7 +246,9 @@ div #pledges {
   }
 
   a#sticky-pledge-button.small-btn p {
-    display: unset;
+    width: auto;
+    height: auto;
+    opacity: 1;
   }
 
   a#sticky-pledge-button.small-btn i {
@@ -270,7 +273,8 @@ div #pledges {
   }
 
   div#pledges {
-    margin: 120px 0 24px 0;
+    margin: 80px 0 24px 0;
+    padding: 0 24px;
     font-size: 48px;
     background-color: white;
     color: #232323;

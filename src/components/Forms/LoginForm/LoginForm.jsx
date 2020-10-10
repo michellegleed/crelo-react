@@ -73,6 +73,9 @@ function LoginForm() {
             }
             <form>
                 <div className="form-item">
+                    <h2>Log In</h2>
+                </div>
+                <div className="form-item">
                     <label htmlFor="username">Username:</label>
                     <input
                         type="text"

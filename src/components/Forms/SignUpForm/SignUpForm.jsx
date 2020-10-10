@@ -107,7 +107,9 @@ function SignUpForm() {
                 : null
             }
             <form>
-
+                <div className="form-item">
+                    <h2>Sign Up</h2>
+                </div>
                 <div className="form-item">
                     <label htmlFor="email">Email:</label>
                     <input

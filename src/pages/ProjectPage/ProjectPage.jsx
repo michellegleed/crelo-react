@@ -25,15 +25,15 @@ function ProjectPage() {
 
   const { id } = useParams();
 
-  const [buttonClassName, setButtonClassName] = useState("");
+  const [buttonStyle, setButtonStyle] = useState({});
   const [dateObj, setDateObj] = useState({});
   const [timeLeftObj, setTimeLeftObj] = useState({});
   const [dueDateObj, setDueDateObj] = useState({});
 
   useEffect(() => {
-    document.addEventListener('scroll', shrinkButton);
+    document.addEventListener('scroll', showStickyButton);
     return () => {
-      document.removeEventListener('scroll', shrinkButton);
+      document.removeEventListener('scroll', showStickyButton);
     }
   })
 
@@ -60,8 +60,10 @@ function ProjectPage() {
     setDueDateObj(dateObjectFormatter(projectData.due_date));
   }, [projectData]);
 
-  const shrinkButton = () => {
-    setButtonClassName("small-btn");
+  const showStickyButton = () => {
+    setButtonStyle({
+      display: "block"
+    });
   }
 
   const closeProject = async () => {
@@ -140,6 +142,14 @@ function ProjectPage() {
           <div id="project-targets-div">
             <h4 className="coloured-text">Target: ${projectData.goal_amount}</h4>
             <h4>Pledged: ${projectData.current_amount_pledged}</h4>
+            {
+              projectData.view_count == null && projectData.is_open ?
+                <Link to={`/project/${id}/pledge`} className="pledge-button" id="static-pledge-button"><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
+                :
+                null
+            }
+
+
           </div>
         </div>
 
@@ -149,7 +159,7 @@ function ProjectPage() {
               <ProjectAnalytics project={projectData} />
               :
               projectData.is_open ?
-                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button" className={buttonClassName}><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
+                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button" className="pledge-button" style={buttonStyle}><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
                 :
                 null
           }

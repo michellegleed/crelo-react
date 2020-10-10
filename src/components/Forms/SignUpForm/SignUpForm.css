@@ -25,6 +25,12 @@
   margin-left: 4px;
 } */
 
+.sign-up-form .form-item h2 {
+  color: white;
+  text-align: center;
+  margin: 0 auto 24px auto;
+}
+
 .sign-up-form form button {
   align-self: center;
   color: white;
