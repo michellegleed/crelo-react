@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, withRouter } from "react-router-dom";
 
 import './ProjectPage.css';
 
@@ -25,9 +25,17 @@ function ProjectPage() {
 
   const { id } = useParams();
 
+  const [buttonClassName, setButtonClassName] = useState("");
   const [dateObj, setDateObj] = useState({});
   const [timeLeftObj, setTimeLeftObj] = useState({});
   const [dueDateObj, setDueDateObj] = useState({});
+
+  useEffect(() => {
+    document.addEventListener('scroll', shrinkButton);
+    return () => {
+      document.removeEventListener('scroll', shrinkButton);
+    }
+  })
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
@@ -51,6 +59,10 @@ function ProjectPage() {
     setTimeLeftObj(timeLeftFormatter(projectData.due_date));
     setDueDateObj(dateObjectFormatter(projectData.due_date));
   }, [projectData]);
+
+  const shrinkButton = () => {
+    setButtonClassName("small-btn");
+  }
 
   const closeProject = async () => {
     const dateNow = new Date();
@@ -137,7 +149,7 @@ function ProjectPage() {
               <ProjectAnalytics project={projectData} />
               :
               projectData.is_open ?
-                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button"><button><i class="fas fa-donate"></i>Pledge to this Project</button></Link>
+                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button" className={buttonClassName}><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
                 :
                 null
           }

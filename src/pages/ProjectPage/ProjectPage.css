@@ -95,6 +95,38 @@ a#sticky-pledge-button {
   bottom: 48px;
 }
 
+a#sticky-pledge-button button {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+a#sticky-pledge-button p {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+a#sticky-pledge-button.small-btn button {
+  border-radius: 50%;
+  padding: 12px;
+  background-color: rgb(6, 180, 6);
+  color: white;
+  width: auto;
+  transition: all 1s ease-out;
+}
+a#sticky-pledge-button.small-btn p {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+a#sticky-pledge-button.small-btn i {
+  margin: 0;
+  transition: all 0.5s ease-out;
+}
+
 div#project-page-content {
   /* width: 100vw; */
   width: 100%;
@@ -199,6 +231,25 @@ div #pledges {
     position: fixed;
     right: 48px;
     bottom: 48px;
+  }
+
+  a#sticky-pledge-button button {
+    margin: 24px 24px 24px 0;
+  }
+
+  a#sticky-pledge-button.small-btn button {
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: transparent;
+    color: black;
+  }
+
+  a#sticky-pledge-button.small-btn p {
+    display: unset;
+  }
+
+  a#sticky-pledge-button.small-btn i {
+    margin-right: 4px;
   }
 
   a#sticky-pledge-button:hover button {

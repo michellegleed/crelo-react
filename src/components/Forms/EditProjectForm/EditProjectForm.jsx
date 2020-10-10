@@ -5,6 +5,7 @@ import './EditProjectForm.css'
 
 import { capitalizeFirstLetter } from './../../../utils/capitaliseFirstLetter';
 import ProgressUpdateCard from '../../ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 function EditProjectForm(props) {
 
@@ -12,7 +13,7 @@ function EditProjectForm(props) {
 
     const { project } = props;
 
-    console.log("props.project = ", project);
+    const [errorMessage, setErrorMessage] = useState();
 
     const [projectDetails, setProjectDetails] = useState(project);
 
@@ -24,6 +25,7 @@ function EditProjectForm(props) {
             ...prevProjectDetails,
             [id]: value,
         }));
+        console.log(id, value);
     }
 
     const handleDateChange = (e) => {
@@ -43,26 +45,41 @@ function EditProjectForm(props) {
             },
             body: JSON.stringify(projectDetails),
         })
-        if (response.ok) {
-            return response.json();
-        } else {
-            response.text().then(text => {
-                throw Error(text)
-            })
+        // if (response.ok) {
+        //     return response.json();
+        // } else {
+        //     response.text().then(text => {
+        //         throw Error(text)
+        //     })
+        // }
+        const data = await response.json()
+        return {
+            ok: response.ok,
+            ...data
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        postData().then(response => {
-            if (response) {
-                // redirect to project page on successful post
-                history.push(`project/${response.id}`);
+        // postData().then(response => {
+        //     if (response) {
+        //         // redirect to project page on successful post
+        //         history.push(`project/${response.id}`);
+        //     }
+        // }).catch((error) => {
+        //     // do nothing. I think i just need this here in case?
+        // });
+
+        postData().then(data => {
+            if (data.ok) {
+                history.push(`project/${data.id}`);
+            } else {
+                // the API returned an error - do something with it
+                console.error(data);
+                setErrorMessage("Oops - did you delete something from your project like the description or goal? All fields are required.");
             }
-        }).catch((error) => {
-            // do nothing. I think i just need this here in case?
-        });
+        })
     }
 
     /// Get Categories for Select Part of Form
@@ -101,11 +118,18 @@ function EditProjectForm(props) {
     return (
         <div>
             <h2>Edit Project...</h2>
+            {
+                errorMessage ?
+                    <ErrorMessage message={errorMessage} type="error" />
+                    :
+                    null
+            }
+
             <form>
                 <div>
                     <label htmlFor="category">Category:</label>
                     {categoryList ?
-                        <select id="category_id" name="category" onChange={handleChange}>
+                        <select id="category" name="category" value={projectDetails.category} onChange={handleChange}>
                             {
                                 categoryList.map(category => {
                                     return <option value={category.id}>{category.name}</option>

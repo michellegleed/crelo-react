@@ -33,19 +33,28 @@ function UserProfileForm(props) {
             },
             body: JSON.stringify(profileDetails),
         });
-        return response.json();
+        const data = await response.json()
+        return {
+            ok: response.ok,
+            ...data
+        }
     }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("stringified profile details: ", JSON.stringify(profileDetails));
-        postData().then(response => {
-            console.log(response);
-            props.updateAccountDetails(response.user)
-            actions.updateUserDetails(response.user);
-            // redirect to home page on successful login
-            // history.push("/");
-        });
+        postData().then(data => {
+            if (data.ok) {
+                console.log(data);
+                props.updateAccountDetails(data.user);
+                actions.updateUserDetails(data.user);
+            } else {
+                // the API returned an error - do something with it
+                console.error(data)
+                // setErrorMessage(errorObj.detail);
+            }
+        })
     }
 
     /// Get Locations for Select Part of Form
