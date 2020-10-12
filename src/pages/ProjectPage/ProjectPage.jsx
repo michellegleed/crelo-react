@@ -176,7 +176,7 @@ function ProjectPage() {
 
           {
             projectData.updates.map((update, index) => {
-              return <ProjectDetailCard image={update.image} date={update.date_posted} content={update.content} key={index} />
+              return <ProjectDetailCard image={update.image} date={update.date} content={update.content} key={index} />
             })
           }
         </div>
