@@ -1,29 +1,29 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
-import LoadingContext from '../../utils/loadingContext';
 
 import "./BrowseLocations.css";
+import "../ActivityFeed/ActivityFeed.css";
 
-import Spinner from '../../utils/spinner.jsx';
 import { UserDetailsContext } from '../../utils/context';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+
+import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
+import MilestoneCard from '../../components/ActivityFeedCards/MilestoneCard/MilestoneCard';
+import ProgressUpdateCard from '../../components/ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
+import LastChanceCard from '../../components/ActivityFeedCards/LastChanceCard/LastChanceCard';
 
 function BrowseLocationsPage() {
 
-    const { showLoading, hideLoading } = useContext(LoadingContext);
     const { userDetails, actions } = useContext(UserDetailsContext);
 
-    const [projectList, setProjectList] = useState();
-    const [selectedCategory, setSelectedCategory] = useState("favourites");
+    const [locationActivity, setLocationActivity] = useState();
+    const [selectedLocation, setSelectedLocation] = useState(1);
 
     const history = useHistory();
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
         if (token) {
-            showLoading();
-            fetch(`${process.env.REACT_APP_API_URL}locations/1/categories/${selectedCategory}`, {
+            fetch(`${process.env.REACT_APP_API_URL}locations/${selectedLocation}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `token ${token}`
@@ -35,58 +35,25 @@ function BrowseLocationsPage() {
                     }
                 })
                 .then((data) => {
-                    setProjectList(data);
-                    hideLoading();
+                    setLocationActivity(data);
                 })
         }
         else {
             history.push("login/");
         }
 
-    }, [selectedCategory]);
+    }, [selectedLocation]);
 
-    const changeCategory = (id) => {
-        setProjectList();
-        setSelectedCategory(id);
-    }
-
-    const checkIsFavourite = () => {
-        return userDetails.user.favourite_categories.includes(selectedCategory);
+    const changeLocation = (id) => {
+        setLocationActivity();
+        setSelectedLocation(id);
     }
 
     const checkIfBtnSelected = (id) => {
-        if (id === selectedCategory) {
+        if (id === selectedLocation) {
             return "selected"
         }
         return ""
-    }
-
-    const updateFavourites = (action, categoryID) => {
-        if (action === "add" || action === "remove") {
-            const url = `${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}`;
-            console.log()
-            const token = window.localStorage.getItem("token");
-            if (token) {
-                fetch(url, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `token ${token}`
-                    },
-                })
-                    .then((results) => {
-                        if (results.status == 200) {
-                            return results.json()
-                        }
-                    })
-                    .then((data) => {
-                        console.log("new user data = ", data);
-                        actions.updateUserDetails(data);
-                    })
-            }
-            else {
-                history.push("login/");
-            }
-        }
     }
 
     /// Get LocationList
@@ -107,47 +74,31 @@ function BrowseLocationsPage() {
         <div>
             <div id="location-menu">
                 {locationList ?
-                    locationList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeCategory(item.id)}>{item.name}</button>)
+                    locationList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeLocation(item.id)}>{item.name}</button>)
                     :
                     null
                 }
-                {/*  <button onClick={() => changeCategory(1)}>Education</button>
-                 <button onClick={() => changeCategory(2)}>Arts + Entertainment</button>
-                 <button onClick={() => changeCategory(3)}>Local Landscape</button>
-                 <button onClick={() => changeCategory(4)}>Health</button>
-                 <button onClick={() => changeCategory(5)}>Kids</button> */}
-                <button className={checkIfBtnSelected("favourites")} onClick={() => changeCategory("favourites")}>My Followed Categories</button>
             </div>
 
-            <div id="project-list">
+            {
+                locationActivity ?
+                    <h1>{locationActivity.name}</h1>
+                    :
+                    null
+            }
+            <div id="activity-content">
                 {
-                    userDetails.user.favourite_categories ?
-                        selectedCategory !== "favourites" ?
-                            checkIsFavourite() ?
-                                <button onClick={() => updateFavourites("remove", selectedCategory)}>Remove from My Followed Categories</button>
-                                :
-                                <button onClick={() => updateFavourites("add", selectedCategory)}>Add to My Followed Categories</button>
-                            : userDetails.user.favourite_categories.length > 0 ?
-                                < h6 > Followed Categories: {userDetails.user.favourite_categories.map(category => category.name)}</h6>
-                                :
-                                <ErrorMessage message="You're not following any categories" type="warning" />
-                        : null
-                }
-
-                {
-                    projectList ?
-                        projectList.length > 0 ?
-                            <div id="activity-content">
-                                {projectList.map((project, index) => {
-                                    return <ProjectCard project={project} key={index} />
-                                })}
-                            </div>
-                            :
-                            <div id="activity-content">
-                                <h2>No Open Projects Found</h2>
-                            </div>
+                    locationActivity ?
+                        locationActivity.activity.map((item, index) => {
+                            switch (item.action) {
+                                case "project-created": return <ProjectCard key={index} project={item.project} isActivityFeed={true} />
+                                case "milestone": return <MilestoneCard key={index} item={item} />
+                                case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info} />
+                                case "last-chance": return item.project.is_open ? <LastChanceCard key={index} project={item.project} /> : null
+                            }
+                        })
                         :
-                        <Spinner />
+                        <h2>** Searching for Location... **</h2>
                 }
             </div>
         </div>

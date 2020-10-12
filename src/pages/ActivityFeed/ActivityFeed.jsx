@@ -90,8 +90,17 @@ function HomePage() {
 
     return (
         <div id="homepage-container">
+            {
+                userDetails.location ?
+                    <div id="activity-location-links">
+                        <h6><i class="fas fa-map-marker-alt"></i>You're in {userDetails.location.name}</h6>
+                        <h6><Link to="/locations" className="coloured-text">(Click here to snoop on other communities)</Link></h6>
+                    </div>
+                    :
+                    null
+            }
 
-            <div id="activity-content">
+            < div id="activity-content">
                 <div id="welcome-message" className="activity-card">
                     <h1>Hey {userDetails.user ? userDetails.user.username : null}</h1>
                     <h3>Welcome back! Thanks for supporting the creation of awesome projects in your local neighbourhood.</h3>

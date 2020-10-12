@@ -16,6 +16,7 @@ import UserProjectsPage from './pages/UserProjectsPage';
 import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
 import BrowseCategoriesPage from './pages/BrowseCategories/BrowseCategoriesPage';
+import BrowseLocationsPage from './pages/BrowseLocations/BrowseLocationsPage';
 import SignUpPage from './pages/SignUpPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
 import PledgePage from './pages/PledgePage/PledgePage';
@@ -61,6 +62,9 @@ function App() {
               </Route>
               <Route path="/categories">
                 <BrowseCategoriesPage />
+              </Route>
+              <Route path="/locations">
+                <BrowseLocationsPage />
               </Route>
               <Route path="/user-projects">
                 <UserProjectsPage />

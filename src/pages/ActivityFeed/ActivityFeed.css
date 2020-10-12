@@ -1,3 +1,7 @@
+div#activity-location-links h6 {
+  margin: 0;
+}
+
 div#activity-content {
   width: 100vw;
   display: flex;
