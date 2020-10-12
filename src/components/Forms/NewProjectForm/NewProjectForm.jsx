@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
+
 import './NewProjectForm.css'
 
 import { capitalizeFirstLetter } from './../../../utils/capitaliseFirstLetter';
@@ -47,25 +49,24 @@ function NewProjectForm() {
             },
             body: JSON.stringify(projectDetails),
         })
-        if (response.ok) {
-            return response.json();
-        } else {
-            response.text().then(text => {
-                throw Error(text)
-            })
+        const data = await response.json()
+        return {
+            ok: response.ok,
+            ...data
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(projectDetails);
-        postData().then(response => {
-            if (response) {
-                // redirect to project page on successful post
-                history.push(`project/${response.id}`);
+        postData().then(data => {
+            if (data.ok) {
+                history.push(`project/${data.id}`);
+            } else {
+                // the API returned an error - do something with it
+                console.error(data);
+                setErrorMessage("All fields are required.");
             }
-        }).catch((error) => {
-            // do nothing. I think i just need this here in case?
         });
     }
 
@@ -106,9 +107,11 @@ function NewProjectForm() {
         <form id="new-project-form">
             <h1>Create A Project</h1>
             <div className="error-message">
-                {errorMessage ?
-                    <p className="error-message">All fields are required</p>
-                    : null
+                {
+                    errorMessage ?
+                        <ErrorMessage message={errorMessage} type="error" />
+                        :
+                        null
                 }
             </div>
             <div className="form-item">

@@ -77,7 +77,7 @@ function EditProjectForm(props) {
             } else {
                 // the API returned an error - do something with it
                 console.error(data);
-                setErrorMessage("Oops - did you delete something from your project like the description or goal? All fields are required.");
+                setErrorMessage("Oops - did you delete something from your project like the venue, description or goal? All fields are required.");
             }
         })
     }
