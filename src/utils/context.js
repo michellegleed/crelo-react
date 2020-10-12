@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
+import FetchDetails from './FetchDetails.js';
+
 export const UserDetailsContext = React.createContext();
 
 export const UserContextProvider = (props) => {
-    const [userDetails, setUserDetails] = useState({});
+    const [userDetails, setUserDetails] = useState();
 
     const updateAllDetails = (userObject) => {
         setUserDetails(userObject);
@@ -20,6 +22,15 @@ export const UserContextProvider = (props) => {
         console.log("user details from context = ", userDetails);
     }
 
+    const updateLocationDetails = (locationObject) => {
+        setUserDetails((prevState) => {
+            return {
+                ...prevState,
+                location: locationObject
+            }
+        });
+    }
+
     const clearUserDetails = () => {
         setUserDetails({});
     }
@@ -30,10 +41,16 @@ export const UserContextProvider = (props) => {
             actions: {
                 updateAllDetails: updateAllDetails,
                 updateUserDetails: updateUserDetails,
+                updateLocationDetails: updateLocationDetails,
                 clearDetails: clearUserDetails
             }
         }}>
-            {props.children}
+            {userDetails ?
+                props.children
+                :
+                <FetchDetails />
+            }
+
         </UserDetailsContext.Provider>
     );
 }

@@ -39,7 +39,8 @@ function UserAccountPage() {
         setUserData(prevData => {
             return {
                 ...prevData,
-                user: userDetails
+                user: userDetails.user,
+                location: userDetails.location
             }
         })
     }

@@ -23,7 +23,7 @@ function BrowseCategoriesPage() {
         const token = window.localStorage.getItem("token");
         if (token) {
             // showLoading();
-            fetch(`${process.env.REACT_APP_API_URL}locations/1/categories/${selectedCategory}`, {
+            fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `token ${token}`

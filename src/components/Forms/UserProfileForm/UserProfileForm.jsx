@@ -47,14 +47,16 @@ function UserProfileForm(props) {
         postData().then(data => {
             if (data.ok) {
                 console.log(data);
-                props.updateAccountDetails(data.user);
+                props.updateAccountDetails(data);
                 actions.updateUserDetails(data.user);
+                actions.updateLocationDetails(data.location);
             } else {
                 // the API returned an error - do something with it
                 console.error(data)
                 // setErrorMessage(errorObj.detail);
             }
         })
+            .then(hideForm())
     }
 
     /// Get Locations for Select Part of Form

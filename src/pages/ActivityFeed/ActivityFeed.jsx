@@ -31,26 +31,28 @@ function HomePage() {
         console.log("user info from context ", userDetails);
         const token = window.localStorage.getItem("token");
         if (token) {
-            fetch(`${process.env.REACT_APP_API_URL}locations/1/`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `token ${token}`
-                },
-            })
-                .then((results) => {
-                    if (results.status == 200) {
-                        return results.json()
-                    }
+            if (userDetails.location) {
+                fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `token ${token}`
+                    },
                 })
-                .then((data) => {
-                    setActivityFeed(data.activity);
-                })
+                    .then((results) => {
+                        if (results.status == 200) {
+                            return results.json()
+                        }
+                    })
+                    .then((data) => {
+                        setActivityFeed(data.activity);
+                    })
+            }
         }
         else {
             history.push("signup/");
         }
 
-    }, []);
+    }, [userDetails]);
 
     const getTotalPledgeAmt = () => {
         let totalMoney = 0;
