@@ -2,7 +2,7 @@ div#about-crelo {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 200px);
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 div#about-crelo h2 {

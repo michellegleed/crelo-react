@@ -20,6 +20,13 @@
   min-height: 250px;
 }
 
+.sign-up-form .form-item input,
+.sign-up-form .form-item select,
+.sign-up-form .form-item textarea {
+  margin-left: 8px;
+  border: #9ce68f solid 2px;
+}
+
 /* .sign-up-form form div.form-item select,
 .sign-up-form form div.form-item input {
   margin-left: 4px;

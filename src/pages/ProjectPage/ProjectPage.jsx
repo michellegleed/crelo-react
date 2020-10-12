@@ -133,12 +133,16 @@ function ProjectPage() {
               projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
             }
           </div>
+          {
+            projectData ?
+              <ProgressBar
+                percentage={projectData.current_percentage_pledged}
+              />
+              :
+              null
 
-          <ProgressBar
-            percentage={projectData.current_percentage_pledged}
-            current={projectData.current_amount_pledged}
-            goal={projectData.goal_amount}
-          />
+          }
+
           <div id="project-targets-div">
             <h4 className="coloured-text">Target: ${projectData.goal_amount}</h4>
             <h4>Pledged: ${projectData.current_amount_pledged}</h4>

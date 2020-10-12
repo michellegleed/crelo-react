@@ -13,8 +13,8 @@ function About() {
 
             <section>
                 <h2>How It Works</h2>
-                <p><span className="coloured-text">Sign up to start pledging!</span> We won't send you any annoying emails (but if you're worried, you can make up an email address since, you know, this whole  website is fake).</p>
-                <p><span className="coloured-text">Got a great idea to improve your local area?</span> Sign in to create a new project - each project is targeted to the Crelo users in your local area, so you can be assured that it will be seen by the people who will care about it (and utilise it) the most!</p>
+                <p><span className="coloured-text">Sign up to start pledging!</span> We won't send you any annoying emails. We won't even chase you for the money (because, you know, this whole website is fake). It's guaranteed risk-free pledging! Go nuts!</p>
+                <p><span className="coloured-text">Got a great idea to improve your local area?</span> Sign in to create a new project - each project is targeted to the Crelo users living in your shire, so you can be assured that it will be seen by the people who will care about it (and utilise it) the most!</p>
             </section>
 
             {/* <h1><span className="coloured-text">Crelo.</span></h1> */}

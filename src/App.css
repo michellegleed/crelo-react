@@ -143,3 +143,17 @@ h1#title-404 {
     width: 45vw;
   }
 }
+
+/* @media screen and (min-width: 1280px) {
+  div#main-container {
+    margin: 48px 5vw;
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  div#main-container {
+    margin: 48px 10vw;
+    width: 80vw;
+  }
+} */
