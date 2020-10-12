@@ -56,12 +56,12 @@ function PledgeForm(props) {
                 <div className="form-item">
                     <span id="funding-target">
                         <label htmlFor="amount">Amount:</label>
-                        {pledgetype == 1 ? <p>$</p> : null}
+                        {pledgetype === 1 ? <p>$</p> : null}
                         <input
                             type="text"
                             id="amount"
                             onChange={handleChange} />
-                        {pledgetype == 2 ? <p>hrs</p> : null}
+                        {pledgetype === 2 ? <p>hrs</p> : null}
                     </span>
                 </div>
                 <div className="form-item">

@@ -166,19 +166,6 @@ function EditProjectForm(props) {
                     </textarea>
                 </div>
                 <div>
-                    <label htmlFor="pledgetype">What will users be pledging?</label>
-                    {pledgetypeList ?
-                        <select id="pledgetype" name="pledgetype" onChange={handleChange}>
-                            {
-                                pledgetypeList.map(pledgetype => {
-                                    return <option value={pledgetype.id}>{capitalizeFirstLetter(pledgetype.type)}</option>
-                                })}
-                        </select>
-                        :
-                        null
-                    }
-                </div>
-                <div>
                     <span id="funding-target">
                         <label htmlFor="goal_amount">Funding Target:</label>
                         {projectDetails.pledgetype == 1 ? <p>$</p> : null}

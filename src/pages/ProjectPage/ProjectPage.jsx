@@ -117,7 +117,7 @@ function ProjectPage() {
             null
         }
         {
-          projectData.view_count != null ? <button id="close-project-btn" onClick={closeProject}><i class="far fa-times-circle"></i>Close This Project</button> : null
+          projectData.view_count != null && projectData.is_open ? <button id="close-project-btn" onClick={closeProject}><i class="far fa-times-circle"></i>Close This Project</button> : null
         }
       </div>
 
@@ -144,8 +144,23 @@ function ProjectPage() {
           }
 
           <div id="project-targets-div">
-            <h4 className="coloured-text">Target: ${projectData.goal_amount}</h4>
-            <h4>Pledged: ${projectData.current_amount_pledged}</h4>
+            {
+              projectData.pledgetype === 1 ?
+                <React.Fragment>
+                  <h4 className="coloured-text">Target: ${projectData.goal_amount}</h4>
+                  <h4>Pledged: ${projectData.current_amount_pledged ? projectData.current_amount_pledged : 0}</h4>
+                </React.Fragment>
+                :
+                projectData.pledgetype === 2 ?
+                  <React.Fragment>
+                    <h4 className="coloured-text">Target: {projectData.goal_amount} hrs</h4>
+                    <h4>Pledged: {projectData.current_amount_pledged ? projectData.current_amount_pledged : 0} hrs</h4>
+                  </React.Fragment>
+                  :
+                  null
+
+            }
+
             {
               projectData.view_count == null && projectData.is_open ?
                 <Link to={`/project/${id}/pledge`} className="pledge-button" id="static-pledge-button"><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
@@ -168,7 +183,7 @@ function ProjectPage() {
                 null
           }
         </div>
-      </div>
+      </div >
 
       <div id="project-page-content">
         <div className="project-content">
@@ -192,7 +207,7 @@ function ProjectPage() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
