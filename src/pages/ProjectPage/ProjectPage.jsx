@@ -128,7 +128,11 @@ function ProjectPage() {
       <div id="sidebar">
         <div className="sidebar-item">
           <div id="time-location-info">
-            <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue == "" ? `City of ${projectData.location}` : `${projectData.venue}, City of ${projectData.location}`}</h6>
+            {projectData.venue == "" ?
+              <h6><i class="fas fa-map-marker-alt"></i>City of {projectData.location}</h6>
+              :
+              <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue}, City of {projectData.location}</h6>
+            }
             {
               projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
             }
