@@ -26,7 +26,7 @@ function MilestoneCard(props) {
                             goal={item.project.goal_amount}
                         />
                         <h4 className="activity-card-subtitle">{item.info}% Milestone</h4>
-                        <p>{`WooHoo! People in your community have pledged $${item.project.current_amount_pledged} towards this project.`}</p>
+                        <p>{`WooHoo! People in your community have pledged ${item.project.pledgetype == 1 ? "$" : ""} ${item.project.current_amount_pledged} ${item.project.pledgetype == 2 ? "hrs" : ""} towards this project.`}</p>
                         <h6>Wednesday 12th September 2020</h6>
                     </div>
                 </div>
