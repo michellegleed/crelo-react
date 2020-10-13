@@ -59,7 +59,7 @@ function ProgressUpdateForm(props) {
                         onChange={handleChange}
                     />
                 </div> */}
-                <div>
+                <div className="form-item">
                     <label htmlFor="image">Image:</label>
                     <input
                         type="text"
@@ -67,7 +67,7 @@ function ProgressUpdateForm(props) {
                         placeholder="Enter the url for the project image"
                         onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item">
                     <label htmlFor="content">Content:</label>
                     <textarea id="content" onChange={handleChange} />
                 </div>
