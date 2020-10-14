@@ -48,7 +48,11 @@ export const UserContextProvider = (props) => {
             {userDetails ?
                 props.children
                 :
-                <FetchDetails />
+                <React.Fragment>
+                    <FetchDetails />
+                    {props.children}
+                </React.Fragment>
+
             }
 
         </UserDetailsContext.Provider>

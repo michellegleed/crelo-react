@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-import "./BrowseLocations.css";
+import "..//BrowseCategories/BrowseCategories.css";
 import "../ActivityFeed/ActivityFeed.css";
 
 import { UserDetailsContext } from '../../utils/context';
@@ -72,7 +72,7 @@ function BrowseLocationsPage() {
 
     return (
         <div>
-            <div id="location-menu">
+            <div id="category-menu">
                 {locationList ?
                     locationList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeLocation(item.id)}>{item.name}</button>)
                     :
@@ -89,14 +89,18 @@ function BrowseLocationsPage() {
             <div id="activity-content">
                 {
                     locationActivity ?
-                        locationActivity.activity.map((item, index) => {
-                            switch (item.action) {
-                                case "project-created": return <ProjectCard key={index} project={item.project} isActivityFeed={true} />
-                                case "milestone": return <MilestoneCard key={index} item={item} />
-                                case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info} />
-                                case "last-chance": return item.project.is_open ? <LastChanceCard key={index} project={item.project} /> : null
-                            }
-                        })
+                        locationActivity.activity.length > 0
+                            ?
+                            locationActivity.activity.map((item, index) => {
+                                switch (item.action) {
+                                    case "project-created": return <ProjectCard key={index} project={item.project} isActivityFeed={true} />
+                                    case "milestone": return <MilestoneCard key={index} item={item} />
+                                    case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info} />
+                                    case "last-chance": return item.project.is_open ? <LastChanceCard key={index} project={item.project} /> : null
+                                }
+                            })
+                            :
+                            <h2>** No Recent Activity **</h2>
                         :
                         <h2>** Searching for Location... **</h2>
                 }

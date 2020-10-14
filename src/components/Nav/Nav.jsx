@@ -26,7 +26,7 @@ function Nav() {
 
     useEffect(() => {
         if (loggedIn) {
-            if (!userDetails.user) {
+            if (!userDetails) {
                 console.log("logged in but no user details saved! fetching user details now.");
                 const token = window.localStorage.getItem("token");
                 console.log(token);

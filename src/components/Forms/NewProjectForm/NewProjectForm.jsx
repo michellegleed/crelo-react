@@ -16,7 +16,9 @@ function NewProjectForm() {
     const [projectDetails, setProjectDetails] = useState({
         pledgetype: 1,
         category: 1,
-        description: ""
+        description: "",
+        image: "",
+        title: ""
     });
 
     const history = useHistory();
@@ -104,100 +106,107 @@ function NewProjectForm() {
 
 
     return (
-        <form id="new-project-form">
-            <h1>Create A Project</h1>
-            <div className="error-message">
-                {
-                    errorMessage ?
-                        <ErrorMessage message={errorMessage} type="error" />
+        <React.Fragment>
+            <form id="new-project-form">
+                <h1>Create A Project</h1>
+                <div className="error-message">
+                    {
+                        errorMessage ?
+                            <ErrorMessage message={errorMessage} type="error" />
+                            :
+                            null
+                    }
+                </div>
+                <div className="form-item">
+                    <label htmlFor="category">Category:</label>
+                    {categoryList ?
+                        <select id="category" name="category" onChange={handleChange}>
+                            {
+                                categoryList.map(category => {
+                                    return <option value={category.id}>{category.name}</option>
+                                })}
+                        </select>
                         :
                         null
-                }
-            </div>
-            <div className="form-item">
-                <label htmlFor="category">Category:</label>
-                {categoryList ?
-                    <select id="category" name="category" onChange={handleChange}>
-                        {
-                            categoryList.map(category => {
-                                return <option value={category.id}>{category.name}</option>
-                            })}
-                    </select>
-                    :
-                    null
-                }
-            </div>
-            <div className="form-item">
-                <label htmlFor="title">Project Title:</label>
-                <input
-                    type="text"
-                    id="title"
-                    placeholder="Project title"
-                    onChange={handleChange}
-                />
-            </div>
-            <div className="form-item">
-                <label htmlFor="venue">Venue:</label>
-                <input
-                    type="text"
-                    id="venue"
-                    placeholder="Venue"
-                    onChange={handleChange} />
-            </div>
-            <div className="form-item">
-                <label htmlFor="description">Project description:</label>
-                <textarea
-                    type="text"
-                    id="description"
-                    value={projectDetails.description}
-                    onChange={handleChange} />
-            </div>
-            <div className="form-item">
-                <label htmlFor="pledgetype">What will users be pledging?</label>
-                {pledgetypeList ?
-                    <select id="pledgetype" name="pledgetype" onChange={handleChange}>
-                        {
-                            pledgetypeList.map(pledgetype => {
-                                return <option value={pledgetype.id}>{capitalizeFirstLetter(pledgetype.type)}</option>
-                            })}
-                    </select>
-                    :
-                    null
-                }
-            </div>
-            <div className="form-item">
-                <span id="funding-target">
-                    <label htmlFor="goal_amount">Funding Target:</label>
-                    {projectDetails.pledgetype == 1 ? <p>$</p> : null}
+                    }
+                </div>
+                <div className="form-item">
+                    <label htmlFor="title">Project Title:</label>
                     <input
                         type="text"
-                        id="goal_amount"
-                        placeholder="Funding Target"
+                        id="title"
+                        placeholder="Project title"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="venue">Venue:</label>
+                    <input
+                        type="text"
+                        id="venue"
+                        placeholder="Venue"
                         onChange={handleChange} />
-                    {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
-                </span>
-            </div>
-            <div className="form-item">
-                <label htmlFor="image">Image:</label>
-                <input
-                    type="text"
-                    id="image"
-                    placeholder="Enter the url for the project image"
-                    onChange={handleChange} />
-            </div>
-            <div className="form-item">
-                <label htmlFor="due_date">Funding End Date:</label>
-                <input
-                    type="date"
-                    id="due_date"
-                    placeholder="DD/MM/YYYY"
-                    onChange={handleDateChange} />
-            </div>
+                </div>
+                <div className="form-item">
+                    <label htmlFor="description">Project description:</label>
+                    <textarea
+                        type="text"
+                        id="description"
+                        value={projectDetails.description}
+                        onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="pledgetype">What will users be pledging?</label>
+                    {pledgetypeList ?
+                        <select id="pledgetype" name="pledgetype" onChange={handleChange}>
+                            {
+                                pledgetypeList.map(pledgetype => {
+                                    return <option value={pledgetype.id}>{capitalizeFirstLetter(pledgetype.type)}</option>
+                                })}
+                        </select>
+                        :
+                        null
+                    }
+                </div>
+                <div className="form-item">
+                    <span id="funding-target">
+                        <label htmlFor="goal_amount">Funding Target:</label>
+                        {projectDetails.pledgetype == 1 ? <p>$</p> : null}
+                        <input
+                            type="text"
+                            id="goal_amount"
+                            placeholder="Funding Target"
+                            onChange={handleChange} />
+                        {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
+                    </span>
+                </div>
+                <div className="form-item">
+                    <label htmlFor="image">Image:</label>
+                    <input
+                        type="text"
+                        id="image"
+                        placeholder="Enter the url for the project image"
+                        onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="due_date">Funding End Date:</label>
+                    <input
+                        type="date"
+                        id="due_date"
+                        placeholder="DD/MM/YYYY"
+                        onChange={handleDateChange} />
+                </div>
 
-            <button type="submit" onClick={handleSubmit}>
-                Save
+                <button type="submit" onClick={handleSubmit}>
+                    Save
             </button>
-        </form>
+            </form>
+
+            <div id="pledge-project-info-container">
+                <img src={projectDetails.image} id="pledge-page-header-img" />
+                <h1 className="card-title">{projectDetails.title} {projectDetails.venue != "" ? `@ ${projectDetails.venue}` : null}</h1>
+            </div>
+        </React.Fragment>
     )
 }
 

@@ -61,11 +61,6 @@ function UserProfileForm(props) {
             }
             // setErrorMessage(errorObj.detail);
         })
-            .then(() => {
-                if (errorMessage === null) {
-                    hideForm()
-                }
-            })
     }
 
     /// Get Locations for Select Part of Form

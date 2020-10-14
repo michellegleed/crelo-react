@@ -43,9 +43,6 @@ function UserAccountPage() {
                 location: userDetails.location
             }
         })
-    }
-
-    const hideForm = () => {
         setShowForm(false);
     }
 
@@ -63,7 +60,7 @@ function UserAccountPage() {
             </div>
             {showForm ?
                 <div className="account-page-section" id="edit-profile-form">
-                    <UserProfileForm user={userData.user} location={userData.location} updateAccountDetails={updateAccountDetails} hideForm={hideForm} />
+                    <UserProfileForm user={userData.user} location={userData.location} updateAccountDetails={updateAccountDetails} />
                 </div>
                 :
                 null}
