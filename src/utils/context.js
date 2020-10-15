@@ -32,7 +32,7 @@ export const UserContextProvider = (props) => {
     }
 
     const clearUserDetails = () => {
-        setUserDetails({});
+        setUserDetails(null);
     }
 
     return (

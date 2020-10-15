@@ -45,6 +45,7 @@ div.landing-page-main-container {
 div#main-container {
   min-height: calc(100vh - 100px);
   width: 100vw;
+  padding-top: 24px;
 }
 
 #project-header-image {

@@ -81,6 +81,10 @@ div.sidebar-item div#time-location-info {
   justify-content: space-between;
 }
 
+div.sidebar-item div#time-location-info h6 {
+  margin: 24px 8px;
+}
+
 div.sidebar-item div.progress-bar-container {
   display: none;
 }
@@ -132,9 +136,10 @@ div#project-page-content {
 }
 
 div #pledges {
-  /* margin: 120px 0 24px 0; */
-  margin: 120px -24px 24px -24px;
-  background-color: #7b7b7b;
+  /* margin: 120px -24px 24px -24px;
+  background-color: #7b7b7b; */
+  margin: 120px -24px 0 -24px;
+  background-color: #535353;
   color: white;
   padding: 24px;
 }
