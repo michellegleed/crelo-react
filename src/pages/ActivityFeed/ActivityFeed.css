@@ -65,7 +65,7 @@ div#total-pledges {
   transform: translateY(-118px);
   /* background-color: rgba(0, 0, 0, 0.5); */
   /* color: white; */
-  background-color: rgba(231, 230, 230, 0.6);
+  background-color: rgba(231, 230, 230, 0.75);
   color: #2c2c2c;
   padding: 0 24px 48px 24px;
   position: relative;
