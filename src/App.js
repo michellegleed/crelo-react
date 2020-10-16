@@ -13,6 +13,7 @@ import ActivityFeed from './pages/ActivityFeed/ActivityFeed';
 // import AboutPage from './pages/AboutPage';
 import UserAccountPage from './pages/UserAccountPage/UserAccountPage';
 import UserProjectsPage from './pages/UserProjectsPage';
+import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
 import BrowseCategoriesPage from './pages/BrowseCategories/BrowseCategoriesPage';
@@ -66,14 +67,20 @@ function App() {
               <Route path="/locations">
                 <BrowseLocationsPage />
               </Route>
+              <Route path="/user/:userId">
+                <ProfilePage />
+              </Route>
               <Route path="/user-projects">
                 <UserProjectsPage />
               </Route>
               <Route path="/account">
                 <UserAccountPage />
               </Route>
-              <Route path="/">
+              <Route path="/" exact>
                 <ActivityFeed />
+              </Route>
+              <Route path="/">
+                <Unauthorized404 />
               </Route>
             </Switch>
             {/* </LoadingProvider> */}

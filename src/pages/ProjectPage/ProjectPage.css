@@ -16,10 +16,11 @@ div#project-header {
   margin-bottom: 0;
 }
 
-div#creator-details {
+div#creator-details a {
   margin: 0;
   display: flex;
   align-content: center;
+  color: #232323;
 }
 
 img.sml-user-image {
@@ -179,6 +180,7 @@ div #pledges {
 
   #project-header h1 {
     font-size: 64px;
+    margin: 40px 0;
     /* order: 0; */
   }
 
@@ -201,6 +203,14 @@ div #pledges {
   div#creator-details div p,
   div#creator-details div h3 {
     margin: 0;
+  }
+
+  div#creator-details div p {
+    font-size: 14px;
+  }
+
+  div#creator-details div h3 {
+    font-size: 20px;
   }
 
   img#mobile-project-header-image {
