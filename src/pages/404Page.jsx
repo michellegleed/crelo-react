@@ -9,7 +9,7 @@ function Unauthorized404() {
         <div className="main-container" id="container-404">
             <h1 id="title-404"><span className="coloured-text">4</span>0<span className="coloured-text">4</span></h1>
             <h3>You are not authorized<sup>*</sup> to view this page. You may need to <Link className="coloured-text" to="login/">log in.</Link></h3>
-            <h6>*Or this page may not exist. In that case we have no suggestions. You're screwed.</h6>
+            <h6>*Or this page may not exist.</h6>
         </div>
     )
 }

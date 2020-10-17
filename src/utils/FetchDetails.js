@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { UserDetailsContext } from './context.js';
 
 const FetchDetails = () => {
     const { actions } = useContext(UserDetailsContext);
+
+    const [fetching, setFetching] = useState(false);
 
     // const [userData, setUserData] = useState();
 
@@ -11,6 +13,7 @@ const FetchDetails = () => {
         const token = window.localStorage.getItem("token");
         console.log("found token. commencing fetch")
         if (token) {
+            setFetching(true);
             fetch(`${process.env.REACT_APP_API_URL}account/`, {
                 headers: {
                     "Content-Type": "application/json",
@@ -25,6 +28,7 @@ const FetchDetails = () => {
                     // setUserData(data);
                     actions.updateAllDetails(data);
                     console.log("updated context. user name is ", data.user.username)
+                    setFetching(false);
                     // console.log("username: ", userData.user.username);
                 });
         }
@@ -39,7 +43,10 @@ const FetchDetails = () => {
     //     })
     // }
 
-    return <h1>** Loading... ***</h1>;
+    if (fetching) {
+        return <h2>** Loading... **</h2>
+    }
+    return null;
 }
 
 export default FetchDetails;
