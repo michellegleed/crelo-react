@@ -77,7 +77,7 @@ function EditProjectForm(props) {
             } else {
                 // the API returned an error - do something with it
                 console.error(data);
-                setErrorMessage("Oops - did you delete something from your project like the description or goal? All fields are required.");
+                setErrorMessage("Oops - did you delete something from your project like the venue, description or goal? All fields are required.");
             }
         })
     }
@@ -126,7 +126,7 @@ function EditProjectForm(props) {
             }
 
             <form>
-                <div>
+                <div className="form-item" s>
                     <label htmlFor="category">Category:</label>
                     {categoryList ?
                         <select id="category" name="category" value={projectDetails.category} onChange={handleChange}>
@@ -139,7 +139,7 @@ function EditProjectForm(props) {
                         null
                     }
                 </div>
-                <div>
+                <div className="form-item" s>
                     <label htmlFor="title">Project Title:</label>
                     <input
                         type="text"
@@ -148,7 +148,7 @@ function EditProjectForm(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="form-item" s>
                     <label htmlFor="venue">Venue:</label>
                     <input
                         type="text"
@@ -156,7 +156,7 @@ function EditProjectForm(props) {
                         placeholder={projectDetails.venue}
                         onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item" s>
                     <label htmlFor="description">Project description:</label>
                     <textarea
                         type="text"
@@ -165,7 +165,7 @@ function EditProjectForm(props) {
                         {projectDetails.description}
                     </textarea>
                 </div>
-                <div>
+                <div className="form-item" s>
                     <span id="funding-target">
                         <label htmlFor="goal_amount">Funding Target:</label>
                         {projectDetails.pledgetype == 1 ? <p>$</p> : null}
@@ -177,7 +177,7 @@ function EditProjectForm(props) {
                         {projectDetails.pledgetype == 2 ? <p>hrs</p> : null}
                     </span>
                 </div>
-                <div>
+                <div className="form-item" s>
                     <label htmlFor="image">Image:</label>
                     <input
                         type="text"
@@ -185,7 +185,7 @@ function EditProjectForm(props) {
                         placeholder={projectDetails.image}
                         onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item" s>
                     <label htmlFor="due_date">Funding End Date:</label>
                     <input
                         type="date"

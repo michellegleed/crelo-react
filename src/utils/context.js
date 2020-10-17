@@ -32,7 +32,7 @@ export const UserContextProvider = (props) => {
     }
 
     const clearUserDetails = () => {
-        setUserDetails({});
+        setUserDetails(null);
     }
 
     return (
@@ -48,7 +48,11 @@ export const UserContextProvider = (props) => {
             {userDetails ?
                 props.children
                 :
-                <FetchDetails />
+                <React.Fragment>
+                    <FetchDetails />
+                    {props.children}
+                </React.Fragment>
+
             }
 
         </UserDetailsContext.Provider>

@@ -30,7 +30,7 @@ function HomePage() {
         console.log("user info from context ", userDetails);
         const token = window.localStorage.getItem("token");
         if (token) {
-            if (userDetails.location) {
+            if (userDetails) {
                 fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`, {
                     headers: {
                         "Content-Type": "application/json",
@@ -90,13 +90,25 @@ function HomePage() {
 
     return (
         <div id="homepage-container">
+            {
+                userDetails ?
+                    userDetails.location ?
+                        <div id="activity-location-links">
+                            <h6><i class="fas fa-map-marker-alt"></i>You're in {userDetails.location.name}</h6>
+                            <h6><Link to="/locations" className="coloured-text">Snoop on other communities <i class="fas fa-chevron-right"></i></Link></h6>
+                        </div>
+                        :
+                        null
+                    :
+                    null
+            }
 
-            <div id="activity-content">
+            < div id="activity-content">
                 <div id="welcome-message" className="activity-card">
-                    <h1>Hey {userDetails.user ? userDetails.user.username : null}</h1>
+                    <h1>Hey {userDetails ? userDetails.user.username : null}</h1>
                     <h3>Welcome back! Thanks for supporting the creation of awesome projects in your local neighbourhood.</h3>
                     {
-                        userDetails.pledges ?
+                        userDetails ?
                             getTotalPledgeAmt()
                             :
                             null

@@ -67,11 +67,8 @@ function UpdateProjectPage() {
                 <ProgressUpdateForm projectID={projectData.id} />
                 <EditProjectForm project={projectData} />
             </div>
-
-
             :
             <p>Loading project update form</p>
-        // <h1>This is the update project page</h1>
     );
 }
 

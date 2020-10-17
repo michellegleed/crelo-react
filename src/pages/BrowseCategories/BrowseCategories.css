@@ -1,3 +1,7 @@
+h2.loading-msg {
+  text-align: center;
+}
+
 div#category-menu {
   width: 100%;
   display: flex;
@@ -18,4 +22,49 @@ div#category-menu button:hover {
 div#category-menu button.selected {
   background-color: rgb(4, 180, 4);
   color: white;
+}
+
+button.add-remove-fav-category {
+  color: #02ac02;
+  display: flex;
+  justify-content: center;
+  /* width: calc(100vw - 96px); */
+  width: 260px;
+  margin: 24px auto;
+}
+
+div#followed-categories-list {
+  margin: 24px;
+}
+
+div#followed-categories-list ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div#followed-categories-list ul li {
+  margin: 4px 36px 4px 0;
+}
+
+div#followed-categories-list ul li h6 {
+  margin: 0;
+}
+
+@media screen and (min-width: 720px) {
+  button.add-remove-fav-category {
+    border: none;
+    margin: 24px;
+    justify-content: flex-start;
+  }
+
+  button.add-remove-fav-category:hover {
+    transform: scale(1.1);
+    background-color: transparent;
+  }
+
+  div#followed-categories-list {
+    margin: 24px 0;
+  }
 }

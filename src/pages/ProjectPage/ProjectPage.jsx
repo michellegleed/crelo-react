@@ -94,11 +94,13 @@ function ProjectPage() {
       <div id="project-header">
         {projectData ?
           <div id="creator-details">
-            <img className="sml-user-image" src={projectData.user.image} />
-            <div>
-              <p>Created by</p>
-              <h3>{projectData.user.username}</h3>
-            </div>
+            <Link to={`/user/${projectData.user.id}`}>
+              <img className="sml-user-image" src={projectData.user.image} />
+              <div>
+                <p>Created by</p>
+                <h3>{projectData.user.username}</h3>
+              </div>
+            </Link>
           </div>
           :
           null

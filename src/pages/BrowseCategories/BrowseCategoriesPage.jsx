@@ -22,28 +22,30 @@ function BrowseCategoriesPage() {
     useEffect(() => {
         const token = window.localStorage.getItem("token");
         if (token) {
-            // showLoading();
-            fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `token ${token}`
-                },
-            })
-                .then((results) => {
-                    if (results.status == 200) {
-                        return results.json()
-                    }
+            if (userDetails) {
+                // showLoading();
+                fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `token ${token}`
+                    },
                 })
-                .then((data) => {
-                    setProjectList(data);
-                    // hideLoading();
-                })
+                    .then((results) => {
+                        if (results.status == 200) {
+                            return results.json()
+                        }
+                    })
+                    .then((data) => {
+                        setProjectList(data);
+                        // hideLoading();
+                    })
+            }
         }
         else {
             history.push("login/");
         }
 
-    }, [selectedCategory]);
+    }, [selectedCategory, userDetails]);
 
     const changeCategory = (id) => {
         setProjectList();
@@ -109,7 +111,7 @@ function BrowseCategoriesPage() {
         if (categoryList) {
             for (let i = 0; i < categoryList.length; i++) {
                 if (categoryList[i].id === id) {
-                    return <h6>{categoryList[i].name}</h6>
+                    return <li><h6>{categoryList[i].name}</h6></li>
                 }
             }
         }
@@ -135,16 +137,20 @@ function BrowseCategoriesPage() {
 
             <div id="project-list">
                 {
-                    userDetails.user ?
+                    userDetails ?
+                        // userDetails.user ?
                         selectedCategory !== "favourites" ?
                             checkIsFavourite() ?
-                                <button onClick={() => updateFavourites("remove", selectedCategory)}>Remove from My Followed Categories</button>
+                                <button className="add-remove-fav-category" onClick={() => updateFavourites("remove", selectedCategory)}><i class="fas fa-minus-circle"></i> Remove from My Followed Categories</button>
                                 :
-                                <button onClick={() => updateFavourites("add", selectedCategory)}>Add to My Followed Categories</button>
+                                <button className="add-remove-fav-category" onClick={() => updateFavourites("add", selectedCategory)}><i class="fas fa-plus-circle"></i> Add to My Followed Categories</button>
                             : userDetails.user.favourite_categories.length > 0 ?
-                                <div>
+                                <div id="followed-categories-list">
                                     <h3>Followed Categories:</h3>
-                                    {userDetails.user.favourite_categories.map(categoryId => getCategoryNameFromID(categoryId))}
+                                    <ul>
+                                        {userDetails.user.favourite_categories.map(categoryId => getCategoryNameFromID(categoryId))}
+                                    </ul>
+
                                 </div>
                                 :
                                 <ErrorMessage message="You're not following any categories" type="warning" />
@@ -164,8 +170,7 @@ function BrowseCategoriesPage() {
                                 <h2>No Open Projects Found</h2>
                             </div>
                         :
-                        // <Spinner />
-                        null
+                        <h2 className="loading-msg">** Loading Projects... **</h2>
                 }
             </div>
         </div>

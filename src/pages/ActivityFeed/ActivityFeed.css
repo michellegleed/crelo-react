@@ -1,9 +1,18 @@
+div#activity-location-links h6 {
+  margin: 0;
+}
+
 div#activity-content {
-  width: 100vw;
+  /* width: 100vw; */
+  width: calc(100vw - 24px);
+  margin: 0 12px;
   display: flex;
   flex-wrap: wrap;
-  /* gap: 84px; */
   justify-content: center;
+}
+
+div#activity-location-links {
+  margin: 0 24px;
 }
 
 .activity-card {
@@ -13,7 +22,7 @@ div#activity-content {
 
 #welcome-message {
   height: max-content;
-  margin: 24px;
+  margin: 24px 12px;
 }
 
 /* #welcome-message h5, */
@@ -54,8 +63,10 @@ div#total-pledges {
 
 .card-text {
   transform: translateY(-118px);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* color: white; */
+  background-color: rgba(231, 230, 230, 0.75);
+  color: #2c2c2c;
   padding: 0 24px 48px 24px;
   position: relative;
 }
@@ -78,7 +89,8 @@ h4.activity-card-subtitle {
 
 .card-text h6 {
   text-align: right;
-  color: rgba(255, 255, 255, 0.75);
+  /* color: rgba(255, 255, 255, 0.75); */
+  color: rgba(134, 134, 134, 0.75);
   position: absolute;
   bottom: 12px;
   right: 24px;
@@ -96,6 +108,10 @@ h4.activity-card-subtitle {
     width: 100%; */
     margin: 36px -48px;
     width: 100vw;
+  }
+
+  div#activity-location-links {
+    margin: 0;
   }
 
   #welcome-message,
@@ -141,6 +157,7 @@ h4.activity-card-subtitle {
   .card-text {
     height: 100%;
     transition: all 0.5s;
+    color: white;
     background-color: rgba(0, 0, 0, 0.3);
   }
 

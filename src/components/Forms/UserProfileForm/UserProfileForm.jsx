@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserDetailsContext } from '../../../utils/context';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 import './UserProfileForm.css';
 
@@ -13,6 +14,7 @@ function UserProfileForm(props) {
     const { user, hideForm } = props;
 
     const [profileDetails, setProfileDetails] = useState(user);
+    const [errorMessage, setErrorMessage] = useState();
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -46,17 +48,19 @@ function UserProfileForm(props) {
         console.log("stringified profile details: ", JSON.stringify(profileDetails));
         postData().then(data => {
             if (data.ok) {
+                setErrorMessage(null);
                 console.log(data);
                 props.updateAccountDetails(data);
                 actions.updateUserDetails(data.user);
                 actions.updateLocationDetails(data.location);
             } else {
                 // the API returned an error - do something with it
+                console.log("error saving profile")
                 console.error(data)
-                // setErrorMessage(errorObj.detail);
+                setErrorMessage("Oops! Both the image URL and bio are required fields. (Because I couldn't work out how to make it optional in Django - sorry!!)");
             }
+            // setErrorMessage(errorObj.detail);
         })
-            .then(hideForm())
     }
 
     /// Get Locations for Select Part of Form
@@ -81,6 +85,13 @@ function UserProfileForm(props) {
 
     return (
         <div className="user-profile">
+            {
+                errorMessage ?
+                    <ErrorMessage message={errorMessage} type="error" />
+                    :
+                    null
+            }
+
             <form>
                 <div id="form-header">
                     <h2>Edit Profile:</h2>
@@ -102,7 +113,7 @@ function UserProfileForm(props) {
 
                     <label htmlFor="username">Username: </label>
                     <input
-                        type="url"
+                        type="text"
                         id="username"
                         placeholder={user.username}
                         onChange={handleChange}

@@ -13,12 +13,14 @@ div#project-header {
 #project-header h1 {
   font-size: 48px;
   /* order: 2; */
+  margin-bottom: 0;
 }
 
-div#creator-details {
+div#creator-details a {
   margin: 0;
   display: flex;
   align-content: center;
+  color: #232323;
 }
 
 img.sml-user-image {
@@ -81,6 +83,10 @@ div.sidebar-item div#time-location-info {
   justify-content: space-between;
 }
 
+div.sidebar-item div#time-location-info h6 {
+  margin: 24px 8px;
+}
+
 div.sidebar-item div.progress-bar-container {
   display: none;
 }
@@ -132,9 +138,10 @@ div#project-page-content {
 }
 
 div #pledges {
-  /* margin: 120px 0 24px 0; */
-  margin: 120px -24px 24px -24px;
-  background-color: #7b7b7b;
+  /* margin: 120px -24px 24px -24px;
+  background-color: #7b7b7b; */
+  margin: 120px -24px 0 -24px;
+  background-color: #535353;
   color: white;
   padding: 24px;
 }
@@ -167,10 +174,13 @@ div #pledges {
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
+    /* margin-bottom: 48px; */
+    margin-bottom: 24px;
   }
 
   #project-header h1 {
     font-size: 64px;
+    margin: 40px 0;
     /* order: 0; */
   }
 
@@ -195,13 +205,35 @@ div #pledges {
     margin: 0;
   }
 
+  div#creator-details div p {
+    font-size: 14px;
+  }
+
+  div#creator-details div h3 {
+    font-size: 20px;
+  }
+
   img#mobile-project-header-image {
     display: none;
     object-fit: cover;
   }
 
+  div#project-buttons {
+    min-height: 24px;
+  }
+
   div.project-detail-card:nth-child(1) > img:nth-child(1) {
     display: block;
+  }
+
+  div.project-detail-card img {
+    max-width: 700px;
+  }
+
+  div.project-detail-card p {
+    font-size: 18px;
+    margin-bottom: 64px;
+    max-width: 800px;
   }
 
   div#sidebar {

@@ -44,7 +44,10 @@ div.landing-page-main-container {
 
 div#main-container {
   min-height: calc(100vh - 100px);
+  /* width: calc(100vw - 48px); */
+  /* padding: 24px; */
   width: 100vw;
+  padding: 24px 0 0 0;
 }
 
 #project-header-image {
@@ -122,6 +125,7 @@ h1#title-404 {
   div#main-container {
     margin: 36px 48px;
     width: calc(100vw - 96px);
+    /* padding: 24px 0 0 0; */
   }
 
   button:hover {
