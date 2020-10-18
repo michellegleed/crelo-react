@@ -19,7 +19,7 @@ import NewProjectPage from './pages/NewProjectPage';
 import BrowseCategoriesPage from './pages/BrowseCategories/BrowseCategoriesPage';
 import BrowseLocationsPage from './pages/BrowseLocations/BrowseLocationsPage';
 import SignUpPage from './pages/SignUpPage';
-import UpdateProjectPage from './pages/UpdateProjectPage';
+import UpdateProjectPage from './pages/UpdateProjectPage/UpdateProjectPage';
 import PledgePage from './pages/PledgePage/PledgePage';
 import Unauthorized404 from './pages/404Page';
 

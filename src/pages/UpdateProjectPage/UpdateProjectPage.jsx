@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import EditProjectForm from '../components/Forms/EditProjectForm/EditProjectForm';
-import ProgressUpdateForm from '../components/Forms/ProgressUpdateForm/ProgressUpdateForm';
-import { UserDetailsContext } from '../utils/context';
+import EditProjectForm from '../../components/Forms/EditProjectForm/EditProjectForm';
+import ProgressUpdateForm from '../../components/Forms/ProgressUpdateForm/ProgressUpdateForm';
+import { UserDetailsContext } from '../../utils/context';
 
-
+import './UpdateProjectPage.css';
 
 function UpdateProjectPage() {
 

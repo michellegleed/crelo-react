@@ -17,8 +17,10 @@ div#edit-profile-form {
 div.user-profile {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   margin: 24px 0;
+  width: calc(100vw - 24px);
 }
 
 div.user-profile .error-message p {

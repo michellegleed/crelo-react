@@ -42,6 +42,7 @@ function UserProjectsPage() {
 
     return (
         <div >
+            <h1>My Projects:</h1>
             {
                 projectList ?
                     projectList.length > 0 ?

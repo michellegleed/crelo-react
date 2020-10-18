@@ -26,12 +26,17 @@ const FetchDetails = () => {
                 .then((data) => {
                     console.log(data);
                     // setUserData(data);
-                    actions.updateAllDetails(data);
-                    console.log("updated context. user name is ", data.user.username)
-                    setFetching(false);
+                    if (fetching === true) {
+                        actions.updateAllDetails(data);
+                        console.log("updated context. user name is ", data.user.username)
+                        setFetching(false);
+                    }
                     // console.log("username: ", userData.user.username);
                 });
         }
+        return (() => {
+            setFetching(false);
+        })
     }, []);
 
     // const updateAccountDetails = (userDetails) => {

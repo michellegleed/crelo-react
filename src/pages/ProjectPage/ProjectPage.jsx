@@ -46,6 +46,7 @@ function ProjectPage() {
       },
     })
       .then(results => {
+        console.log("queried project detail view")
         return results.json();
       })
       .then(data => {

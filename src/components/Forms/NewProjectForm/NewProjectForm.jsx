@@ -18,7 +18,8 @@ function NewProjectForm() {
         category: 1,
         description: "",
         image: "",
-        title: ""
+        title: "",
+        venue: "",
     });
 
     const history = useHistory();
@@ -106,7 +107,7 @@ function NewProjectForm() {
 
 
     return (
-        <React.Fragment>
+        <div id="new-project-container">
             <form id="new-project-form">
                 <h1>Create A Project</h1>
                 <div className="error-message">
@@ -131,6 +132,14 @@ function NewProjectForm() {
                     }
                 </div>
                 <div className="form-item">
+                    <label htmlFor="image">Image:</label>
+                    <input
+                        type="text"
+                        id="image"
+                        placeholder="Enter the url for the project image"
+                        onChange={handleChange} />
+                </div>
+                <div className="form-item">
                     <label htmlFor="title">Project Title:</label>
                     <input
                         type="text"
@@ -144,7 +153,6 @@ function NewProjectForm() {
                     <input
                         type="text"
                         id="venue"
-                        placeholder="Venue"
                         onChange={handleChange} />
                 </div>
                 <div className="form-item">
@@ -181,14 +189,6 @@ function NewProjectForm() {
                     </span>
                 </div>
                 <div className="form-item">
-                    <label htmlFor="image">Image:</label>
-                    <input
-                        type="text"
-                        id="image"
-                        placeholder="Enter the url for the project image"
-                        onChange={handleChange} />
-                </div>
-                <div className="form-item">
                     <label htmlFor="due_date">Funding End Date:</label>
                     <input
                         type="date"
@@ -202,11 +202,16 @@ function NewProjectForm() {
             </button>
             </form>
 
-            <div id="pledge-project-info-container">
-                <img src={projectDetails.image} id="pledge-page-header-img" />
-                <h1 className="card-title">{projectDetails.title} {projectDetails.venue != "" ? `@ ${projectDetails.venue}` : null}</h1>
+            <div id="project-info-container">
+                {projectDetails.image ?
+                    <img src={projectDetails.image} id="pledge-page-header-img" />
+                    :
+                    null
+                }
+
+                <h1 className="card-title">{projectDetails.title} {projectDetails.venue === "" ? null : `@ ${projectDetails.venue}`}</h1>
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 

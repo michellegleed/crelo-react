@@ -121,7 +121,7 @@ function HomePage() {
                             switch (item.action) {
                                 case "project-created": return <ProjectCard key={index} project={item.project} isActivityFeed={true} />
                                 case "milestone": return <MilestoneCard key={index} item={item} />
-                                case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info} />
+                                case "progress-update": return <ProgressUpdateCard key={index} project={item.project} image={item.image} info={item.info} date={item.date} />
                                 case "last-chance": return item.project.is_open ? <LastChanceCard key={index} project={item.project} /> : null
                             }
                         })

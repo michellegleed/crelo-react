@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { dateObjectFormatter } from '../../../utils/dateFormatter';
 
 import ProgressBar from '../../ProgressBar/ProgressBar';
 
@@ -7,6 +8,8 @@ function MilestoneCard(props) {
 
     // destructuring the props
     const { item } = props;
+
+    const dateObj = dateObjectFormatter(item.date);
 
     return (
         <div className="milestone-card activity-card">
@@ -27,7 +30,7 @@ function MilestoneCard(props) {
                         />
                         <h4 className="activity-card-subtitle">{item.info}% Milestone</h4>
                         <p>{`WooHoo! People in your community have pledged ${item.project.pledgetype == 1 ? "$" : ""} ${item.project.current_amount_pledged} ${item.project.pledgetype == 2 ? "hrs" : ""} towards this project.`}</p>
-                        <h6>Wednesday 12th September 2020</h6>
+                        <h6>{dateObj.date}</h6>
                     </div>
                 </div>
             </Link>

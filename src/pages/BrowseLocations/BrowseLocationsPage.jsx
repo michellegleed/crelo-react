@@ -95,7 +95,7 @@ function BrowseLocationsPage() {
                                 switch (item.action) {
                                     case "project-created": return <ProjectCard key={index} project={item.project} isActivityFeed={true} />
                                     case "milestone": return <MilestoneCard key={index} item={item} />
-                                    case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} info={item.info} />
+                                    case "progress-update": return <ProgressUpdateCard key={index} image={item.image} project={item.project} date={item.date} info={item.info} />
                                     case "last-chance": return item.project.is_open ? <LastChanceCard key={index} project={item.project} /> : null
                                 }
                             })

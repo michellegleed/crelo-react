@@ -51,8 +51,10 @@ div#total-pledges {
   padding: 6px 12px;
   width: max-content;
   transform: translateY(-420px);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.3);
+  /* color: white;
+  background-color: rgba(0, 0, 0, 0.3); */
+  color: #2c2c2c;
+  background-color: rgba(204, 204, 204, 0.75);
   border-radius: 10px;
   font-size: 14px;
   font-weight: 500;
@@ -150,6 +152,7 @@ h4.activity-card-subtitle {
 
   .activity-card p.card-type {
     background-color: rgba(0, 0, 0, 0.3);
+    color: white;
     opacity: 100;
     transition: all 0.2s;
   }

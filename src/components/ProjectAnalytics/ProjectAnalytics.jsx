@@ -9,7 +9,7 @@ function ProjectAnalytics(props) {
         <div id="analytics">
             <h2><i class="fas fa-info-circle"></i>Project Stats</h2>
             <p>Total Page Views: {project.view_count}</p>
-            <p>Total Pledge Count: {project.pledge_count}</p>
+            <p>Total Pledge Count: {project.pledge_count ? project.pledge_count : 0}</p>
             {
                 project.pledgetype === 1 ?
                     <p>Average Pledge: ${project.average_pledge}</p>

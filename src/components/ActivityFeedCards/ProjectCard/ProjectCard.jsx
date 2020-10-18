@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import { dateObjectFormatter } from '../../../utils/dateFormatter';
+
 function ProjectCard(props) {
 
     // destructuring the props
     const { project, isActivityFeed } = props;
+
+    const dateObj = dateObjectFormatter(project.date_created);
 
     const getCategoryIcon = (categoryID) => {
         switch (categoryID) {
@@ -29,15 +33,20 @@ function ProjectCard(props) {
                     </p>
                             :
                             <p className="card-type" style={{ opacity: 0 }}>
-                                <i class="fas fa-lightbulb"></i>
-
+                                <i class="fas fa-lightbulb"></i>{dateObj.date}
                             </p>
                     }
                     <div className="card-text">
                         <h3 className="card-title">{project.title}</h3>
                         <h3 className="activity-card-icon">{getCategoryIcon(project.category.id)}</h3>
                         <p>{project.description.slice(0, 300)}...</p>
-                        <h6>{project.category.name}</h6>
+                        {
+                            isActivityFeed ?
+                                <h6>{project.category.name}</h6>
+                                :
+                                <h6>{dateObj.date}</h6>
+                        }
+
                     </div>
                 </div>
             </Link>
