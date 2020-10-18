@@ -24,7 +24,7 @@ function BrowseCategoriesPage() {
         if (token) {
             if (userDetails) {
                 // showLoading();
-                fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}`, {
+                fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `token ${token}`
@@ -65,7 +65,7 @@ function BrowseCategoriesPage() {
 
     const updateFavourites = (action, categoryID) => {
         if (action === "add" || action === "remove") {
-            const url = `${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}`;
+            const url = `${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}/`;
             console.log()
             const token = window.localStorage.getItem("token");
             if (token) {
@@ -111,7 +111,7 @@ function BrowseCategoriesPage() {
         if (categoryList) {
             for (let i = 0; i < categoryList.length; i++) {
                 if (categoryList[i].id === id) {
-                    return <li><h6>{categoryList[i].name}</h6></li>
+                    return <li key={i}><h6>{categoryList[i].name}</h6></li>
                 }
             }
         }
