@@ -3,21 +3,12 @@ import { useParams, Link, withRouter } from "react-router-dom";
 
 import './ProjectPage.css';
 
-import ProgressBar from "../../components/ProgressBar/ProgressBar.jsx";
 import ProjectDetailCard from "../../components/ProjectDetailCard/ProjectDetailCard";
 import PledgeCard from "../../components/PledgeCard/PledgeCard";
-
-// import { oneProject } from "../data";
-
-
-
-import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
-import ProjectAnalytics from "../../components/ProjectAnalytics/ProjectAnalytics.jsx";
-import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.jsx";
-import DeleteProjectForm from "../../components/DeleteProjectForm/DeleteProjectForm.jsx";
 import CreatorDetails from "../../components/CreatorDetails/CreatorDetails.js";
 import ProjectSidebar from "../../components/ProjectSidebar/ProjectSidebar.js";
-// import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
+
+import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
 
 function ProjectPage() {
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 
-import BadgeList from '../../components/BadgeList/BadgeList';
 import PledgeCard from '../../components/PledgeCard/PledgeCard';
 import UserProfileForm from '../../components/Forms/UserProfileForm/UserProfileForm';
-import { UserDetailsContext } from '../../utils/context';
 import UserProfile from '../../components/UserProfile/UserProfile';
+
+import { UserDetailsContext } from '../../utils/context';
 
 import './UserAccountPage.css';
 

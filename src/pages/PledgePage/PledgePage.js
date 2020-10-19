@@ -3,15 +3,9 @@ import { useParams, Link } from "react-router-dom";
 
 import './PledgePage.css';
 
-import ProjectDetailCard from "../../components/ProjectDetailCard/ProjectDetailCard";
-
-import ProjectCard from "../../components/ActivityFeedCards/ProjectCard/ProjectCard";
-
-import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.jsx";
+import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.js";
 
 import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
-
-import ProgressBar from '../../components/ProgressBar/ProgressBar.jsx';
 
 function PledgePage() {
 

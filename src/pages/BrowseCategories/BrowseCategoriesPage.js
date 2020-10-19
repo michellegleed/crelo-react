@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
-import LoadingContext from '../../utils/loadingContext';
 
 // import "./BrowseCategories.css";
 
-import Spinner from '../../utils/spinner.jsx';
 import { UserDetailsContext } from '../../utils/context';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 function BrowseCategoriesPage() {
 
-    const { showLoading, hideLoading } = useContext(LoadingContext);
     const { userDetails, actions } = useContext(UserDetailsContext);
 
     const [projectList, setProjectList] = useState();
@@ -23,7 +20,6 @@ function BrowseCategoriesPage() {
         const token = window.localStorage.getItem("token");
         if (token) {
             if (userDetails) {
-                // showLoading();
                 fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`, {
                     headers: {
                         "Content-Type": "application/json",
@@ -37,7 +33,6 @@ function BrowseCategoriesPage() {
                     })
                     .then((data) => {
                         setProjectList(data);
-                        // hideLoading();
                     })
             }
         }

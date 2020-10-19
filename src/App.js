@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 /// Here we are kind of casting BrowserRouter - so we are importing the whole BrowserRouter but then we're also adding references to the parts of it that we want to refer to in our App function.
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -6,27 +6,21 @@ import './App.css';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
-
+import Unauthorized404 from './pages/404Page';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 import ProjectPage from './pages/ProjectPage/ProjectPage';
 import ActivityFeed from './pages/ActivityFeed/ActivityFeed';
-// import ProjectList from './pages/ProjectList';
-// import AboutPage from './pages/AboutPage';
 import UserAccountPage from './pages/UserAccountPage/UserAccountPage';
 import UserProjectsPage from './pages/UserProjectsPage';
 import ProfilePage from './pages/ProfilePage';
-import LoginPage from './pages/LoginPage';
 import NewProjectPage from './pages/NewProjectPage';
 import BrowseCategoriesPage from './pages/BrowseCategories/BrowseCategoriesPage';
 import BrowseLocationsPage from './pages/BrowseLocations/BrowseLocationsPage';
-import SignUpPage from './pages/SignUpPage';
 import UpdateProjectPage from './pages/UpdateProjectPage/UpdateProjectPage';
 import PledgePage from './pages/PledgePage/PledgePage';
-import Unauthorized404 from './pages/404Page';
 
-import LoadingProvider from './utils/LoadingProvider.jsx';
 import { UserContextProvider } from './utils/context';
-
-
 
 function App() {
 
@@ -37,7 +31,6 @@ function App() {
         <UserContextProvider>
           <Nav />
           <div id="main-container">
-            {/* <LoadingProvider> */}
             <Switch>
               <Route path="/login">
                 <LoginPage />
@@ -83,7 +76,6 @@ function App() {
                 <Unauthorized404 />
               </Route>
             </Switch>
-            {/* </LoadingProvider> */}
           </div>
           <Footer />
         </UserContextProvider>
