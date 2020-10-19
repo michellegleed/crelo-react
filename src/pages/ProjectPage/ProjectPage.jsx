@@ -106,8 +106,7 @@ function ProjectPage() {
               //     </div>
               //   </Link>
               // </div>
-              <CreatorDetails user={projectData.user
-              } />
+              <CreatorDetails user={projectData.user} />
               :
               null
           }
@@ -135,7 +134,7 @@ function ProjectPage() {
 
         <ProjectSidebar projectData={projectData} />
 
-        {!projectData.view_count && projectData.is_open ?
+        {projectData.view_count == null && projectData.is_open ?
           <Link to={`/project/${projectData.id}/pledge`} id="sticky-pledge-button" className="pledge-button" style={buttonStyle}><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
           :
           null
