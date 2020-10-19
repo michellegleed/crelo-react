@@ -85,19 +85,19 @@ function UserProfileForm(props) {
 
     return (
         <div className="user-profile">
-            {
-                errorMessage ?
-                    <ErrorMessage message={errorMessage} type="error" />
-                    :
-                    null
-            }
-
             <form>
                 <div id="form-header">
                     <h2>Edit Profile:</h2>
+                    {
+                        errorMessage ?
+                            <ErrorMessage message={errorMessage} type="error" />
+                            :
+                            null
+                    }
                     <button id="close-button" onClick={hideForm}>
                         <i class="fas fa-times"></i>
                     </button>
+
                 </div>
 
                 <div>
