@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import UserProfile from '../components/UserProfile/UserProfile';
+import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
 
-import './UserAccountPage/UserAccountPage.css';
+// import './UserAccountPage/UserAccountPage.css';
 
 function UserAccountPage() {
 
@@ -29,26 +31,25 @@ function UserAccountPage() {
     }, []);
 
     return (
-        <div>
-            <div className="account-content">
-                <img src={userData.image} className="profile-image-large" />
-                <div className="account-page-section" id="user-details">
-                    <h1>{userData.username}</h1>
-                    <p id="user-bio">{userData.bio}</p>
+        userData.user ?
+            <div>
+                <UserProfile user={userData.user} location={userData.location} />
+
+                <h1>Projects:</h1>
+                <div className="account-page-section" id="activity-content">
+
+                    {userData.projects.map((project, index) => {
+                        return project.is_open ?
+                            <ProjectCard key={index} project={project} isActivityFeed={false} />
+                            :
+                            null
+                    })
+                    }
                 </div>
             </div>
+            :
+            null
 
-            {/* <div className="account-page-section" id="user-profile-projects">
-                <h1>Projects:</h1>
-                {userData.projects.map((pledge, index) => {
-                    return pledge.anonymous ?
-                        null
-                        :
-                        <ProjectCard  />
-                })
-                }
-            </div> */}
-        </div>
     );
 }
 

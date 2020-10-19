@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
-import "./ActivityFeed/ActivityFeed.css";
+// import "./ActivityFeed/ActivityFeed.css";
 
 function UserProjectsPage() {
 

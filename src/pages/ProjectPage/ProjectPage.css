@@ -16,40 +16,6 @@ div#project-header {
   margin-bottom: 0;
 }
 
-div#creator-details a {
-  margin: 0;
-  display: flex;
-  align-content: center;
-  color: #232323;
-}
-
-img.sml-user-image {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-div#creator-details div {
-  margin: 0 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-div#creator-details div p,
-div#creator-details div h3 {
-  margin: 0;
-}
-
-div#creator-details div p {
-  font-size: 10px;
-}
-
-div#creator-details div h3 {
-  font-size: 14px;
-}
-
 img#mobile-project-header-image {
   margin: 0 -24px;
   width: 100vw;
@@ -62,9 +28,9 @@ div.project-detail-card:nth-child(1) > img:nth-child(1) {
   display: none;
 }
 
-#project-targets-div {
+/* #project-targets-div {
   font-family: "Grandstander", sans-serif;
-}
+} */
 
 #project-buttons {
   width: 100%;
@@ -74,7 +40,7 @@ button#close-project-btn:hover {
   background-color: black;
 }
 
-div.sidebar-item {
+/* div.sidebar-item {
   text-align: left;
 }
 
@@ -94,16 +60,17 @@ div.sidebar-item div.progress-bar-container {
 div.sidebar-item div.progress-bar {
   margin: 24px 0;
   width: 90%;
-}
+} */
 
 a#sticky-pledge-button {
   display: none;
   position: fixed;
   right: 24px;
-  bottom: 24px;
+  bottom: 56px;
+  z-index: 100;
 }
 
-a.pledge-button button {
+/*a.pledge-button button {
   display: flex;
   justify-content: center;
   margin: 0;
@@ -114,7 +81,7 @@ a.pledge-button p {
   margin: 0;
   font-size: 12px;
   font-weight: 500;
-}
+} */
 
 a#sticky-pledge-button button {
   border-radius: 50%;
@@ -154,13 +121,6 @@ div #pledges {
   border-color: green;
 } */
 
-@media screen and (min-width: 520px) {
-  img.sml-user-image {
-    height: 50px;
-    width: 50px;
-  }
-}
-
 @media screen and (min-width: 720px) {
   div#project-page-container {
     margin: 0;
@@ -182,35 +142,6 @@ div #pledges {
     font-size: 64px;
     margin: 40px 0;
     /* order: 0; */
-  }
-
-  div#creator-details {
-    margin: 36px 0;
-    /* display: flex;
-    align-content: center; */
-  }
-
-  img.sml-user-image {
-    height: 75px;
-    width: 75px;
-    object-fit: cover;
-  }
-
-  div#creator-details div {
-    margin: 0 12px;
-  }
-
-  div#creator-details div p,
-  div#creator-details div h3 {
-    margin: 0;
-  }
-
-  div#creator-details div p {
-    font-size: 14px;
-  }
-
-  div#creator-details div h3 {
-    font-size: 20px;
   }
 
   img#mobile-project-header-image {
@@ -236,7 +167,7 @@ div #pledges {
     max-width: 800px;
   }
 
-  div#sidebar {
+  /* div#sidebar {
     width: 300px;
     order: 2;
   }
@@ -261,7 +192,7 @@ div #pledges {
   div.sidebar-item div.progress-bar {
     margin: 24px 0;
     width: 170px;
-  }
+  } */
 
   a#sticky-pledge-button {
     position: fixed;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Badge from '../Badge/Badge';
 
-import './BadgeList.css';
+// import './BadgeList.css';
 
 function BadgeList(props) {
 

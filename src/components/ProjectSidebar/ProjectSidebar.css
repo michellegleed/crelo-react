@@ -1,0 +1,74 @@
+#project-targets-div {
+  font-family: "Grandstander", sans-serif;
+}
+
+div.sidebar-item {
+  text-align: left;
+}
+
+div.sidebar-item div#time-location-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.sidebar-item div#time-location-info h6 {
+  margin: 24px 8px;
+}
+
+div.sidebar-item div.progress-bar-container {
+  display: none;
+}
+
+div.sidebar-item div.progress-bar {
+  margin: 24px 0;
+  width: 90%;
+}
+
+a#sticky-pledge-button {
+  display: none;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+}
+
+a.pledge-button button {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+a.pledge-button p {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 720px) {
+  div#sidebar {
+    width: 300px;
+    order: 2;
+  }
+
+  div.sidebar-item {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  div.sidebar-item div#time-location-info {
+    display: block;
+  }
+
+  div.sidebar-item div.progress-bar-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  div.sidebar-item div.progress-bar {
+    margin: 24px 0;
+    width: 170px;
+  }
+}

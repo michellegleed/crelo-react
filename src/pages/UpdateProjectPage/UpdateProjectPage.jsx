@@ -5,7 +5,7 @@ import EditProjectForm from '../../components/Forms/EditProjectForm/EditProjectF
 import ProgressUpdateForm from '../../components/Forms/ProgressUpdateForm/ProgressUpdateForm';
 import { UserDetailsContext } from '../../utils/context';
 
-import './UpdateProjectPage.css';
+// import './UpdateProjectPage.css';
 
 function UpdateProjectPage() {
 

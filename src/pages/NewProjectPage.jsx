@@ -6,7 +6,9 @@ import NewProjectForm from '../components/Forms/NewProjectForm/NewProjectForm';
 function NewProjectPage() {
 
     return (
-        <NewProjectForm />
+        <div className="main-container">
+            <NewProjectForm />
+        </div>
     );
 }
 

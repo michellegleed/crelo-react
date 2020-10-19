@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import './ActivityFeed.css';
+// import './ActivityFeed.css';
 // import './ActivityFeedSmallCards.css';
 
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';

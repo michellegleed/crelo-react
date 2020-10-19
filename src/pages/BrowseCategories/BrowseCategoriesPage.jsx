@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import LoadingContext from '../../utils/loadingContext';
 
-import "./BrowseCategories.css";
+// import "./BrowseCategories.css";
 
 import Spinner from '../../utils/spinner.jsx';
 import { UserDetailsContext } from '../../utils/context';

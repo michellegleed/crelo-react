@@ -1,0 +1,24 @@
+img.profile-image-large {
+  object-fit: cover;
+  width: 100vw;
+  height: auto;
+  max-height: 350px;
+}
+
+div#user-details h6 {
+  margin: 4px 0 8px 0;
+}
+
+@media screen and (min-width: 720px) {
+  div.account-content {
+    display: flex;
+  }
+
+  img.profile-image-large {
+    object-fit: cover;
+    width: 45vw;
+    max-width: 500px;
+    height: auto;
+    max-height: 50vh;
+  }
+}

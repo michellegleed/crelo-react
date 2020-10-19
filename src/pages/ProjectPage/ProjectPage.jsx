@@ -15,6 +15,8 @@ import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatte
 import ProjectAnalytics from "../../components/ProjectAnalytics/ProjectAnalytics.jsx";
 import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.jsx";
 import DeleteProjectForm from "../../components/DeleteProjectForm/DeleteProjectForm.jsx";
+import CreatorDetails from "../../components/CreatorDetails/CreatorDetails.js";
+import ProjectSidebar from "../../components/ProjectSidebar/ProjectSidebar.js";
 // import ProjectCard from "../components/ProjectCard/ProjectCard.jsx";
 
 function ProjectPage() {
@@ -90,131 +92,80 @@ function ProjectPage() {
   }
 
   return (
-    <div id="project-page-container">
+    projectData ?
+      <div id="project-page-container">
+        < div id="project-header" >
+          {
+            projectData ?
+              // <div id="creator-details">
+              //   <Link to={`/user/${projectData.user.id}`}>
+              //     <img className="sml-user-image" src={projectData.user.image} />
+              //     <div>
+              //       <p>Created by</p>
+              //       <h3>{projectData.user.username}</h3>
+              //     </div>
+              //   </Link>
+              // </div>
+              <CreatorDetails user={projectData.user
+              } />
+              :
+              null
+          }
+          <h1>{projectData.title}</h1>
+        </div >
 
-      <div id="project-header">
-        {projectData ?
-          <div id="creator-details">
-            <Link to={`/user/${projectData.user.id}`}>
-              <img className="sml-user-image" src={projectData.user.image} />
-              <div>
-                <p>Created by</p>
-                <h3>{projectData.user.username}</h3>
-              </div>
-            </Link>
-          </div>
+        <div id="project-buttons">
+          {
+            projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
+          }
+          {
+            projectData.view_count != null ?
+              <Link to={`/project/${id}/update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
+              :
+              null
+          }
+          {
+            projectData.view_count != null && projectData.is_open ? <button id="close-project-btn" onClick={closeProject}><i class="far fa-times-circle"></i>Close This Project</button> : null
+          }
+        </div>
+
+        <div>
+          <img src={projectData.image} id="mobile-project-header-image" />
+        </div>
+
+        <ProjectSidebar projectData={projectData} />
+
+        {!projectData.view_count && projectData.is_open ?
+          <Link to={`/project/${projectData.id}/pledge`} id="sticky-pledge-button" className="pledge-button" style={buttonStyle}><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
           :
           null
         }
-        <h1>{projectData.title}</h1>
-      </div>
 
-      <div id="project-buttons">
-        {
-          projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
-        }
-        {
-          projectData.view_count != null ?
-            <Link to={`/project/${id}/update`}><button><i class="fas fa-pencil-alt"></i>Update Project</button></Link>
-            :
-            null
-        }
-        {
-          projectData.view_count != null && projectData.is_open ? <button id="close-project-btn" onClick={closeProject}><i class="far fa-times-circle"></i>Close This Project</button> : null
-        }
-      </div>
-
-      <div>
-        <img src={projectData.image} id="mobile-project-header-image" />
-      </div>
-
-      <div id="sidebar">
-        <div className="sidebar-item">
-          <div id="time-location-info">
-            {projectData.venue == "" ?
-              <h6><i class="fas fa-map-marker-alt"></i>City of {projectData.location}</h6>
-              :
-              <h6><i class="fas fa-map-marker-alt"></i>{projectData.venue}, City of {projectData.location}</h6>
-            }
-            {
-              projectData.is_open ? <h6><i class="far fa-clock"></i>{timeLeftObj.days} days, {timeLeftObj.hours} hrs remaining</h6> : <h6><i class="far fa-clock"></i>Closed to funding on {dueDateObj.date}</h6>
-            }
-          </div>
-          {
-            projectData ?
-              <ProgressBar
-                percentage={projectData.current_percentage_pledged}
-              />
-              :
-              null
-
-          }
-
-          <div id="project-targets-div">
-            {
-              projectData.pledgetype === 1 ?
-                <React.Fragment>
-                  <h4 className="coloured-text">Target: ${projectData.goal_amount}</h4>
-                  <h4>Pledged: ${projectData.current_amount_pledged ? projectData.current_amount_pledged : 0}</h4>
-                </React.Fragment>
-                :
-                projectData.pledgetype === 2 ?
-                  <React.Fragment>
-                    <h4 className="coloured-text">Target: {projectData.goal_amount} hrs</h4>
-                    <h4>Pledged: {projectData.current_amount_pledged ? projectData.current_amount_pledged : 0} hrs</h4>
-                  </React.Fragment>
-                  :
-                  null
-
-            }
+        <div id="project-page-content">
+          <div className="project-content">
+            <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />
 
             {
-              projectData.view_count == null && projectData.is_open ?
-                <Link to={`/project/${id}/pledge`} className="pledge-button" id="static-pledge-button"><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
-                :
-                null
-            }
-
-
-          </div>
-        </div>
-
-        <div className="sidebar-item">
-          {
-            projectData.view_count != null ?
-              <ProjectAnalytics project={projectData} />
-              :
-              projectData.is_open ?
-                <Link to={`/project/${id}/pledge`} id="sticky-pledge-button" className="pledge-button" style={buttonStyle}><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
-                :
-                null
-          }
-        </div>
-      </div >
-
-      <div id="project-page-content">
-        <div className="project-content">
-          <ProjectDetailCard image={projectData.image} date={projectData.date_created} content={projectData.description} />
-
-          {
-            projectData.updates.map((update, index) => {
-              return <ProjectDetailCard image={update.image} date={update.date} content={update.content} key={index} />
-            })
-          }
-        </div>
-
-        <div id="pledges">
-          <h2>Pledges:</h2>
-          <div>
-            {
-              projectData.pledges.map((pledge, index) => {
-                return <PledgeCard key={index} pledge={pledge} isProfilePage={false} />;
+              projectData.updates.map((update, index) => {
+                return <ProjectDetailCard image={update.image} date={update.date} content={update.content} key={index} />
               })
             }
           </div>
+
+          <div id="pledges">
+            <h2>Pledges:</h2>
+            <div>
+              {
+                projectData.pledges.map((pledge, index) => {
+                  return <PledgeCard key={index} pledge={pledge} isProfilePage={false} />;
+                })
+              }
+            </div>
+          </div>
         </div>
       </div>
-    </div >
+      :
+      <div id="project-page-container" ></div>
   );
 }
 

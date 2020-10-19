@@ -2,7 +2,7 @@ import React from 'react';
 
 import { dateObjectFormatter } from '../../utils/dateFormatter.js'
 
-import './Badge.css';
+// import './Badge.css';
 
 function Badge(props) {
 

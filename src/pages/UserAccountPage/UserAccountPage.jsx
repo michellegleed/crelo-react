@@ -4,6 +4,7 @@ import BadgeList from '../../components/BadgeList/BadgeList';
 import PledgeCard from '../../components/PledgeCard/PledgeCard';
 import UserProfileForm from '../../components/Forms/UserProfileForm/UserProfileForm';
 import { UserDetailsContext } from '../../utils/context';
+import UserProfile from '../../components/UserProfile/UserProfile';
 
 import './UserAccountPage.css';
 
@@ -49,7 +50,7 @@ function UserAccountPage() {
     return (
         <div>
             <h1 id="page-title">My Profile:</h1>
-            <div className="account-content">
+            {/* <div className="account-content">
                 <img src={userData.user.image} className="profile-image-large" />
                 <div className="account-page-section" id="user-details">
                     <h1>{userData.user.username}</h1>
@@ -57,7 +58,11 @@ function UserAccountPage() {
                     <p id="user-bio">{userData.user.bio}</p>
                     <button onClick={() => setShowForm(true)}>Edit Profile</button>
                 </div>
-            </div>
+            </div> */}
+            <UserProfile user={userData.user} location={userData.location} />
+
+            <button onClick={() => setShowForm(true)}>Edit Profile</button>
+
             {showForm ?
                 <div className="account-page-section" id="edit-profile-form">
                     <UserProfileForm user={userData.user} location={userData.location} updateAccountDetails={updateAccountDetails} />

@@ -48,7 +48,7 @@ function PledgePage() {
 
 
     return (
-        <div id="pledge-page-container">
+        <div className="main-container" id="pledge-page-container">
 
             {/* <img src={projectData.image} id="pledge-page-header-img" />
             <h1>{projectData.title}</h1> */}
