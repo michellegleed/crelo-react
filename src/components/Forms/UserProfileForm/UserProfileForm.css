@@ -91,6 +91,42 @@ div.user-profile form button {
     padding: 0 24px;
   }
 
+  /* ?????????????????????? */
+  @media screen and (min-width: 720px) {
+    div.user-profile {
+      max-width: 100vw;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    div.user-profile form {
+      max-width: 700px;
+      background-color: white;
+      color: #232323;
+    }
+
+    div.user-profile form button {
+      align-self: center;
+      color: #232323;
+    }
+
+    div.user-profile form button:hover {
+      color: white;
+    }
+
+    form button#close-button:hover {
+      color: rgb(6, 180, 6);
+      background-color: transparent;
+    }
+  }
+
+  /* ?????????????????????? */
+
   div.user-profile form div input,
   div.user-profile form div textarea,
   div.user-profile form div#location-select-div {
