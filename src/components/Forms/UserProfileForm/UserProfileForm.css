@@ -20,7 +20,11 @@ div.user-profile {
   align-items: center;
   flex-direction: column;
   margin: 24px 0;
-  width: calc(100vw - 24px);
+  width: 100%;
+}
+
+div.profile-form-container {
+  display: block;
 }
 
 div.user-profile .error-message p {
@@ -80,7 +84,7 @@ div.user-profile form button {
 }
 
 @media screen and (min-width: 520px) {
-  div.user-profile form {
+  div.user-profile {
     width: 80vw;
     max-width: 800px;
     margin: 24px 0 64px 0;

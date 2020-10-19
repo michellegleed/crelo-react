@@ -61,14 +61,16 @@ function UserAccountPage() {
             </div> */}
             <UserProfile user={userData.user} location={userData.location} />
 
-            <button onClick={() => setShowForm(true)}>Edit Profile</button>
+            <div className="profile-form-container">
+                <button onClick={() => setShowForm(true)}>Edit Profile</button>
 
-            {showForm ?
-                <div className="account-page-section" id="edit-profile-form">
-                    <UserProfileForm user={userData.user} location={userData.location} updateAccountDetails={updateAccountDetails} />
-                </div>
-                :
-                null}
+                {showForm ?
+                    <div className="account-page-section" id="edit-profile-form">
+                        <UserProfileForm user={userData.user} location={userData.location} updateAccountDetails={updateAccountDetails} />
+                    </div>
+                    :
+                    null}
+            </div>
 
             <div className="account-page-section" id="user-pledges">
                 <h1>Pledges:</h1>
