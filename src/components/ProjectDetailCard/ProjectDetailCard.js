@@ -7,7 +7,6 @@ import { dateObjectFormatter } from '../../utils/dateFormatter';
 
 function ProjectDetailCard(props) {
 
-    // destructuring the props
     const { image, date, content } = props;
     const dateObj = dateObjectFormatter(date);
 

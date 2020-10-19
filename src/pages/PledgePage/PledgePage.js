@@ -43,11 +43,6 @@ function PledgePage() {
 
     return (
         <div className="main-container" id="pledge-page-container">
-
-            {/* <img src={projectData.image} id="pledge-page-header-img" />
-            <h1>{projectData.title}</h1> */}
-            {/* <ProjectCard image={projectData.image} date={projectData.date_created} content="" /> */}
-
             <div id="pledge-project-info-container">
                 <img src={projectData.image} id="pledge-page-header-img" />
                 <h1 className="card-title">{projectData.title} {projectData.venue != "" ? `@ ${projectData.venue}` : null}</h1>

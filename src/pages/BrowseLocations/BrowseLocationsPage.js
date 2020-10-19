@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import "..//BrowseCategories/BrowseCategories.css";
 import "../ActivityFeed/ActivityFeed.css";

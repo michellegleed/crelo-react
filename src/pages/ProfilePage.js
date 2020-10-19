@@ -49,7 +49,6 @@ function UserAccountPage() {
             </div>
             :
             null
-
     );
 }
 

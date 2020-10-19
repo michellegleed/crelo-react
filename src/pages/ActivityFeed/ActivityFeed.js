@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext, Fragment } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './ActivityFeed.css';
 // import './ActivityFeedSmallCards.css';
@@ -12,9 +11,6 @@ import ProgressUpdateCard from '../../components/ActivityFeedCards/ProgressUpdat
 import LastChanceCard from '../../components/ActivityFeedCards/LastChanceCard/LastChanceCard';
 
 import { UserDetailsContext } from '../../utils/context';
-// import { act } from 'react-dom/test-utils';
-
-// import { activityFeed } from '../../data';
 
 function HomePage() {
 
@@ -71,19 +67,10 @@ function HomePage() {
         return (< div id="total-pledges">
             <h3><i class="fas fa-donate"></i>My Total Pledges:</h3>
             {
-                // totalMoney > 0 ?
                 <h5>{`$${totalMoney} across ${userDetails.pledges.length} projects`}</h5>
-                // <h5>{`$${totalMoney}`}</h5>
-                // :
-                // null
             }
             {
-                // totalHours > 0 ?
-                // <h5>{`${totalHours} hrs`}</h5>
-                // :
-                // null
             }
-            {/* <h5>{`${userDetails.pledges.length} projects`}</h5> */}
         </div>);
     }
 

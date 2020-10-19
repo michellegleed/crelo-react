@@ -21,12 +21,9 @@ function PledgeCard(props) {
                             <img src={pledge.project.image} className="pledge-user-image" />
                         </Link>
 
-                        {/* /* <div className="pledge-text"> */
-            /* checking if $ or hrs... */}
                         < h5 className="pledge-value">{pledge.type_id == 1 ? `$${pledge.amount}` : pledge.type_id == 2 ? `${pledge.amount} hrs` : null
                         }</h5>
                         <p className="pledge-comment">{pledge.comment}</p>
-                        {/* <p ><span className="username-bold">{pledge.user.username}</span>{dateObj.day} {dateObj.date}</p> */}
                         <div className="pledge-info">
                             <p className="pledge-username">{pledge.project.title}</p>
                             <p className="pledge-date">{dateObj.day} {dateObj.date}</p>
@@ -42,13 +39,9 @@ function PledgeCard(props) {
                                     <h1><i class="fas fa-user"></i></h1>
                             }
                         </Link>
-
-                        {/* <div className="pledge-text"> */}
-                        {/* checking if $ or hrs... */}
                         <h5 className="pledge-value">{pledge.type_id == 1 ? `$${pledge.amount}` : pledge.type_id == 2 ? `${pledge.amount} hrs` : null
                         }</h5>
                         <p className="pledge-comment">{pledge.comment}</p>
-                        {/* <p ><span className="username-bold">{pledge.user.username}</span>{dateObj.day} {dateObj.date}</p> */}
                         <div className="pledge-info">
                             <p className="pledge-username">{pledge.anonymous ? "Anonymous" : pledge.user.username}</p>
                             <p className="pledge-date">{dateObj.day} {dateObj.date}</p>

@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { Link } from "react-router-dom";
-import LoginForm from '../components/Forms/LoginForm/LoginForm';
-import About from '../components/AboutCrelo/AboutCrelo';
 
 function Unauthorized404() {
     return (

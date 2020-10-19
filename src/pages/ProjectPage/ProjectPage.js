@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, withRouter } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import './ProjectPage.css';
 
@@ -76,9 +76,6 @@ function ProjectPage() {
     if (response.ok) {
       setProjectClosed(true);
       return response.json();
-      // return response.json();
-      // response.json()
-      // .then(response => history.push(`projects / ${ id } /))
     }
   }
 
@@ -88,15 +85,6 @@ function ProjectPage() {
         < div id="project-header" >
           {
             projectData ?
-              // <div id="creator-details">
-              //   <Link to={`/user/${projectData.user.id}`}>
-              //     <img className="sml-user-image" src={projectData.user.image} />
-              //     <div>
-              //       <p>Created by</p>
-              //       <h3>{projectData.user.username}</h3>
-              //     </div>
-              //   </Link>
-              // </div>
               <CreatorDetails user={projectData.user} />
               :
               null

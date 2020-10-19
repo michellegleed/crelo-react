@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom';
 
 import './EditProjectForm.css'
 
-import { capitalizeFirstLetter } from './../../../utils/capitaliseFirstLetter';
-import ProgressUpdateCard from '../../ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 function EditProjectForm(props) {
@@ -45,13 +43,6 @@ function EditProjectForm(props) {
             },
             body: JSON.stringify(projectDetails),
         })
-        // if (response.ok) {
-        //     return response.json();
-        // } else {
-        //     response.text().then(text => {
-        //         throw Error(text)
-        //     })
-        // }
         const data = await response.json()
         return {
             ok: response.ok,
@@ -61,16 +52,6 @@ function EditProjectForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // postData().then(response => {
-        //     if (response) {
-        //         // redirect to project page on successful post
-        //         history.push(`project/${response.id}`);
-        //     }
-        // }).catch((error) => {
-        //     // do nothing. I think i just need this here in case?
-        // });
-
         postData().then(data => {
             if (data.ok) {
                 history.push(`project/${data.id}`);

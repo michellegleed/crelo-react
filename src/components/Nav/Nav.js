@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext, Fragment } from 'react';
-import { Link, useLocation } from "react-router-dom";
-// import { loggedInUser } from '../../data';
+import { useLocation } from "react-router-dom";
 import { UserDetailsContext } from '../../utils/context';
 import MobileNav from './MobileNav/MobileNav';
 import DesktopNav from './DesktopNav/DesktopNav';
@@ -48,31 +47,11 @@ function Nav() {
         }
     }, [loggedIn])
 
-
     /// Logout
     const handleLogout = () => {
         window.localStorage.clear();
         actions.clearDetails();
     };
-
-
-    /// Show/Hide Drop-Down Account Menu
-    // const [displayAccountMenu, setDisplayAccountMenu] = useState(false);
-
-    // const showAccountMenu = () => {
-    //     setDisplayAccountMenu(true);
-    //     document.addEventListener('click', hideAccountMenu);
-    // }
-
-    // const hideAccountMenu = () => {
-    //     setDisplayAccountMenu(false);
-    //     document.removeEventListener('click', hideAccountMenu);
-    // }
-
-    // const displayStyle = {
-    //     display: displayAccountMenu ? "flex" : "none"
-    // }
-
 
     return (
         <Fragment>

@@ -50,15 +50,7 @@ function UserAccountPage() {
     return (
         <div>
             <h1 id="page-title">My Profile:</h1>
-            {/* <div className="account-content">
-                <img src={userData.user.image} className="profile-image-large" />
-                <div className="account-page-section" id="user-details">
-                    <h1>{userData.user.username}</h1>
-                    <h6><i class="fas fa-map-marker-alt"></i>City of {userData.location.name}</h6>
-                    <p id="user-bio">{userData.user.bio}</p>
-                    <button onClick={() => setShowForm(true)}>Edit Profile</button>
-                </div>
-            </div> */}
+
             <UserProfile user={userData.user} location={userData.location} />
 
             <div className="profile-form-container">

@@ -34,19 +34,6 @@ function SignUpForm() {
             },
             body: JSON.stringify(userDetails),
         })
-        // if (response.ok) {
-        //     return response.json();
-        // } else {
-        //     response.text().then(text => {
-        //         throw Error(text)
-        //     }).catch(
-        //         (error) => {
-        //             console.log("errorText = ", error)
-        //             const errorObj = JSON.parse(error.message)
-        //             setErrorMessage(errorObj.detail);
-        //         }
-        //     )
-        // }
         const data = await response.json()
         return {
             ok: response.ok,
@@ -62,15 +49,6 @@ function SignUpForm() {
                 console.log(userDetails.password, userDetails.confirmPassword);
                 setErrorMessage("Passwords do not match!");
             } else {
-                // postUserData().then(response => {
-                //     if (response.ok) {
-                //         console.log("response ok");
-                //         history.push("/login");
-                //     }
-                // }).catch((error) => {
-                //     console.log("caught error ", errorMessage);
-                //     // do nothing. I think i just need this here in case?
-                // })
                 postUserData().then(data => {
                     if (data.ok) {
                         console.log(data);

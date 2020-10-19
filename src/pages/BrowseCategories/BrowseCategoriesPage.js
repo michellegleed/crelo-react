@@ -122,18 +122,12 @@ function BrowseCategoriesPage() {
                     :
                     null
                 }
-                {/*  <button onClick={() => changeCategory(1)}>Education</button>
-                 <button onClick={() => changeCategory(2)}>Arts + Entertainment</button>
-                 <button onClick={() => changeCategory(3)}>Local Landscape</button>
-                 <button onClick={() => changeCategory(4)}>Health</button>
-                 <button onClick={() => changeCategory(5)}>Kids</button> */}
                 <button className={checkIfBtnSelected("favourites")} onClick={() => changeCategory("favourites")}>My Followed Categories</button>
             </div>
 
             <div id="project-list">
                 {
                     userDetails ?
-                        // userDetails.user ?
                         selectedCategory !== "favourites" ?
                             checkIsFavourite() ?
                                 <button className="add-remove-fav-category" onClick={() => updateFavourites("remove", selectedCategory)}><i class="fas fa-minus-circle"></i> Remove from My Followed Categories</button>

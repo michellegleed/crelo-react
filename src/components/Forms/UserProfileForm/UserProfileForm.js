@@ -143,20 +143,6 @@ function UserProfileForm(props) {
                         onChange={handleChange}
                     />
                 </div>
-                {/* <div>
-                    <h2>Followed Categories:</h2>
-                    <label htmlFor="favourite_categories">Update Favourite Categories</label>
-                    {categoryList ?
-                        <select id="favouriteCategories" name="favouriteCategories" onChange={handleChange} multiple>
-                            {categoryList.map(category => {
-                                return checkIfFavouriteCategory(category)
-                            })}
-                        </select>
-                        :
-                        null
-                    }
-                </div> */}
-
                 <button type="submit" onClick={handleSubmit}>
                     Save Changes
             </button>

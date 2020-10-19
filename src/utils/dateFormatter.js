@@ -1,5 +1,3 @@
-
-
 export function dateObjectFormatter(isoDate) {
   var d = new Date(isoDate);
   var date = d.toLocaleDateString("en-GB", { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
@@ -15,29 +13,6 @@ export function dateObjectFormatter(isoDate) {
     time: time
   };
 }
-
-export function dateStringFormatter(isoDate) {
-  var d = new Date(isoDate);
-  var date = d.toDateString();
-  var ampm = d.getHours() >= 12 ? " PM" : " AM";
-  var time =
-    ("0" + (d.getHours() % 12)).slice(-2) +
-    ":" +
-    ("0" + d.getMinutes()).slice(-2) +
-    ampm;
-
-  return `${date} at ${time}`;
-}
-
-// export function timeLeftFormatter(isoDate) {
-//     var dt = isoDate - Date.now();
-//     var now = new Date(Date.now());
-//     var d = new Date(isoDate);
-//     // var diff = (d - now) / 1000;
-//     // diff /= 60 * 60;
-//     console.log(dt, "days and hours left");
-//     // return Math.abs(Math.round(diff));
-// }
 
 export function timeLeftFormatter(isoDate) {
   // difference is calculated in milliseconds. Dividing result by milliseconds per hour will give the difference in hours.

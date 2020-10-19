@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import EditProjectForm from '../../components/Forms/EditProjectForm/EditProjectForm';
 import ProgressUpdateForm from '../../components/Forms/ProgressUpdateForm/ProgressUpdateForm';
 import { UserDetailsContext } from '../../utils/context';
@@ -15,10 +15,6 @@ function UpdateProjectPage() {
     const history = useHistory();
 
     const [projectData, setProjectData] = useState();
-
-    // const [dateObj, setDateObj] = useState({});
-    // const [timeLeftObj, setTimeLeftObj] = useState({});
-    // const [dueDateObj, setDueDateObj] = useState({});
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -40,7 +36,6 @@ function UpdateProjectPage() {
             });
     }, [id]);
 
-
     // Check if user has permission, if not push to 404 page
     useEffect(() => {
         console.log("usr details: ", userDetails);
@@ -54,12 +49,6 @@ function UpdateProjectPage() {
             }
         }
     }, [userDetails, projectData])
-
-    // useEffect(() => {
-    //     setDateObj(dateObjectFormatter(projectData.date_created));
-    //     setTimeLeftObj(timeLeftFormatter(projectData.due_date));
-    //     setDueDateObj(dateObjectFormatter(projectData.due_date));
-    // }, [projectData]);
 
     return (
         projectData ?

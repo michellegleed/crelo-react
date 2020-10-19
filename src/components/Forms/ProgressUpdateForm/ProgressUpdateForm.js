@@ -3,14 +3,11 @@ import { useHistory } from 'react-router-dom';
 
 import './ProgressUpdateForm.css'
 
-import { capitalizeFirstLetter } from './../../../utils/capitaliseFirstLetter';
-
 function ProgressUpdateForm(props) {
 
     const token = window.localStorage.getItem("token");
 
     const [progressUpdate, setProgressUpdate] = useState();
-    // const [content, setContent] = useState("Hi everyone, here's a quick update on our progress...");
 
     const history = useHistory();
 
@@ -50,15 +47,6 @@ function ProgressUpdateForm(props) {
         <div>
             <h2>Add A Progress Update...</h2>
             <form>
-                {/* <div>
-                    <label htmlFor="title">Title:</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Progress Update Title"
-                        onChange={handleChange}
-                    />
-                </div> */}
                 <div className="form-item">
                     <label htmlFor="image">Image:</label>
                     <input

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
 import { Link } from "react-router-dom";
-
 import { useHistory } from 'react-router-dom';
+
 import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
-// import "./ActivityFeed/ActivityFeed.css";
+import "./ActivityFeed/ActivityFeed.css";
 
 function UserProjectsPage() {
 
@@ -54,7 +53,6 @@ function UserProjectsPage() {
                         :
                         <div>
                             <ErrorMessage message="You haven't created any projects" type="warning" />
-                            {/* <h3><Link to="/new-project">Click here </Link>to create a project</h3> */}
                             <Link to="/new-project"><button>Create A Project</button></Link>
                         </div>
                     :

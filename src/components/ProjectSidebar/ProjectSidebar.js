@@ -83,9 +83,6 @@ function ProjectSidebar(props) {
                     projectData.view_count != null ?
                         <ProjectAnalytics project={projectData} />
                         :
-                        // projectData.is_open ?
-                        //     <Link to={`/project/${projectData.id}/pledge`} id="sticky-pledge-button" className="pledge-button" style={buttonStyle}><button><i class="fas fa-donate"></i><p>Pledge to this Project</p></button></Link>
-                        //     :
                         null
                 }
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import './MobileNav.css';
@@ -62,9 +62,6 @@ function MobileNav(props) {
                         </div>
                         :
                         <div className="nav-menu">
-                            {/* <div className="nav-item mobile-only-nav-item">
-                                <Link to="/about">About</Link>
-                            </div> */}
                             <div className="nav-item mobile-only-nav-item">
                                 <Link to="/login">Log In</Link>
                             </div>
