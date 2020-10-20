@@ -6,7 +6,8 @@ import './App.css';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
-import Unauthorized404 from './pages/404Page';
+import Unauthorized from './pages/Unauthorized';
+import NotFound from './pages/NotFound';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import ProjectPage from './pages/ProjectPage/ProjectPage';
@@ -32,14 +33,14 @@ function App() {
           <Nav />
           <div id="main-container">
             <Switch>
+              <Route path="/" exact>
+                <ActivityFeed />
+              </Route>
               <Route path="/login">
                 <LoginPage />
               </Route>
               <Route path="/signup">
                 <SignUpPage />
-              </Route>
-              <Route path="/unauthorized">
-                <Unauthorized404 />
               </Route>
               {/* using react-params for the project ID */}
               <Route path="/project/:id/update">
@@ -69,11 +70,11 @@ function App() {
               <Route path="/account">
                 <UserAccountPage />
               </Route>
-              <Route path="/" exact>
-                <ActivityFeed />
+              <Route path="/unauthorized">
+                <Unauthorized />
               </Route>
               <Route path="/">
-                <Unauthorized404 />
+                <NotFound />
               </Route>
             </Switch>
           </div>

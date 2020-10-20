@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
+import { fetchRequest } from '../utils/fetchRequest';
 
 import "./ActivityFeed/ActivityFeed.css";
 
@@ -13,30 +14,43 @@ function UserProjectsPage() {
 
     const history = useHistory();
 
+    // useEffect(() => {
+    //     const token = window.localStorage.getItem("token");
+    //     if (token) {
+    //         fetch(`${process.env.REACT_APP_API_URL}account/projects/`, {
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Authorization": `token ${token}`
+    //             },
+    //         })
+    //             .then((results) => {
+    //                 if (results.status == 200) {
+    //                     return results.json()
+    //                 }
+    //             })
+    //             .then((data) => {
+    //                 setProjectList(data);
+    //             })
+    //     }
+    //     else {
+    //         history.push("login/");
+    //     }
+
+    // }, []);
+
+
     useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        if (token) {
-            fetch(`${process.env.REACT_APP_API_URL}account/projects/`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `token ${token}`
-                },
+        fetchRequest(`${process.env.REACT_APP_API_URL}account/projects/`)
+            .then((result) => {
+                if (result.ok) {
+                    console.log(result.data);
+                    setProjectList(result.data);
+                }
+                else {
+                    history.push("/unauthorized");
+                }
             })
-                .then((results) => {
-                    if (results.status == 200) {
-                        return results.json()
-                    }
-                })
-                .then((data) => {
-                    setProjectList(data);
-                })
-        }
-        else {
-            history.push("login/");
-        }
-
     }, []);
-
 
 
     return (

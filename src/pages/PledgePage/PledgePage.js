@@ -7,6 +7,8 @@ import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.js";
 
 import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
 
+import { fr } from "../../utils/fetchRequest";
+
 function PledgePage() {
 
     const [dateObj, setDateObj] = useState({});
