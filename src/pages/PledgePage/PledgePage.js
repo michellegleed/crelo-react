@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import './PledgePage.css';
 
 import PledgeForm from "../../components/Forms/PledgeForm/PledgeForm.js";
 
 import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
-
-import { fr } from "../../utils/fetchRequest";
+import { fetchRequest } from "../../utils/fetchRequest";
 
 function PledgePage() {
 
@@ -18,21 +17,35 @@ function PledgePage() {
     const [projectData, setProjectData] = useState({ user: {}, updates: [], pledges: [] });
 
     const { id } = useParams();
+    const history = useHistory();
+
+    // useEffect(() => {
+    //     const token = window.localStorage.getItem("token");
+    //     fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": `token ${token}`
+    //         },
+    //     })
+    //         .then(results => {
+    //             return results.json();
+    //         })
+    //         .then(data => {
+    //             setProjectData(data);
+    //             console.log(data);
+    //         })
+    // }, [id]);
 
     useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `token ${token}`
-            },
-        })
-            .then(results => {
-                return results.json();
-            })
-            .then(data => {
-                setProjectData(data);
-                console.log(data);
+        fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
+            .then((result) => {
+                if (result.ok) {
+                    console.log(result.data);
+                    setProjectData(result.data);
+                }
+                else {
+                    history.push("/notfound");
+                }
             })
     }, [id]);
 
@@ -41,7 +54,6 @@ function PledgePage() {
         setTimeLeftObj(timeLeftFormatter(projectData.due_date));
         setDueDateObj(dateObjectFormatter(projectData.due_date));
     }, [projectData]);
-
 
     return (
         <div className="main-container" id="pledge-page-container">

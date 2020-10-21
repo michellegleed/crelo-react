@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 
 import './ProjectPage.css';
 
@@ -7,16 +7,20 @@ import ProjectDetailCard from "../../components/ProjectDetailCard/ProjectDetailC
 import PledgeCard from "../../components/PledgeCard/PledgeCard";
 import CreatorDetails from "../../components/CreatorDetails/CreatorDetails.js";
 import ProjectSidebar from "../../components/ProjectSidebar/ProjectSidebar.js";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 import { dateObjectFormatter, timeLeftFormatter } from "../../utils/dateFormatter.js";
+import { fetchRequest } from "../../utils/fetchRequest";
 
 function ProjectPage() {
 
   const [projectData, setProjectData] = useState({ user: {}, updates: [], pledges: [] });
 
-  const [projectClosed, setProjectClosed] = useState()
-
   const { id } = useParams();
+  const history = useHistory();
+
+  const [projectClosed, setProjectClosed] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
   const [buttonStyle, setButtonStyle] = useState({});
   const [dateObj, setDateObj] = useState({});
@@ -30,21 +34,34 @@ function ProjectPage() {
     }
   })
 
+  // useEffect(() => {
+  //   const token = window.localStorage.getItem("token");
+  //   fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Authorization": `token ${token}`
+  //     },
+  //   })
+  //     .then(results => {
+  //       console.log("queried project detail view")
+  //       return results.json();
+  //     })
+  //     .then(data => {
+  //       setProjectData(data);
+  //       console.log(data);
+  //     })
+  // }, [id, projectClosed]);
+
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
-    fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `token ${token}`
-      },
-    })
-      .then(results => {
-        console.log("queried project detail view")
-        return results.json();
-      })
-      .then(data => {
-        setProjectData(data);
-        console.log(data);
+    fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
+      .then((result) => {
+        if (result.ok) {
+          console.log(result.data);
+          setProjectData(result.data);
+        }
+        else {
+          history.push("/notfound");
+        }
       })
   }, [id, projectClosed]);
 
@@ -64,19 +81,26 @@ function ProjectPage() {
     const dateNow = new Date();
     const dateIso = dateNow.toISOString();
 
-    const token = window.localStorage.getItem("token");
-    const response = await fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `token ${token}`
-      },
-      body: JSON.stringify({ due_date: dateIso }),
-    })
-    if (response.ok) {
-      setProjectClosed(true);
-      return response.json();
-    }
+    // const token = window.localStorage.getItem("token");
+    fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`, "put", { due_date: dateIso })
+      // const response = await fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
+      //   method: "put",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Authorization": `token ${token}`
+      //   },
+      //   body: JSON.stringify({ due_date: dateIso }),
+      // })
+      .then((response) => {
+        if (response.ok) {
+          setErrorMessage(null);
+          setProjectClosed(true);
+        } else {
+          console.log(response);
+          setErrorMessage("Error closing project. Please try again in a moment.");
+        }
+      })
+
   }
 
   return (
@@ -93,6 +117,14 @@ function ProjectPage() {
         </div >
 
         <div id="project-buttons">
+          <div className="error-message">
+            {
+              errorMessage ?
+                <ErrorMessage message={errorMessage} type="error" />
+                :
+                null
+            }
+          </div>
           {
             projectData.is_open ? null : <h2 id="project-closed-warning">** This Project is now Closed to Pledges **</h2>
           }

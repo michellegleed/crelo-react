@@ -4,44 +4,61 @@ import { useHistory } from 'react-router-dom';
 import "..//BrowseCategories/BrowseCategories.css";
 import "../ActivityFeed/ActivityFeed.css";
 
-import { UserDetailsContext } from '../../utils/context';
+// import { UserDetailsContext } from '../../utils/context';
 
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import MilestoneCard from '../../components/ActivityFeedCards/MilestoneCard/MilestoneCard';
 import ProgressUpdateCard from '../../components/ActivityFeedCards/ProgressUpdateCard/ProgressUpdateCard';
 import LastChanceCard from '../../components/ActivityFeedCards/LastChanceCard/LastChanceCard';
+import { fetchRequest } from '../../utils/fetchRequest';
 
 function BrowseLocationsPage() {
 
-    const { userDetails, actions } = useContext(UserDetailsContext);
+    // const { userDetails, actions } = useContext(UserDetailsContext);
+
+    /// Get LocationList for location buttons/menu
+    const [locationList, setLocationList] = useState();
 
     const [locationActivity, setLocationActivity] = useState();
     const [selectedLocation, setSelectedLocation] = useState(1);
 
     const history = useHistory();
 
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        if (token) {
-            fetch(`${process.env.REACT_APP_API_URL}locations/${selectedLocation}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `token ${token}`
-                },
-            })
-                .then((results) => {
-                    if (results.status == 200) {
-                        return results.json()
-                    }
-                })
-                .then((data) => {
-                    setLocationActivity(data);
-                })
-        }
-        else {
-            history.push("login/");
-        }
+    // useEffect(() => {
+    //     const token = window.localStorage.getItem("token");
+    //     if (token) {
+    //         fetch(`${process.env.REACT_APP_API_URL}locations/${selectedLocation}`, {
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Authorization": `token ${token}`
+    //             },
+    //         })
+    //             .then((results) => {
+    //                 if (results.status == 200) {
+    //                     return results.json()
+    //                 }
+    //             })
+    //             .then((data) => {
+    //                 setLocationActivity(data);
+    //             })
+    //     }
+    //     else {
+    //         history.push("login/");
+    //     }
 
+    // }, [selectedLocation]);
+
+    useEffect(() => {
+        fetchRequest(`${process.env.REACT_APP_API_URL}locations/${selectedLocation}`)
+            .then((result) => {
+                if (result.ok) {
+                    console.log(result.data);
+                    setLocationActivity(result.data);
+                }
+                else {
+                    history.push("/unathorized");
+                }
+            })
     }, [selectedLocation]);
 
     const changeLocation = (id) => {
@@ -56,17 +73,27 @@ function BrowseLocationsPage() {
         return ""
     }
 
-    /// Get LocationList
-    const [locationList, setLocationList] = useState();
+    // useEffect(() => {
+    //     fetch(`${process.env.REACT_APP_API_URL}locations/`)
+    //         .then((results) => {
+    //             return results.json()
+    //         })
+    //         .then((data) => {
+    //             setLocationList(data);
+    //         });
+    // }, []);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}locations/`)
-            .then((results) => {
-                return results.json()
+        fetchRequest(`${process.env.REACT_APP_API_URL}locations/`)
+            .then((result) => {
+                if (result.ok) {
+                    console.log(result.data);
+                    setLocationList(result.data);
+                }
+                else {
+                    history.push("/unathorized");
+                }
             })
-            .then((data) => {
-                setLocationList(data);
-            });
     }, []);
 
 

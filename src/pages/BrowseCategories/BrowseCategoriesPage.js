@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectC
 // import "./BrowseCategories.css";
 
 import { UserDetailsContext } from '../../utils/context';
+import { fetchRequest } from '../../utils/fetchRequest';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 function BrowseCategoriesPage() {
@@ -16,30 +17,43 @@ function BrowseCategoriesPage() {
 
     const history = useHistory();
 
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        if (token) {
-            if (userDetails) {
-                fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `token ${token}`
-                    },
-                })
-                    .then((results) => {
-                        if (results.status == 200) {
-                            return results.json()
-                        }
-                    })
-                    .then((data) => {
-                        setProjectList(data);
-                    })
-            }
-        }
-        else {
-            history.push("login/");
-        }
+    // useEffect(() => {
+    //     const token = window.localStorage.getItem("token");
+    //     if (token) {
+    //         if (userDetails) {
+    //             fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`, {
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                     "Authorization": `token ${token}`
+    //                 },
+    //             })
+    //                 .then((results) => {
+    //                     if (results.status == 200) {
+    //                         return results.json()
+    //                     }
+    //                 })
+    //                 .then((data) => {
+    //                     setProjectList(data);
+    //                 })
+    //         }
+    //     }
+    //     else {
+    //         history.push("login/");
+    //     }
 
+    // }, [selectedCategory, userDetails]);
+
+    useEffect(() => {
+        fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`)
+            .then((result) => {
+                if (result.ok) {
+                    console.log(result.data);
+                    setProjectList(result.data);
+                }
+                else {
+                    history.push("/unauthorized");
+                }
+            })
     }, [selectedCategory, userDetails]);
 
     const changeCategory = (id) => {
@@ -58,31 +72,46 @@ function BrowseCategoriesPage() {
         return ""
     }
 
+    // const updateFavourites = (action, categoryID) => {
+    //     if (action === "add" || action === "remove") {
+    //         const url = `${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}/`;
+    //         console.log()
+    //         const token = window.localStorage.getItem("token");
+    //         if (token) {
+    //             fetch(url, {
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                     "Authorization": `token ${token}`
+    //                 },
+    //             })
+    //                 .then((results) => {
+    //                     if (results.status == 200) {
+    //                         return results.json()
+    //                     }
+    //                 })
+    //                 .then((data) => {
+    //                     console.log("new user data = ", data);
+    //                     actions.updateUserDetails(data);
+    //                 })
+    //         }
+    //         else {
+    //             history.push("login/");
+    //         }
+    //     }
+    // }
+
     const updateFavourites = (action, categoryID) => {
         if (action === "add" || action === "remove") {
-            const url = `${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}/`;
-            console.log()
-            const token = window.localStorage.getItem("token");
-            if (token) {
-                fetch(url, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `token ${token}`
-                    },
+            fetchRequest(`${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}/`)
+                .then((result) => {
+                    if (result.ok) {
+                        console.log(result.data);
+                        actions.updateUserDetails(result.data);
+                    }
+                    else {
+                        history.push("/unauthorized");
+                    }
                 })
-                    .then((results) => {
-                        if (results.status == 200) {
-                            return results.json()
-                        }
-                    })
-                    .then((data) => {
-                        console.log("new user data = ", data);
-                        actions.updateUserDetails(data);
-                    })
-            }
-            else {
-                history.push("login/");
-            }
         }
     }
 
@@ -100,7 +129,7 @@ function BrowseCategoriesPage() {
                     console.log(category.id, category.name)
                 })
             });
-    }, []);
+    }, []); /// up to changing this one!!!
 
     const getCategoryNameFromID = (id) => {
         if (categoryList) {

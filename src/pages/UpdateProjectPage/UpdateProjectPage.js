@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import EditProjectForm from '../../components/Forms/EditProjectForm/EditProjectForm';
 import ProgressUpdateForm from '../../components/Forms/ProgressUpdateForm/ProgressUpdateForm';
 import { UserDetailsContext } from '../../utils/context';
+import { fetchRequest } from '../../utils/fetchRequest';
 
 import './UpdateProjectPage.css';
 
@@ -16,27 +17,40 @@ function UpdateProjectPage() {
 
     const [projectData, setProjectData] = useState();
 
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `token ${token}`
-            },
-        })
-            .then(results => {
-                return results.json();
-            })
-            .then(data => {
-                setProjectData(data);
-                console.log(data);
-            })
-            .then(() => {
+    // useEffect(() => {
+    //     const token = window.localStorage.getItem("token");
+    //     fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": `token ${token}`
+    //         },
+    //     })
+    //         .then(results => {
+    //             return results.json();
+    //         })
+    //         .then(data => {
+    //             setProjectData(data);
+    //             console.log(data);
+    //         })
+    //         .then(() => {
 
-            });
+    //         });
+    // }, [id]);
+
+    useEffect(() => {
+        fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
+            .then((result) => {
+                if (result.ok) {
+                    console.log(result.data);
+                    setProjectData(result.data);
+                }
+                else {
+                    history.push("/notfound");
+                }
+            })
     }, [id]);
 
-    // Check if user has permission, if not push to 404 page
+    // Check if user has permission, if not push to 401 page
     useEffect(() => {
         console.log("usr details: ", userDetails);
         console.log("project usr details: ", projectData);

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import PledgeCard from '../../components/PledgeCard/PledgeCard';
 import UserProfileForm from '../../components/Forms/UserProfileForm/UserProfileForm';
@@ -7,33 +8,50 @@ import UserProfile from '../../components/UserProfile/UserProfile';
 import { UserDetailsContext } from '../../utils/context';
 
 import './UserAccountPage.css';
+import { fetchRequest } from '../../utils/fetchRequest';
 
 function UserAccountPage() {
 
     const { actions } = useContext(UserDetailsContext);
 
+    const history = useHistory();
+
     const [userData, setUserData] = useState({ user: {}, pledges: [], location: {}, projects: [] });
 
     const [showForm, setShowForm] = useState(false);
 
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        fetch(`${process.env.REACT_APP_API_URL}account/`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `token ${token}`
-            },
-        })
-            .then((results) => {
-                return results.json()
-            })
-            .then((data) => {
-                console.log(data);
-                setUserData(data);
-                actions.updateAllDetails(data);
+    // useEffect(() => {
+    //     const token = window.localStorage.getItem("token");
+    //     fetch(`${process.env.REACT_APP_API_URL}account/`, {
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": `token ${token}`
+    //         },
+    //     })
+    //         .then((results) => {
+    //             return results.json()
+    //         })
+    //         .then((data) => {
+    //             console.log(data);
+    //             setUserData(data);
+    //             actions.updateAllDetails(data);
 
-                console.log("username: ", userData.user.username);
-            });
+    //             console.log("username: ", userData.user.username);
+    //         });
+    // }, []);
+
+    useEffect(() => {
+        fetchRequest(`${process.env.REACT_APP_API_URL}account/`)
+            .then((result) => {
+                if (result.ok) {
+                    console.log(result.data);
+                    setUserData(result.data);
+                    actions.updateAllDetails(result.data);
+                }
+                else {
+                    history.push("/unauthorized");
+                }
+            })
     }, []);
 
     const updateAccountDetails = (userDetails) => {

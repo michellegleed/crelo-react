@@ -44,7 +44,7 @@ function UserAccountPage() {
                     history.push("/notfound");
                 }
             })
-    }, []);
+    }, [userId]);
 
     return (
         userData.user ?

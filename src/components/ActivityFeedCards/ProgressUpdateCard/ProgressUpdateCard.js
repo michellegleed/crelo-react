@@ -20,7 +20,8 @@ function ProgressUpdateCard(props) {
                     </p>
                     <div className="card-text">
                         <h3 className="card-title">{project.title}</h3>
-                        <h3 className="activity-card-icon"><i class="far fa-edit"></i></h3>
+                        <h3 className="activity-card-icon"><i class="far fa-clipboard"></i></h3>
+
                         <h4 className="activity-card-subtitle">{project.user}'s update:</h4>
                         <p>{info.slice(0, 400)}...</p>
                         <h6>{dateObj.date}</h6>

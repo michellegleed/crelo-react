@@ -38,7 +38,12 @@ function ProjectCard(props) {
                     }
                     <div className="card-text">
                         <h3 className="card-title">{project.title}</h3>
-                        <h3 className="activity-card-icon">{getCategoryIcon(project.category.id)}</h3>
+                        {
+                            isActivityFeed ?
+                                <h3 className="activity-card-icon">{getCategoryIcon(project.category.id)}</h3>
+                                :
+                                <h3 className="activity-card-icon">{getCategoryIcon(project.category)}</h3>
+                        }
                         <p>{project.description.slice(0, 300)}...</p>
                         {
                             isActivityFeed ?
