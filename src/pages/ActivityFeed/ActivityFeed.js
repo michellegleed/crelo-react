@@ -60,9 +60,6 @@ function HomePage() {
                     history.push("/unauthorized");
                 }
             })
-            .catch(error => {
-                history.push("/network-error")
-            })
     }, [userDetails]);
 
 

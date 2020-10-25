@@ -62,11 +62,6 @@ export const UserContextProvider = (props) => {
                     history.push("/unauthorized");
                 }
             })
-            .catch(error => {
-                fetchingRef.current = false;
-                history.push("/network-error")
-                // setErrorMessage(error.message);
-            })
     }
 
     return (
