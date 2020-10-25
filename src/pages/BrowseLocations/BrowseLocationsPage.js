@@ -94,6 +94,10 @@ function BrowseLocationsPage() {
                     history.push("/unathorized");
                 }
             })
+            .catch(error => {
+                history.push("/network-error")
+                // setErrorMessage(error.message);
+            })
     }, []);
 
 

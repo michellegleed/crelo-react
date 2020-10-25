@@ -62,15 +62,17 @@ function NewProjectForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(projectDetails);
-        postData().then(data => {
-            if (data.ok) {
-                history.push(`project/${data.id}`);
-            } else {
-                // the API returned an error - do something with it
-                console.error(data);
-                setErrorMessage("All fields are required.");
-            }
-        });
+        postData()
+            .then(data => {
+                if (data.ok) {
+                    history.push(`project/${data.id}`);
+                } else {
+                    // the API returned an error - do something with it
+                    console.error(data);
+                    setErrorMessage("All fields are required.");
+                }
+            })
+            .catch(error => history.push("/network-error"))
     }
 
     /// Get Categories for Select Part of Form

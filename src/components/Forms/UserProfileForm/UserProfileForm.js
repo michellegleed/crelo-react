@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserDetailsContext } from '../../../utils/context';
+import { fetchRequest } from '../../../utils/fetchRequest';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 import './UserProfileForm.css';
@@ -42,25 +43,26 @@ function UserProfileForm(props) {
         }
     }
 
+    // const postData = async () => {
+    //     const body = JSON.stringify(profileDetails);
+    //     return fetchRequest(`${process.env.REACT_APP_API_URL}account/`, "put", body)
+    // }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("stringified profile details: ", JSON.stringify(profileDetails));
-        postData().then(data => {
-            if (data.ok) {
-                setErrorMessage(null);
-                console.log(data);
-                props.updateAccountDetails(data);
-                actions.updateUserDetails(data.user);
-                actions.updateLocationDetails(data.location);
-            } else {
-                // the API returned an error - do something with it
-                console.log("error saving profile")
-                console.error(data)
-                setErrorMessage("Oops! Both the image URL and bio are required fields. (Because I couldn't work out how to make it optional in Django - sorry!!)");
-            }
-            // setErrorMessage(errorObj.detail);
-        })
+        postData()
+            .then(data => {
+                if (data.ok) {
+                    console.log("result.data is ", data)
+                    setErrorMessage(null);
+                    props.updateAccountDetails(data);
+                    actions.updateUserDetails(data.user);
+                    actions.updateLocationDetails(data.location);
+                } else {
+                    setErrorMessage("Oops! Both the image URL and bio are required fields. (Because I couldn't work out how to make it optional in Django - sorry!!)");
+                }
+            })
     }
 
     /// Get Locations for Select Part of Form

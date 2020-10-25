@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, Fragment } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { UserDetailsContext } from '../../utils/context';
 import MobileNav from './MobileNav/MobileNav';
 import DesktopNav from './DesktopNav/DesktopNav';
@@ -7,6 +7,13 @@ import DesktopNav from './DesktopNav/DesktopNav';
 import './Nav.css';
 
 function Nav() {
+
+    const history = useHistory();
+
+    /// Check context for userDetails and if none, fetch userDetails and save to the context
+    const { userDetails, actions } = useContext(UserDetailsContext);
+
+    // const history = useHistory();
 
     /// Update Nav Based on Logged In/Out
     const [loggedIn, setLoggedIn] = useState(false);
@@ -16,21 +23,24 @@ function Nav() {
 
     // runs @ first render and whenever url location changes
     useEffect(() => {
+        console.log("location is ", location)
         const token = window.localStorage.getItem("token");
-        token != null ? setLoggedIn(true) : setLoggedIn(false);
-    }, [location]);
-
-    /// Check context for userDetails and if none, fetch userDetails and save to the context
-    const { userDetails, actions } = useContext(UserDetailsContext);
-
-    useEffect(() => {
-        if (loggedIn) {
+        if (token) {
+            setLoggedIn(true);
             if (!userDetails) {
                 console.log("logged in but no user details saved! fetching user details now.");
-                actions.fetchUserDetails();
+                actions.fetchUserDetails()
             }
         }
-    }, [loggedIn])
+        else {
+            setLoggedIn(false);
+            if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/unauthorized" || location.pathname === "/notfound") {
+                return
+            }
+            history.push("/unauthorized");
+        }
+    }, [location]);
+
 
     /// Logout
     const handleLogout = () => {

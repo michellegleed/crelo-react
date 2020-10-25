@@ -39,14 +39,14 @@ function PledgeForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        postData().then(response => {
-            console.log(response);
-            // redirect to project page on successful post
-            // history.push(`project/${response.id}`);
-            const form = document.querySelector('form');
-            form.reset();
-            history.push(`/project/${projectID}`)
-        });
+        postData()
+            .then(response => {
+                // redirect to project page on successful post
+                const form = document.querySelector('form');
+                form.reset();
+                history.push(`/project/${projectID}`)
+            })
+            .catch(error => history.push("/network-error"))
     }
 
     return (

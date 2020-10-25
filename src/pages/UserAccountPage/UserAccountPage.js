@@ -85,10 +85,7 @@ function UserAccountPage() {
             <div className="account-page-section" id="user-pledges">
                 <h1>Pledges:</h1>
                 {userData.pledges.map((pledge, index) => {
-                    return pledge.anonymous ?
-                        null
-                        :
-                        <PledgeCard pledge={pledge} isProfilePage={true} key={index} />
+                    return <PledgeCard pledge={pledge} isProfilePage={true} key={index} />
                 })
                 }
             </div>

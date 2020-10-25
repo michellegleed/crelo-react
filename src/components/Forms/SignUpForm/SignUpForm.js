@@ -42,26 +42,23 @@ function SignUpForm() {
     }
 
     const handleSubmit = (e) => {
-        console.log(userDetails.password, userDetails.confirmPassword);
         e.preventDefault();
         if (userDetails.email && userDetails.username && userDetails.password && userDetails.confirmPassword && userDetails.location_id) {
             if (userDetails.password !== userDetails.confirmPassword) {
-                console.log(userDetails.password, userDetails.confirmPassword);
                 setErrorMessage("Passwords do not match!");
             } else {
-                postUserData().then(data => {
-                    if (data.ok) {
-                        console.log(data);
-                        console.log("response ok");
-                        history.push("/login");
-                    } else {
-                        // the API returned an error - do something with it
-                        console.error(data)
-                        setErrorMessage(data.detail);
-                    }
-                })
+                postUserData()
+                    .then(data => {
+                        if (data.ok) {
+                            history.push("/login");
+                        } else {
+                            // the API returned an error - do something with it
+                            console.error(data)
+                            setErrorMessage(data.detail);
+                        }
+                    })
+                    .catch(error => history.push("/network-error"))
             }
-
         }
     }
 

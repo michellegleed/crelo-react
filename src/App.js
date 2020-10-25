@@ -7,6 +7,7 @@ import './App.css';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Unauthorized from './pages/Unauthorized';
+import NetworkError from './pages/NetworkError';
 import NotFound from './pages/NotFound';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
@@ -22,6 +23,7 @@ import UpdateProjectPage from './pages/UpdateProjectPage/UpdateProjectPage';
 import PledgePage from './pages/PledgePage/PledgePage';
 
 import { UserContextProvider } from './utils/context';
+
 
 function App() {
   return (
@@ -71,6 +73,9 @@ function App() {
               </Route>
               <Route path="/unauthorized">
                 <Unauthorized />
+              </Route>
+              <Route path="/network-error">
+                <NetworkError />
               </Route>
               <Route path="/">
                 <NotFound />

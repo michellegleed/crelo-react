@@ -4,8 +4,6 @@ import { useHistory } from 'react-router-dom';
 // import FetchDetails from './FetchDetails.js';
 import { fetchRequest } from './fetchRequest.js';
 
-import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
-
 export const UserDetailsContext = React.createContext();
 
 export const UserContextProvider = (props) => {
@@ -15,7 +13,7 @@ export const UserContextProvider = (props) => {
     const fetchingRef = useRef(false);
 
     const [userDetails, setUserDetails] = useState();
-    const [errorMessage, setErrorMessage] = useState();
+    // const [errorMessage, setErrorMessage] = useState();
 
     const updateAllDetails = (userObject) => {
         console.log("new user object is... ", userObject)
@@ -61,12 +59,13 @@ export const UserContextProvider = (props) => {
                     updateAllDetails(result.data);
                 }
                 else {
-                    history.push("/login");
+                    history.push("/unauthorized");
                 }
             })
             .catch(error => {
                 fetchingRef.current = false;
-                setErrorMessage(error.message);
+                history.push("/network-error")
+                // setErrorMessage(error.message);
             })
     }
 
@@ -89,10 +88,7 @@ export const UserContextProvider = (props) => {
                         </div>
                     </div>
                     :
-                    errorMessage ?
-                        <ErrorMessage message={errorMessage} type="error" />
-                        :
-                        props.children
+                    props.children
             }
         </UserDetailsContext.Provider>
     );

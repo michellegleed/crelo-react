@@ -62,6 +62,8 @@ function LoginForm() {
                         // setErrorMessage(errorObj.non_field_errors[0]);
                     }
                 )
+        } else {
+            setErrorMessage("All fields are required");
         }
     }
 

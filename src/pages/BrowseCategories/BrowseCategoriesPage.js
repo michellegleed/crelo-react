@@ -121,17 +121,30 @@ function BrowseCategoriesPage() {
     /// Get Categories List
     const [categoryList, setCategoryList] = useState();
 
+    // useEffect(() => {
+    //     fetch(`${process.env.REACT_APP_API_URL}project-categories/`)
+    //         .then((results) => {
+    //             return results.json()
+    //         })
+    //         .then((data) => {
+    //             setCategoryList(data);
+    //             data.map(category => {
+    //                 console.log(category.id, category.name)
+    //             })
+    //         });
+    // }, []);
+
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}project-categories/`)
-            .then((results) => {
-                return results.json()
+        fetchRequest(`${process.env.REACT_APP_API_URL}project-categories/`)
+            .then((result) => {
+                if (result.ok) {
+                    setCategoryList(result.data);
+                }
             })
-            .then((data) => {
-                setCategoryList(data);
-                data.map(category => {
-                    console.log(category.id, category.name)
-                })
-            });
+            .catch(error => {
+                history.push("/network-error")
+                // setErrorMessage(error.message);
+            })
     }, []);
 
     const getCategoryNameFromID = (id) => {

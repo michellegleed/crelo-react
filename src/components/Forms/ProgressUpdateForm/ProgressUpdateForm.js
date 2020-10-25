@@ -28,18 +28,18 @@ function ProgressUpdateForm(props) {
             },
             body: JSON.stringify(progressUpdate),
         });
-        console.log("stringified progress update to send to API = ", JSON.stringify(progressUpdate));
         return response.json();
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(progressUpdate);
-        postData().then(response => {
-            console.log("progress update POST response = ", response);
-            // redirect to project page on successful post
-            history.push(`project/${props.projectID}`);
-        });
+        postData()
+            .then(response => {
+                console.log("progress update POST response = ", response);
+                // redirect to project page on successful post
+                history.push(`project/${props.projectID}`);
+            })
+            .catch(error => history.push("/network-error"))
     }
 
 

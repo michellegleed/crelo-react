@@ -56,13 +56,14 @@ function ProjectPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
+                    console.log(result);
                     setProjectData(result.data);
                 }
                 else {
                     history.push("/notfound");
                 }
             })
+            .catch(error => console.log(error.message));
     }, [id, projectClosed]);
 
     useEffect(() => {

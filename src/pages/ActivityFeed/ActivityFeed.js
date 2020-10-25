@@ -11,6 +11,7 @@ import ProgressUpdateCard from '../../components/ActivityFeedCards/ProgressUpdat
 import LastChanceCard from '../../components/ActivityFeedCards/LastChanceCard/LastChanceCard';
 
 import { UserDetailsContext } from '../../utils/context';
+import { fetchRequest } from '../../utils/fetchRequest';
 
 function HomePage() {
 
@@ -22,30 +23,46 @@ function HomePage() {
 
     const history = useHistory();
 
+    // useEffect(() => {
+    //     console.log("user info from context ", userDetails);
+    //     const token = window.localStorage.getItem("token");
+    //     if (token) {
+    //         if (userDetails) {
+    //             fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`, {
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                     "Authorization": `token ${token}`
+    //                 },
+    //             })
+    //                 .then((results) => {
+    //                     if (results.status == 200) {
+    //                         return results.json()
+    //                     }
+    //                 })
+    //                 .then((data) => {
+    //                     setActivityFeed(data.activity);
+    //                 })
+    //         }
+    //     }
+    //     else {
+    //         history.push("signup/");
+    //     }
+    // }, [userDetails]);
+
     useEffect(() => {
-        console.log("user info from context ", userDetails);
-        const token = window.localStorage.getItem("token");
-        if (token) {
-            if (userDetails) {
-                fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `token ${token}`
-                    },
-                })
-                    .then((results) => {
-                        if (results.status == 200) {
-                            return results.json()
-                        }
-                    })
-                    .then((data) => {
-                        setActivityFeed(data.activity);
-                    })
-            }
-        }
-        else {
-            history.push("signup/");
-        }
+        if (!userDetails) { return }
+        fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`)
+            .then((result) => {
+                if (result.ok) {
+                    setActivityFeed(result.data.activity);
+                }
+                else {
+                    history.push("/unauthorized");
+                }
+            })
+            .catch(error => {
+                history.push("/network-error")
+            })
     }, [userDetails]);
 
 
