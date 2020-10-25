@@ -70,6 +70,10 @@ a#sticky-pledge-button {
   z-index: 100;
 }
 
+a#sticky-pledge-button:hover button {
+  transform: scale(1.2);
+}
+
 /*a.pledge-button button {
   display: flex;
   justify-content: center;
