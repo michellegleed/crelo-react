@@ -27,22 +27,7 @@ function Nav() {
         if (loggedIn) {
             if (!userDetails) {
                 console.log("logged in but no user details saved! fetching user details now.");
-                const token = window.localStorage.getItem("token");
-                console.log(token);
-                if (token) {
-                    fetch(`${process.env.REACT_APP_API_URL}account/`, {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `token ${token}`
-                        },
-                    })
-                        .then((results) => {
-                            return results.json()
-                        })
-                        .then((data) => {
-                            actions.updateAllDetails(data);
-                        });
-                }
+                actions.fetchUserDetails();
             }
         }
     }, [loggedIn])

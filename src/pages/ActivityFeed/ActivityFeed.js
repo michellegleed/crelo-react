@@ -46,7 +46,6 @@ function HomePage() {
         else {
             history.push("signup/");
         }
-
     }, [userDetails]);
 
 
@@ -68,8 +67,6 @@ function HomePage() {
             <h3><i class="fas fa-donate"></i>My Total Pledges:</h3>
             {
                 <h5>{`$${totalMoney} across ${userDetails.pledges.length} projects`}</h5>
-            }
-            {
             }
         </div>);
     }

@@ -50,10 +50,8 @@ function UserAccountPage() {
         userData.user ?
             <div>
                 <UserProfile user={userData.user} location={userData.location} />
-
-                <h1>Projects:</h1>
+                <h1 className="page-heading">Projects:</h1>
                 <div className="account-page-section" id="activity-content">
-
                     {userData.projects.map((project, index) => {
                         return project.is_open ?
                             <ProjectCard key={index} project={project} isActivityFeed={false} />

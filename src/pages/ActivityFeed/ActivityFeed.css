@@ -170,6 +170,7 @@ h4.activity-card-subtitle {
 
   .card-text h6 {
     bottom: 64px;
+    color: rgba(255, 255, 255, 0.75);
   }
 
   .card-text p {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 /// Here we are kind of casting BrowserRouter - so we are importing the whole BrowserRouter but then we're also adding references to the parts of it that we want to refer to in our App function.
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -24,7 +24,6 @@ import PledgePage from './pages/PledgePage/PledgePage';
 import { UserContextProvider } from './utils/context';
 
 function App() {
-
   return (
 
     <Router>

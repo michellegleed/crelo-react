@@ -24,7 +24,19 @@ function LastChangeCard(props) {
                         <h3 className="activity-card-icon"><i class="fas fa-exclamation-circle"></i></h3>
                         <h4 className="activity-card-subtitle">
                             {/* <i class="fas fa-exclamation-circle"></i> */}
-                            {dateObj.days > 0 ? `Closing in ${dateObj.days} days` : `Closing in ${dateObj.hours} hours`}
+                            {
+                                dateObj.days > 0 ?
+                                    dateObj.days > 1 ?
+                                        `Closing in ${dateObj.days} days`
+                                        :
+                                        `Closing in 1 day`
+                                    :
+                                    dateObj.hours > 1 ?
+                                        `Closing in ${dateObj.hours} hours`
+                                        :
+                                        `Closing in 1 hour`
+                            }
+
                         </h4>
                         <p>{project.description.slice(0, 300)}...</p>
                         <h6>{project.category.name}</h6>

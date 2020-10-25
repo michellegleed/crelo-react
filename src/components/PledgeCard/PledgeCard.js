@@ -31,7 +31,7 @@ function PledgeCard(props) {
                     </React.Fragment>
                     :
                     <React.Fragment>
-                        <Link to="/user" className="pledge-user-img-wrapper">
+                        <Link to={`/user/${pledge.user.id}`} className="pledge-user-img-wrapper">
                             {
                                 pledge.user.image && !pledge.anonymous ?
                                     <img src={pledge.user.image} className="pledge-user-image" />
@@ -48,7 +48,7 @@ function PledgeCard(props) {
                         </div>
                     </React.Fragment>
             }
-        </div>
+        </div >
     );
 }
 

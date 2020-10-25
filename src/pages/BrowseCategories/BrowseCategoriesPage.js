@@ -14,6 +14,7 @@ function BrowseCategoriesPage() {
 
     const [projectList, setProjectList] = useState();
     const [selectedCategory, setSelectedCategory] = useState("favourites");
+    const [errorMessage, setErrorMessage] = useState();
 
     const history = useHistory();
 
@@ -44,16 +45,18 @@ function BrowseCategoriesPage() {
     // }, [selectedCategory, userDetails]);
 
     useEffect(() => {
-        fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`)
-            .then((result) => {
-                if (result.ok) {
-                    console.log(result.data);
-                    setProjectList(result.data);
-                }
-                else {
-                    history.push("/unauthorized");
-                }
-            })
+        if (userDetails) {
+            fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`)
+                .then((result) => {
+                    if (result.ok) {
+                        console.log(result.data);
+                        setProjectList(result.data);
+                    }
+                    else {
+                        history.push("/unauthorized");
+                    }
+                })
+        }
     }, [selectedCategory, userDetails]);
 
     const changeCategory = (id) => {
@@ -129,7 +132,7 @@ function BrowseCategoriesPage() {
                     console.log(category.id, category.name)
                 })
             });
-    }, []); /// up to changing this one!!!
+    }, []);
 
     const getCategoryNameFromID = (id) => {
         if (categoryList) {
@@ -145,6 +148,12 @@ function BrowseCategoriesPage() {
 
     return (
         <div>
+            {
+                errorMessage ?
+                    <ErrorMessage message={errorMessage} type="error" />
+                    :
+                    null
+            }
             <div id="category-menu">
                 {categoryList ?
                     categoryList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeCategory(item.id)}>{item.name}</button>)
