@@ -27,7 +27,6 @@ const createRequestObject = (method, body) => {
 
 export const fetchRequest = async (url, method = "get", body = null) => {
     const requestObject = createRequestObject(method, body);
-    console.log("request object is ", requestObject, " for ", url);
     const response = await fetch(url, requestObject);
     const data = await response.json();
     return {

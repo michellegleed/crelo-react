@@ -37,7 +37,7 @@ function Nav() {
             if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/unauthorized" || location.pathname === "/notfound") {
                 return
             }
-            history.push("/unauthorized");
+            history.push("/signup");
         }
     }, [location]);
 

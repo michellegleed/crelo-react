@@ -54,14 +54,15 @@ export const UserContextProvider = (props) => {
         fetchRequest(`${process.env.REACT_APP_API_URL}account/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log("result.data is.. ", result.data)
                     fetchingRef.current = false;
                     updateAllDetails(result.data);
                 }
                 else {
+                    fetchingRef.current = false;
                     history.push("/unauthorized");
                 }
             })
+
     }
 
     return (

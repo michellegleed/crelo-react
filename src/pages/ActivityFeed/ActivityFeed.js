@@ -50,13 +50,19 @@ function HomePage() {
     // }, [userDetails]);
 
     useEffect(() => {
-        if (!userDetails) { return }
+        if (!userDetails) {
+            console.log("exiting out of use effect early - user details not fetched yet")
+            return
+        }
+        console.log("fetching activity based on user's location. user details = ", userDetails);
         fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`)
             .then((result) => {
+                console.log(result);
                 if (result.ok) {
                     setActivityFeed(result.data.activity);
                 }
                 else {
+                    // throw Error(result.message)
                     history.push("/unauthorized");
                 }
             })
