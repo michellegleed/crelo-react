@@ -51,7 +51,7 @@ function PledgeForm(props) {
 
     return (
         <div id="pledge-form">
-            <h3>Make A Pledge...</h3>
+            <h3 className="page-subheading">Make A Pledge...</h3>
             <form id="pledge-form">
                 <div className="form-item">
                     <span id="funding-target">

@@ -52,7 +52,6 @@ function SignUpForm() {
                         if (data.ok) {
                             history.push("/login");
                         } else {
-                            // the API returned an error - do something with it
                             console.error(data)
                             setErrorMessage(data.detail);
                         }

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import "..//BrowseCategories/BrowseCategories.css";
 import "../ActivityFeed/ActivityFeed.css";
-
-// import { UserDetailsContext } from '../../utils/context';
 
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import MilestoneCard from '../../components/ActivityFeedCards/MilestoneCard/MilestoneCard';
@@ -14,8 +12,6 @@ import { fetchRequest } from '../../utils/fetchRequest';
 
 function BrowseLocationsPage() {
 
-    // const { userDetails, actions } = useContext(UserDetailsContext);
-
     /// Get LocationList for location buttons/menu
     const [locationList, setLocationList] = useState();
 
@@ -23,30 +19,6 @@ function BrowseLocationsPage() {
     const [selectedLocation, setSelectedLocation] = useState(1);
 
     const history = useHistory();
-
-    // useEffect(() => {
-    //     const token = window.localStorage.getItem("token");
-    //     if (token) {
-    //         fetch(`${process.env.REACT_APP_API_URL}locations/${selectedLocation}`, {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": `token ${token}`
-    //             },
-    //         })
-    //             .then((results) => {
-    //                 if (results.status == 200) {
-    //                     return results.json()
-    //                 }
-    //             })
-    //             .then((data) => {
-    //                 setLocationActivity(data);
-    //             })
-    //     }
-    //     else {
-    //         history.push("login/");
-    //     }
-
-    // }, [selectedLocation]);
 
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}locations/${selectedLocation}`)
@@ -73,16 +45,6 @@ function BrowseLocationsPage() {
         return ""
     }
 
-    // useEffect(() => {
-    //     fetch(`${process.env.REACT_APP_API_URL}locations/`)
-    //         .then((results) => {
-    //             return results.json()
-    //         })
-    //         .then((data) => {
-    //             setLocationList(data);
-    //         });
-    // }, []);
-
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}locations/`)
             .then((result) => {
@@ -96,7 +58,6 @@ function BrowseLocationsPage() {
             })
             .catch(error => {
                 history.push("/network-error")
-                // setErrorMessage(error.message);
             })
     }, []);
 
@@ -113,7 +74,7 @@ function BrowseLocationsPage() {
 
             {
                 locationActivity ?
-                    <h1>{locationActivity.name}</h1>
+                    <h1 className="page-heading">{locationActivity.name}</h1>
                     :
                     null
             }

@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ProjectCard from '../../components/ActivityFeedCards/ProjectCard/ProjectCard';
-
-// import "./BrowseCategories.css";
 
 import { UserDetailsContext } from '../../utils/context';
 import { fetchRequest } from '../../utils/fetchRequest';
@@ -17,32 +15,6 @@ function BrowseCategoriesPage() {
     const [errorMessage, setErrorMessage] = useState();
 
     const history = useHistory();
-
-    // useEffect(() => {
-    //     const token = window.localStorage.getItem("token");
-    //     if (token) {
-    //         if (userDetails) {
-    //             fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`, {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     "Authorization": `token ${token}`
-    //                 },
-    //             })
-    //                 .then((results) => {
-    //                     if (results.status == 200) {
-    //                         return results.json()
-    //                     }
-    //                 })
-    //                 .then((data) => {
-    //                     setProjectList(data);
-    //                 })
-    //         }
-    //     }
-    //     else {
-    //         history.push("login/");
-    //     }
-
-    // }, [selectedCategory, userDetails]);
 
     useEffect(() => {
         if (userDetails) {
@@ -75,34 +47,6 @@ function BrowseCategoriesPage() {
         return ""
     }
 
-    // const updateFavourites = (action, categoryID) => {
-    //     if (action === "add" || action === "remove") {
-    //         const url = `${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}/`;
-    //         console.log()
-    //         const token = window.localStorage.getItem("token");
-    //         if (token) {
-    //             fetch(url, {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     "Authorization": `token ${token}`
-    //                 },
-    //             })
-    //                 .then((results) => {
-    //                     if (results.status == 200) {
-    //                         return results.json()
-    //                     }
-    //                 })
-    //                 .then((data) => {
-    //                     console.log("new user data = ", data);
-    //                     actions.updateUserDetails(data);
-    //                 })
-    //         }
-    //         else {
-    //             history.push("login/");
-    //         }
-    //     }
-    // }
-
     const updateFavourites = (action, categoryID) => {
         if (action === "add" || action === "remove") {
             fetchRequest(`${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}/`)
@@ -121,19 +65,6 @@ function BrowseCategoriesPage() {
     /// Get Categories List
     const [categoryList, setCategoryList] = useState();
 
-    // useEffect(() => {
-    //     fetch(`${process.env.REACT_APP_API_URL}project-categories/`)
-    //         .then((results) => {
-    //             return results.json()
-    //         })
-    //         .then((data) => {
-    //             setCategoryList(data);
-    //             data.map(category => {
-    //                 console.log(category.id, category.name)
-    //             })
-    //         });
-    // }, []);
-
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}project-categories/`)
             .then((result) => {
@@ -143,7 +74,6 @@ function BrowseCategoriesPage() {
             })
             .catch(error => {
                 history.push("/network-error")
-                // setErrorMessage(error.message);
             })
     }, []);
 

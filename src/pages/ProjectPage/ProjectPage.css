@@ -28,10 +28,6 @@ div.project-detail-card:nth-child(1) > img:nth-child(1) {
   display: none;
 }
 
-/* #project-targets-div {
-  font-family: "Grandstander", sans-serif;
-} */
-
 #project-buttons {
   width: 100%;
 }
@@ -39,28 +35,6 @@ div.project-detail-card:nth-child(1) > img:nth-child(1) {
 button#close-project-btn:hover {
   background-color: black;
 }
-
-/* div.sidebar-item {
-  text-align: left;
-}
-
-div.sidebar-item div#time-location-info {
-  display: flex;
-  justify-content: space-between;
-}
-
-div.sidebar-item div#time-location-info h6 {
-  margin: 24px 8px;
-}
-
-div.sidebar-item div.progress-bar-container {
-  display: none;
-}
-
-div.sidebar-item div.progress-bar {
-  margin: 24px 0;
-  width: 90%;
-} */
 
 a#sticky-pledge-button {
   display: none;
@@ -73,19 +47,6 @@ a#sticky-pledge-button {
 a#sticky-pledge-button:hover button {
   transform: scale(1.2);
 }
-
-/*a.pledge-button button {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
-a.pledge-button p {
-  padding: 0;
-  margin: 0;
-  font-size: 12px;
-  font-weight: 500;
-} */
 
 a#sticky-pledge-button button {
   border-radius: 50%;
@@ -104,26 +65,20 @@ a#sticky-pledge-button i {
 }
 
 div#project-page-content {
-  /* width: 100vw; */
   width: 100%;
 }
 
 div #pledges {
-  /* margin: 120px -24px 24px -24px;
-  background-color: #7b7b7b; */
   margin: 120px -24px 0 -24px;
   background-color: #535353;
   color: white;
   padding: 24px;
 }
 
-/* a#sticky-pledge-button button {
-  background-color: #70ba05;
-  padding: 4px 8px;
-  font-size: 12px;
-  color: white;
-  border-color: green;
-} */
+a.pledge-link {
+  font-size: 16px;
+  color: rgb(6, 180, 6);
+}
 
 @media screen and (min-width: 720px) {
   div#project-page-container {
@@ -171,33 +126,6 @@ div #pledges {
     max-width: 800px;
   }
 
-  /* div#sidebar {
-    width: 300px;
-    order: 2;
-  }
-
-  div.sidebar-item {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  div.sidebar-item div#time-location-info {
-    display: block;
-  }
-
-  div.sidebar-item div.progress-bar-container {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-  }
-
-  div.sidebar-item div.progress-bar {
-    margin: 24px 0;
-    width: 170px;
-  } */
-
   a#sticky-pledge-button {
     position: fixed;
     right: 48px;
@@ -229,14 +157,6 @@ div #pledges {
     background-color: rgb(4, 180, 4);
     color: white;
   }
-
-  /* a#sticky-pledge-button button {
-  background-color: #70ba05;
-  padding: 4px 8px;
-  font-size: 12px;
-  color: white;
-  border-color: green;
-} */
 
   div#project-page-content {
     width: calc(100vw - 400px);

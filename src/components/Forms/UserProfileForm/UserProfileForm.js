@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserDetailsContext } from '../../../utils/context';
-import { fetchRequest } from '../../../utils/fetchRequest';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 import './UserProfileForm.css';
@@ -9,8 +8,6 @@ function UserProfileForm(props) {
 
     // destructuring the props
     const { userDetails, actions } = useContext(UserDetailsContext);
-
-    // console.log("user details from context = ", user);
 
     const { user, hideForm } = props;
 
@@ -42,12 +39,6 @@ function UserProfileForm(props) {
             ...data
         }
     }
-
-    // const postData = async () => {
-    //     const body = JSON.stringify(profileDetails);
-    //     return fetchRequest(`${process.env.REACT_APP_API_URL}account/`, "put", body)
-    // }
-
 
     const handleSubmit = (e) => {
         e.preventDefault();

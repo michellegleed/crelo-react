@@ -23,32 +23,6 @@ function HomePage() {
 
     const history = useHistory();
 
-    // useEffect(() => {
-    //     console.log("user info from context ", userDetails);
-    //     const token = window.localStorage.getItem("token");
-    //     if (token) {
-    //         if (userDetails) {
-    //             fetch(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`, {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     "Authorization": `token ${token}`
-    //                 },
-    //             })
-    //                 .then((results) => {
-    //                     if (results.status == 200) {
-    //                         return results.json()
-    //                     }
-    //                 })
-    //                 .then((data) => {
-    //                     setActivityFeed(data.activity);
-    //                 })
-    //         }
-    //     }
-    //     else {
-    //         history.push("signup/");
-    //     }
-    // }, [userDetails]);
-
     useEffect(() => {
         if (!userDetails) {
             console.log("exiting out of use effect early - user details not fetched yet")
@@ -62,7 +36,6 @@ function HomePage() {
                     setActivityFeed(result.data.activity);
                 }
                 else {
-                    // throw Error(result.message)
                     history.push("/unauthorized");
                 }
             })

@@ -20,26 +20,6 @@ function UserAccountPage() {
 
     const [showForm, setShowForm] = useState(false);
 
-    // useEffect(() => {
-    //     const token = window.localStorage.getItem("token");
-    //     fetch(`${process.env.REACT_APP_API_URL}account/`, {
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": `token ${token}`
-    //         },
-    //     })
-    //         .then((results) => {
-    //             return results.json()
-    //         })
-    //         .then((data) => {
-    //             console.log(data);
-    //             setUserData(data);
-    //             actions.updateAllDetails(data);
-
-    //             console.log("username: ", userData.user.username);
-    //         });
-    // }, []);
-
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}account/`)
             .then((result) => {

@@ -4,16 +4,12 @@ import { UserDetailsContext } from '../../utils/context';
 import MobileNav from './MobileNav/MobileNav';
 import DesktopNav from './DesktopNav/DesktopNav';
 
-import './Nav.css';
-
 function Nav() {
 
     const history = useHistory();
 
     /// Check context for userDetails and if none, fetch userDetails and save to the context
     const { userDetails, actions } = useContext(UserDetailsContext);
-
-    // const history = useHistory();
 
     /// Update Nav Based on Logged In/Out
     const [loggedIn, setLoggedIn] = useState(false);

@@ -78,10 +78,8 @@ export const UserContextProvider = (props) => {
         }}>
             {
                 fetchingRef.current ?
-                    <div className="main-container">
-                        <div className="content-container">
-                            <h2 className="loading">** Loading... **</h2>
-                        </div>
+                    <div className="content-container">
+                        <h2 className="loading">** Loading... **</h2>
                     </div>
                     :
                     props.children

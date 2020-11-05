@@ -2,43 +2,6 @@ nav#desktop-nav {
   display: none;
 }
 
-/* div.nav-logo, */
-/* div.nav-menu {
-  margin: 24px 24px;
-  flex-direction: row;
-}
-*/
-
-/* div.nav-menu {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-} */
-
-/*
-.nav-item {
-  padding: 12px;
-  margin: 12px;
-}
-
-div#nav-line-break {
-  height: 1px;
-  width: 66vw;
-  padding: 0;
-  margin: 36px;
-  background-color: rgb(14, 187, 14);
-}
-
-div#nav-account-menu {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 50px;
-  background-color: white;
-} */
-
 @media screen and (min-width: 720px) {
   nav#desktop-nav {
     display: flex;
@@ -53,16 +16,6 @@ div#nav-account-menu {
   div#nav-container {
     width: 100%;
   }
-
-  /* div#nav-container {
-    flex-direction: row;
-    height: 50px;
-    justify-content: space-between;
-  } */
-
-  /* div.nav-menu#mobile-nav {
-  display: flex;
-} */
 
   div#desktop-nav-account-div {
     display: flex;
@@ -99,12 +52,6 @@ div#nav-account-menu {
     margin: 0;
   }
 
-  /* div.nav-item button {
-    border: none;
-    font-family: "Shadows Into Light", cursive;
-    font-size: 18px;
-  } */
-
   div.nav-item a {
     color: #232323;
     font-size: 18px;
@@ -131,10 +78,4 @@ div#nav-account-menu {
   #desktop-nav-account-div:hover div#nav-account-menu {
     display: flex;
   }
-}
-
-@media screen and (min-width: 820px) {
-}
-
-@media screen and (min-width: 920px) {
 }

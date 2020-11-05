@@ -1,9 +1,8 @@
 form#pledge-form {
   width: 100%;
-  /* background-color: #343434; */
   color: #232323;
   margin: 24px 0 64px 0;
-  padding: 0 12px;
+  padding: 0 24px;
 
   display: flex;
   flex-direction: column;

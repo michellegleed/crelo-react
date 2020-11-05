@@ -17,26 +17,6 @@ function UpdateProjectPage() {
 
     const [projectData, setProjectData] = useState();
 
-    // useEffect(() => {
-    //     const token = window.localStorage.getItem("token");
-    //     fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": `token ${token}`
-    //         },
-    //     })
-    //         .then(results => {
-    //             return results.json();
-    //         })
-    //         .then(data => {
-    //             setProjectData(data);
-    //             console.log(data);
-    //         })
-    //         .then(() => {
-
-    //         });
-    // }, [id]);
-
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
             .then((result) => {

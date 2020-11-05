@@ -19,23 +19,6 @@ function PledgePage() {
     const { id } = useParams();
     const history = useHistory();
 
-    // useEffect(() => {
-    //     const token = window.localStorage.getItem("token");
-    //     fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": `token ${token}`
-    //         },
-    //     })
-    //         .then(results => {
-    //             return results.json();
-    //         })
-    //         .then(data => {
-    //             setProjectData(data);
-    //             console.log(data);
-    //         })
-    // }, [id]);
-
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
             .then((result) => {
@@ -56,10 +39,10 @@ function PledgePage() {
     }, [projectData]);
 
     return (
-        <div className="main-container" id="pledge-page-container">
+        <div id="pledge-page-container">
             <div id="pledge-project-info-container">
                 <img src={projectData.image} id="pledge-page-header-img" />
-                <h1 className="card-title">{projectData.title} {projectData.venue != "" ? `@ ${projectData.venue}` : null}</h1>
+                <h1 className="page-title">{projectData.title} {projectData.venue != "" ? `@ ${projectData.venue}` : null}</h1>
             </div>
 
             <PledgeForm projectID={projectData.id} pledgetype={projectData.pledgetype} />

@@ -4,9 +4,8 @@ div#new-project-container {
 
 form#new-project-form {
   width: 100%;
-  /* background-color: #343434; */
   color: #232323;
-  margin: 24px 0 64px 0;
+  margin: 0 0 64px 0;
   padding: 0 12px;
 
   display: flex;
@@ -18,14 +17,11 @@ div#project-info-container {
   display: none;
 }
 
-/* #new-project-form div.form-item { */
 div.form-item {
   margin: 12px 0;
   display: flex;
 }
 
-/* #new-project-form div.form-item select,
-#new-project-form div.form-item input { */
 div.form-item select,
 div.form-item input,
 div.form-item textarea {
@@ -48,6 +44,7 @@ span#funding-target p {
 
   form#new-project-form {
     width: 50%;
+    margin: 24px 0 64px 0;
   }
 
   div#project-info-container {

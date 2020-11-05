@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import UserProfile from '../components/UserProfile/UserProfile';
 import ProjectCard from '../components/ActivityFeedCards/ProjectCard/ProjectCard';
 import { fetchRequest } from '../utils/fetchRequest';
-
-// import './UserAccountPage/UserAccountPage.css';
 
 function UserAccountPage() {
 
@@ -13,25 +11,6 @@ function UserAccountPage() {
     const history = useHistory();
 
     const [userData, setUserData] = useState({});
-
-    // useEffect(() => {
-    //     const token = window.localStorage.getItem("token");
-    //     fetch(`${process.env.REACT_APP_API_URL}users/${userId}`, {
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": `token ${token}`
-    //         },
-    //     })
-    //         .then((results) => {
-    //             return results.json()
-    //         })
-    //         .then((data) => {
-    //             console.log(data);
-    //             setUserData(data);
-
-    //             console.log("username: ", userData.username);
-    //         });
-    // }, []);
 
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}users/${userId}`)

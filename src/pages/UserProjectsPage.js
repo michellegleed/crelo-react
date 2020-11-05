@@ -14,31 +14,6 @@ function UserProjectsPage() {
 
     const history = useHistory();
 
-    // useEffect(() => {
-    //     const token = window.localStorage.getItem("token");
-    //     if (token) {
-    //         fetch(`${process.env.REACT_APP_API_URL}account/projects/`, {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": `token ${token}`
-    //             },
-    //         })
-    //             .then((results) => {
-    //                 if (results.status == 200) {
-    //                     return results.json()
-    //                 }
-    //             })
-    //             .then((data) => {
-    //                 setProjectList(data);
-    //             })
-    //     }
-    //     else {
-    //         history.push("login/");
-    //     }
-
-    // }, []);
-
-
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}account/projects/`)
             .then((result) => {
@@ -55,7 +30,7 @@ function UserProjectsPage() {
 
     return (
         <div >
-            <h1>My Projects:</h1>
+            <h1 className="page-title">My Projects:</h1>
             {
                 projectList ?
                     projectList.length > 0 ?

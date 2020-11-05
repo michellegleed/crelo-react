@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
@@ -39,7 +39,6 @@ function LoginForm() {
             }).catch(
                 (error) => {
                     const errorObj = JSON.parse(error.message);
-                    // console.log(errorObj);
                     setErrorMessage(errorObj.non_field_errors[0]);
                 }
             )
@@ -57,8 +56,6 @@ function LoginForm() {
             })
                 .catch(
                     (error) => {
-                        // const errorObj = JSON.parse(error.message);
-                        // console.log(errorObj);
                         // setErrorMessage(errorObj.non_field_errors[0]);
                     }
                 )

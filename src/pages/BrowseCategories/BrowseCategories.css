@@ -28,7 +28,6 @@ button.add-remove-fav-category {
   color: #02ac02;
   display: flex;
   justify-content: center;
-  /* width: calc(100vw - 96px); */
   width: 260px;
   margin: 24px auto;
 }

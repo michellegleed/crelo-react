@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './EditProjectForm.css'
-
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 function EditProjectForm(props) {

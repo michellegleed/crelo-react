@@ -23,7 +23,6 @@ function LastChangeCard(props) {
                         <h3 className="card-title">{project.title}</h3>
                         <h3 className="activity-card-icon"><i class="fas fa-exclamation-circle"></i></h3>
                         <h4 className="activity-card-subtitle">
-                            {/* <i class="fas fa-exclamation-circle"></i> */}
                             {
                                 dateObj.days > 0 ?
                                     dateObj.days > 1 ?

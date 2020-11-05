@@ -34,24 +34,6 @@ function ProjectPage() {
         }
     })
 
-    // useEffect(() => {
-    //   const token = window.localStorage.getItem("token");
-    //   fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Authorization": `token ${token}`
-    //     },
-    //   })
-    //     .then(results => {
-    //       console.log("queried project detail view")
-    //       return results.json();
-    //     })
-    //     .then(data => {
-    //       setProjectData(data);
-    //       console.log(data);
-    //     })
-    // }, [id, projectClosed]);
-
     useEffect(() => {
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
             .then((result) => {
@@ -82,16 +64,7 @@ function ProjectPage() {
         const dateNow = new Date();
         const dateIso = dateNow.toISOString();
 
-        // const token = window.localStorage.getItem("token");
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`, "put", { due_date: dateIso })
-            // const response = await fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
-            //   method: "put",
-            //   headers: {
-            //     "Content-Type": "application/json",
-            //     "Authorization": `token ${token}`
-            //   },
-            //   body: JSON.stringify({ due_date: dateIso }),
-            // })
             .then((response) => {
                 if (response.ok) {
                     setErrorMessage(null);
@@ -167,9 +140,14 @@ function ProjectPage() {
                         <h2>Pledges:</h2>
                         <div>
                             {
-                                projectData.pledges.map((pledge, index) => {
-                                    return <PledgeCard key={index} pledge={pledge} isProfilePage={false} />;
-                                })
+                                projectData.pledges.length > 0 ?
+                                    projectData.pledges.map((pledge, index) => {
+                                        return <PledgeCard key={index} pledge={pledge} isProfilePage={false} />;
+                                    })
+                                    :
+                                    <React.Fragment>
+                                        <Link to={`pledge`} className="pledge-link"><h2>Be the first person to pledge to this project!</h2></Link>
+                                    </React.Fragment>
                             }
                         </div>
                     </div>
