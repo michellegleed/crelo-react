@@ -31,14 +31,20 @@ function PledgeCard(props) {
                     </React.Fragment>
                     :
                     <React.Fragment>
-                        <Link to={`/user/${pledge.user.id}`} className="pledge-user-img-wrapper">
-                            {
-                                pledge.user.image && !pledge.anonymous ?
-                                    <img src={pledge.user.image} className="pledge-user-image" />
-                                    :
-                                    <h1><i class="fas fa-user"></i></h1>
-                            }
-                        </Link>
+                        {pledge.anonymous ?
+                            <div className="pledge-user-img-wrapper">
+                                <h1><i class="fas fa-user"></i></h1>
+                            </div>
+                            :
+                            <Link to={`/user/${pledge.user.id}`} className="pledge-user-img-wrapper">
+                                {
+                                    pledge.user.image && !pledge.anonymous ?
+                                        <img src={pledge.user.image} className="pledge-user-image" />
+                                        :
+                                        <h1><i class="fas fa-user"></i></h1>
+                                }
+                            </Link>
+                        }
                         <h5 className="pledge-value">{pledge.type_id == 1 ? `$${pledge.amount}` : pledge.type_id == 2 ? `${pledge.amount} hrs` : null
                         }</h5>
                         <p className="pledge-comment">{pledge.comment}</p>

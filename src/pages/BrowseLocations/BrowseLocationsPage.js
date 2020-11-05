@@ -74,10 +74,11 @@ function BrowseLocationsPage() {
 
             {
                 locationActivity ?
-                    <h1 className="page-heading">{locationActivity.name}</h1>
+                    <h1 className="page-heading" id="location-heading">{locationActivity.name}</h1>
                     :
                     null
             }
+
             <div id="activity-content">
                 {
                     locationActivity ?

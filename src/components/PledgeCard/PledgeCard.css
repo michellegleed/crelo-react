@@ -6,7 +6,7 @@ div.pledge-card {
   grid-template-rows: repeat(3, auto);
 }
 
-a.pledge-user-img-wrapper {
+.pledge-user-img-wrapper {
   margin: 12px;
   grid-column: 1/6;
   grid-row: 3/4;
@@ -15,8 +15,8 @@ a.pledge-user-img-wrapper {
   align-items: flex-start;
 }
 
-a.pledge-user-img-wrapper h1 {
-  margin: 0 0 0 25px;
+.pledge-user-img-wrapper h1 {
+  margin: 0 0 0 12px;
   color: rgb(4, 180, 4);
 }
 
@@ -73,7 +73,7 @@ p.pledge-username {
 }
 
 @media screen and (min-width: 720px) {
-  a.pledge-user-img-wrapper {
+  .pledge-user-img-wrapper {
     grid-column: 1/3;
     grid-row: 1/3;
     margin: 0 12px;

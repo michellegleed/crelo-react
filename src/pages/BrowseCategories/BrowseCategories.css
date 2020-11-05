@@ -66,4 +66,9 @@ div#followed-categories-list ul li h6 {
   div#followed-categories-list {
     margin: 24px 0;
   }
+
+  #location-heading {
+    font-size: 36px;
+    margin: 24px 0 -36px 0;
+  }
 }
