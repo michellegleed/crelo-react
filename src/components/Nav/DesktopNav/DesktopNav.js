@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import './DesktopNav.css';
 
@@ -15,21 +15,21 @@ function DesktopNav(props) {
                     {props.loggedIn ?
                         <div className="nav-menu-items">
                             <div className="nav-item">
-                                <Link to="/">News Feed</Link>
+                                <NavLink exact to="/" activeStyle={{ color: 'rgb(4, 180, 4)' }}>News Feed</NavLink>
                             </div>
                             <div className="nav-item">
-                                <Link to="/categories">Browse Categories</Link>
+                                <NavLink to="/categories" activeStyle={{ color: 'rgb(4, 180, 4)' }}>Browse Categories</NavLink>
                             </div>
                             <div className="nav-item">
-                                <Link to="/new-project">New Project</Link>
+                                <NavLink to="/new-project" activeStyle={{ color: 'rgb(4, 180, 4)' }}>New Project</NavLink>
                             </div>
 
 
                             <div className="nav-item" id="desktop-nav-account-div">
                                 <a href="#" id="nav-account-btn">My Account</a>
                                 <div id="nav-account-menu" >
-                                    <Link to="/account">My Profile</Link>
-                                    <Link to="/user-projects">My Projects</Link>
+                                    <NavLink to="/account" activeStyle={{ color: 'rgb(4, 180, 4)' }}>My Profile</NavLink>
+                                    <NavLink to="/user-projects" activeStyle={{ color: 'rgb(4, 180, 4)' }}>My Projects</NavLink>
                                     <Link to="/login" onClick={props.handleLogout}>Log Out</Link>
                                 </div>
                             </div>
