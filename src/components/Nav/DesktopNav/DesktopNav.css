@@ -2,10 +2,6 @@ nav#desktop-nav {
   display: none;
 }
 
-a.active {
-  color: rgb(4, 180, 4);
-}
-
 @media screen and (min-width: 720px) {
   nav#desktop-nav {
     display: flex;
