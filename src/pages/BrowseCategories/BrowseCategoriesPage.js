@@ -134,7 +134,7 @@ function BrowseCategoriesPage() {
                                 })}
                             </div>
                             :
-                            <div id="activity-content">
+                            <div className="centred-text">
                                 <h2>No Open Projects Found</h2>
                             </div>
                         :

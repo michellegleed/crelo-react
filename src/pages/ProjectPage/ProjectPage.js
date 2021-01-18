@@ -48,9 +48,12 @@ function ProjectPage() {
     }, [id, projectClosed]);
 
     useEffect(() => {
-        setDateObj(dateObjectFormatter(projectData.date_created));
-        setTimeLeftObj(timeLeftFormatter(projectData.due_date));
-        setDueDateObj(dateObjectFormatter(projectData.due_date));
+        if (projectData.title) {
+            setDateObj(dateObjectFormatter(projectData.date_created));
+            setTimeLeftObj(timeLeftFormatter(projectData.due_date));
+            setDueDateObj(dateObjectFormatter(projectData.due_date));
+        }
+
     }, [projectData]);
 
     const showStickyButton = () => {
@@ -143,9 +146,15 @@ function ProjectPage() {
                                         return <PledgeCard key={index} pledge={pledge} isProfilePage={false} />;
                                     })
                                     :
-                                    <React.Fragment>
-                                        <Link to={`pledge`} className="pledge-link"><h2>Be the first person to pledge to this project!</h2></Link>
-                                    </React.Fragment>
+                                    projectData.is_open ?
+                                        <React.Fragment>
+                                            <Link to={`pledge`} className="pledge-link"><h2>Be the first person to pledge to this project!</h2></Link>
+                                        </React.Fragment>
+                                        :
+                                        <div className="centred-text">
+                                            <h2 id="no-pledges">** No pledges were made to this project **</h2>
+                                        </div>
+
                             }
                         </div>
                     </div>

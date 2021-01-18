@@ -169,4 +169,8 @@ a.pledge-link {
     background-color: white;
     color: #232323;
   }
+
+  h2#no-pledges {
+    font-size: 24px;
+  }
 }

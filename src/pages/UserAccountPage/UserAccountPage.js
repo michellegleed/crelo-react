@@ -63,9 +63,13 @@ function UserAccountPage() {
 
             <div className="account-page-section" id="user-pledges">
                 <h1>Pledges:</h1>
-                {userData.pledges.map((pledge, index) => {
-                    return <PledgeCard pledge={pledge} isProfilePage={true} key={index} />
-                })
+                {
+                    userData ?
+                        userData.pledges.map((pledge, index) => {
+                            return <PledgeCard pledge={pledge} isProfilePage={true} key={index} />
+                        })
+                        :
+                        null
                 }
             </div>
         </div>

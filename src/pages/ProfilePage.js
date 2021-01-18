@@ -39,7 +39,7 @@ function UserAccountPage() {
                                     null
                             })
                             :
-                            <div id="activity-content">
+                            <div className="centred-text">
                                 <h2>** None of {userData.user.username}'s projects  are open for funding right now **</h2>
                             </div>
 
