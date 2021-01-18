@@ -134,7 +134,7 @@ function NewProjectForm() {
                     <input
                         type="text"
                         id="image"
-                        placeholder="Enter the url for the project image"
+                        placeholder="Enter an image URL"
                         onChange={handleChange} />
                 </div>
                 <div className="form-item">

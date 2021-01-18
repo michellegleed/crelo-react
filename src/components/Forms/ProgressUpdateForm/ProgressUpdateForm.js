@@ -49,7 +49,7 @@ function ProgressUpdateForm(props) {
                     <input
                         type="text"
                         id="image"
-                        placeholder="Enter the url for the project image"
+                        placeholder="Image URL"
                         onChange={handleChange} />
                 </div>
                 <div className="form-item">
