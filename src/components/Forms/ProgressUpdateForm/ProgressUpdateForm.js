@@ -33,7 +33,6 @@ function ProgressUpdateForm(props) {
         e.preventDefault();
         postData()
             .then(response => {
-                console.log("progress update POST response = ", response);
                 // redirect to project page on successful post
                 history.push(`project/${props.projectID}`);
             })

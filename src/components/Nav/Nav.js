@@ -19,7 +19,6 @@ function Nav() {
 
     // runs @ first render and whenever url location changes
     useEffect(() => {
-        console.log("location is ", location)
         const token = window.localStorage.getItem("token");
         if (token) {
             setLoggedIn(true);

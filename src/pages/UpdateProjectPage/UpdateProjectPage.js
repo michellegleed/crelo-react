@@ -21,7 +21,6 @@ function UpdateProjectPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
                     setProjectData(result.data);
                 }
                 else {
@@ -32,13 +31,8 @@ function UpdateProjectPage() {
 
     // Check if user has permission, if not push to 401 page
     useEffect(() => {
-        console.log("usr details: ", userDetails);
-        console.log("project usr details: ", projectData);
-        console.log("got to 1st line of useEffect");
         if (userDetails.user && projectData) {
-            console.log("got to 2nd line of useEffect");
             if (userDetails.user.id !== projectData.user.id) {
-                console.log("got to 3rd line of useEffect");
                 history.push("/unauthorized")
             }
         }

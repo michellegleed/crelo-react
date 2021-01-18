@@ -24,7 +24,6 @@ function UserAccountPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}account/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
                     setUserData(result.data);
                     actions.updateAllDetails(result.data);
                 }

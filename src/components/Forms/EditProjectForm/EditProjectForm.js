@@ -21,7 +21,6 @@ function EditProjectForm(props) {
             ...prevProjectDetails,
             [id]: value,
         }));
-        console.log(id, value);
     }
 
     const handleDateChange = (e) => {
@@ -71,9 +70,9 @@ function EditProjectForm(props) {
             })
             .then((data) => {
                 setCategoryList(data);
-                data.map(category => {
-                    console.log(category.id, category.name)
-                })
+                // data.map(category => {
+                //     console.log(category.id, category.name)
+                // })
             });
     }, []);
 
@@ -87,9 +86,9 @@ function EditProjectForm(props) {
             })
             .then((data) => {
                 setPledgetypeList(data);
-                data.map(pledgetype => {
-                    console.log(pledgetype.id, pledgetype.name)
-                })
+                // data.map(pledgetype => {
+                //     console.log(pledgetype.id, pledgetype.name)
+                // })
             });
     }, []);
 

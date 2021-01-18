@@ -45,7 +45,6 @@ function UserProfileForm(props) {
         postData()
             .then(data => {
                 if (data.ok) {
-                    console.log("result.data is ", data)
                     setErrorMessage(null);
                     props.updateAccountDetails(data);
                     actions.updateUserDetails(data.user);

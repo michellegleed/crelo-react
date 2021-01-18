@@ -25,13 +25,11 @@ function HomePage() {
 
     useEffect(() => {
         if (!userDetails) {
-            console.log("exiting out of use effect early - user details not fetched yet")
+            // console.log("exiting out of use effect early - user details not fetched yet")
             return
         }
-        console.log("fetching activity based on user's location. user details = ", userDetails);
         fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/`)
             .then((result) => {
-                console.log(result);
                 if (result.ok) {
                     setActivityFeed(result.data.activity);
                 }
@@ -52,9 +50,6 @@ function HomePage() {
                 totalHours += parseInt(userDetails.pledges[i].amount);
             }
         }
-
-        console.log("total money = ", totalMoney);
-        console.log("total Hours = ", totalHours);
 
         return (< div id="total-pledges">
             <h3><i class="fas fa-donate"></i>My Total Pledges:</h3>

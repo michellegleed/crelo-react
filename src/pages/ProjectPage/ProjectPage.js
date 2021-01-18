@@ -38,7 +38,6 @@ function ProjectPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result);
                     setProjectData(result.data);
                 }
                 else {
@@ -70,7 +69,6 @@ function ProjectPage() {
                     setErrorMessage(null);
                     setProjectClosed(true);
                 } else {
-                    console.log(response);
                     setErrorMessage("Error closing project. Please try again in a moment.");
                 }
             })

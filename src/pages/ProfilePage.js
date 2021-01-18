@@ -16,7 +16,6 @@ function UserAccountPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}users/${userId}`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
                     setUserData(result.data);
                 }
                 else {
@@ -31,12 +30,19 @@ function UserAccountPage() {
                 <UserProfile user={userData.user} location={userData.location} />
                 <h1 className="page-heading">Projects:</h1>
                 <div className="account-page-section" id="activity-content">
-                    {userData.projects.map((project, index) => {
-                        return project.is_open ?
-                            <ProjectCard key={index} project={project} isActivityFeed={false} />
+                    {
+                        userData.projects.length > 0 ?
+                            userData.projects.map((project, index) => {
+                                return project.is_open ?
+                                    <ProjectCard key={index} project={project} isActivityFeed={false} />
+                                    :
+                                    null
+                            })
                             :
-                            null
-                    })
+                            <div id="activity-content">
+                                <h2>** None of {userData.user.username}'s projects  are open for funding right now **</h2>
+                            </div>
+
                     }
                 </div>
             </div>

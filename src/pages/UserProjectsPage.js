@@ -18,7 +18,6 @@ function UserProjectsPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}account/projects/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
                     setProjectList(result.data);
                 }
                 else {

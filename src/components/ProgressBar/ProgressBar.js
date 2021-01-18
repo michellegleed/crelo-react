@@ -11,7 +11,6 @@ const ProgressBar = (props) => {
   });
 
   useEffect(() => {
-    console.log("percentage is... ", percentage);
     if (percentage) {
       setFillerStyles({
         width: `${percentage <= 100 ? percentage : 100}%`,

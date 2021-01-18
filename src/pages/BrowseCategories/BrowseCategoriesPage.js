@@ -21,7 +21,6 @@ function BrowseCategoriesPage() {
             fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`)
                 .then((result) => {
                     if (result.ok) {
-                        console.log(result.data);
                         setProjectList(result.data);
                     }
                     else {
@@ -52,7 +51,6 @@ function BrowseCategoriesPage() {
             fetchRequest(`${process.env.REACT_APP_API_URL}account/${action}-category/${categoryID}/`)
                 .then((result) => {
                     if (result.ok) {
-                        console.log(result.data);
                         actions.updateUserDetails(result.data);
                     }
                     else {

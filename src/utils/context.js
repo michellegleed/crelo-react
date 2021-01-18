@@ -16,9 +16,7 @@ export const UserContextProvider = (props) => {
     // const [errorMessage, setErrorMessage] = useState();
 
     const updateAllDetails = (userObject) => {
-        console.log("new user object is... ", userObject)
         setUserDetails(userObject);
-        console.log("user details from context = ", userDetails);
     }
 
     const updateUserDetails = (userObject) => {
@@ -28,7 +26,6 @@ export const UserContextProvider = (props) => {
                 user: userObject
             }
         });
-        console.log("user details from context = ", userDetails);
     }
 
     const updateLocationDetails = (locationObject) => {

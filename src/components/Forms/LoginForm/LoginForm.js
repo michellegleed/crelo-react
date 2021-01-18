@@ -49,7 +49,6 @@ function LoginForm() {
         e.preventDefault();
         if (credentials.username && credentials.password) {
             postData().then(response => {
-                console.log(response);
                 window.localStorage.setItem("token", response.token);
                 // redirect to home page on successful login
                 history.push("/");

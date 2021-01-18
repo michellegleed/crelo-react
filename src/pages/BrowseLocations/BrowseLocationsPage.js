@@ -24,7 +24,6 @@ function BrowseLocationsPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}locations/${selectedLocation}`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
                     setLocationActivity(result.data);
                 }
                 else {
@@ -49,7 +48,6 @@ function BrowseLocationsPage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}locations/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
                     setLocationList(result.data);
                 }
                 else {

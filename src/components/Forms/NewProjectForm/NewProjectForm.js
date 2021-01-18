@@ -33,10 +33,7 @@ function NewProjectForm() {
     }
 
     const handleDateChange = (e) => {
-        console.log("date from new project form: ", e.target.id, e.target.value)
-        console.log(`${e.target.value}T00:00:00Z`);
         const { id, value } = e.target;
-        console.log(`${value}T00:00:00Z`);
         setProjectDetails((prevProjectDetails) => ({
             ...prevProjectDetails,
             [id]: `${value}T00:00:00Z`,
@@ -61,7 +58,6 @@ function NewProjectForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(projectDetails);
         postData()
             .then(data => {
                 if (data.ok) {
@@ -85,9 +81,9 @@ function NewProjectForm() {
             })
             .then((data) => {
                 setCategoryList(data);
-                data.map(category => {
-                    console.log(category.id, category.name)
-                })
+                // data.map(category => {
+                //     console.log(category.id, category.name)
+                // })
             });
     }, []);
 
@@ -101,9 +97,9 @@ function NewProjectForm() {
             })
             .then((data) => {
                 setPledgetypeList(data);
-                data.map(pledgetype => {
-                    console.log(pledgetype.id, pledgetype.name)
-                })
+                // data.map(pledgetype => {
+                //     console.log(pledgetype.id, pledgetype.name)
+                // })
             });
     }, []);
 

@@ -23,7 +23,6 @@ function PledgePage() {
         fetchRequest(`${process.env.REACT_APP_API_URL}projects/${id}/`)
             .then((result) => {
                 if (result.ok) {
-                    console.log(result.data);
                     setProjectData(result.data);
                 }
                 else {
