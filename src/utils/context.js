@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 // import FetchDetails from './FetchDetails.js';
 import { fetchRequest } from './fetchRequest.js';
+import Spinner from '../components/Spinner/Spinner.js';
 
 export const UserDetailsContext = React.createContext();
 
@@ -50,12 +51,11 @@ export const UserContextProvider = (props) => {
         fetchingRef.current = true;
         fetchRequest(`${process.env.REACT_APP_API_URL}account/`)
             .then((result) => {
+                fetchingRef.current = false;
                 if (result.ok) {
-                    fetchingRef.current = false;
                     updateAllDetails(result.data);
                 }
                 else {
-                    fetchingRef.current = false;
                     history.push("/unauthorized");
                 }
             })
@@ -75,9 +75,10 @@ export const UserContextProvider = (props) => {
         }}>
             {
                 fetchingRef.current ?
-                    <div className="content-container">
-                        <h2 className="loading">** Loading... **</h2>
-                    </div>
+                    // <div className="content-container">
+                    //     <h2 className="loading">** Loading... **</h2>
+                    // </div>
+                    <Spinner />
                     :
                     props.children
             }

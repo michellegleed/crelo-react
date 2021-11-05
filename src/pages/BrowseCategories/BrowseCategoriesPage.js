@@ -6,10 +6,13 @@ import { UserDetailsContext } from '../../utils/context';
 import { fetchRequest } from '../../utils/fetchRequest';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
+import Spinner from '../../components/Spinner/Spinner';
+
 function BrowseCategoriesPage() {
 
     const { userDetails, actions } = useContext(UserDetailsContext);
 
+    const [isFetching, setIsFetching] = useState(true);
     const [projectList, setProjectList] = useState();
     const [selectedCategory, setSelectedCategory] = useState("favourites");
     const [errorMessage, setErrorMessage] = useState();
@@ -18,8 +21,10 @@ function BrowseCategoriesPage() {
 
     useEffect(() => {
         if (userDetails) {
+            setIsFetching(true)
             fetchRequest(`${process.env.REACT_APP_API_URL}locations/${userDetails.location.id}/categories/${selectedCategory}/`)
                 .then((result) => {
+                    setIsFetching(false)
                     if (result.ok) {
                         setProjectList(result.data);
                     }
@@ -64,8 +69,10 @@ function BrowseCategoriesPage() {
     const [categoryList, setCategoryList] = useState();
 
     useEffect(() => {
+        setIsFetching(true)
         fetchRequest(`${process.env.REACT_APP_API_URL}project-categories/`)
             .then((result) => {
+                setIsFetching(false)
                 if (result.ok) {
                     setCategoryList(result.data);
                 }
@@ -88,60 +95,64 @@ function BrowseCategoriesPage() {
     }
 
     return (
-        <div>
-            {
-                errorMessage ?
-                    <ErrorMessage message={errorMessage} type="error" />
-                    :
-                    null
-            }
-            <div id="category-menu">
-                {categoryList ?
-                    categoryList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeCategory(item.id)}>{item.name}</button>)
-                    :
-                    null
-                }
-                <button className={checkIfBtnSelected("favourites")} onClick={() => changeCategory("favourites")}>My Followed Categories</button>
-            </div>
-
-            <div id="project-list">
+        isFetching.current ?
+            <Spinner />
+            :
+            <div>
                 {
-                    userDetails ?
-                        selectedCategory !== "favourites" ?
-                            checkIsFavourite() ?
-                                <button className="add-remove-fav-category" onClick={() => updateFavourites("remove", selectedCategory)}><i class="fas fa-minus-circle"></i> Remove from My Followed Categories</button>
-                                :
-                                <button className="add-remove-fav-category" onClick={() => updateFavourites("add", selectedCategory)}><i class="fas fa-plus-circle"></i> Add to My Followed Categories</button>
-                            : userDetails.user.favourite_categories.length > 0 ?
-                                <div id="followed-categories-list">
-                                    <h3>Followed Categories:</h3>
-                                    <ul>
-                                        {userDetails.user.favourite_categories.map(categoryId => getCategoryNameFromID(categoryId))}
-                                    </ul>
+                    errorMessage ?
+                        <ErrorMessage message={errorMessage} type="error" />
+                        :
+                        null
+                }
+                <div id="category-menu">
+                    {
+                        categoryList ?
+                            categoryList.map(item => <button key={item.id} className={checkIfBtnSelected(item.id)} onClick={() => changeCategory(item.id)}>{item.name}</button>)
+                            :
+                            null
+                    }
+                    <button className={checkIfBtnSelected("favourites")} onClick={() => changeCategory("favourites")}>My Followed Categories</button>
+                </div>
 
+                <div id="project-list">
+                    {
+                        userDetails ?
+                            selectedCategory !== "favourites" ?
+                                checkIsFavourite() ?
+                                    <button className="add-remove-fav-category" onClick={() => updateFavourites("remove", selectedCategory)}><i class="fas fa-minus-circle"></i> Remove from My Followed Categories</button>
+                                    :
+                                    <button className="add-remove-fav-category" onClick={() => updateFavourites("add", selectedCategory)}><i class="fas fa-plus-circle"></i> Add to My Followed Categories</button>
+                                : userDetails.user.favourite_categories.length > 0 ?
+                                    <div id="followed-categories-list">
+                                        <h3>Followed Categories:</h3>
+                                        <ul>
+                                            {userDetails.user.favourite_categories.map(categoryId => getCategoryNameFromID(categoryId))}
+                                        </ul>
+
+                                    </div>
+                                    :
+                                    <ErrorMessage message="You're not following any categories" type="warning" />
+                            : null
+                    }
+
+                    {
+                        projectList ?
+                            projectList.length > 0 ?
+                                <div id="activity-content">
+                                    {projectList.map((project, index) => {
+                                        return <ProjectCard project={project} key={index} isActivityFeed={false} />
+                                    })}
                                 </div>
                                 :
-                                <ErrorMessage message="You're not following any categories" type="warning" />
-                        : null
-                }
-
-                {
-                    projectList ?
-                        projectList.length > 0 ?
-                            <div id="activity-content">
-                                {projectList.map((project, index) => {
-                                    return <ProjectCard project={project} key={index} isActivityFeed={false} />
-                                })}
-                            </div>
+                                <div className="centred-text">
+                                    <h2>No Open Projects Found</h2>
+                                </div>
                             :
-                            <div className="centred-text">
-                                <h2>No Open Projects Found</h2>
-                            </div>
-                        :
-                        <h2 className="loading-msg">** Loading Projects... **</h2>
-                }
+                            null
+                    }
+                </div>
             </div>
-        </div>
     )
 }
 
